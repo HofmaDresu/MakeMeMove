@@ -88,7 +88,9 @@ namespace MakeMeMove.Droid
             if ((int)Build.VERSION.SdkInt >= 21)
             {
                 builder.SetPriority((int)NotificationPriority.High)
-                .SetVisibility(NotificationVisibility.Public);
+                .SetVisibility(NotificationVisibility.Public)
+                .AddAction(0, "Completed", null)
+                .AddAction(0, "Skipped", null);
             }
 
             
