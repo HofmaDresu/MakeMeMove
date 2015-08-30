@@ -14,6 +14,11 @@ namespace MakeMeMove.Droid
 	    private ExerciseSchedule _exerciseSchedule;
 	    private Button _startButton;
 	    private Button _stopButton;
+	    private Button _editScheduleButton;
+	    private Button _addExerciseButton;
+	    private TextView _startTime;
+	    private TextView _endTime;
+	    private TextView _reminderPattern;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -21,6 +26,11 @@ namespace MakeMeMove.Droid
 			SetContentView (Resource.Layout.Main);
 		    _startButton = FindViewById<Button>(Resource.Id.startServiceButton);
             _stopButton = FindViewById<Button>(Resource.Id.stopServiceButton);
+            _editScheduleButton = FindViewById<Button>(Resource.Id.editScheduleButton);
+            _addExerciseButton = FindViewById<Button>(Resource.Id.addExerciseButton);
+		    _startTime = FindViewById<TextView>(Resource.Id.startTime);
+            _endTime = FindViewById<TextView>(Resource.Id.endTime);
+            _reminderPattern = FindViewById<TextView>(Resource.Id.reminderPattern);
 
             SetUpSchedule();
 
@@ -40,6 +50,24 @@ namespace MakeMeMove.Droid
 	            var editor = settings.Edit();
 	            editor.PutString("Exercises", JsonConvert.SerializeObject(_exerciseSchedule));
 	            editor.Commit();
+	        }
+
+	        _startTime.Text = _exerciseSchedule.StartTime.ToShortTimeString();
+            _endTime.Text = _exerciseSchedule.EndTime.ToShortTimeString();
+
+	        switch (_exerciseSchedule.Period)
+	        {
+	            case SchedulePeriod.HalfHourly:
+	                _reminderPattern.Text = "Every Half Hour";
+	                break;
+	            case SchedulePeriod.Hourly:
+                    _reminderPattern.Text = "Every Hour";
+                    break;
+	            case SchedulePeriod.BiHourly:
+                    _reminderPattern.Text = "Every Two Hours";
+                    break;
+	            default:
+	                throw new ArgumentOutOfRangeException();
 	        }
 	    }
         

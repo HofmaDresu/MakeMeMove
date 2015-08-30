@@ -1,19 +1,10 @@
 using System;
-using System.Runtime;
-using System.Collections;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using MakeMeMove.Model;
 using Newtonsoft.Json;
-
 
 namespace MakeMeMove.Droid
 {
@@ -22,8 +13,7 @@ namespace MakeMeMove.Droid
     {
         private ExerciseSchedule _exerciseSchedule;
         private Timer _timer;
-        private int _pollPeriod = 1 * 60 * 1000;
-        //private int _pollPeriod = 10 * 1000;
+        private int _pollPeriod;
 
         public override IBinder OnBind(Intent intent)
         {
