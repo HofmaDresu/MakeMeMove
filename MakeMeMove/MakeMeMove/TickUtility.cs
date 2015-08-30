@@ -9,6 +9,10 @@ namespace MakeMeMove
         {
             switch (schedulePeriod)
             {
+                case SchedulePeriod.Minutely:
+                    return MinutesToMilliseconds(1);
+                case SchedulePeriod.FiveMinutely:
+                    return MinutesToMilliseconds(5);
                 case SchedulePeriod.HalfHourly:
                     return MinutesToMilliseconds(30);
                 case SchedulePeriod.Hourly:
@@ -41,6 +45,9 @@ namespace MakeMeMove
 
             switch (schedule.Period)
             {
+                case SchedulePeriod.Minutely:
+                case SchedulePeriod.FiveMinutely:
+                    return 0;
                 case SchedulePeriod.HalfHourly:
                     return
                         (int)
