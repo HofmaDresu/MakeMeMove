@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace MakeMeMove.Droid
 {
-	[Activity (Label = "MakeMeMove.Droid", MainLauncher = true, Icon = "@drawable/icon")]
+	[Activity (Label = "Make Me Move", MainLauncher = true, Icon = "@drawable/icon")]
 	public class MainActivity : Activity
 	{
 	    private ExerciseSchedule _exerciseSchedule;
@@ -60,11 +60,13 @@ namespace MakeMeMove.Droid
 	    private void StopButtonOnClick(object sender, EventArgs eventArgs)
         {
             StopService(new Intent(this, typeof(ExerciseTickService)));
+            Toast.MakeText(this, "Service Stopped", ToastLength.Long).Show();
         }
 
 	    private void StartButtonOnClick(object sender, EventArgs eventArgs)
-        {
+	    {
             StartService(new Intent(this, typeof(ExerciseTickService)));
+            Toast.MakeText(this, "Service Started", ToastLength.Long).Show();
         }
 	}
 }
