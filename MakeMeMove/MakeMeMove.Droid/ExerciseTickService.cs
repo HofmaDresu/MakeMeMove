@@ -32,11 +32,15 @@ namespace MakeMeMove.Droid
 
         public override StartCommandResult OnStartCommand(Intent intent, StartCommandFlags flags, int startId)
         {
-            _timer = new Timer(OnTimerTick, null, _pollPeriod, Timeout.Infinite);
-
             var settings = GetSharedPreferences("MakeMeMove", FileCreationMode.Private);
             var exercises = settings.GetString("Exercises", string.Empty);
             _exerciseSchedule = JsonConvert.DeserializeObject<ExerciseSchedule>(exercises);
+
+            _pollPeriod = TickUtility.GetPollPeriod(_exerciseSchedule.Period);
+
+            var startMilliseconds = TickUtility.GetFirstRunTimeSpan(_exerciseSchedule);
+
+            _timer = new Timer(OnTimerTick, null, startMilliseconds, Timeout.Infinite);
 
             return StartCommandResult.Sticky;
         }
@@ -49,27 +53,7 @@ namespace MakeMeMove.Droid
 
         private void OnTimerTick(object stateInfo)
         {
-            var now = DateTime.Now;
-            if (now.TimeOfDay > _exerciseSchedule.StartTime.TimeOfDay && now.TimeOfDay < _exerciseSchedule.EndTime.TimeOfDay)
-            {
-                switch (_exerciseSchedule.Period)
-                {
-                    case SchedulePeriod.HalfHourly:
-                        if(now.Minute == 30) FireNextExerciseNotification();
-                        break;
-                    case SchedulePeriod.Hourly:
-                        if (now.Minute == 0) FireNextExerciseNotification();
-                        break;
-                    case SchedulePeriod.BiHourly:
-                        throw new NotImplementedException();
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            }
-
-
-            
+            FireNextExerciseNotification();
             _timer.Change(_pollPeriod, Timeout.Infinite);
         }
 

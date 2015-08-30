@@ -28,9 +28,9 @@ namespace MakeMeMove.Model
         {
             return new ExerciseSchedule
             {
-                Period = SchedulePeriod.Hourly,
+                Period = SchedulePeriod.HalfHourly,
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
-                EndTime = new DateTime(1, 1, 1, 20, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Exercises = new List<ExerciseBlock>
                 {
                     new ExerciseBlock
