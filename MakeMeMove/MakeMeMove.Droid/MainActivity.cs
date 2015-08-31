@@ -2,6 +2,7 @@
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Util;
 using Android.Widget;
 using Java.Lang;
 using MakeMeMove.Model;
@@ -111,12 +112,10 @@ namespace MakeMeMove.Droid
             var recurringReminders = PendingIntent.GetBroadcast(this, 0, reminder, PendingIntentFlags.CancelCurrent);
             var alarms = (AlarmManager)GetSystemService(AlarmService);
 
-            var pollPeriod = TickUtility.GetPollPeriod(_exerciseSchedule.Period);
-
-            var startMilliseconds = TickUtility.GetFirstRunTimeSpan(_exerciseSchedule);
-
-            alarms.SetRepeating(AlarmType.ElapsedRealtimeWakeup, startMilliseconds, pollPeriod, recurringReminders);
-
+            var nextRunTime = TickUtility.GetNextRunTime(_exerciseSchedule);
+	        Log.Error("asdf", nextRunTime.ToShortDateString() + " " + nextRunTime.ToShortTimeString());
+	        var dtBasis = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            alarms.SetExact(AlarmType.RtcWakeup, (long)nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds, recurringReminders);
 
             Toast.MakeText(this, "Service Started", ToastLength.Long).Show();
         }
