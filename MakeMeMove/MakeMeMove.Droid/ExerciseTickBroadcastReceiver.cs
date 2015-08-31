@@ -64,7 +64,18 @@ namespace MakeMeMove.Droid
             var nextRunTime = TickUtility.GetNextRunTime(exerciseSchedule);
             Log.Error("asdf", nextRunTime.ToShortDateString() + " " + nextRunTime.ToShortTimeString());
             var dtBasis = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            alarms.SetExact(AlarmType.RtcWakeup, (long)nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds, recurringReminders);
+
+            if ((int) Build.VERSION.SdkInt >= 19)
+            {
+                alarms.SetWindow(AlarmType.RtcWakeup,
+                    (long) nextRunTime.ToUniversalTime().AddMinutes(-5).Subtract(dtBasis).TotalMilliseconds,
+                    10*60*1000, recurringReminders);
+            }
+            else
+            {
+                alarms.Set(AlarmType.RtcWakeup,
+                    (long)nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds, recurringReminders);
+            }
         }
     }
 }

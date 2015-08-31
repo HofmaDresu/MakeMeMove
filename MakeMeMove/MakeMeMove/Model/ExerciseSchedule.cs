@@ -6,8 +6,6 @@ namespace MakeMeMove.Model
 {
     public enum SchedulePeriod
     {
-        Minutely,
-        FiveMinutely,
         HalfHourly,
         Hourly,
         BiHourly

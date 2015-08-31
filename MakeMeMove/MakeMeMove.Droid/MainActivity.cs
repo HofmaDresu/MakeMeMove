@@ -59,12 +59,6 @@ namespace MakeMeMove.Droid
 
 	        switch (_exerciseSchedule.Period)
             {
-                case SchedulePeriod.Minutely:
-                    _reminderPattern.Text = "Every Minute";
-                    break;
-                case SchedulePeriod.FiveMinutely:
-                    _reminderPattern.Text = "Every Five Minutes";
-                    break;
                 case SchedulePeriod.HalfHourly:
 	                _reminderPattern.Text = "Every Half Hour";
 	                break;
@@ -115,7 +109,18 @@ namespace MakeMeMove.Droid
             var nextRunTime = TickUtility.GetNextRunTime(_exerciseSchedule);
 	        Log.Error("asdf", nextRunTime.ToShortDateString() + " " + nextRunTime.ToShortTimeString());
 	        var dtBasis = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            alarms.SetExact(AlarmType.RtcWakeup, (long)nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds, recurringReminders);
+
+            if ((int)Build.VERSION.SdkInt >= 19)
+            {
+                alarms.SetWindow(AlarmType.RtcWakeup,
+                    (long)nextRunTime.ToUniversalTime().AddMinutes(-5).Subtract(dtBasis).TotalMilliseconds,
+                    10 * 60 * 1000, recurringReminders);
+            }
+            else
+            {
+                alarms.Set(AlarmType.RtcWakeup,
+                    (long)nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds, recurringReminders);
+            }
 
             Toast.MakeText(this, "Service Started", ToastLength.Long).Show();
         }
