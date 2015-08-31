@@ -11,7 +11,9 @@ namespace MakeMeMove.Model
         PushUps,
         SitUps,
         JumpingJacks,
-        Squats
+        Squats,
+        CalfRaises,
+        Lunges
     }
 
     public class ExerciseBlock

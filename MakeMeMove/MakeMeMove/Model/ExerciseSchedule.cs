@@ -52,6 +52,16 @@ namespace MakeMeMove.Model
                     {
                         Name = PreBuiltExersises.Squats.Humanize(LetterCasing.LowerCase),
                         Quantity = 10
+                    },
+                    new ExerciseBlock
+                    {
+                        Name = PreBuiltExersises.CalfRaises.Humanize(LetterCasing.LowerCase),
+                        Quantity = 10
+                    },
+                    new ExerciseBlock
+                    {
+                        Name = PreBuiltExersises.Lunges.Humanize(LetterCasing.LowerCase),
+                        Quantity = 5
                     }
                 }
             };
