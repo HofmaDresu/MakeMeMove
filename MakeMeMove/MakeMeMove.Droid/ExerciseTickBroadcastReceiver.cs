@@ -68,7 +68,7 @@ namespace MakeMeMove.Droid
             if ((int) Build.VERSION.SdkInt >= 19)
             {
                 alarms.SetWindow(AlarmType.RtcWakeup,
-                    (long) nextRunTime.ToUniversalTime().AddMinutes(-5).Subtract(dtBasis).TotalMilliseconds,
+                    (long) nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds,
                     10*60*1000, recurringReminders);
             }
             else
