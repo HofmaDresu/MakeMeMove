@@ -36,7 +36,7 @@ namespace MakeMeMove.Droid
                 .SetContentTitle("Time to Move")
                 .SetContentText($"It's time to do {nextExercise.Quantity} {nextExercise.Name}")
                 .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate)
-                .SetSmallIcon(Resource.Drawable.Icon);
+                .SetSmallIcon(Resource.Drawable.icon);
 
             if ((int) Build.VERSION.SdkInt >= 21)
             {

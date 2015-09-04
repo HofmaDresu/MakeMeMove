@@ -19,6 +19,7 @@ namespace MakeMeMove.Model
         }
 
         public SchedulePeriod Period { get; set; }
+        public string PeriodDisplayString => Period.Humanize();
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public List<ExerciseBlock> Exercises { get; set; }

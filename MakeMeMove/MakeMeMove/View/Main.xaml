@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:MakeMeMove.ViewModel;assembly=MakeMeMove"
+             xmlns:local="clr-namespace:MakeMeMove;assembly=MakeMeMove"
+             x:Class="MakeMeMove.View.Main"
+             >
+    <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     Orientation="Vertical"
+                     Spacing="15" >
+        <StackLayout.BindingContext>
+            <viewModel:ExerciseScheduleViewModel />
+        </StackLayout.BindingContext>
+        <StackLayout VerticalOptions="Fill"
+                         HorizontalOptions="FillAndExpand"
+                         Orientation="Horizontal"
+                         Spacing="15">
+            <Button x:Name="translateButon" Text="Start Service" Clicked="OnStart" />
+            <Button x:Name="callButton" Text="Stop Service" Clicked="OnStop" />
+        </StackLayout>
+
+        <StackLayout x:Name="startTimeSection" VerticalOptions="Fill"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="5" >
+            <Label x:Name="startTimeLabel" Text="Start Time:"/>
+            <Label x:Name="startTimeValue" Text="{Binding Schedule.StartTime, StringFormat='{0:H:mm:ss tt}'}" />
+        </StackLayout>
+        <StackLayout x:Name="endTimeSection" VerticalOptions="Fill"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="5" >
+            <Label x:Name="endTimeLabel" Text="End Time:"/>
+            <Label x:Name="endTimeValue" Text="{Binding Schedule.EndTime, StringFormat='{0:H:mm:ss tt}'}" />
+        </StackLayout>
+        <StackLayout VerticalOptions="Fill"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="5" >
+            <Label x:Name="periodLabel" Text="Reminder Period:"/>
+            <Label x:Name="periodValue" Text="{Binding Schedule.PeriodDisplayString}" />
+        </StackLayout>
+        <ScrollView VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+            <ListView VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                      ItemsSource="{Binding SelectedExercises}"
+                      HasUnevenRows="True">
+                <ListView.BindingContext>
+                    <viewModel:ExerciseScheduleViewModel />
+                </ListView.BindingContext>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout VerticalOptions="Fill"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Vertical"
+                                Spacing="5" >
+                                <StackLayout VerticalOptions="Fill"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    Spacing="5" >
+                                    <Label Text="{Binding Quantity}"/>
+                                    <Label Text="{Binding Name}"/>
+                                </StackLayout>
+
+                                <StackLayout VerticalOptions="Fill"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    Spacing="5" >
+                                    <Button x:Name="editButton" Text="Edit" Clicked="EditExercise" />
+                                    <Button x:Name="deleteButton" Text="Delete" Clicked="DeleteExercise" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+        <Button x:Name="addButton" Text="Add Exercise" Clicked="AddExercise" />
+    </StackLayout>
+</ContentPage>

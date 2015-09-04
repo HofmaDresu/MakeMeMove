@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<string name="startService">Start Service</string>
-  <string name="stopService">Stop Service</string>
-	<string name="app_name">Make Me Move</string>
-</resources>
