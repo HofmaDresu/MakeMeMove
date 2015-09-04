@@ -6,6 +6,7 @@ using MakeMeMove.iOS;
 using MakeMeMove.Model;
 using UIKit;
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 [assembly: Dependency(typeof(ExerciseServiceManager))]
 namespace MakeMeMove.iOS
@@ -14,21 +15,40 @@ namespace MakeMeMove.iOS
     {
         public void StartNotificationService(ExerciseSchedule schedule)
         {
-            var index = new Random().Next(0, schedule.Exercises.Count - 1);
+            UIApplication.SharedApplication.CancelAllLocalNotifications();
 
-            var nextExercise = schedule.Exercises[index];
-            UILocalNotification notification = new UILocalNotification();
+            var now = DateTime.Now;
+            var tomorrow = now.AddDays(1);
+            var random = new Random();
+
+            for (var testDate = now; testDate < tomorrow; testDate = TickUtility.GetNextRunTime(schedule, testDate).AddMinutes(1))
+            {
+                var index = random.Next(0, schedule.Exercises.Count - 1);
+                
+                var nextExercise = schedule.Exercises[index];
+                var nextRunTime = TickUtility.GetNextRunTime(schedule, testDate);
+                
+                var notification = new UILocalNotification
+                {
+                    AlertAction = "Time to Move",
+                    AlertBody = $"It's time to do {nextExercise.Quantity} {nextExercise.Name}",
+                    FireDate = nextRunTime.ToNSDate(),
+                    SoundName = UILocalNotification.DefaultSoundName,
+                    TimeZone = NSTimeZone.LocalTimeZone,
+                    RepeatInterval = NSCalendarUnit.Day
+                };
+
+                UIApplication.SharedApplication.ScheduleLocalNotification(notification);
+            }
+
+
             
-            notification.AlertAction = "Time to Move";
-            notification.AlertBody = $"It's time to do {nextExercise.Quantity} {nextExercise.Name}";
-            notification.FireDate = NSDate.FromTimeIntervalSinceNow(15);
-            notification.SoundName = UILocalNotification.DefaultSoundName;
-            UIApplication.SharedApplication.ScheduleLocalNotification(notification);
+            
         }
 
         public void StopNotificationService(ExerciseSchedule schedule)
         {
-            throw new NotImplementedException();
+            UIApplication.SharedApplication.CancelAllLocalNotifications();
         }
     }
 }

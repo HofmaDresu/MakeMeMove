@@ -20,28 +20,28 @@ namespace MakeMeMove
             }
         }
 
-        public static DateTime GetNextRunTime(ExerciseSchedule schedule)
+        public static DateTime GetNextRunTime(ExerciseSchedule schedule, DateTime? fromDate = null)
         {
-            var now = DateTime.Now;
-            if (now.TimeOfDay > schedule.EndTime.TimeOfDay)
+            var fromDateValue = fromDate.GetValueOrDefault(DateTime.Now);
+            if (fromDateValue.TimeOfDay > schedule.EndTime.TimeOfDay)
             {
-                return new DateTime(now.Year, now.Month, now.Day + 1, schedule.StartTime.Hour, schedule.StartTime.Minute,schedule.StartTime.Second);
+                return new DateTime(fromDateValue.Year, fromDateValue.Month, fromDateValue.Day + 1, schedule.StartTime.Hour, schedule.StartTime.Minute,schedule.StartTime.Second);
             }
 
-            if (now.TimeOfDay < schedule.StartTime.TimeOfDay)
+            if (fromDateValue.TimeOfDay < schedule.StartTime.TimeOfDay)
             {
-                return new DateTime(now.Year, now.Month, now.Day, schedule.StartTime.Hour, schedule.StartTime.Minute, schedule.StartTime.Second);
+                return new DateTime(fromDateValue.Year, fromDateValue.Month, fromDateValue.Day, schedule.StartTime.Hour, schedule.StartTime.Minute, schedule.StartTime.Second);
             }
 
             switch (schedule.Period)
             {
                 case SchedulePeriod.HalfHourly:
-                    return new DateTime(now.Year, now.Month, now.Day, (now.Minute < 30) ? now.Hour : now.Hour + 1, (now.Minute < 30) ? 30 : 0, 0);
+                    return new DateTime(fromDateValue.Year, fromDateValue.Month, fromDateValue.Day, (fromDateValue.Minute < 30) ? fromDateValue.Hour : fromDateValue.Hour + 1, (fromDateValue.Minute < 30) ? 30 : 0, 0);
                 case SchedulePeriod.Hourly:
-                    return new DateTime(now.Year, now.Month, now.Day, now.Hour + 1, 0, 0);
+                    return new DateTime(fromDateValue.Year, fromDateValue.Month, fromDateValue.Day, fromDateValue.Hour + 1, 0, 0);
                 case SchedulePeriod.BiHourly:
-                    return new DateTime(now.Year, now.Month, now.Day,
-                        FindFirstRunHourForBiHourly(schedule.StartTime.Hour, schedule.EndTime.Hour, now), 0, 0);
+                    return new DateTime(fromDateValue.Year, fromDateValue.Month, fromDateValue.Day,
+                        FindFirstRunHourForBiHourly(schedule.StartTime.Hour, schedule.EndTime.Hour, fromDateValue), 0, 0);
                 default:
                     throw new ArgumentOutOfRangeException();
             }

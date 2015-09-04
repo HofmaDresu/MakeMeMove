@@ -30,6 +30,8 @@ namespace MakeMeMove.iOS
 
                 app.RegisterUserNotificationSettings(notificationSettings);
             }
+
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
