@@ -52,7 +52,7 @@
                 </ListView.BindingContext>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell Height="75">
                             <StackLayout VerticalOptions="Fill"
                                 HorizontalOptions="FillAndExpand"
                                 Orientation="Vertical"
