@@ -25,12 +25,12 @@ namespace MakeMeMove
             var now = DateTime.Now;
             if (now.TimeOfDay > schedule.EndTime.TimeOfDay)
             {
-                return new DateTime(now.Year, now.Month, now.Day + 1, schedule.EndTime.Hour, schedule.EndTime.Minute,schedule.EndTime.Second);
+                return new DateTime(now.Year, now.Month, now.Day + 1, schedule.StartTime.Hour, schedule.StartTime.Minute,schedule.StartTime.Second);
             }
 
             if (now.TimeOfDay < schedule.StartTime.TimeOfDay)
             {
-                return new DateTime(now.Year, now.Month, now.Day, schedule.EndTime.Hour, schedule.EndTime.Minute, schedule.EndTime.Second);
+                return new DateTime(now.Year, now.Month, now.Day, schedule.StartTime.Hour, schedule.StartTime.Minute, schedule.StartTime.Second);
             }
 
             switch (schedule.Period)
