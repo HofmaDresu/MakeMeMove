@@ -22,6 +22,14 @@ namespace MakeMeMove.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+            {
+                var notificationSettings = UIUserNotificationSettings.GetSettingsForTypes(
+                    UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, null
+                );
+
+                app.RegisterUserNotificationSettings(notificationSettings);
+            }
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
