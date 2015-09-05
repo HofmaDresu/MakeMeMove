@@ -13,10 +13,14 @@ namespace MakeMeMove.Droid
     [BroadcastReceiver]
     public class ExerciseTickBroadcastReceiver : BroadcastReceiver
     {
+        private readonly ISchedulePersistence _schedulePersistence = new SchedulePersistence();
+
         public override void OnReceive(Context context, Intent intent)
         {
-            var exerciseSchedule =
-                JsonConvert.DeserializeObject<ExerciseSchedule>(intent.GetStringExtra("ExerciseSchedule"));
+            var preferences = context.GetSharedPreferences(Constants.SharedPreferencesKey, FileCreationMode.Private);
+            if(!preferences.GetBoolean(Constants.ServiceIsStartedKey, false)) return;
+
+            var exerciseSchedule = _schedulePersistence.LoadExerciseSchedule();
             var now = DateTime.Now.TimeOfDay;
             if (now > exerciseSchedule.StartTime.TimeOfDay && now < exerciseSchedule.EndTime.TimeOfDay)
             {
@@ -53,16 +57,15 @@ namespace MakeMeMove.Droid
             notificationManager.Notify(notificationId, notification);
         }
 
-        private void SetNextAlarm(Context context, ExerciseSchedule exerciseSchedule)
+        public static void SetNextAlarm(Context context, ExerciseSchedule exerciseSchedule)
         {
             var reminder = new Intent(context, typeof(ExerciseTickBroadcastReceiver));
-            reminder.PutExtra("ExerciseSchedule", JsonConvert.SerializeObject(exerciseSchedule));
 
             var recurringReminders = PendingIntent.GetBroadcast(context, 0, reminder, PendingIntentFlags.CancelCurrent);
             var alarms = (AlarmManager)context.GetSystemService(Context.AlarmService);
 
             var nextRunTime = TickUtility.GetNextRunTime(exerciseSchedule);
-            Log.Error("asdf", nextRunTime.ToShortDateString() + " " + nextRunTime.ToShortTimeString());
+
             var dtBasis = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
             if ((int) Build.VERSION.SdkInt >= 19)

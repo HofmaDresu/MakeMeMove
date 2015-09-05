@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="ISchedulePersistence.cs" />
     <Compile Include="IServiceManager.cs" />
     <Compile Include="Model\ExerciseBlock.cs" />
     <Compile Include="Model\ExerciseSchedule.cs" />

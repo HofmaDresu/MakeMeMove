@@ -86,11 +86,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="ExerciseRebootReceiver.cs" />
     <Compile Include="ExerciseServiceManager.cs" />
     <Compile Include="ExerciseTickBroadcastReceiver.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SchedulePersistence.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

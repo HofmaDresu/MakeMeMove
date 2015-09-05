@@ -25,7 +25,7 @@ namespace MakeMeMove.Droid
             var alarms = (AlarmManager)context.GetSystemService(Context.AlarmService);
 
             var nextRunTime = TickUtility.GetNextRunTime(schedule);
-            Log.Error("asdf", nextRunTime.ToShortDateString() + " " + nextRunTime.ToShortTimeString());
+
             var dtBasis = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
             if ((int)Build.VERSION.SdkInt >= 19)
@@ -40,6 +40,8 @@ namespace MakeMeMove.Droid
                     (long)nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds, recurringReminders);
             }
 
+            SaveServiceStatus(context, true);
+
             Toast.MakeText(context, "Service Started", ToastLength.Long).Show();
         }
 
@@ -53,8 +55,17 @@ namespace MakeMeMove.Droid
 
             alarms.Cancel(recurringReminders);
 
+            SaveServiceStatus(context, false);
+
             Toast.MakeText(context, "Service Stopped", ToastLength.Long).Show();
 
+        }
+
+        private void SaveServiceStatus(Context context, bool serviceIsStarted)
+        {
+            var editor = context.GetSharedPreferences(Constants.SharedPreferencesKey, FileCreationMode.Private).Edit();
+            editor.PutBoolean(Constants.ServiceIsStartedKey, serviceIsStarted);
+            editor.Commit();
         }
     }
 }

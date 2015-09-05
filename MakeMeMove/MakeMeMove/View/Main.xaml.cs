@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MakeMeMove.Model;
 using MakeMeMove.ViewModel;
 using Xamarin.Forms;
@@ -12,6 +8,7 @@ namespace MakeMeMove.View
     public partial class Main : ContentPage
     {
         private readonly IServiceManager _notificationServiceManager;
+        private readonly ISchedulePersistence _schedulePersistence;
         public ExerciseScheduleViewModel ViewModel;
 
         public Main()
@@ -20,7 +17,17 @@ namespace MakeMeMove.View
 
             InitializeComponent();
             _notificationServiceManager = DependencyService.Get<IServiceManager>();
-            ViewModel.Schedule = ExerciseSchedule.CreateDefaultSchedule();
+            _schedulePersistence = DependencyService.Get<ISchedulePersistence>();
+
+            if (!_schedulePersistence.HasExerciseSchedule())
+            {
+                ViewModel.Schedule = ExerciseSchedule.CreateDefaultSchedule();
+                _schedulePersistence.SaveExerciseSchedule(ViewModel.Schedule);
+            }
+            else
+            {
+                ViewModel.Schedule = _schedulePersistence.LoadExerciseSchedule();
+            }
         }
 
         private void OnStart(object sender, EventArgs e)
@@ -35,16 +42,19 @@ namespace MakeMeMove.View
 
         private void EditExercise(object sender, EventArgs e)
         {
+            _schedulePersistence.SaveExerciseSchedule(ViewModel.Schedule);
             throw new NotImplementedException();
         }
 
         private void DeleteExercise(object sender, EventArgs e)
         {
+            _schedulePersistence.SaveExerciseSchedule(ViewModel.Schedule);
             throw new NotImplementedException();
         }
 
         private void AddExercise(object sender, EventArgs e)
         {
+            _schedulePersistence.SaveExerciseSchedule(ViewModel.Schedule);
             throw new NotImplementedException();
         }
     }

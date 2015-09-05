@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace MakeMeMove
 {
@@ -11,7 +6,6 @@ namespace MakeMeMove
     {
         public App()
         {
-            // The root page of your application
             MainPage = new View.Main();
         }
 
