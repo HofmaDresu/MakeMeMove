@@ -2,11 +2,7 @@ using System;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Speech.Tts;
-using Android.Util;
-using Java.Lang;
 using MakeMeMove.Model;
-using Newtonsoft.Json;
 
 namespace MakeMeMove.Droid
 {

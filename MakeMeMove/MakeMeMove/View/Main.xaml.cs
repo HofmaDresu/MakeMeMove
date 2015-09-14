@@ -57,5 +57,10 @@ namespace MakeMeMove.View
             _schedulePersistence.SaveExerciseSchedule(ViewModel.Schedule);
             throw new NotImplementedException();
         }
+
+        private void EditSchedule(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new EditSchedule(ViewModel.Schedule));
+        }
     }
 }

@@ -41,6 +41,7 @@
             <Label x:Name="periodLabel" Text="Reminder Period:"/>
             <Label x:Name="periodValue" Text="{Binding Schedule.PeriodDisplayString}" />
         </StackLayout>
+        <Button x:Name="editScheduleButton" Text="Change Schedule" Clicked="EditSchedule" />
         <ScrollView VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand">
             <ListView VerticalOptions="FillAndExpand"

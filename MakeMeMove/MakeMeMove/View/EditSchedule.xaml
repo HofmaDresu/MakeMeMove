@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:MakeMeMove.ViewModel;assembly=MakeMeMove"
+             x:Class="MakeMeMove.View.EditSchedule">
+
+  <StackLayout VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   Orientation="Vertical"
+                   Spacing="15" >
+    <StackLayout.BindingContext>
+      <viewModel:EditScheduleViewModel />
+    </StackLayout.BindingContext>
+    <Picker x:Name="PeriodPicker" SelectedIndexChanged="PeriodChanged">
+    </Picker>
+    <Label Text="{Binding SchedulePeriodIndex}"></Label>
+  </StackLayout>
+</ContentPage>
