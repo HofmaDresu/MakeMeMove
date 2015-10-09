@@ -40,8 +40,10 @@ namespace MakeMeMove.Droid
 
             if ((int) Build.VERSION.SdkInt >= 21)
             {
-                builder.SetPriority((int) NotificationPriority.High)
+                builder
+                    .SetPriority((int)NotificationPriority.High)
                     .SetVisibility(NotificationVisibility.Public)
+                    .SetCategory("reminder")
                     .AddAction(0, "Completed", null)
                     .AddAction(0, "Skipped", null);
             }
@@ -66,14 +68,15 @@ namespace MakeMeMove.Droid
 
             if ((int) Build.VERSION.SdkInt >= 19)
             {
-                alarms.SetWindow(AlarmType.RtcWakeup,
+                alarms.SetExact(AlarmType.RtcWakeup,
                     (long) nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds,
-                    10*60*1000, recurringReminders);
+                    recurringReminders);
             }
             else
             {
                 alarms.Set(AlarmType.RtcWakeup,
-                    (long)nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds, recurringReminders);
+                    (long)nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds, 
+                    recurringReminders);
             }
         }
     }

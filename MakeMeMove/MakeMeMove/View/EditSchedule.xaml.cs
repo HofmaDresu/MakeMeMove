@@ -13,30 +13,75 @@ namespace MakeMeMove.View
     public partial class EditSchedule : ContentPage
     {
         public EditScheduleViewModel ViewModel;
-        private ExerciseSchedule _exerciseSchedule;
+        private readonly ExerciseSchedule _exerciseSchedule;
 
         public EditSchedule(ExerciseSchedule schedule)
         {
             _exerciseSchedule = schedule;
             ViewModel = new EditScheduleViewModel ();
 
-
-
-
             InitializeComponent();
 
-            foreach (SchedulePeriod suit in Enum.GetValues(typeof(SchedulePeriod)))
+            InitializePickers();
+
+            PeriodPicker.SelectedIndex = (int)schedule.Period;
+
+            var civilianModifiedStartHour = (schedule.StartTime.Hour > 11
+                ? schedule.StartTime.Hour - 12
+                : schedule.StartTime.Hour);
+
+            StartHourPicker.SelectedIndex = civilianModifiedStartHour == 0 ? 12 : civilianModifiedStartHour - 1;
+            StartMinutePicker.SelectedIndex = schedule.StartTime.Minute == 0 ? 0 : 1;
+            StartMeridianPicker.SelectedIndex = schedule.StartTime.Hour < 12 ? 0 : 1;
+
+
+            var civilianModifiedEndHour = (schedule.EndTime.Hour > 11
+                ? schedule.EndTime.Hour - 12
+                : schedule.EndTime.Hour);
+
+            EndHourPicker.SelectedIndex = civilianModifiedEndHour == 0 ? 12 : civilianModifiedEndHour - 1;
+            EndMinutePicker.SelectedIndex = schedule.EndTime.Minute == 0 ? 0 : 1;
+            EndMeridianPicker.SelectedIndex = schedule.EndTime.Hour < 12 ? 0 : 1;
+        }
+
+        private void InitializePickers()
+        {
+            foreach (SchedulePeriod suit in Enum.GetValues(typeof (SchedulePeriod)))
             {
                 PeriodPicker.Items.Add(suit.Humanize());
             }
 
-            ViewModel.SchedulePeriodIndex = (int)schedule.Period;
-            PeriodPicker.SelectedIndex = ViewModel.SchedulePeriodIndex;
+            for (var i = 1; i <= 12; i++)
+            {
+                StartHourPicker.Items.Add(i.ToString());
+                EndHourPicker.Items.Add(i.ToString());
+            }
+
+            StartMinutePicker.Items.Add("00");
+            StartMinutePicker.Items.Add("30");
+            EndMinutePicker.Items.Add("00");
+            EndMinutePicker.Items.Add("30");
+
+            StartMeridianPicker.Items.Add("AM");
+            StartMeridianPicker.Items.Add("PM");
+            EndMeridianPicker.Items.Add("AM");
+            EndMeridianPicker.Items.Add("PM");
         }
 
-        private void PeriodChanged(object sender, EventArgs e)
+        private void SaveData(object sender, EventArgs e)
         {
-            ViewModel.SchedulePeriodIndex = ((Picker) sender).SelectedIndex;
+            _exerciseSchedule.Period = (SchedulePeriod)PeriodPicker.SelectedIndex;
+            _exerciseSchedule.StartTime = new DateTime(1, 1, 1, StartHourPicker.SelectedIndex + (12 * StartMeridianPicker.SelectedIndex), StartMinutePicker.SelectedIndex * 30, 0);
+            _exerciseSchedule.EndTime = new DateTime(1, 1, 1, EndHourPicker.SelectedIndex + (12 * EndMeridianPicker.SelectedIndex), EndMinutePicker.SelectedIndex * 30, 0);
+
+
+
+            Navigation.PopAsync(true);
+        }
+
+        private void CancelChanges(object sender, EventArgs e)
+        {
+            Navigation.PopAsync(true);
         }
     }
 }

@@ -25,14 +25,14 @@
                         Orientation="Horizontal"
                         Spacing="5" >
             <Label x:Name="startTimeLabel" Text="Start Time:"/>
-            <Label x:Name="startTimeValue" Text="{Binding Schedule.StartTime, StringFormat='{0:H:mm:ss tt}'}" />
+            <Label x:Name="startTimeValue" Text="{Binding Schedule.StartTime, StringFormat='{0:hh:mm:ss tt}'}" />
         </StackLayout>
         <StackLayout x:Name="endTimeSection" VerticalOptions="Fill"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal"
                         Spacing="5" >
             <Label x:Name="endTimeLabel" Text="End Time:"/>
-            <Label x:Name="endTimeValue" Text="{Binding Schedule.EndTime, StringFormat='{0:H:mm:ss tt}'}" />
+            <Label x:Name="endTimeValue" Text="{Binding Schedule.EndTime, StringFormat='{0:hh:mm:ss tt}'}" />
         </StackLayout>
         <StackLayout VerticalOptions="Fill"
                         HorizontalOptions="FillAndExpand"

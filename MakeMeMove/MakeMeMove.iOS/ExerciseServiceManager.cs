@@ -35,7 +35,8 @@ namespace MakeMeMove.iOS
                     FireDate = nextRunTime.ToNSDate(),
                     SoundName = UILocalNotification.DefaultSoundName,
                     TimeZone = NSTimeZone.LocalTimeZone,
-                    RepeatInterval = NSCalendarUnit.Day
+                    RepeatInterval = NSCalendarUnit.Day,
+                    ApplicationIconBadgeNumber = -1
                 };
 
                 UIApplication.SharedApplication.ScheduleLocalNotification(notification);

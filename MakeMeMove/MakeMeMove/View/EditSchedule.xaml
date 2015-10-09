@@ -11,8 +11,40 @@
     <StackLayout.BindingContext>
       <viewModel:EditScheduleViewModel />
     </StackLayout.BindingContext>
-    <Picker x:Name="PeriodPicker" SelectedIndexChanged="PeriodChanged">
+    <Label>Recurrance Period</Label>
+    <Picker x:Name="PeriodPicker">
     </Picker>
-    <Label Text="{Binding SchedulePeriodIndex}"></Label>
+    <Label>Start Time</Label>
+    <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Spacing="15" >
+      <Picker x:Name="StartHourPicker">
+      </Picker>
+      <Picker x:Name="StartMinutePicker">
+      </Picker>
+      <Picker x:Name="StartMeridianPicker">
+      </Picker>
+    </StackLayout>
+    <Label>End Time</Label>
+    <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Spacing="15" >
+      <Picker x:Name="EndHourPicker">
+      </Picker>
+      <Picker x:Name="EndMinutePicker">
+      </Picker>
+      <Picker x:Name="EndMeridianPicker">
+      </Picker>
+    </StackLayout>
+    <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Spacing="15" >
+      <Button x:Name="Save" Clicked="SaveData">Save</Button>
+      <Button x:Name="Cancel" Clicked="CancelChanges">Cancel</Button>
+    </StackLayout>
+
   </StackLayout>
 </ContentPage>

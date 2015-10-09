@@ -60,7 +60,7 @@ namespace MakeMeMove.View
 
         private void EditSchedule(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new EditSchedule(ViewModel.Schedule));
+            Navigation.PushAsync(new EditSchedule(ViewModel.Schedule), true);
         }
     }
 }

@@ -13,10 +13,7 @@ namespace MakeMeMove.ViewModel
     public class EditScheduleViewModel : INotifyPropertyChanged
     {
 
-       // public event PropertyChangedEventHandler PropertyChanged;
-
         private int _schedulePeriodIndex;
-
 
         public int SchedulePeriodIndex
         {
