@@ -18,6 +18,23 @@ namespace MakeMeMove.Model
 
     public class ExerciseBlock
     {
+        private Guid? _id;
+
+        public Guid Id
+        {
+            get
+            {
+                if (!_id.HasValue)
+                {
+                    _id = Guid.NewGuid();
+                }
+                return _id.Value;
+            }
+            set { _id = value; }
+        }
+
+        public string IdString => Id.ToString();
+
         public string Name { get; set; }
         public int Quantity { get; set; }
     }

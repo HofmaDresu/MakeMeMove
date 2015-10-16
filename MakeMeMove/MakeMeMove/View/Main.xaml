@@ -61,6 +61,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal"
                                     Spacing="5" >
+                                    <Label x:Name="ExerciseId" Text="{Binding IdString}" IsVisible="False" />
                                     <Button x:Name="editButton" Text="Edit" Clicked="EditExercise" />
                                     <Button x:Name="deleteButton" Text="Delete" Clicked="DeleteExercise" />
                                 </StackLayout>

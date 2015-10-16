@@ -43,9 +43,7 @@ namespace MakeMeMove.Droid
                 builder
                     .SetPriority((int)NotificationPriority.High)
                     .SetVisibility(NotificationVisibility.Public)
-                    .SetCategory("reminder")
-                    .AddAction(0, "Completed", null)
-                    .AddAction(0, "Skipped", null);
+                    .SetCategory("reminder");
             }
 
             var notification = builder.Build();

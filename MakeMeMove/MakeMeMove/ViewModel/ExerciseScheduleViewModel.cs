@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using MakeMeMove.Model;
 
 namespace MakeMeMove.ViewModel
@@ -27,6 +23,11 @@ namespace MakeMeMove.ViewModel
                 _exerciseSchedule = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Schedule"));
             }
+        }
+
+        public void NotifyExercisesChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedExercises"));
         }
 
         public List<ExerciseBlock> SelectedExercises => Schedule.Exercises;

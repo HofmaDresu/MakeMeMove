@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ServiceModel.Channels;
+using System.Linq;
 using MakeMeMove.Model;
 using MakeMeMove.ViewModel;
 using Xamarin.Forms;
@@ -52,21 +52,41 @@ namespace MakeMeMove.View
             _notificationServiceManager.StopNotificationService(ViewModel.Schedule);
         }
 
-        private void EditExercise(object sender, EventArgs e)
+        private void EditExercise(object sender, EventArgs eventArgs)
         {
-            _schedulePersistence.SaveExerciseSchedule(ViewModel.Schedule);
+            var exercise = GetSelectedExercise(sender);
+
             throw new NotImplementedException();
         }
 
         private void DeleteExercise(object sender, EventArgs e)
         {
+            var exercise = GetSelectedExercise(sender);
+            ViewModel.SelectedExercises.Remove(exercise);
             _schedulePersistence.SaveExerciseSchedule(ViewModel.Schedule);
-            throw new NotImplementedException();
+
+
+            if (_notificationServiceManager.NotificationServiceIsRunning())
+            {
+                _notificationServiceManager.StopNotificationService(ViewModel.Schedule);
+                _notificationServiceManager.StartNotificationService(ViewModel.Schedule);
+            }
+
+            ViewModel.NotifyExercisesChanged();
+        }
+
+        private ExerciseBlock GetSelectedExercise(object sender)
+        {
+            //TODO: There's got to be a better way to do this
+            var parentControl = (sender as Button).ParentView;
+            var idControl = parentControl.FindByName<Label>("ExerciseId");
+            var id = idControl.Text;
+            var exercise = ViewModel.SelectedExercises.Single(e => e.Id == Guid.Parse(id));
+            return exercise;
         }
 
         private void AddExercise(object sender, EventArgs e)
         {
-            _schedulePersistence.SaveExerciseSchedule(ViewModel.Schedule);
             throw new NotImplementedException();
         }
 

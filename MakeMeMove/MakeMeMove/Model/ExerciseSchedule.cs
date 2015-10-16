@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Humanizer;
 
 namespace MakeMeMove.Model
@@ -36,31 +37,37 @@ namespace MakeMeMove.Model
                 {
                     new ExerciseBlock
                     {
+                        Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.PushUps.Humanize(LetterCasing.LowerCase),
                         Quantity = 10
                     },
                     new ExerciseBlock
                     {
+                        Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.SitUps.Humanize(LetterCasing.LowerCase),
                         Quantity = 10
                     },
                     new ExerciseBlock
                     {
+                        Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.JumpingJacks.Humanize(LetterCasing.LowerCase),
                         Quantity = 10
                     },
                     new ExerciseBlock
                     {
+                        Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.Squats.Humanize(LetterCasing.LowerCase),
                         Quantity = 10
                     },
                     new ExerciseBlock
                     {
+                        Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.CalfRaises.Humanize(LetterCasing.LowerCase),
                         Quantity = 10
                     },
                     new ExerciseBlock
                     {
+                        Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.Lunges.Humanize(LetterCasing.LowerCase),
                         Quantity = 5
                     }
