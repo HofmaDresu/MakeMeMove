@@ -20,14 +20,16 @@ namespace MakeMeMove.ViewModel
         {
             get
             {
-                _exerciseSchedule = _exerciseSchedule ?? ExerciseSchedule.CreateDefaultSchedule();
-
                 return _exerciseSchedule;
             }
             set
             {
                 _exerciseSchedule = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ExerciseSchedule"));
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ExerciseSchedule"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ExerciseSchedule.StartTimke"));
+                }
             }
         }
 

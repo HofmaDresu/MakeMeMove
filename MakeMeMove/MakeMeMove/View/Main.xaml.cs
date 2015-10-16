@@ -14,19 +14,23 @@ namespace MakeMeMove.View
 
         public Main()
         {
-            ViewModel = new ExerciseScheduleViewModel();
-
-            InitializeComponent();
-            BindingContext = ViewModel;
-
             _notificationServiceManager = DependencyService.Get<IServiceManager>();
             _schedulePersistence = DependencyService.Get<ISchedulePersistence>();
+            ViewModel = new ExerciseScheduleViewModel();
+            LoadExerciseSchedule();
+            BindingContext = ViewModel;
 
+            InitializeComponent();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            LoadExerciseSchedule();
+        }
+
+        private void LoadExerciseSchedule()
+        {
             if (!_schedulePersistence.HasExerciseSchedule())
             {
                 ViewModel.Schedule = ExerciseSchedule.CreateDefaultSchedule();
@@ -35,7 +39,6 @@ namespace MakeMeMove.View
             else
             {
                 ViewModel.Schedule = _schedulePersistence.LoadExerciseSchedule();
-
             }
         }
 

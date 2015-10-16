@@ -29,7 +29,7 @@ namespace MakeMeMove.Droid
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var filePath = Path.Combine(documentsPath, Constants.ExerciseSchedule);
 
-            return File.Exists(filePath);
+            return File.Exists(filePath) && !string.IsNullOrWhiteSpace(File.ReadAllText(filePath));
         }
     }
 }
