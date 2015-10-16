@@ -21,25 +21,26 @@
             <Label x:Name="StartTimeLabel" Text="Start Time:"/>
             <Label x:Name="StartTimeValue" Text="{Binding Schedule.StartTime, StringFormat='{0:hh:mm:ss tt}'}" />
         </StackLayout>
-        <StackLayout x:Name="endTimeSection" VerticalOptions="Fill"
+        <StackLayout x:Name="EndTimeSection" VerticalOptions="Fill"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal"
                         Spacing="5" >
-            <Label x:Name="endTimeLabel" Text="End Time:"/>
-            <Label x:Name="endTimeValue" Text="{Binding Schedule.EndTime, StringFormat='{0:hh:mm:ss tt}'}" />
+            <Label x:Name="EndTimeLabel" Text="End Time:"/>
+            <Label x:Name="EndTimeValue" Text="{Binding Schedule.EndTime, StringFormat='{0:hh:mm:ss tt}'}" />
         </StackLayout>
         <StackLayout VerticalOptions="Fill"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal"
                         Spacing="5" >
-            <Label x:Name="periodLabel" Text="Reminder Period:"/>
-            <Label x:Name="periodValue" Text="{Binding Schedule.PeriodDisplayString}" />
+            <Label x:Name="PeriodLabel" Text="Reminder Period:"/>
+            <Label x:Name="PeriodValue" Text="{Binding Schedule.PeriodDisplayString}" />
         </StackLayout>
-        <Button x:Name="editScheduleButton" Text="Change Schedule" Clicked="EditSchedule" />
+        <Button x:Name="EditScheduleButton" Text="Change Schedule" Clicked="EditSchedule" />
         <ListView VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                   ItemsSource="{Binding SelectedExercises}"
-                  HasUnevenRows="True">
+                  HasUnevenRows="True"
+                  x:Name="ExerciseList">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell Height="75">
@@ -68,6 +69,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button x:Name="addButton" Text="Add Exercise" Clicked="AddExercise" />
+        <Button x:Name="AddButton" Text="Add Exercise" Clicked="AddExercise" />
     </StackLayout>
 </ContentPage>

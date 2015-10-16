@@ -55,14 +55,18 @@ namespace MakeMeMove.View
 
         private void EditExercise(object sender, EventArgs eventArgs)
         {
-            var exercise = GetSelectedExercise(sender);
+            var exerciseId = GetSelectedExerciseId(sender);
 
-            Navigation.PushAsync(new ManageExercise(exercise.Id), true);
+            Navigation.PushAsync(new ManageExercise(exerciseId), true);
         }
 
-        private void DeleteExercise(object sender, EventArgs e)
+        private void DeleteExercise(object sender, EventArgs eventArgs)
         {
-            var exercise = GetSelectedExercise(sender);
+            var exerciseId = GetSelectedExerciseId(sender);
+            var exercise = ViewModel.SelectedExercises.SingleOrDefault(e => e.Id == exerciseId);
+
+            if (exercise == null) return;
+
             ViewModel.SelectedExercises.Remove(exercise);
             _schedulePersistence.SaveExerciseSchedule(ViewModel.Schedule);
 
@@ -71,14 +75,13 @@ namespace MakeMeMove.View
             ViewModel.NotifyExercisesChanged();
         }
 
-        private ExerciseBlock GetSelectedExercise(object sender)
+        private Guid GetSelectedExerciseId(object sender)
         {
             //TODO: There's got to be a better way to do this
             var parentControl = (sender as Button).ParentView;
             var idControl = parentControl.FindByName<Label>("ExerciseId");
             var id = idControl.Text;
-            var exercise = ViewModel.SelectedExercises.Single(e => e.Id == Guid.Parse(id));
-            return exercise;
+            return Guid.Parse(id);
         }
 
         private void AddExercise(object sender, EventArgs e)

@@ -30,6 +30,6 @@ namespace MakeMeMove.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedExercises"));
         }
 
-        public List<ExerciseBlock> SelectedExercises => Schedule.Exercises;
+        public ObservableCollection<ExerciseBlock> SelectedExercises => Schedule.Exercises;
     }
 }

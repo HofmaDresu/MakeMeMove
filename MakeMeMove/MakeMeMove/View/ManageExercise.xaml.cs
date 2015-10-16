@@ -25,6 +25,10 @@ namespace MakeMeMove.View
             {
                 ExerciseTypePicker.Items.Add(suit.Humanize());
             }
+            ExerciseTypePicker.SelectedIndexChanged += (sender, args) =>
+            {
+                CustomExerciseEntry.IsVisible = (sender as Picker).SelectedIndex == (int) PreBuiltExersises.Custom;
+            };
 
             if (exerciseId != null)
             {
@@ -43,6 +47,7 @@ namespace MakeMeMove.View
             }
             else
             {
+                ExerciseTypePicker.SelectedIndex = 0;
                 _selectedExercise = new ExerciseBlock();
                 _isNewExercise = true;
                 RepititionEntry.Text = "10";
@@ -66,7 +71,8 @@ namespace MakeMeMove.View
                 ? CustomExerciseEntry.Text
                 : ((PreBuiltExersises) ExerciseTypePicker.SelectedIndex).Humanize();
             _selectedExercise.Quantity = int.Parse(RepititionEntry.Text);
-            _selectedExercise.Id = _selectedExercise.Id ?? new Guid();
+            _selectedExercise.Id = _selectedExercise.Id ?? Guid.NewGuid();
+            _selectedExercise.Type = (PreBuiltExersises) ExerciseTypePicker.SelectedIndex;
 
 
             _fullSchedule.Exercises.Insert(currentIndex, _selectedExercise);

@@ -16,14 +16,14 @@ namespace MakeMeMove.Model
     {
         public ExerciseSchedule()
         {
-            Exercises = new List<ExerciseBlock>();
+            Exercises = new ObservableCollection<ExerciseBlock>();
         }
 
         public SchedulePeriod Period { get; set; }
         public string PeriodDisplayString => Period.Humanize();
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-        public List<ExerciseBlock> Exercises { get; set; }
+        public ObservableCollection<ExerciseBlock> Exercises { get; set; }
 
 
         public static ExerciseSchedule CreateDefaultSchedule()
@@ -33,7 +33,7 @@ namespace MakeMeMove.Model
                 Period = SchedulePeriod.HalfHourly,
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
-                Exercises = new List<ExerciseBlock>
+                Exercises = new ObservableCollection<ExerciseBlock>
                 {
                     new ExerciseBlock
                     {

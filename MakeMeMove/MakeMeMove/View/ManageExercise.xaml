@@ -8,7 +8,7 @@
                    Spacing="15" >
     <Label>Exercise Type</Label>
     <Picker x:Name="ExerciseTypePicker"></Picker>
-    <Entry x:Name="CustomExerciseEntry" IsVisible="False"></Entry>
+    <Entry x:Name="CustomExerciseEntry" IsVisible="False" Placeholder="Custom Exercise Name"></Entry>
     <Label>Number of Repititions</Label>
     <Entry x:Name="RepititionEntry" Keyboard="Numeric"></Entry>
     <StackLayout VerticalOptions="Fill"
