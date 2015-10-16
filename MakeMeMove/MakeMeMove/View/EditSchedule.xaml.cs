@@ -15,10 +15,12 @@ namespace MakeMeMove.View
         public EditScheduleViewModel ViewModel;
         private readonly ExerciseSchedule _exerciseSchedule;
         private readonly ISchedulePersistence _schedulePersistence;
+        private readonly IServiceManager _notificationServiceManager;
 
         public EditSchedule()
         {
             _schedulePersistence = DependencyService.Get<ISchedulePersistence>();
+            _notificationServiceManager = DependencyService.Get<IServiceManager>();
 
             _exerciseSchedule = !_schedulePersistence.HasExerciseSchedule() ? ExerciseSchedule.CreateDefaultSchedule() : _schedulePersistence.LoadExerciseSchedule();
 
@@ -82,6 +84,13 @@ namespace MakeMeMove.View
             var endHour = EndHourPicker.SelectedIndex == 12 ? 0 : EndHourPicker.SelectedIndex + 1;
             _exerciseSchedule.EndTime = new DateTime(1, 1, 1, endHour + (12 * EndMeridianPicker.SelectedIndex), EndMinutePicker.SelectedIndex * 30, 0);
             _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
+
+
+            if (_notificationServiceManager.NotificationServiceIsRunning())
+            {
+                _notificationServiceManager.StopNotificationService(_exerciseSchedule);
+                _notificationServiceManager.StartNotificationService(_exerciseSchedule);
+            }
 
             Navigation.PopAsync(true);
         }

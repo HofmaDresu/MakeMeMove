@@ -25,11 +25,7 @@ namespace MakeMeMove.ViewModel
             set
             {
                 _exerciseSchedule = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ExerciseSchedule"));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ExerciseSchedule.StartTimke"));
-                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Schedule"));
             }
         }
 

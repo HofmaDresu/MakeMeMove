@@ -11,5 +11,6 @@ namespace MakeMeMove
     {
         void StartNotificationService(ExerciseSchedule schedule);
         void StopNotificationService(ExerciseSchedule schedule);
+        bool NotificationServiceIsRunning();
     }
 }
