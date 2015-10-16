@@ -14,34 +14,38 @@ namespace MakeMeMove.View
     {
         public EditScheduleViewModel ViewModel;
         private readonly ExerciseSchedule _exerciseSchedule;
+        private readonly ISchedulePersistence _schedulePersistence;
 
-        public EditSchedule(ExerciseSchedule schedule)
+        public EditSchedule()
         {
-            _exerciseSchedule = schedule;
+            _schedulePersistence = DependencyService.Get<ISchedulePersistence>();
+
+            _exerciseSchedule = !_schedulePersistence.HasExerciseSchedule() ? ExerciseSchedule.CreateDefaultSchedule() : _schedulePersistence.LoadExerciseSchedule();
+
             ViewModel = new EditScheduleViewModel ();
 
             InitializeComponent();
 
             InitializePickers();
 
-            PeriodPicker.SelectedIndex = (int)schedule.Period;
+            PeriodPicker.SelectedIndex = (int)_exerciseSchedule.Period;
 
-            var civilianModifiedStartHour = (schedule.StartTime.Hour > 11
-                ? schedule.StartTime.Hour - 12
-                : schedule.StartTime.Hour);
+            var civilianModifiedStartHour = (_exerciseSchedule.StartTime.Hour > 11
+                ? _exerciseSchedule.StartTime.Hour - 12
+                : _exerciseSchedule.StartTime.Hour);
 
             StartHourPicker.SelectedIndex = civilianModifiedStartHour == 0 ? 12 : civilianModifiedStartHour - 1;
-            StartMinutePicker.SelectedIndex = schedule.StartTime.Minute == 0 ? 0 : 1;
-            StartMeridianPicker.SelectedIndex = schedule.StartTime.Hour < 12 ? 0 : 1;
+            StartMinutePicker.SelectedIndex = _exerciseSchedule.StartTime.Minute == 0 ? 0 : 1;
+            StartMeridianPicker.SelectedIndex = _exerciseSchedule.StartTime.Hour < 12 ? 0 : 1;
 
 
-            var civilianModifiedEndHour = (schedule.EndTime.Hour > 11
-                ? schedule.EndTime.Hour - 12
-                : schedule.EndTime.Hour);
+            var civilianModifiedEndHour = (_exerciseSchedule.EndTime.Hour > 11
+                ? _exerciseSchedule.EndTime.Hour - 12
+                : _exerciseSchedule.EndTime.Hour);
 
             EndHourPicker.SelectedIndex = civilianModifiedEndHour == 0 ? 12 : civilianModifiedEndHour - 1;
-            EndMinutePicker.SelectedIndex = schedule.EndTime.Minute == 0 ? 0 : 1;
-            EndMeridianPicker.SelectedIndex = schedule.EndTime.Hour < 12 ? 0 : 1;
+            EndMinutePicker.SelectedIndex = _exerciseSchedule.EndTime.Minute == 0 ? 0 : 1;
+            EndMeridianPicker.SelectedIndex = _exerciseSchedule.EndTime.Hour < 12 ? 0 : 1;
         }
 
         private void InitializePickers()
@@ -71,10 +75,13 @@ namespace MakeMeMove.View
         private void SaveData(object sender, EventArgs e)
         {
             _exerciseSchedule.Period = (SchedulePeriod)PeriodPicker.SelectedIndex;
-            _exerciseSchedule.StartTime = new DateTime(1, 1, 1, StartHourPicker.SelectedIndex + (12 * StartMeridianPicker.SelectedIndex), StartMinutePicker.SelectedIndex * 30, 0);
-            _exerciseSchedule.EndTime = new DateTime(1, 1, 1, EndHourPicker.SelectedIndex + (12 * EndMeridianPicker.SelectedIndex), EndMinutePicker.SelectedIndex * 30, 0);
 
+            var startHour = StartHourPicker.SelectedIndex == 12 ? 0 : StartHourPicker.SelectedIndex + 1;
+            _exerciseSchedule.StartTime = new DateTime(1, 1, 1, startHour + (12 * StartMeridianPicker.SelectedIndex), StartMinutePicker.SelectedIndex * 30, 0);
 
+            var endHour = EndHourPicker.SelectedIndex == 12 ? 0 : EndHourPicker.SelectedIndex + 1;
+            _exerciseSchedule.EndTime = new DateTime(1, 1, 1, endHour + (12 * EndMeridianPicker.SelectedIndex), EndMinutePicker.SelectedIndex * 30, 0);
+            _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
 
             Navigation.PopAsync(true);
         }

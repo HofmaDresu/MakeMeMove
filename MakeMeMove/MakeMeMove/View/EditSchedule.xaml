@@ -42,8 +42,8 @@
                      HorizontalOptions="FillAndExpand"
                      Orientation="Horizontal"
                      Spacing="15" >
-      <Button x:Name="Save" Clicked="SaveData">Save</Button>
-      <Button x:Name="Cancel" Clicked="CancelChanges">Cancel</Button>
+      <Button x:Name="Save" Clicked="SaveData" Text="Save"></Button>
+      <Button x:Name="Cancel" Clicked="CancelChanges" Text="Cancel"></Button>
     </StackLayout>
 
   </StackLayout>

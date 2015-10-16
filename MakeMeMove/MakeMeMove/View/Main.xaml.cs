@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ServiceModel.Channels;
 using MakeMeMove.Model;
 using MakeMeMove.ViewModel;
 using Xamarin.Forms;
@@ -16,9 +17,16 @@ namespace MakeMeMove.View
             ViewModel = new ExerciseScheduleViewModel();
 
             InitializeComponent();
+            BindingContext = ViewModel;
+
             _notificationServiceManager = DependencyService.Get<IServiceManager>();
             _schedulePersistence = DependencyService.Get<ISchedulePersistence>();
 
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             if (!_schedulePersistence.HasExerciseSchedule())
             {
                 ViewModel.Schedule = ExerciseSchedule.CreateDefaultSchedule();
@@ -27,6 +35,7 @@ namespace MakeMeMove.View
             else
             {
                 ViewModel.Schedule = _schedulePersistence.LoadExerciseSchedule();
+
             }
         }
 
@@ -60,7 +69,7 @@ namespace MakeMeMove.View
 
         private void EditSchedule(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new EditSchedule(ViewModel.Schedule), true);
+            Navigation.PushAsync(new EditSchedule(), true);
         }
     }
 }
