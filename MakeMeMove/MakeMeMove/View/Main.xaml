@@ -36,41 +36,38 @@
             <Label x:Name="periodValue" Text="{Binding Schedule.PeriodDisplayString}" />
         </StackLayout>
         <Button x:Name="editScheduleButton" Text="Change Schedule" Clicked="EditSchedule" />
-        <ScrollView VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand">
-            <ListView VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                      ItemsSource="{Binding SelectedExercises}"
-                      HasUnevenRows="True">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell Height="75">
+        <ListView VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                  ItemsSource="{Binding SelectedExercises}"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height="75">
+                        <StackLayout VerticalOptions="Fill"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Vertical"
+                            Spacing="5" >
                             <StackLayout VerticalOptions="Fill"
                                 HorizontalOptions="FillAndExpand"
-                                Orientation="Vertical"
+                                Orientation="Horizontal"
                                 Spacing="5" >
-                                <StackLayout VerticalOptions="Fill"
-                                    HorizontalOptions="FillAndExpand"
-                                    Orientation="Horizontal"
-                                    Spacing="5" >
-                                    <Label Text="{Binding Quantity}"/>
-                                    <Label Text="{Binding Name}"/>
-                                </StackLayout>
-
-                                <StackLayout VerticalOptions="Fill"
-                                    HorizontalOptions="FillAndExpand"
-                                    Orientation="Horizontal"
-                                    Spacing="5" >
-                                    <Label x:Name="ExerciseId" Text="{Binding IdString}" IsVisible="False" />
-                                    <Button x:Name="editButton" Text="Edit" Clicked="EditExercise" />
-                                    <Button x:Name="deleteButton" Text="Delete" Clicked="DeleteExercise" />
-                                </StackLayout>
+                                <Label Text="{Binding Quantity}"/>
+                                <Label Text="{Binding Name}"/>
                             </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </ScrollView>
+
+                            <StackLayout VerticalOptions="Fill"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                Spacing="5" >
+                                <Label x:Name="ExerciseId" Text="{Binding IdString}" IsVisible="False" />
+                                <Button x:Name="editButton" Text="Edit" Clicked="EditExercise" />
+                                <Button x:Name="deleteButton" Text="Delete" Clicked="DeleteExercise" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <Button x:Name="addButton" Text="Add Exercise" Clicked="AddExercise" />
     </StackLayout>
 </ContentPage>
