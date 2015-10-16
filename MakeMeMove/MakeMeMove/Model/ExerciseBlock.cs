@@ -13,29 +13,18 @@ namespace MakeMeMove.Model
         JumpingJacks,
         Squats,
         CalfRaises,
-        Lunges
+        Lunges,
+        Custom
     }
 
     public class ExerciseBlock
     {
-        private Guid? _id;
-
-        public Guid Id
-        {
-            get
-            {
-                if (!_id.HasValue)
-                {
-                    _id = Guid.NewGuid();
-                }
-                return _id.Value;
-            }
-            set { _id = value; }
-        }
+        public Guid? Id { get; set; }
 
         public string IdString => Id.ToString();
 
         public string Name { get; set; }
+        public PreBuiltExersises Type;
         public int Quantity { get; set; }
     }
 }

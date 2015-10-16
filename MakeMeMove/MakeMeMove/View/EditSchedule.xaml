@@ -38,7 +38,7 @@
       <Picker x:Name="EndMeridianPicker">
       </Picker>
     </StackLayout>
-    <StackLayout VerticalOptions="FillAndExpand"
+    <StackLayout VerticalOptions="Fill"
                      HorizontalOptions="FillAndExpand"
                      Orientation="Horizontal"
                      Spacing="15" >

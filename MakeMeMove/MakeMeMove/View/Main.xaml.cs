@@ -39,6 +39,7 @@ namespace MakeMeMove.View
             else
             {
                 ViewModel.Schedule = _schedulePersistence.LoadExerciseSchedule();
+                ViewModel.NotifyExercisesChanged();
             }
         }
 
@@ -56,7 +57,7 @@ namespace MakeMeMove.View
         {
             var exercise = GetSelectedExercise(sender);
 
-            throw new NotImplementedException();
+            Navigation.PushAsync(new ManageExercise(exercise.Id), true);
         }
 
         private void DeleteExercise(object sender, EventArgs e)
@@ -82,7 +83,7 @@ namespace MakeMeMove.View
 
         private void AddExercise(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Navigation.PushAsync(new ManageExercise(), true);
         }
 
         private void EditSchedule(object sender, EventArgs e)

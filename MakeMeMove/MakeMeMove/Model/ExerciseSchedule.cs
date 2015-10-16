@@ -38,37 +38,43 @@ namespace MakeMeMove.Model
                     new ExerciseBlock
                     {
                         Id = Guid.NewGuid(),
-                        Name = PreBuiltExersises.PushUps.Humanize(LetterCasing.LowerCase),
+                        Name = PreBuiltExersises.PushUps.Humanize(),
+                        Type = PreBuiltExersises.PushUps,
                         Quantity = 10
                     },
                     new ExerciseBlock
                     {
                         Id = Guid.NewGuid(),
-                        Name = PreBuiltExersises.SitUps.Humanize(LetterCasing.LowerCase),
+                        Name = PreBuiltExersises.SitUps.Humanize(),
+                        Type = PreBuiltExersises.SitUps,
                         Quantity = 10
                     },
                     new ExerciseBlock
                     {
                         Id = Guid.NewGuid(),
-                        Name = PreBuiltExersises.JumpingJacks.Humanize(LetterCasing.LowerCase),
+                        Name = PreBuiltExersises.JumpingJacks.Humanize(),
+                        Type = PreBuiltExersises.JumpingJacks,
                         Quantity = 10
                     },
                     new ExerciseBlock
                     {
                         Id = Guid.NewGuid(),
-                        Name = PreBuiltExersises.Squats.Humanize(LetterCasing.LowerCase),
+                        Name = PreBuiltExersises.Squats.Humanize(),
+                        Type = PreBuiltExersises.Squats,
                         Quantity = 10
                     },
                     new ExerciseBlock
                     {
                         Id = Guid.NewGuid(),
-                        Name = PreBuiltExersises.CalfRaises.Humanize(LetterCasing.LowerCase),
+                        Name = PreBuiltExersises.CalfRaises.Humanize(),
+                        Type = PreBuiltExersises.CalfRaises,
                         Quantity = 10
                     },
                     new ExerciseBlock
                     {
                         Id = Guid.NewGuid(),
-                        Name = PreBuiltExersises.Lunges.Humanize(LetterCasing.LowerCase),
+                        Name = PreBuiltExersises.Lunges.Humanize(),
+                        Type = PreBuiltExersises.Lunges,
                         Quantity = 5
                     }
                 }
