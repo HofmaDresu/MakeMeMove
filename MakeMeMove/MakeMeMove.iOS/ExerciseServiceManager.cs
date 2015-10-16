@@ -51,5 +51,10 @@ namespace MakeMeMove.iOS
         {
             UIApplication.SharedApplication.CancelAllLocalNotifications();
         }
+
+        public bool NotificationServiceIsRunning()
+        {
+            return UIApplication.SharedApplication.ScheduledLocalNotifications?.Length > 0;
+        }
     }
 }
