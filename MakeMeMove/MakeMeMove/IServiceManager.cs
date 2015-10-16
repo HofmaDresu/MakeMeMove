@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MakeMeMove.Model;
+﻿using MakeMeMove.Model;
 
 namespace MakeMeMove
 {
     public interface IServiceManager
     {
-        void StartNotificationService(ExerciseSchedule schedule);
-        void StopNotificationService(ExerciseSchedule schedule);
-        bool NotificationServiceIsRunning();
+        void StartNotificationService(ExerciseSchedule schedule, bool showMessage = true);
+        void StopNotificationService(ExerciseSchedule schedule, bool showMessage = true);
+        void RestartNotificationServiceIfNeeded(ExerciseSchedule schedule);
     }
 }

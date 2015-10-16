@@ -13,7 +13,7 @@ namespace MakeMeMove.iOS
 {
     public class ExerciseServiceManager : IServiceManager
     {
-        public void StartNotificationService(ExerciseSchedule schedule)
+        public void StartNotificationService(ExerciseSchedule schedule, bool showMessage = true)
         {
             UIApplication.SharedApplication.CancelAllLocalNotifications();
 
@@ -47,12 +47,21 @@ namespace MakeMeMove.iOS
             
         }
 
-        public void StopNotificationService(ExerciseSchedule schedule)
+        public void StopNotificationService(ExerciseSchedule schedule, bool showMessage = true)
         {
             UIApplication.SharedApplication.CancelAllLocalNotifications();
         }
 
-        public bool NotificationServiceIsRunning()
+        public void RestartNotificationServiceIfNeeded(ExerciseSchedule schedule)
+        {
+            if (NotificationServiceIsRunning())
+            {
+                StopNotificationService(schedule, false);
+                StartNotificationService(schedule, false);
+            }
+        }
+
+        private bool NotificationServiceIsRunning()
         {
             return UIApplication.SharedApplication.ScheduledLocalNotifications?.Length > 0;
         }

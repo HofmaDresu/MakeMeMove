@@ -81,12 +81,7 @@ namespace MakeMeMove.View
             _exerciseSchedule.EndTime = new DateTime(1, 1, 1, endHour + (12 * EndMeridianPicker.SelectedIndex), EndMinutePicker.SelectedIndex * 30, 0);
             _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
 
-
-            if (_notificationServiceManager.NotificationServiceIsRunning())
-            {
-                _notificationServiceManager.StopNotificationService(_exerciseSchedule);
-                _notificationServiceManager.StartNotificationService(_exerciseSchedule);
-            }
+            _notificationServiceManager.RestartNotificationServiceIfNeeded(_exerciseSchedule);
 
             Navigation.PopAsync(true);
         }

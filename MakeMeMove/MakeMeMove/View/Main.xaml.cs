@@ -65,12 +65,7 @@ namespace MakeMeMove.View
             ViewModel.SelectedExercises.Remove(exercise);
             _schedulePersistence.SaveExerciseSchedule(ViewModel.Schedule);
 
-
-            if (_notificationServiceManager.NotificationServiceIsRunning())
-            {
-                _notificationServiceManager.StopNotificationService(ViewModel.Schedule);
-                _notificationServiceManager.StartNotificationService(ViewModel.Schedule);
-            }
+            _notificationServiceManager.RestartNotificationServiceIfNeeded(ViewModel.Schedule);
 
             ViewModel.NotifyExercisesChanged();
         }

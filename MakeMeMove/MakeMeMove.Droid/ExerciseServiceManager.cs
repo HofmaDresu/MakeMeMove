@@ -13,7 +13,7 @@ namespace MakeMeMove.Droid
 {
     public class ExerciseServiceManager : IServiceManager
     {
-        public void StartNotificationService(ExerciseSchedule schedule)
+        public void StartNotificationService(ExerciseSchedule schedule, bool showMessage = true)
         {
             var context = Forms.Context;
 
@@ -41,10 +41,10 @@ namespace MakeMeMove.Droid
 
             SaveServiceStatus(context, true);
 
-            Toast.MakeText(context, "Service Started", ToastLength.Long).Show();
+            if(showMessage) Toast.MakeText(context, "Service Started", ToastLength.Long).Show();
         }
 
-        public void StopNotificationService(ExerciseSchedule schedule)
+        public void StopNotificationService(ExerciseSchedule schedule, bool showMessage = true)
         {
             var context = Forms.Context;
 
@@ -56,11 +56,20 @@ namespace MakeMeMove.Droid
 
             SaveServiceStatus(context, false);
 
-            Toast.MakeText(context, "Service Stopped", ToastLength.Long).Show();
+            if (showMessage) Toast.MakeText(context, "Service Stopped", ToastLength.Long).Show();
 
         }
 
-        public bool NotificationServiceIsRunning()
+        public void RestartNotificationServiceIfNeeded(ExerciseSchedule schedule)
+        {
+            if (NotificationServiceIsRunning())
+            {
+                StopNotificationService(schedule, false);
+                StartNotificationService(schedule, false);
+            }
+        }
+
+        private bool NotificationServiceIsRunning()
         {
             var preferences = Forms.Context.GetSharedPreferences(Constants.SharedPreferencesKey, FileCreationMode.Private);
             return preferences.GetBoolean(Constants.ServiceIsStartedKey, false);
