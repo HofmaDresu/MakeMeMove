@@ -32,7 +32,7 @@ namespace MakeMeMove.Model
             {
                 Period = SchedulePeriod.HalfHourly,
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
-                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 19, 0, 0),
                 Exercises = new ObservableCollection<ExerciseBlock>
                 {
                     new ExerciseBlock

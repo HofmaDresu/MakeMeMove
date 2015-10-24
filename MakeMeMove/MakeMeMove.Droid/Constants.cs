@@ -5,5 +5,6 @@ namespace MakeMeMove.Droid
         public static string SharedPreferencesKey = "MMM_Preferences";
         public static string ServiceIsStartedKey = "ServiceIsStarted";
         public static string ExerciseSchedule = "ExerciseSchedule";
+        public static string NotificationPreferences = "NotificationPreferences";
     }
 }

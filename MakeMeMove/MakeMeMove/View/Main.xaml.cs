@@ -16,17 +16,21 @@ namespace MakeMeMove.View
         {
             _notificationServiceManager = DependencyService.Get<IServiceManager>();
             _schedulePersistence = DependencyService.Get<ISchedulePersistence>();
+            
+            
             ViewModel = new ExerciseScheduleViewModel();
             LoadExerciseSchedule();
             BindingContext = ViewModel;
 
             InitializeComponent();
+
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             LoadExerciseSchedule();
+            DependencyService.Get<IPermissionRequester>().RequestPermissions();
         }
 
         private void LoadExerciseSchedule()

@@ -92,6 +92,7 @@
     <Compile Include="ExerciseServiceManager.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="PermissionRequester.cs" />
     <Compile Include="SchedulePersistence.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />

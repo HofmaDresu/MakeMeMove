@@ -92,6 +92,7 @@
     <Compile Include="ExerciseServiceManager.cs" />
     <Compile Include="ExerciseTickBroadcastReceiver.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="PermissionRequester.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SchedulePersistence.cs" />
@@ -110,6 +111,14 @@
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\values\strings.xml" />
+    <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Mmm_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Mmm_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Mmm_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Mmm_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Mmm_white_icon.png" />
+    <AndroidResource Include="Resources\drawable\Mmm_white_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">

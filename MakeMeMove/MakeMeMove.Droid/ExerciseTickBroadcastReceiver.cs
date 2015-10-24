@@ -1,8 +1,14 @@
 using System;
+using System.IO;
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
+using Android.Util;
 using MakeMeMove.Model;
+using Newtonsoft.Json;
+using Environment = System.Environment;
+using Path = System.IO.Path;
 
 namespace MakeMeMove.Droid
 {
@@ -23,7 +29,7 @@ namespace MakeMeMove.Droid
                 CreateNotification(context, exerciseSchedule);
             }
 
-            SetNextAlarm(context, exerciseSchedule);
+            ExerciseServiceManager.SetNextAlarm(context, exerciseSchedule);
         }
 
         private static void CreateNotification(Context context, ExerciseSchedule exerciseSchedule)
@@ -35,47 +41,28 @@ namespace MakeMeMove.Droid
             var builder = new Notification.Builder(context)
                 .SetContentTitle("Time to Move")
                 .SetContentText($"It's time to do {nextExercise.Quantity} {nextExercise.Name}")
-                .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate)
-                .SetSmallIcon(Resource.Drawable.icon);
-
+                .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate);
+            
             if ((int) Build.VERSION.SdkInt >= 21)
             {
                 builder
                     .SetPriority((int)NotificationPriority.High)
                     .SetVisibility(NotificationVisibility.Public)
-                    .SetCategory("reminder");
+                    .SetCategory("reminder")
+                    .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
+                    .SetColor(Color.Rgb(215, 78, 10));
+            }
+            else
+            {
+                builder
+                    .SetSmallIcon(Resource.Drawable.icon);
             }
 
             var notification = builder.Build();
 
             const int notificationId = 0;
             var notificationManager = context.GetSystemService(Context.NotificationService) as NotificationManager;
-            notificationManager.Notify(notificationId, notification);
-        }
-
-        public static void SetNextAlarm(Context context, ExerciseSchedule exerciseSchedule)
-        {
-            var reminder = new Intent(context, typeof(ExerciseTickBroadcastReceiver));
-
-            var recurringReminders = PendingIntent.GetBroadcast(context, 0, reminder, PendingIntentFlags.CancelCurrent);
-            var alarms = (AlarmManager)context.GetSystemService(Context.AlarmService);
-
-            var nextRunTime = TickUtility.GetNextRunTime(exerciseSchedule);
-
-            var dtBasis = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-
-            if ((int) Build.VERSION.SdkInt >= 19)
-            {
-                alarms.SetExact(AlarmType.RtcWakeup,
-                    (long) nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds,
-                    recurringReminders);
-            }
-            else
-            {
-                alarms.Set(AlarmType.RtcWakeup,
-                    (long)nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds, 
-                    recurringReminders);
-            }
+            notificationManager?.Notify(notificationId, notification);
         }
     }
 }

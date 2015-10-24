@@ -15,7 +15,7 @@ namespace MakeMeMove.Droid
             if (!preferences.GetBoolean(Constants.ServiceIsStartedKey, false)) return;
 
             var exerciseSchedule = _schedulePersistence.LoadExerciseSchedule();
-            ExerciseTickBroadcastReceiver.SetNextAlarm(context, exerciseSchedule);
+            ExerciseServiceManager.SetNextAlarm(context, exerciseSchedule);
         }
     }
 }
