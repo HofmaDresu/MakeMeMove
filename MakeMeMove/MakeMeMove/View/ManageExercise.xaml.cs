@@ -13,6 +13,7 @@ namespace MakeMeMove.View
         private readonly bool _isNewExercise;
         private readonly ISchedulePersistence _schedulePersistence;
         private readonly IServiceManager _notificationServiceManager;
+        private bool _buttonsAreEnabled;
 
         public ManageExercise(Guid? exerciseId = null)
         {
@@ -52,10 +53,13 @@ namespace MakeMeMove.View
                 _isNewExercise = true;
                 RepititionEntry.Text = "10";
             }
+
+            _buttonsAreEnabled = true;
         }
 
         private void SaveData(object sender, EventArgs eventArgs)
         {
+            if (!ButtonsAreEnabled()) return;
             DisableButtons();
             int currentIndex;
             if (!_isNewExercise)
@@ -88,13 +92,19 @@ namespace MakeMeMove.View
 
         private void CancelChanges(object sender, EventArgs e)
         {
+            if (!ButtonsAreEnabled()) return;
             DisableButtons();
             Navigation.PopAsync(true);
         }
 
         private void DisableButtons()
         {
-            Save.IsEnabled = false;
-            Cancel.IsEnabled = false;}
+            _buttonsAreEnabled = false;
+        }
+
+        private bool ButtonsAreEnabled()
+        {
+            return _buttonsAreEnabled;
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace MakeMeMove.View
         private readonly IServiceManager _notificationServiceManager;
         private readonly ISchedulePersistence _schedulePersistence;
         public ExerciseScheduleViewModel ViewModel;
+        private bool _buttonsAreEnabled = false;
 
         public Main()
         {
@@ -64,6 +65,7 @@ namespace MakeMeMove.View
 
         private void EditExercise(object sender, EventArgs eventArgs)
         {
+            if (!ButtonsAreEnabled()) return;
             EnableDisableButtons(false);
             (sender as Button).IsEnabled = false;
             var exerciseId = GetSelectedExerciseId(sender);
@@ -73,6 +75,7 @@ namespace MakeMeMove.View
 
         private void DeleteExercise(object sender, EventArgs eventArgs)
         {
+            if (!ButtonsAreEnabled()) return;
             EnableDisableButtons(false);
             (sender as Button).IsEnabled = false;
             var exerciseId = GetSelectedExerciseId(sender);
@@ -100,22 +103,26 @@ namespace MakeMeMove.View
 
         private void AddExercise(object sender, EventArgs e)
         {
+            if (!ButtonsAreEnabled()) return;
             EnableDisableButtons(false);
             Navigation.PushAsync(new ManageExercise(), true);
         }
 
         private void EditSchedule(object sender, EventArgs e)
         {
+            if (!ButtonsAreEnabled()) return;
             EnableDisableButtons(false);
             Navigation.PushAsync(new EditSchedule(), true);
         }
 
         private void EnableDisableButtons(bool enabled)
         {
-            AddButton.IsEnabled = enabled;
-            EditScheduleButton.IsEnabled = enabled;
-            StartServiceButton.IsEnabled = enabled;
-            StopServiceButton.IsEnabled = enabled;
+            _buttonsAreEnabled = enabled;
+        }
+
+        private bool ButtonsAreEnabled()
+        {
+            return _buttonsAreEnabled;
         }
 
         private void EnableDisableServiceButtons()

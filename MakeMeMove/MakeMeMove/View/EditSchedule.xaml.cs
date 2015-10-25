@@ -12,6 +12,7 @@ namespace MakeMeMove.View
         private readonly ExerciseSchedule _exerciseSchedule;
         private readonly ISchedulePersistence _schedulePersistence;
         private readonly IServiceManager _notificationServiceManager;
+        private bool _buttonsAreEnabled;
 
         public EditSchedule()
         {
@@ -44,6 +45,8 @@ namespace MakeMeMove.View
             EndHourPicker.SelectedIndex = civilianModifiedEndHour == 0 ? 12 : civilianModifiedEndHour - 1;
             EndMinutePicker.SelectedIndex = _exerciseSchedule.EndTime.Minute == 0 ? 0 : 1;
             EndMeridianPicker.SelectedIndex = _exerciseSchedule.EndTime.Hour < 12 ? 0 : 1;
+
+            _buttonsAreEnabled = true;
         }
 
         private void InitializePickers()
@@ -72,6 +75,7 @@ namespace MakeMeMove.View
 
         private void SaveData(object sender, EventArgs e)
         {
+            if (!ButtonsAreEnabled()) return;
             DisableButtons();
             _exerciseSchedule.Period = (SchedulePeriod)PeriodPicker.SelectedIndex;
 
@@ -89,14 +93,19 @@ namespace MakeMeMove.View
 
         private void CancelChanges(object sender, EventArgs e)
         {
+            if (!ButtonsAreEnabled()) return;
             DisableButtons();
             Navigation.PopAsync(true);
         }
 
         private void DisableButtons()
         {
-            Save.IsEnabled = false;
-            Cancel.IsEnabled = false;
+            _buttonsAreEnabled = false;
+        }
+
+        private bool ButtonsAreEnabled()
+        {
+            return _buttonsAreEnabled;
         }
     }
 }
