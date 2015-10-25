@@ -32,7 +32,7 @@ namespace MakeMeMove.View
 
             if (exerciseId != null)
             {
-                _selectedExercise = _fullSchedule.Exercises.Single(e => e.Id == exerciseId);
+                _selectedExercise = _fullSchedule.Exercises.First(e => e.Id == exerciseId);
                 _isNewExercise = false;
                 ExerciseTypePicker.SelectedIndex = (int)_selectedExercise.Type;
 
@@ -56,11 +56,12 @@ namespace MakeMeMove.View
 
         private void SaveData(object sender, EventArgs eventArgs)
         {
+            DisableButtons();
             int currentIndex;
             if (!_isNewExercise)
             {
                 currentIndex = _fullSchedule.Exercises.IndexOf(_selectedExercise);
-                _fullSchedule.Exercises.Remove(_fullSchedule.Exercises.Single(e => e.Id == _selectedExercise.Id));
+                _fullSchedule.Exercises.Remove(_fullSchedule.Exercises.First(e => e.Id == _selectedExercise.Id));
             }
             else
             {
@@ -87,7 +88,13 @@ namespace MakeMeMove.View
 
         private void CancelChanges(object sender, EventArgs e)
         {
+            DisableButtons();
             Navigation.PopAsync(true);
         }
+
+        private void DisableButtons()
+        {
+            Save.IsEnabled = false;
+            Cancel.IsEnabled = false;}
     }
 }

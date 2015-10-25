@@ -28,9 +28,12 @@ namespace MakeMeMove.View
 
         protected override void OnAppearing()
         {
+            EnableDisableButtons(true);
+            EnableDisableServiceButtons();
             base.OnAppearing();
             LoadExerciseSchedule();
             DependencyService.Get<IPermissionRequester>().RequestPermissions();
+            _notificationServiceManager.RestartNotificationServiceIfNeeded(ViewModel.Schedule);
         }
 
         private void LoadExerciseSchedule()
@@ -50,15 +53,19 @@ namespace MakeMeMove.View
         private void OnStart(object sender, EventArgs e)
         {
             _notificationServiceManager.StartNotificationService(ViewModel.Schedule);
+            EnableDisableServiceButtons();
         }
 
         private void OnStop(object sender, EventArgs e)
         {
             _notificationServiceManager.StopNotificationService(ViewModel.Schedule);
+            EnableDisableServiceButtons();
         }
 
         private void EditExercise(object sender, EventArgs eventArgs)
         {
+            EnableDisableButtons(false);
+            (sender as Button).IsEnabled = false;
             var exerciseId = GetSelectedExerciseId(sender);
 
             Navigation.PushAsync(new ManageExercise(exerciseId), true);
@@ -66,8 +73,10 @@ namespace MakeMeMove.View
 
         private void DeleteExercise(object sender, EventArgs eventArgs)
         {
+            EnableDisableButtons(false);
+            (sender as Button).IsEnabled = false;
             var exerciseId = GetSelectedExerciseId(sender);
-            var exercise = ViewModel.SelectedExercises.SingleOrDefault(e => e.Id == exerciseId);
+            var exercise = ViewModel.SelectedExercises.FirstOrDefault(e => e.Id == exerciseId);
 
             if (exercise == null) return;
 
@@ -77,6 +86,7 @@ namespace MakeMeMove.View
             _notificationServiceManager.RestartNotificationServiceIfNeeded(ViewModel.Schedule);
 
             ViewModel.NotifyExercisesChanged();
+            EnableDisableButtons(true);
         }
 
         private Guid GetSelectedExerciseId(object sender)
@@ -90,12 +100,42 @@ namespace MakeMeMove.View
 
         private void AddExercise(object sender, EventArgs e)
         {
+            EnableDisableButtons(false);
             Navigation.PushAsync(new ManageExercise(), true);
         }
 
         private void EditSchedule(object sender, EventArgs e)
         {
+            EnableDisableButtons(false);
             Navigation.PushAsync(new EditSchedule(), true);
+        }
+
+        private void EnableDisableButtons(bool enabled)
+        {
+            AddButton.IsEnabled = enabled;
+            EditScheduleButton.IsEnabled = enabled;
+            StartServiceButton.IsEnabled = enabled;
+            StopServiceButton.IsEnabled = enabled;
+        }
+
+        private void EnableDisableServiceButtons()
+        {
+            if (_notificationServiceManager.NotificationServiceIsRunning())
+            {
+                StartServiceButton.IsEnabled = false;
+                StopServiceButton.IsEnabled = true;
+            }
+            else
+            {
+                StartServiceButton.IsEnabled = true;
+                StopServiceButton.IsEnabled = false;
+            }
+        }
+
+        void OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e == null) return;
+            ((ListView)sender).SelectedItem = null; // de-select the row
         }
     }
 }

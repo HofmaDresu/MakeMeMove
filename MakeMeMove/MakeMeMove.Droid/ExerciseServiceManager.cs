@@ -52,7 +52,7 @@ namespace MakeMeMove.Droid
             }
         }
 
-        private bool NotificationServiceIsRunning()
+        public bool NotificationServiceIsRunning()
         {
             var preferences = Forms.Context.GetSharedPreferences(Constants.SharedPreferencesKey, FileCreationMode.Private);
             return preferences.GetBoolean(Constants.ServiceIsStartedKey, false);

@@ -72,6 +72,7 @@ namespace MakeMeMove.View
 
         private void SaveData(object sender, EventArgs e)
         {
+            DisableButtons();
             _exerciseSchedule.Period = (SchedulePeriod)PeriodPicker.SelectedIndex;
 
             var startHour = StartHourPicker.SelectedIndex == 12 ? 0 : StartHourPicker.SelectedIndex + 1;
@@ -88,7 +89,14 @@ namespace MakeMeMove.View
 
         private void CancelChanges(object sender, EventArgs e)
         {
+            DisableButtons();
             Navigation.PopAsync(true);
+        }
+
+        private void DisableButtons()
+        {
+            Save.IsEnabled = false;
+            Cancel.IsEnabled = false;
         }
     }
 }

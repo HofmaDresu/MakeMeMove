@@ -58,7 +58,7 @@ namespace MakeMeMove.iOS
             }
         }
 
-        private bool NotificationServiceIsRunning()
+        public bool NotificationServiceIsRunning()
         {
             return UIApplication.SharedApplication.ScheduledLocalNotifications?.Length > 0;
         }

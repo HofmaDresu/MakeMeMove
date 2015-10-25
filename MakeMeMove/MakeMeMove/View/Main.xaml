@@ -40,7 +40,8 @@
                     HorizontalOptions="FillAndExpand"
                   ItemsSource="{Binding SelectedExercises}"
                   HasUnevenRows="True"
-                  x:Name="ExerciseList">
+                  x:Name="ExerciseList"
+                  ItemTapped="OnItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell Height="75">
@@ -61,8 +62,8 @@
                                 Orientation="Horizontal"
                                 Spacing="5" >
                                 <Label x:Name="ExerciseId" Text="{Binding IdString}" IsVisible="False" />
-                                <Button x:Name="editButton" Text="Edit" Clicked="EditExercise" />
-                                <Button x:Name="deleteButton" Text="Delete" Clicked="DeleteExercise" />
+                                <Button x:Name="EditButton" Text="Edit" Clicked="EditExercise" />
+                                <Button x:Name="DeleteButton" Text="Delete" Clicked="DeleteExercise" />
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>
