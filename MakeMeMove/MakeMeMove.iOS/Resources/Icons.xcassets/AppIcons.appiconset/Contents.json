@@ -6,61 +6,73 @@
     {
       "idiom": "iphone",
       "scale": "2x",
+      "filename": "MakeMeMoveIcon_settings@2x.png",
       "size": "29x29"
     },
     {
       "idiom": "iphone",
       "scale": "3x",
+      "filename": "MakeMeMoveIcon_settings@3x.png",
       "size": "29x29"
     },
     {
       "idiom": "iphone",
       "scale": "2x",
+      "filename": "MakeMeMoveIcon_spotlight@2x.png",
       "size": "40x40"
     },
     {
       "idiom": "iphone",
       "scale": "3x",
+      "filename": "MakeMeMoveIcon_spotlight@3x.png",
       "size": "40x40"
     },
     {
       "idiom": "iphone",
       "scale": "2x",
+      "filename": "MakeMeMoveIcon@2x.png",
       "size": "60x60"
     },
     {
       "idiom": "iphone",
       "scale": "3x",
+      "filename": "MakeMeMoveIcon@3x.png",
       "size": "60x60"
     },
     {
       "idiom": "ipad",
       "scale": "1x",
+      "filename": "MakeMeMoveIcon_settings.png",
       "size": "29x29"
     },
     {
       "idiom": "ipad",
       "scale": "2x",
+      "filename": "MakeMeMoveIcon_settings@2x.png",
       "size": "29x29"
     },
     {
       "idiom": "ipad",
       "scale": "1x",
+      "filename": "MakeMeMoveIcon_spotlight.png",
       "size": "40x40"
     },
     {
       "idiom": "ipad",
       "scale": "2x",
+      "filename": "MakeMeMoveIcon_spotlight@2x.png",
       "size": "40x40"
     },
     {
       "idiom": "ipad",
       "scale": "1x",
+      "filename": "MakeMeMoveIcon_iPad.png",
       "size": "76x76"
     },
     {
       "idiom": "ipad",
       "scale": "2x",
+      "filename": "MakeMeMoveIcon_iPad@2x.png",
       "size": "76x76"
     }
   ],
