@@ -7,5 +7,6 @@ namespace MakeMeMove
         void SaveExerciseSchedule(ExerciseSchedule schedule);
         ExerciseSchedule LoadExerciseSchedule();
         bool HasExerciseSchedule();
+        void RemoveAllData();
     }
 }

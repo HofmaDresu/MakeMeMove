@@ -31,5 +31,29 @@ namespace MakeMeMove.iOS
 
             return File.Exists(filePath);
         }
+
+        public void RemoveAllData()
+        {
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var filePath = Path.Combine(documentsPath, Constants.ExerciseSchedule);
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
+            documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            filePath = Path.Combine(documentsPath, Constants.ServiceIsStartedKey);
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
+            documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            filePath = Path.Combine(documentsPath, Constants.SharedPreferencesKey);
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+        }
     }
 }
