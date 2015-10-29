@@ -5,6 +5,7 @@ using MakeMeMove.Model;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using static System.Math;
 
 [assembly: Dependency(typeof(ExerciseServiceManager))]
 namespace MakeMeMove.iOS
@@ -25,9 +26,9 @@ namespace MakeMeMove.iOS
                 Console.WriteLine($"Added time:{testDate.ToShortDateString()} {testDate.ToShortTimeString()}");
 
                 Console.WriteLine("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-                var index = random.Next(0, schedule.Exercises.Count - 1);
+                var index = random.Next(0, schedule.Exercises.Count);
                 //TODO: figure out how to make this more random. Right now it makes a random schedule, but it's the same every day
-                var nextExercise = schedule.Exercises[index];
+                var nextExercise = schedule.Exercises[Min(index, schedule.Exercises.Count - 1)];
                 
                 var notification = new UILocalNotification
                 {

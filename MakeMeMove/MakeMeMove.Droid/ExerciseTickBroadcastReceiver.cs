@@ -7,6 +7,7 @@ using Android.OS;
 using Android.Util;
 using MakeMeMove.Model;
 using Newtonsoft.Json;
+using static System.Math;
 using Environment = System.Environment;
 using Path = System.IO.Path;
 
@@ -34,9 +35,9 @@ namespace MakeMeMove.Droid
 
         private static void CreateNotification(Context context, ExerciseSchedule exerciseSchedule)
         {
-            var index = new Random().Next(0, exerciseSchedule.Exercises.Count - 1);
+            var index = new Random().Next(0, exerciseSchedule.Exercises.Count);
 
-            var nextExercise = exerciseSchedule.Exercises[index];
+            var nextExercise = exerciseSchedule.Exercises[Min(index, exerciseSchedule.Exercises.Count - 1)];
 
             var builder = new Notification.Builder(context)
                 .SetContentTitle("Time to Move")

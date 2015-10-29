@@ -3,7 +3,6 @@ using System.IO;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Util;
 using Android.Widget;
 using MakeMeMove.Droid;
 using MakeMeMove.Model;
@@ -82,8 +81,6 @@ namespace MakeMeMove.Droid
                 var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                 var filePath = Path.Combine(documentsPath, Constants.NotificationPreferences);
                 var allowWakeFromIdle = JsonConvert.DeserializeObject<bool>(File.ReadAllText(filePath));
-
-                Log.Error("asdf", $"Allows wake from idle: {allowWakeFromIdle}");
 
                 if (allowWakeFromIdle)
                 {
