@@ -1,6 +1,6 @@
 ﻿using MakeMeMove.Model;
 
-namespace MakeMeMove
+namespace MakeMeMove.DeviceSpecificInterfaces
 {
     public interface IServiceManager
     {

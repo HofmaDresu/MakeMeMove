@@ -36,9 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="IPermissionRequester.cs" />
-    <Compile Include="ISchedulePersistence.cs" />
-    <Compile Include="IServiceManager.cs" />
+    <Compile Include="DeviceSpecificInterfaces\IPermissionRequester.cs" />
+    <Compile Include="DeviceSpecificInterfaces\ISchedulePersistence.cs" />
+    <Compile Include="DeviceSpecificInterfaces\IServiceManager.cs" />
+    <Compile Include="DeviceSpecificInterfaces\IUserNotification.cs" />
     <Compile Include="Model\ExerciseBlock.cs" />
     <Compile Include="Model\ExerciseSchedule.cs" />
     <Compile Include="Properties\Annotations.cs" />
@@ -96,6 +97,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.1.3.3.6323\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.3.3.6323\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

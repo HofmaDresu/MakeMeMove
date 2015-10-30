@@ -4,14 +4,15 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
-using MakeMeMove.Droid;
+using MakeMeMove.DeviceSpecificInterfaces;
+using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using Environment = System.Environment;
 
 [assembly: Dependency(typeof(ExerciseServiceManager))]
-namespace MakeMeMove.Droid
+namespace MakeMeMove.Droid.DeviceSpecificImplementations
 {
     public class ExerciseServiceManager : IServiceManager
     {

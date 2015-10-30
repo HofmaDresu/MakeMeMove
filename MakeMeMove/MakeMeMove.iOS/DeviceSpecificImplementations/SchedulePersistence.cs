@@ -1,12 +1,13 @@
 using System;
 using System.IO;
-using MakeMeMove.iOS;
+using MakeMeMove.DeviceSpecificInterfaces;
+using MakeMeMove.iOS.DeviceSpecificImplementations;
 using MakeMeMove.Model;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(SchedulePersistence))]
-namespace MakeMeMove.iOS
+namespace MakeMeMove.iOS.DeviceSpecificImplementations
 {
     public class SchedulePersistence : ISchedulePersistence
     {

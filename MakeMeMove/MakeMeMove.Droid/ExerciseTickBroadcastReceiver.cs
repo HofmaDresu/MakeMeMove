@@ -5,6 +5,8 @@ using Android.Content;
 using Android.Graphics;
 using Android.OS;
 using Android.Util;
+using MakeMeMove.DeviceSpecificInterfaces;
+using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
 using Newtonsoft.Json;
 using static System.Math;

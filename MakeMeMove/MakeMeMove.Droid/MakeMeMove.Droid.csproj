@@ -88,14 +88,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="DeviceSpecificImplementations\UserNotification.cs" />
     <Compile Include="ExerciseRebootReceiver.cs" />
-    <Compile Include="ExerciseServiceManager.cs" />
+    <Compile Include="DeviceSpecificImplementations\ExerciseServiceManager.cs" />
     <Compile Include="ExerciseTickBroadcastReceiver.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="PermissionRequester.cs" />
+    <Compile Include="DeviceSpecificImplementations\PermissionRequester.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SchedulePersistence.cs" />
+    <Compile Include="DeviceSpecificImplementations\SchedulePersistence.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

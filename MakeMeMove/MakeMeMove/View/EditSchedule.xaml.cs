@@ -1,5 +1,6 @@
 ﻿using System;
 using Humanizer;
+using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Model;
 using MakeMeMove.ViewModel;
 using Xamarin.Forms;
@@ -12,12 +13,14 @@ namespace MakeMeMove.View
         private readonly ExerciseSchedule _exerciseSchedule;
         private readonly ISchedulePersistence _schedulePersistence;
         private readonly IServiceManager _notificationServiceManager;
+        private readonly IUserNotification _userNotification;
         private bool _buttonsAreEnabled;
 
         public EditSchedule()
         {
             _schedulePersistence = DependencyService.Get<ISchedulePersistence>();
             _notificationServiceManager = DependencyService.Get<IServiceManager>();
+            _userNotification = DependencyService.Get<IUserNotification>();
 
             _exerciseSchedule = !_schedulePersistence.HasExerciseSchedule() ? ExerciseSchedule.CreateDefaultSchedule() : _schedulePersistence.LoadExerciseSchedule();
 
@@ -41,10 +44,11 @@ namespace MakeMeMove.View
             var civilianModifiedEndHour = (_exerciseSchedule.EndTime.Hour > 11
                 ? _exerciseSchedule.EndTime.Hour - 12
                 : _exerciseSchedule.EndTime.Hour);
-
+            
             EndHourPicker.SelectedIndex = civilianModifiedEndHour == 0 ? 12 : civilianModifiedEndHour - 1;
             EndMinutePicker.SelectedIndex = _exerciseSchedule.EndTime.Minute == 0 ? 0 : 1;
             EndMeridianPicker.SelectedIndex = _exerciseSchedule.EndTime.Hour < 12 ? 0 : 1;
+
 
             _buttonsAreEnabled = true;
         }
@@ -84,10 +88,12 @@ namespace MakeMeMove.View
 
             var endHour = EndHourPicker.SelectedIndex == 11 ? 0 : EndHourPicker.SelectedIndex + 1;
             var endTime = new DateTime(1, 1, 1, endHour + (12 * EndMeridianPicker.SelectedIndex), EndMinutePicker.SelectedIndex * 30, 0);
-
+            
             if (startTime >= endTime)
             {
-                
+                _userNotification.ShowValidationErrorPopUp("Please make sure your start time is before your end time");
+                EnableButtons();
+                return;
             }
 
             _exerciseSchedule.StartTime = startTime;
@@ -109,6 +115,11 @@ namespace MakeMeMove.View
         private void DisableButtons()
         {
             _buttonsAreEnabled = false;
+        }
+
+        private void EnableButtons()
+        {
+            _buttonsAreEnabled = true;
         }
 
         private bool ButtonsAreEnabled()

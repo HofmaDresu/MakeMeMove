@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Humanizer;
+using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Model;
 using Xamarin.Forms;
 

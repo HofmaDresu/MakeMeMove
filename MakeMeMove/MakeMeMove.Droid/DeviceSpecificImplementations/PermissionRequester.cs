@@ -1,13 +1,14 @@
 using System.IO;
 using Android.App;
 using Android.OS;
-using MakeMeMove.Droid;
+using MakeMeMove.DeviceSpecificInterfaces;
+using MakeMeMove.Droid.DeviceSpecificImplementations;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using Environment = System.Environment;
 
 [assembly: Dependency(typeof(PermissionRequester))]
-namespace MakeMeMove.Droid
+namespace MakeMeMove.Droid.DeviceSpecificImplementations
 {
     public class PermissionRequester : IPermissionRequester
     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Model;
 using MakeMeMove.ViewModel;
 using Xamarin.Forms;

@@ -89,11 +89,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
-    <Compile Include="ExerciseServiceManager.cs" />
+    <Compile Include="DeviceSpecificImplementations\ExerciseServiceManager.cs" />
+    <Compile Include="DeviceSpecificImplementations\UserNotification.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="PermissionRequester.cs" />
-    <Compile Include="SchedulePersistence.cs" />
+    <Compile Include="DeviceSpecificImplementations\PermissionRequester.cs" />
+    <Compile Include="DeviceSpecificImplementations\SchedulePersistence.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
