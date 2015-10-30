@@ -14,12 +14,14 @@ namespace MakeMeMove.View
         private readonly bool _isNewExercise;
         private readonly ISchedulePersistence _schedulePersistence;
         private readonly IServiceManager _notificationServiceManager;
+        private readonly IUserNotification _userNotification;
         private bool _buttonsAreEnabled;
 
         public ManageExercise(Guid? exerciseId = null)
         {
             _schedulePersistence = DependencyService.Get<ISchedulePersistence>();
             _notificationServiceManager = DependencyService.Get<IServiceManager>();
+            _userNotification = DependencyService.Get<IUserNotification>();
             _fullSchedule = !_schedulePersistence.HasExerciseSchedule() ? ExerciseSchedule.CreateDefaultSchedule() : _schedulePersistence.LoadExerciseSchedule(); ;
             InitializeComponent();
 
@@ -62,6 +64,13 @@ namespace MakeMeMove.View
         {
             if (!ButtonsAreEnabled()) return;
             DisableButtons();
+
+            if (string.IsNullOrWhiteSpace(RepititionEntry.Text))
+            {
+                _userNotification.ShowValidationErrorPopUp("Please enter how many repititions you want.", EnableButtons);
+                return;
+            }
+
             int currentIndex;
             if (!_isNewExercise)
             {
@@ -103,6 +112,11 @@ namespace MakeMeMove.View
             _buttonsAreEnabled = false;
         }
 
+        private void EnableButtons()
+        {
+            _buttonsAreEnabled = true;
+        }
+
         private bool ButtonsAreEnabled()
         {
             return _buttonsAreEnabled;
@@ -111,7 +125,7 @@ namespace MakeMeMove.View
         private void RepititionEntry_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             int newInt;
-            if (!int.TryParse(e.NewTextValue, out newInt))
+            if (!int.TryParse(e.NewTextValue, out newInt) && !string.IsNullOrWhiteSpace(e.NewTextValue))
             {
                 RepititionEntry.Text = e.OldTextValue;
             }
