@@ -120,6 +120,7 @@
     <AndroidResource Include="Resources\drawable-mdpi\Mmm_white_icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Mmm_white_icon.png" />
     <AndroidResource Include="Resources\drawable\Mmm_white_icon.png" />
+    <AndroidResource Include="Resources\drawable\settings.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">

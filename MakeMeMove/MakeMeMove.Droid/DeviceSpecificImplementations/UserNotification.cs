@@ -27,5 +27,16 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                 .SetPositiveButton("OK", (sender, args) => { onCloseAction?.Invoke();})
                 .Show();
         }
+
+        public void ShowAreYouSureDialog(string message, Action onYesAction = null, Action onNoAction = null)
+        {
+            new AlertDialog.Builder(Forms.Context)
+                .SetTitle("Are you sure?")
+                .SetMessage(message)
+                .SetCancelable(false)
+                .SetPositiveButton("Yes", (sender, args) => { onYesAction?.Invoke(); })
+                .SetNegativeButton("No", (sender, args) => { onNoAction?.Invoke(); })
+                .Show();
+        }
     }
 }

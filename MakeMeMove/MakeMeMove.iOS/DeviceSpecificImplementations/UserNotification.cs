@@ -23,5 +23,26 @@ namespace MakeMeMove.iOS.DeviceSpecificImplementations
 
             accountNeededAlert.Show();
         }
+
+        public void ShowAreYouSureDialog(string message, Action onYesAction = null, Action onNoAction = null)
+        {
+            var accountNeededAlert = new UIAlertView("Are you sure?", message,
+                        null, "Ok", "Cancel");
+
+            accountNeededAlert.Clicked += (sender, args) =>
+            {
+                switch (args.ButtonIndex)
+                {
+                    case 0:
+                        onYesAction?.Invoke();
+                        break;
+                    case 1:
+                        onNoAction?.Invoke();
+                        break;
+                }
+            };
+
+            accountNeededAlert.Show();
+        }
     }
 }

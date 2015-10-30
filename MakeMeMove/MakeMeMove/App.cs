@@ -6,7 +6,7 @@ namespace MakeMeMove
     {
         public App()
         {
-            MainPage = new NavigationPage(new View.Main());
+            MainPage = new RootPage();
         }
 
         protected override void OnStart()
