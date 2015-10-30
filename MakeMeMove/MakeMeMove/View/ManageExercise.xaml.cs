@@ -131,5 +131,13 @@ namespace MakeMeMove.View
                 RepititionEntry.Text = e.OldTextValue;
             }
         }
+
+        private void CustomExerciseEntry_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (e.NewTextValue.Length > 20)
+            {
+                CustomExerciseEntry.Text = e.OldTextValue;
+            }
+        }
     }
 }
