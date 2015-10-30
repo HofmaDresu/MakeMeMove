@@ -79,11 +79,19 @@ namespace MakeMeMove.View
             DisableButtons();
             _exerciseSchedule.Period = (SchedulePeriod)PeriodPicker.SelectedIndex;
 
-            var startHour = StartHourPicker.SelectedIndex == 12 ? 0 : StartHourPicker.SelectedIndex + 1;
-            _exerciseSchedule.StartTime = new DateTime(1, 1, 1, startHour + (12 * StartMeridianPicker.SelectedIndex), StartMinutePicker.SelectedIndex * 30, 0);
+            var startHour = StartHourPicker.SelectedIndex == 11 ? 0 : StartHourPicker.SelectedIndex + 1;
+            var startTime = new DateTime(1, 1, 1, startHour + (12 * StartMeridianPicker.SelectedIndex), StartMinutePicker.SelectedIndex * 30, 0);
 
-            var endHour = EndHourPicker.SelectedIndex == 12 ? 0 : EndHourPicker.SelectedIndex + 1;
-            _exerciseSchedule.EndTime = new DateTime(1, 1, 1, endHour + (12 * EndMeridianPicker.SelectedIndex), EndMinutePicker.SelectedIndex * 30, 0);
+            var endHour = EndHourPicker.SelectedIndex == 11 ? 0 : EndHourPicker.SelectedIndex + 1;
+            var endTime = new DateTime(1, 1, 1, endHour + (12 * EndMeridianPicker.SelectedIndex), EndMinutePicker.SelectedIndex * 30, 0);
+
+            if (startTime >= endTime)
+            {
+                
+            }
+
+            _exerciseSchedule.StartTime = startTime;
+            _exerciseSchedule.EndTime = endTime;
 
             _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
             _notificationServiceManager.RestartNotificationServiceIfNeeded(_exerciseSchedule);
