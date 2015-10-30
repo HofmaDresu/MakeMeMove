@@ -107,5 +107,14 @@ namespace MakeMeMove.View
         {
             return _buttonsAreEnabled;
         }
+
+        private void RepititionEntry_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            int newInt;
+            if (!int.TryParse(e.NewTextValue, out newInt))
+            {
+                RepititionEntry.Text = e.OldTextValue;
+            }
+        }
     }
 }

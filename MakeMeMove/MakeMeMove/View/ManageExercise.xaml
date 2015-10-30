@@ -10,7 +10,7 @@
     <Picker x:Name="ExerciseTypePicker"></Picker>
     <Entry x:Name="CustomExerciseEntry" IsVisible="False" Placeholder="Custom Exercise Name"></Entry>
     <Label>Number of Repititions</Label>
-    <Entry x:Name="RepititionEntry" Keyboard="Numeric"></Entry>
+    <Entry x:Name="RepititionEntry" Keyboard="Numeric" TextChanged="RepititionEntry_OnTextChanged"></Entry>
     <StackLayout VerticalOptions="Fill"
                      HorizontalOptions="FillAndExpand"
                      Orientation="Horizontal"
