@@ -31,7 +31,8 @@ namespace MakeMeMove.View
             }
             ExerciseTypePicker.SelectedIndexChanged += (sender, args) =>
             {
-                CustomExerciseEntry.IsVisible = (sender as Picker).SelectedIndex == (int) PreBuiltExersises.Custom;
+                var visibilty = (sender as Picker).SelectedIndex == (int) PreBuiltExersises.Custom;
+                CustomExerciseEntry.HeightRequest = visibilty ? -1d : 0;
             };
 
             if (exerciseId != null)
@@ -43,7 +44,7 @@ namespace MakeMeMove.View
                 if (_selectedExercise.Type == PreBuiltExersises.Custom)
                 {
                     CustomExerciseEntry.Text = _selectedExercise.Name;
-                    CustomExerciseEntry.IsVisible = true;
+                    CustomExerciseEntry.HeightRequest = -1d;
                 }
 
 
