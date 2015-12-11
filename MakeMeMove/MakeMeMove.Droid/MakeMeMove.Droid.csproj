@@ -87,6 +87,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\ExerciseListAdapter.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DeviceSpecificImplementations\ProgressPersistence.cs" />
     <Compile Include="DeviceSpecificImplementations\UserNotification.cs" />
@@ -128,6 +129,7 @@
     <AndroidResource Include="Resources\drawable\Mmm_white_icon.png" />
     <AndroidResource Include="Resources\drawable\settings.png" />
     <AndroidResource Include="Resources\values\GlobalStyles.xml" />
+    <AndroidResource Include="Resources\layout\ExerciseListItem.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">

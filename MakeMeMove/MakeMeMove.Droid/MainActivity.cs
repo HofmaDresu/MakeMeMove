@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using MakeMeMove.DeviceSpecificInterfaces;
+using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
 
@@ -23,6 +24,7 @@ namespace MakeMeMove.Droid
         private TextView _startTimeText;
         private TextView _endTimeText;
         private TextView _reminderPeriodText;
+        private ListView _exerciseListView;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,6 +37,7 @@ namespace MakeMeMove.Droid
             _startTimeText = FindViewById<TextView>(Resource.Id.StartTimeText);
             _endTimeText = FindViewById<TextView>(Resource.Id.EndTimeText);
             _reminderPeriodText = FindViewById<TextView>(Resource.Id.ReminderPeriodText);
+            _exerciseListView = FindViewById<ListView>(Resource.Id.ExerciseList);
 
             _startServiceButton.Click += (o, e) => StartService();
             _stopServiceButton.Click += (o, e) => StopService();
@@ -57,6 +60,7 @@ namespace MakeMeMove.Droid
             _startTimeText.Text = _exerciseSchedule.StartTime.ToLongTimeString();
             _endTimeText.Text = _exerciseSchedule.EndTime.ToLongTimeString();
             _reminderPeriodText.Text = _exerciseSchedule.PeriodDisplayString;
+            _exerciseListView.Adapter = new ExerciseListAdapter(_exerciseSchedule.Exercises, this);
 
             _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
 

@@ -66,29 +66,41 @@ namespace MakeMeMove.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060007
-			public const int AddExerciseButton = 2131099655;
+			// aapt resource value: 0x7f06000b
+			public const int AddExerciseButton = 2131099659;
 			
-			// aapt resource value: 0x7f060005
-			public const int ChangeScheduleButton = 2131099653;
+			// aapt resource value: 0x7f060009
+			public const int ChangeScheduleButton = 2131099657;
 			
 			// aapt resource value: 0x7f060003
-			public const int EndTimeText = 2131099651;
-			
-			// aapt resource value: 0x7f060006
-			public const int ExerciseList = 2131099654;
-			
-			// aapt resource value: 0x7f060004
-			public const int ReminderPeriodText = 2131099652;
-			
-			// aapt resource value: 0x7f060000
-			public const int StartServiceButton = 2131099648;
+			public const int DeleteButton = 2131099651;
 			
 			// aapt resource value: 0x7f060002
-			public const int StartTimeText = 2131099650;
+			public const int EditButton = 2131099650;
+			
+			// aapt resource value: 0x7f060007
+			public const int EndTimeText = 2131099655;
+			
+			// aapt resource value: 0x7f060000
+			public const int ExerciseCount = 2131099648;
+			
+			// aapt resource value: 0x7f06000a
+			public const int ExerciseList = 2131099658;
 			
 			// aapt resource value: 0x7f060001
-			public const int StopServiceButton = 2131099649;
+			public const int ExerciseName = 2131099649;
+			
+			// aapt resource value: 0x7f060008
+			public const int ReminderPeriodText = 2131099656;
+			
+			// aapt resource value: 0x7f060004
+			public const int StartServiceButton = 2131099652;
+			
+			// aapt resource value: 0x7f060006
+			public const int StartTimeText = 2131099654;
+			
+			// aapt resource value: 0x7f060005
+			public const int StopServiceButton = 2131099653;
 			
 			static Id()
 			{
@@ -104,7 +116,10 @@ namespace MakeMeMove.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int ExerciseListItem = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Main = 2130903041;
 			
 			static Layout()
 			{
