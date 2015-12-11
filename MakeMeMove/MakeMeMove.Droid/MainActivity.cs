@@ -20,6 +20,9 @@ namespace MakeMeMove.Droid
         private ExerciseSchedule _exerciseSchedule;
         private Button _startServiceButton;
         private Button _stopServiceButton;
+        private TextView _startTimeText;
+        private TextView _endTimeText;
+        private TextView _reminderPeriodText;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,7 +32,9 @@ namespace MakeMeMove.Droid
 
             _startServiceButton = FindViewById<Button>(Resource.Id.StartServiceButton);
             _stopServiceButton = FindViewById<Button>(Resource.Id.StopServiceButton);
-
+            _startTimeText = FindViewById<TextView>(Resource.Id.StartTimeText);
+            _endTimeText = FindViewById<TextView>(Resource.Id.EndTimeText);
+            _reminderPeriodText = FindViewById<TextView>(Resource.Id.ReminderPeriodText);
 
             _startServiceButton.Click += (o, e) => StartService();
             _stopServiceButton.Click += (o, e) => StopService();
@@ -48,6 +53,10 @@ namespace MakeMeMove.Droid
             {
                 _exerciseSchedule = _schedulePersistence.LoadExerciseSchedule();
             }
+
+            _startTimeText.Text = _exerciseSchedule.StartTime.ToLongTimeString();
+            _endTimeText.Text = _exerciseSchedule.EndTime.ToLongTimeString();
+            _reminderPeriodText.Text = _exerciseSchedule.PeriodDisplayString;
 
             _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
 

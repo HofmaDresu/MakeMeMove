@@ -30,7 +30,6 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginLeft="5dp"
-      android:text="9AM"
       />
   </LinearLayout>
   <LinearLayout
@@ -46,7 +45,6 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginLeft="5dp"
-      android:text="9AM"
       />
   </LinearLayout>
   <LinearLayout
@@ -55,14 +53,13 @@
     <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginLeft="5dp"
       android:text="Reminder Period:"
       />
     <TextView
       android:id="@+id/ReminderPeriodText"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="always"
+      android:layout_marginLeft="5dp"
       />
   </LinearLayout>
   <Button
