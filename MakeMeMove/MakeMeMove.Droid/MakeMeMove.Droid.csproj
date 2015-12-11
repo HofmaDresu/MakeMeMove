@@ -90,6 +90,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="DeviceSpecificImplementations\ProgressPersistence.cs" />
     <Compile Include="DeviceSpecificImplementations\UserNotification.cs" />
+    <Compile Include="EditScheduleActivity.cs" />
     <Compile Include="ExerciseActions\CompletedActivity.cs" />
     <Compile Include="ExerciseRebootReceiver.cs" />
     <Compile Include="DeviceSpecificImplementations\ExerciseServiceManager.cs" />
@@ -104,6 +105,9 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
+    <AndroidResource Include="Resources\layout\Main.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -123,6 +127,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\Mmm_white_icon.png" />
     <AndroidResource Include="Resources\drawable\Mmm_white_icon.png" />
     <AndroidResource Include="Resources\drawable\settings.png" />
+    <AndroidResource Include="Resources\values\GlobalStyles.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">

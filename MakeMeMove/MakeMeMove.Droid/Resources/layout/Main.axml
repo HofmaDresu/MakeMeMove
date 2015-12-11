@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+  <LinearLayout
+    android:orientation="horizontal"
+    style="@style/TopMarginedLayoutElement">
+    <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/StartServiceButton"
+      android:text="Start Service"/>
+    <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/StopServiceButton"
+      android:text="Stop Service"/>
+  </LinearLayout>
+  <LinearLayout
+    android:orientation="horizontal"
+    style="@style/TopMarginedLayoutElement" >
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Start Time:"
+      />
+    <TextView
+      android:id="@+id/StartTimeText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="5dp"
+      android:text="9AM"
+      />
+  </LinearLayout>
+  <LinearLayout
+    android:orientation="horizontal"
+    style="@style/TopMarginedLayoutElement" >
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="End Time:"
+      />
+    <TextView
+      android:id="@+id/EndTimeText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="5dp"
+      android:text="9AM"
+      />
+  </LinearLayout>
+  <LinearLayout
+    android:orientation="horizontal"
+    style="@style/TopMarginedLayoutElement" >
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="5dp"
+      android:text="Reminder Period:"
+      />
+    <TextView
+      android:id="@+id/ReminderPeriodText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="always"
+      />
+  </LinearLayout>
+  <Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:id="@+id/ChangeScheduleButton"
+    android:text="Change Schedule"/>
+  <ListView
+    android:id="@+id/ExerciseList"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    />
+  <Button
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/AddExerciseButton"
+      android:text="Add Exercise"
+      android:layout_alignParentBottom="true"/>
+</LinearLayout>
