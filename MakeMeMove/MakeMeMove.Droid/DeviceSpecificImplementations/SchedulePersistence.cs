@@ -43,13 +43,6 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             }
 
             documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            filePath = Path.Combine(documentsPath, Constants.NotificationPreferences);
-            if (File.Exists(filePath))
-            {
-                File.Delete(filePath);
-            }
-
-            documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             filePath = Path.Combine(documentsPath, Constants.ServiceIsStartedKey);
             if (File.Exists(filePath))
             {

@@ -8,6 +8,7 @@
                    Orientation="Vertical"
                    Spacing="15" >
     <Button x:Name="Home" Text="Home"></Button>
+    <Button x:Name="Stats" Text="View Stats"></Button>
     <Button x:Name="Reset" Text="Reset"></Button>
   </StackLayout>
 </ContentPage>

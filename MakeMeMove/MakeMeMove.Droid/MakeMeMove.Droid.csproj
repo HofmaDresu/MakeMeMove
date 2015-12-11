@@ -88,7 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="DeviceSpecificImplementations\ProgressPersistence.cs" />
     <Compile Include="DeviceSpecificImplementations\UserNotification.cs" />
+    <Compile Include="ExerciseActions\CompletedActivity.cs" />
     <Compile Include="ExerciseRebootReceiver.cs" />
     <Compile Include="DeviceSpecificImplementations\ExerciseServiceManager.cs" />
     <Compile Include="ExerciseTickBroadcastReceiver.cs" />

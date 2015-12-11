@@ -7,6 +7,7 @@ using Android.OS;
 using Android.Util;
 using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
+using MakeMeMove.Droid.ExerciseActions;
 using MakeMeMove.Model;
 using Newtonsoft.Json;
 using static System.Math;
@@ -41,6 +42,11 @@ namespace MakeMeMove.Droid
 
             var nextExercise = exerciseSchedule.Exercises[Min(index, exerciseSchedule.Exercises.Count - 1)];
 
+            var completedIntent = new Intent(context, typeof (CompletedActivity));
+            completedIntent.PutExtra(Constants.ExerciseName, nextExercise.CombinedName);
+            completedIntent.PutExtra(Constants.ExerciseQuantity, nextExercise.Quantity);
+            var pendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, completedIntent, 0);
+
             var builder = new Notification.Builder(context)
                 .SetContentTitle("Time to Move")
                 .SetContentText($"It's time to do {nextExercise.Quantity} {nextExercise.Name}")
@@ -53,15 +59,25 @@ namespace MakeMeMove.Droid
                     .SetVisibility(NotificationVisibility.Public)
                     .SetCategory("reminder")
                     .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
-                    .SetColor(Color.Rgb(215, 78, 10));
+                    .SetColor(Color.Rgb(215, 78, 10))
+                    .AddAction(new Notification.Action(0, "Complete", pendingIntent));
+            }
+            else if ((int)Build.VERSION.SdkInt >= 20)
+            {
+                builder
+                    .SetSmallIcon(Resource.Drawable.icon)
+                    .AddAction(new Notification.Action(0, "Complete", pendingIntent));
             }
             else
             {
                 builder
-                    .SetSmallIcon(Resource.Drawable.icon);
+                    .SetSmallIcon(Resource.Drawable.icon)
+                    .AddAction(0, "Complete", pendingIntent);
             }
 
             var notification = builder.Build();
+
+            notification.Flags |= NotificationFlags.AutoCancel;
 
             const int notificationId = 0;
             var notificationManager = context.GetSystemService(Context.NotificationService) as NotificationManager;

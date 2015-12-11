@@ -13,16 +13,26 @@ namespace MakeMeMove
     {
         private readonly IUserNotification _userNotification;
         private readonly ISchedulePersistence _schedulePersistence;
+        private readonly IProgressPersistence _progressPersistence;
+
         public RootPage()
         {
             Title = "Menu";
             _userNotification = DependencyService.Get<IUserNotification>();
             _schedulePersistence = DependencyService.Get<ISchedulePersistence>();
+            _progressPersistence = DependencyService.Get<IProgressPersistence>();
+
             var menuPage = new MenuPage();
 
             menuPage.HomeClicked += (sender, args) =>
             {
                 Detail = new NavigationPage(new Main());
+                IsPresented = false;
+            };
+
+            menuPage.StatsClicked += (sender, args) =>
+            {
+                Detail = new NavigationPage(new ViewProgress());
                 IsPresented = false;
             };
 
@@ -32,6 +42,7 @@ namespace MakeMeMove
                     () =>
                     {
                         _schedulePersistence.RemoveAllData();
+                        _progressPersistence.RemoveAllData();
                         Detail = new NavigationPage(new Main());
                         IsPresented = false;
                     });

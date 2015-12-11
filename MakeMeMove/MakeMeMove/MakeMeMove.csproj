@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="DeviceSpecificInterfaces\IPermissionRequester.cs" />
+    <Compile Include="DeviceSpecificInterfaces\IProgressPersistence.cs" />
     <Compile Include="DeviceSpecificInterfaces\ISchedulePersistence.cs" />
     <Compile Include="DeviceSpecificInterfaces\IServiceManager.cs" />
     <Compile Include="DeviceSpecificInterfaces\IUserNotification.cs" />
@@ -59,6 +60,9 @@
     </Compile>
     <Compile Include="View\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewProgress.xaml.cs">
+      <DependentUpon>ViewProgress.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +107,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\MenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\ViewProgress.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
