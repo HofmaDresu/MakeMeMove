@@ -4,22 +4,17 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
-using MakeMeMove.DeviceSpecificInterfaces;
-using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using Environment = System.Environment;
 
-[assembly: Dependency(typeof(ExerciseServiceManager))]
 namespace MakeMeMove.Droid.DeviceSpecificImplementations
 {
-    public class ExerciseServiceManager : IServiceManager
+    public class ExerciseServiceManager
     {
-        public void StartNotificationService(ExerciseSchedule schedule, bool showMessage = true)
+        public void StartNotificationService(Context context, ExerciseSchedule schedule, bool showMessage = true)
         {
-            var context = Forms.Context;
-
             SetNextAlarm(context, schedule);
 
             SaveServiceStatus(context, true);
@@ -27,10 +22,8 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             if(showMessage) Toast.MakeText(context, "Service Started", ToastLength.Long).Show();
         }
 
-        public void StopNotificationService(ExerciseSchedule schedule, bool showMessage = true)
+        public void StopNotificationService(Context context, ExerciseSchedule schedule, bool showMessage = true)
         {
-            var context = Forms.Context;
-
             var reminder = new Intent(context, typeof(ExerciseTickBroadcastReceiver));
             var recurringReminders = PendingIntent.GetBroadcast(context, 0, reminder, PendingIntentFlags.CancelCurrent);
             var alarms = (AlarmManager)context.GetSystemService(Context.AlarmService);
@@ -43,18 +36,18 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
 
         }
 
-        public void RestartNotificationServiceIfNeeded(ExerciseSchedule schedule)
+        public void RestartNotificationServiceIfNeeded(Context context, ExerciseSchedule schedule)
         {
-            if (NotificationServiceIsRunning())
+            if (NotificationServiceIsRunning(context))
             {
-                StopNotificationService(schedule, false);
-                StartNotificationService(schedule, false);
+                StopNotificationService(context, schedule, false);
+                StartNotificationService(context, schedule, false);
             }
         }
 
-        public bool NotificationServiceIsRunning()
+        public bool NotificationServiceIsRunning(Context context)
         {
-            var preferences = Forms.Context.GetSharedPreferences(Constants.SharedPreferencesKey, FileCreationMode.Private);
+            var preferences = context.GetSharedPreferences(Constants.SharedPreferencesKey, FileCreationMode.Private);
             return preferences.GetBoolean(Constants.ServiceIsStartedKey, false);
         }
 
