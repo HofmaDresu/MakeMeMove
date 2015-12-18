@@ -31,6 +31,8 @@ namespace MakeMeMove.Droid.Activities
         private Button _cancelButton;
 
         private readonly ISchedulePersistence _schedulePersistence = new SchedulePersistence();
+        private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
+        private readonly IUserNotification _userNotification = new UserNotification();
         private ExerciseSchedule _exerciseSchedule;
         
 
@@ -104,6 +106,25 @@ namespace MakeMeMove.Droid.Activities
 
         private void SaveData()
         {
+            _exerciseSchedule.Period = (SchedulePeriod)_reminderPeriodSpinner.SelectedItemPosition;
+
+            var startHour = _startHourSpinner.SelectedItemPosition == 11 ? 0 : _startHourSpinner.SelectedItemPosition + 1;
+            var startTime = new DateTime(1, 1, 1, startHour + (12 * _startMeridianSpinner.SelectedItemPosition), _startMinuteSpinner.SelectedItemPosition * 30, 0);
+
+            var endHour = _endHourSpinner.SelectedItemPosition == 11 ? 0 : _endHourSpinner.SelectedItemPosition + 1;
+            var endTime = new DateTime(1, 1, 1, endHour + (12 * _endMeridianSpinner.SelectedItemPosition), _endMinuteSpinner.SelectedItemPosition * 30, 0);
+
+            if (startTime >= endTime)
+            {
+                _userNotification.ShowValidationErrorPopUp("Please make sure your start time is before your end time");
+                return;
+            }
+
+            _exerciseSchedule.StartTime = startTime;
+            _exerciseSchedule.EndTime = endTime;
+
+            _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
+            _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
 
             Finish();
         }
