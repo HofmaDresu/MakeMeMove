@@ -87,16 +87,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\ManageScheduleActivity.cs" />
     <Compile Include="Adapters\ExerciseListAdapter.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DeviceSpecificImplementations\ProgressPersistence.cs" />
     <Compile Include="DeviceSpecificImplementations\UserNotification.cs" />
-    <Compile Include="EditScheduleActivity.cs" />
     <Compile Include="ExerciseActions\CompletedActivity.cs" />
     <Compile Include="ExerciseRebootReceiver.cs" />
     <Compile Include="DeviceSpecificImplementations\ExerciseServiceManager.cs" />
     <Compile Include="ExerciseTickBroadcastReceiver.cs" />
-    <Compile Include="MainActivity.cs" />
+    <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="DeviceSpecificImplementations\PermissionRequester.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,6 +107,9 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\Main.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ManageSchedule.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

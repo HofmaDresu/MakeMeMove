@@ -1,17 +1,14 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Android.Widget;
 using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
 
-namespace MakeMeMove.Droid
+namespace MakeMeMove.Droid.Activities
 {
     [Activity(Label = "@string/app_name", Icon = "@drawable/icon", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
     public class MainActivity : Activity
@@ -25,6 +22,7 @@ namespace MakeMeMove.Droid
         private TextView _endTimeText;
         private TextView _reminderPeriodText;
         private ListView _exerciseListView;
+        private Button _manageScheduleButton;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -38,9 +36,11 @@ namespace MakeMeMove.Droid
             _endTimeText = FindViewById<TextView>(Resource.Id.EndTimeText);
             _reminderPeriodText = FindViewById<TextView>(Resource.Id.ReminderPeriodText);
             _exerciseListView = FindViewById<ListView>(Resource.Id.ExerciseList);
+            _manageScheduleButton = FindViewById<Button>(Resource.Id.ManageScheduleButton);
 
             _startServiceButton.Click += (o, e) => StartService();
             _stopServiceButton.Click += (o, e) => StopService();
+            _manageScheduleButton.Click += (o, e) => StartActivity(new Intent(this, typeof (ManageScheduleActivity)));
         }
 
         protected override void OnResume()
