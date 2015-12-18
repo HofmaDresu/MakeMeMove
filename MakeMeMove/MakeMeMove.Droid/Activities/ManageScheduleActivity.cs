@@ -27,8 +27,12 @@ namespace MakeMeMove.Droid.Activities
         private Spinner _endHourSpinner;
         private Spinner _endMinuteSpinner;
         private Spinner _endMeridianSpinner;
+        private Button _saveButton;
+        private Button _cancelButton;
+
         private readonly ISchedulePersistence _schedulePersistence = new SchedulePersistence();
         private ExerciseSchedule _exerciseSchedule;
+        
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -45,11 +49,16 @@ namespace MakeMeMove.Droid.Activities
             _endHourSpinner = FindViewById<Spinner>(Resource.Id.EndHourSpinner);
             _endMinuteSpinner = FindViewById<Spinner>(Resource.Id.EndMinuteSpinner);
             _endMeridianSpinner = FindViewById<Spinner>(Resource.Id.EndMeridianSpinner);
+            _saveButton = FindViewById<Button>(Resource.Id.SaveButton);
+            _cancelButton = FindViewById<Button>(Resource.Id.CancelButton);
 
 
             InitializePickers();
 
             SetPickerData();
+
+            _cancelButton.Click += (s, e) => Finish();
+            _saveButton.Click += (s, e) => SaveData();
         }
 
         private void SetPickerData()
@@ -74,7 +83,6 @@ namespace MakeMeMove.Droid.Activities
             _endMeridianSpinner.SetSelection(_exerciseSchedule.EndTime.Hour < 12 ? 0 : 1);
         }
 
-
         private void InitializePickers()
         {
             var periodList = (from SchedulePeriod suit in Enum.GetValues(typeof (SchedulePeriod)) select suit.Humanize()).ToList();
@@ -92,6 +100,12 @@ namespace MakeMeMove.Droid.Activities
             _endHourSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, hourChoices);
             _endMinuteSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, minuteChoices);
             _endMeridianSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, meridianChoices);
+        }
+
+        private void SaveData()
+        {
+
+            Finish();
         }
     }
 }

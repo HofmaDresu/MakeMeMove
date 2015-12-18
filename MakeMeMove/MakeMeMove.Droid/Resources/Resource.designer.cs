@@ -69,6 +69,9 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f06000b
 			public const int AddExerciseButton = 2131099659;
 			
+			// aapt resource value: 0x7f060014
+			public const int CancelButton = 2131099668;
+			
 			// aapt resource value: 0x7f060003
 			public const int DeleteButton = 2131099651;
 			
