@@ -16,11 +16,11 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(UserNotification))]
 namespace MakeMeMove.Droid.DeviceSpecificImplementations
 {
-    public class UserNotification : IUserNotification
+    public class UserNotification
     {
-        public void ShowValidationErrorPopUp(string message, Action onCloseAction = null)
+        public void ShowValidationErrorPopUp(Context context, string message, Action onCloseAction = null)
         {
-            new AlertDialog.Builder(Forms.Context)
+            new AlertDialog.Builder(context)
                 .SetTitle("Invalid Information")
                 .SetMessage(message)
                 .SetCancelable(false)
@@ -28,9 +28,9 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                 .Show();
         }
 
-        public void ShowAreYouSureDialog(string message, Action onYesAction = null, Action onNoAction = null)
+        public void ShowAreYouSureDialog(Context context, string message, Action onYesAction = null, Action onNoAction = null)
         {
-            new AlertDialog.Builder(Forms.Context)
+            new AlertDialog.Builder(context)
                 .SetTitle("Are you sure?")
                 .SetMessage(message)
                 .SetCancelable(false)

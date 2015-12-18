@@ -32,7 +32,7 @@ namespace MakeMeMove.Droid.Activities
 
         private readonly ISchedulePersistence _schedulePersistence = new SchedulePersistence();
         private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
-        private readonly IUserNotification _userNotification = new UserNotification();
+        private readonly UserNotification _userNotification = new UserNotification();
         private ExerciseSchedule _exerciseSchedule;
         
 
