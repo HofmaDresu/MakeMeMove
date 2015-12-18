@@ -75,8 +75,14 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f060002
 			public const int EditButton = 2131099650;
 			
-			// aapt resource value: 0x7f06000e
-			public const int EndTimeEdit = 2131099662;
+			// aapt resource value: 0x7f060010
+			public const int EndHourSpinner = 2131099664;
+			
+			// aapt resource value: 0x7f060012
+			public const int EndMeridianSpinner = 2131099666;
+			
+			// aapt resource value: 0x7f060011
+			public const int EndMinuteSpinner = 2131099665;
 			
 			// aapt resource value: 0x7f060007
 			public const int EndTimeText = 2131099655;
@@ -99,14 +105,20 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f06000c
 			public const int ReminderSpinner = 2131099660;
 			
+			// aapt resource value: 0x7f060013
+			public const int SaveButton = 2131099667;
+			
+			// aapt resource value: 0x7f06000d
+			public const int StartHourSpinner = 2131099661;
+			
 			// aapt resource value: 0x7f06000f
-			public const int SaveButton = 2131099663;
+			public const int StartMeridianSpinner = 2131099663;
+			
+			// aapt resource value: 0x7f06000e
+			public const int StartMinuteSpinner = 2131099662;
 			
 			// aapt resource value: 0x7f060004
 			public const int StartServiceButton = 2131099652;
-			
-			// aapt resource value: 0x7f06000d
-			public const int StartTimeEdit = 2131099661;
 			
 			// aapt resource value: 0x7f060006
 			public const int StartTimeText = 2131099654;
