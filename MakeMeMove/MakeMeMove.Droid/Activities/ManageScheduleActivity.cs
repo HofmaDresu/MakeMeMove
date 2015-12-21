@@ -116,7 +116,7 @@ namespace MakeMeMove.Droid.Activities
 
             if (startTime >= endTime)
             {
-                _userNotification.ShowValidationErrorPopUp("Please make sure your start time is before your end time");
+                _userNotification.ShowValidationErrorPopUp(this, "Please make sure your start time is before your end time");
                 return;
             }
 
