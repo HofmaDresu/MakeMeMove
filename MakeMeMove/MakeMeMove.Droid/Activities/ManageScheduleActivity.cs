@@ -6,6 +6,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -17,7 +18,7 @@ using MakeMeMove.Model;
 
 namespace MakeMeMove.Droid.Activities
 {
-    [Activity(Label = "ManageScheduleActivitiy")]
+    [Activity(Label = "ManageScheduleActivitiy", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
     public class ManageScheduleActivity : Activity
     {
         private Spinner _reminderPeriodSpinner;

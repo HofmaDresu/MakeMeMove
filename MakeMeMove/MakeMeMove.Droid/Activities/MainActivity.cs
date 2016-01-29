@@ -25,6 +25,7 @@ namespace MakeMeMove.Droid.Activities
         private TextView _reminderPeriodText;
         private ListView _exerciseListView;
         private Button _manageScheduleButton;
+        private Button _addExerciseButton;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -39,10 +40,12 @@ namespace MakeMeMove.Droid.Activities
             _reminderPeriodText = FindViewById<TextView>(Resource.Id.ReminderPeriodText);
             _exerciseListView = FindViewById<ListView>(Resource.Id.ExerciseList);
             _manageScheduleButton = FindViewById<Button>(Resource.Id.ManageScheduleButton);
+            _addExerciseButton = FindViewById<Button>(Resource.Id.AddExerciseButton);
 
             _startServiceButton.Click += (o, e) => StartService();
             _stopServiceButton.Click += (o, e) => StopService();
             _manageScheduleButton.Click += (o, e) => StartActivity(new Intent(this, typeof (ManageScheduleActivity)));
+            _addExerciseButton.Click += (sender, args) => StartActivity(new Intent(this, typeof(ManageExerciseActivity)));
         }
 
         protected override void OnResume()
@@ -66,12 +69,6 @@ namespace MakeMeMove.Droid.Activities
 
 
             EnableDisableServiceButtons();
-        }
-
-        protected override void OnPause()
-        {
-            base.OnPause();
-            _exerciseListView.Adapter?.Dispose();
         }
 
         private void EditExerciseClicked(object sender, Guid guid)
