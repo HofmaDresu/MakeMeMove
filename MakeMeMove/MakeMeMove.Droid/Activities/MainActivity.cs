@@ -17,6 +17,7 @@ namespace MakeMeMove.Droid.Activities
     {
         private readonly ISchedulePersistence _schedulePersistence = new SchedulePersistence();
         private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
+        private readonly PermissionRequester _permissionRequester = new PermissionRequester();
         private ExerciseSchedule _exerciseSchedule;
         private Button _startServiceButton;
         private Button _stopServiceButton;
@@ -46,6 +47,8 @@ namespace MakeMeMove.Droid.Activities
             _stopServiceButton.Click += (o, e) => StopService();
             _manageScheduleButton.Click += (o, e) => StartActivity(new Intent(this, typeof (ManageScheduleActivity)));
             _addExerciseButton.Click += (sender, args) => StartActivity(new Intent(this, typeof(ManageExerciseActivity)));
+
+            _permissionRequester.RequestPermissions(this);
         }
 
         protected override void OnResume()

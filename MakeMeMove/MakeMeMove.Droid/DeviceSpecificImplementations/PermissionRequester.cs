@@ -1,18 +1,15 @@
 using System.IO;
 using Android.App;
+using Android.Content;
 using Android.OS;
-using MakeMeMove.DeviceSpecificInterfaces;
-using MakeMeMove.Droid.DeviceSpecificImplementations;
 using Newtonsoft.Json;
-using Xamarin.Forms;
 using Environment = System.Environment;
 
-[assembly: Dependency(typeof(PermissionRequester))]
 namespace MakeMeMove.Droid.DeviceSpecificImplementations
 {
-    public class PermissionRequester : IPermissionRequester
+    public class PermissionRequester
     {
-        public void RequestPermissions()
+        public void RequestPermissions(Context context)
         {
 
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
@@ -22,7 +19,7 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
 
             if ((int)Build.VERSION.SdkInt >= 23 && !File.Exists(filePath))
             {
-                new AlertDialog.Builder(Forms.Context)
+                new AlertDialog.Builder(context)
                     .SetMessage(
                         "Will you allow Make Me Move to create high priority notifications that will wake your device (could affect battery life)? Without these, your reminders may not appear if your phone is sitting on your desk.")
                     .SetNegativeButton("No", (s, args) =>
