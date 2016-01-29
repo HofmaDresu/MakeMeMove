@@ -18,7 +18,7 @@ using MakeMeMove.Model;
 
 namespace MakeMeMove.Droid.Activities
 {
-    [Activity(Label = "ManageScheduleActivitiy", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
+    [Activity(Label = "Manage Schedule", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
     public class ManageScheduleActivity : Activity
     {
         private Spinner _reminderPeriodSpinner;

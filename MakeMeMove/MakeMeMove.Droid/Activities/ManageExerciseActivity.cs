@@ -17,7 +17,7 @@ using MakeMeMove.Model;
 
 namespace MakeMeMove.Droid.Activities
 {
-    [Activity(Label = "ManageExerciseActivity", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
+    [Activity(Label = "ManageExerciseActivity", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
     public class ManageExerciseActivity : Activity
     {
         private Spinner _exerciseTypeSpinner;
@@ -52,6 +52,11 @@ namespace MakeMeMove.Droid.Activities
             {
                 _currentExerciseId = Guid.Parse(editExerciseId);
                 SetCurrentExerciseData();
+                Title = "Edit Exercise";
+            }
+            else
+            {
+                Title = "Add Exercise";
             }
 
             _cancelButton.Click += (s, e) => Finish();
