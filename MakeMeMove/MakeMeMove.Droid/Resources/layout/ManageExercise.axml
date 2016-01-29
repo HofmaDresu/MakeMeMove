@@ -18,12 +18,13 @@
         android:layout_height="wrap_content"
         android:visibility="gone" />
     <TextView
-        android:text="Number of Repititions"
+        android:text="Number of Repetitions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/RepititionsText"
         android:text="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
 </LinearLayout>
