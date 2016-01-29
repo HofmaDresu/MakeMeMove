@@ -7,22 +7,19 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
-using MakeMeMove.Droid.DeviceSpecificImplementations;
 
-namespace MakeMeMove.Droid.ExerciseActions
+namespace MakeMeMove.Droid.Activities
 {
-    public class CompletedActivity : Activity
+    [Activity(Label = "ManageExerciseActivity")]
+    public class ManageExerciseActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            new ProgressPersistence().SaveCompletedExercise(DateTime.Now.Date, Intent.GetStringExtra(Constants.ExerciseName), Intent.GetIntExtra(Constants.ExerciseQuantity, 0));
-
-            Finish();
+            // Create your application here
         }
     }
 }

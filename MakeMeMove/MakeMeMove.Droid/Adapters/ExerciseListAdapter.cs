@@ -15,6 +15,8 @@ namespace MakeMeMove.Droid.Adapters
 {
     public class ExerciseListAdapter : BaseAdapter<ExerciseBlock>
     {
+        public EventHandler<Guid> DeleteExerciseClicked;
+        public EventHandler<Guid> EditExerciseClicked;
         private readonly List<ExerciseBlock> _exerciseList;
         private readonly Activity _activity;
 
@@ -36,6 +38,9 @@ namespace MakeMeMove.Droid.Adapters
 
             view.FindViewById<TextView>(Resource.Id.ExerciseCount).Text = thisExercise.Quantity.ToString();
             view.FindViewById<TextView>(Resource.Id.ExerciseName).Text = thisExercise.CombinedName;
+
+            view.FindViewById<Button>(Resource.Id.DeleteButton).Click += (sender, args) => DeleteExerciseClicked?.Invoke(this, thisExercise.Id.Value);
+            view.FindViewById<Button>(Resource.Id.EditButton).Click += (sender, args) => EditExerciseClicked?.Invoke(this, thisExercise.Id.Value);
 
             return view;
         }

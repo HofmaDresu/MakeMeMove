@@ -1,4 +1,6 @@
-﻿using Android.App;
+﻿using System;
+using System.Linq;
+using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
@@ -60,11 +62,42 @@ namespace MakeMeMove.Droid.Activities
             _startTimeText.Text = _exerciseSchedule.StartTime.ToLongTimeString();
             _endTimeText.Text = _exerciseSchedule.EndTime.ToLongTimeString();
             _reminderPeriodText.Text = _exerciseSchedule.PeriodDisplayString;
-            _exerciseListView.Adapter = new ExerciseListAdapter(_exerciseSchedule.Exercises, this);
+            UpdateExerciseList();
 
-            _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
 
             EnableDisableServiceButtons();
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            _exerciseListView.Adapter?.Dispose();
+        }
+
+        private void EditExerciseClicked(object sender, Guid guid)
+        {
+            var selectedExercise = _exerciseSchedule.Exercises.FirstOrDefault(e => e.Id == guid);
+            throw new NotImplementedException();
+        }
+
+        private void DeleteExerciseClicked(object sender, Guid guid)
+        {
+            var selectedExercise = _exerciseSchedule.Exercises.FirstOrDefault(e => e.Id == guid);
+            if (selectedExercise != null)
+            {
+                _exerciseSchedule.Exercises.Remove(selectedExercise);
+            }
+            _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
+            UpdateExerciseList();
+        }
+
+        private void UpdateExerciseList()
+        {
+            var exerciseListAdapter = new ExerciseListAdapter(_exerciseSchedule.Exercises, this);
+            exerciseListAdapter.DeleteExerciseClicked += DeleteExerciseClicked;
+            exerciseListAdapter.EditExerciseClicked += EditExerciseClicked;
+            _exerciseListView.Adapter = exerciseListAdapter;
+            _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
         }
 
         private void EnableDisableServiceButtons()
