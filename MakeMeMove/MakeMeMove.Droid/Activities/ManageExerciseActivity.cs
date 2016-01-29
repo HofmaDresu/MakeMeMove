@@ -29,6 +29,7 @@ namespace MakeMeMove.Droid.Activities
         private readonly ISchedulePersistence _schedulePersistence = new SchedulePersistence();
         private ExerciseSchedule _exerciseSchedule;
         private readonly UserNotification _userNotification = new UserNotification();
+        private Guid? _currentExerciseId = null;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -46,6 +47,13 @@ namespace MakeMeMove.Droid.Activities
 
             InitializePickers();
 
+            var editExerciseId = Intent.GetStringExtra(Constants.ExerciseId);
+            if (!string.IsNullOrWhiteSpace(editExerciseId))
+            {
+                _currentExerciseId = Guid.Parse(editExerciseId);
+                SetCurrentExerciseData();
+            }
+
             _cancelButton.Click += (s, e) => Finish();
             _saveButton.Click += (s, e) => SaveData();
         }
@@ -56,6 +64,15 @@ namespace MakeMeMove.Droid.Activities
             _exerciseTypeSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, exerciseList);
 
             _exerciseTypeSpinner.ItemSelected += (sender, args) => ShowHideCustomText();
+        }
+
+        private void SetCurrentExerciseData()
+        {
+            var currentExercise = _exerciseSchedule.Exercises.Single(e => e.Id == _currentExerciseId);
+
+            _exerciseTypeSpinner.SetSelection((int) currentExercise.Type);
+            _repetitionText.Text = currentExercise.Quantity.ToString();
+            _customExerciseNameText.Text = currentExercise.Type == PreBuiltExersises.Custom ? currentExercise.Name : string.Empty;
         }
 
         private void ShowHideCustomText()
@@ -85,13 +102,25 @@ namespace MakeMeMove.Droid.Activities
                 return;
             }
 
-
-            _exerciseSchedule.Exercises.Add(new ExerciseBlock
+            if (_currentExerciseId.HasValue)
             {
-                Id = Guid.NewGuid(),
-                Name = exerciseType == PreBuiltExersises.Custom ? _customExerciseNameText.Text : string.Empty,
-                Quantity = repetitions
-            });
+                var exercise = _exerciseSchedule.Exercises.Single(e => e.Id == _currentExerciseId);
+
+                exercise.Name = exerciseType == PreBuiltExersises.Custom ? _customExerciseNameText.Text : string.Empty;
+                exercise.Quantity = repetitions;
+                exercise.Type = exerciseType;
+            }
+            else
+            {
+                _exerciseSchedule.Exercises.Add(new ExerciseBlock
+                {
+                    Id = Guid.NewGuid(),
+                    Name = exerciseType == PreBuiltExersises.Custom ? _customExerciseNameText.Text : string.Empty,
+                    Quantity = repetitions,
+                    Type = exerciseType
+                });
+
+            }
 
             _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
 

@@ -73,8 +73,9 @@ namespace MakeMeMove.Droid.Activities
 
         private void EditExerciseClicked(object sender, Guid guid)
         {
-            var selectedExercise = _exerciseSchedule.Exercises.FirstOrDefault(e => e.Id == guid);
-            throw new NotImplementedException();
+            var intent = new Intent(this, typeof (ManageExerciseActivity));
+            intent.PutExtra(Constants.ExerciseId, guid.ToString());
+            StartActivity(intent);
         }
 
         private void DeleteExerciseClicked(object sender, Guid guid)
