@@ -11,6 +11,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Humanizer;
+using MakeMeMove.DeviceSpecificInterfaces;
+using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
 
 namespace MakeMeMove.Droid.Activities
@@ -20,17 +22,32 @@ namespace MakeMeMove.Droid.Activities
     {
         private Spinner _exerciseTypeSpinner;
         private EditText _customExerciseNameText;
+        private EditText _repetitionText;
+        private Button _saveButton;
+        private Button _cancelButton;
+
+        private readonly ISchedulePersistence _schedulePersistence = new SchedulePersistence();
+        private ExerciseSchedule _exerciseSchedule;
+        private readonly UserNotification _userNotification = new UserNotification();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
+            _exerciseSchedule = _schedulePersistence.LoadExerciseSchedule();
+
             SetContentView(Resource.Layout.ManageExercise);
 
             _exerciseTypeSpinner = FindViewById<Spinner>(Resource.Id.ExerciseTypeSpinner);
             _customExerciseNameText = FindViewById<EditText>(Resource.Id.CustomExerciseNameBox);
+            _repetitionText = FindViewById<EditText>(Resource.Id.RepetitionsText);
+            _saveButton = FindViewById<Button>(Resource.Id.SaveButton);
+            _cancelButton = FindViewById<Button>(Resource.Id.CancelButton);
 
             InitializePickers();
+
+            _cancelButton.Click += (s, e) => Finish();
+            _saveButton.Click += (s, e) => SaveData();
         }
 
         private void InitializePickers()
@@ -43,15 +60,44 @@ namespace MakeMeMove.Droid.Activities
 
         private void ShowHideCustomText()
         {
-            var selectedExerciseType = (PreBuiltExersises)Enum.Parse(typeof (PreBuiltExersises), ((string) _exerciseTypeSpinner.SelectedItem).Dehumanize());
-            if (selectedExerciseType == PreBuiltExersises.Custom)
-            {
-                _customExerciseNameText.Visibility = ViewStates.Visible;
-            }
-            else
-            {
-                _customExerciseNameText.Visibility = ViewStates.Gone;
-            }
+            var selectedExerciseType = (PreBuiltExersises)_exerciseTypeSpinner.SelectedItemPosition;
+            _customExerciseNameText.Visibility = selectedExerciseType == PreBuiltExersises.Custom ? ViewStates.Visible : ViewStates.Gone;
         }
+
+        private void SaveData()
+        {
+            var exerciseType = (PreBuiltExersises)_exerciseTypeSpinner.SelectedItemPosition;
+            if (exerciseType == PreBuiltExersises.Custom && string.IsNullOrWhiteSpace(_customExerciseNameText.Text))
+            {
+                _userNotification.ShowValidationErrorPopUp(this, "Please enter a name for your exercise.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(_repetitionText.Text))
+            {
+                _userNotification.ShowValidationErrorPopUp(this, "Please enter how many repetitions you want.");
+                return;
+            }
+            int repetitions;
+            if (!int.TryParse(_repetitionText.Text, out repetitions))
+            {
+                _userNotification.ShowValidationErrorPopUp(this, "Please enter a whole number of repetitions.");
+                return;
+            }
+
+
+            _exerciseSchedule.Exercises.Add(new ExerciseBlock
+            {
+                Id = Guid.NewGuid(),
+                Name = exerciseType == PreBuiltExersises.Custom ? _customExerciseNameText.Text : string.Empty,
+                Quantity = repetitions
+            });
+
+            _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
+
+            Finish();
+        }
+
+
     }
 }

@@ -69,8 +69,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f06000b
 			public const int AddExerciseButton = 2131099659;
 			
-			// aapt resource value: 0x7f060017
-			public const int CancelButton = 2131099671;
+			// aapt resource value: 0x7f060010
+			public const int CancelButton = 2131099664;
 			
 			// aapt resource value: 0x7f06000d
 			public const int CustomExerciseNameBox = 2131099661;
@@ -81,14 +81,14 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f060002
 			public const int EditButton = 2131099650;
 			
-			// aapt resource value: 0x7f060013
-			public const int EndHourSpinner = 2131099667;
-			
 			// aapt resource value: 0x7f060015
-			public const int EndMeridianSpinner = 2131099669;
+			public const int EndHourSpinner = 2131099669;
 			
-			// aapt resource value: 0x7f060014
-			public const int EndMinuteSpinner = 2131099668;
+			// aapt resource value: 0x7f060017
+			public const int EndMeridianSpinner = 2131099671;
+			
+			// aapt resource value: 0x7f060016
+			public const int EndMinuteSpinner = 2131099670;
 			
 			// aapt resource value: 0x7f060007
 			public const int EndTimeText = 2131099655;
@@ -111,23 +111,23 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f060008
 			public const int ReminderPeriodText = 2131099656;
 			
-			// aapt resource value: 0x7f06000f
-			public const int ReminderSpinner = 2131099663;
+			// aapt resource value: 0x7f060011
+			public const int ReminderSpinner = 2131099665;
 			
 			// aapt resource value: 0x7f06000e
-			public const int RepititionsText = 2131099662;
+			public const int RepetitionsText = 2131099662;
 			
-			// aapt resource value: 0x7f060016
-			public const int SaveButton = 2131099670;
-			
-			// aapt resource value: 0x7f060010
-			public const int StartHourSpinner = 2131099664;
+			// aapt resource value: 0x7f06000f
+			public const int SaveButton = 2131099663;
 			
 			// aapt resource value: 0x7f060012
-			public const int StartMeridianSpinner = 2131099666;
+			public const int StartHourSpinner = 2131099666;
 			
-			// aapt resource value: 0x7f060011
-			public const int StartMinuteSpinner = 2131099665;
+			// aapt resource value: 0x7f060014
+			public const int StartMeridianSpinner = 2131099668;
+			
+			// aapt resource value: 0x7f060013
+			public const int StartMinuteSpinner = 2131099667;
 			
 			// aapt resource value: 0x7f060004
 			public const int StartServiceButton = 2131099652;
