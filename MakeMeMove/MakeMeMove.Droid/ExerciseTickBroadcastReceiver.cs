@@ -41,6 +41,8 @@ namespace MakeMeMove.Droid
         {
             var enabledExercises = exerciseSchedule.Exercises.Where(e => e.Enabled.GetValueOrDefault(true)).ToList();
 
+            if (enabledExercises.Count == 0) return;
+
             var index = new Random().Next(0, enabledExercises.Count);
 
             var nextExercise = enabledExercises[Min(index, exerciseSchedule.Exercises.Count - 1)];
