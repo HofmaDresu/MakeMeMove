@@ -66,14 +66,14 @@ namespace MakeMeMove.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f06000b
-			public const int AddExerciseButton = 2131099659;
+			// aapt resource value: 0x7f06000c
+			public const int AddExerciseButton = 2131099660;
 			
-			// aapt resource value: 0x7f060010
-			public const int CancelButton = 2131099664;
+			// aapt resource value: 0x7f060011
+			public const int CancelButton = 2131099665;
 			
-			// aapt resource value: 0x7f06000d
-			public const int CustomExerciseNameBox = 2131099661;
+			// aapt resource value: 0x7f06000e
+			public const int CustomExerciseNameBox = 2131099662;
 			
 			// aapt resource value: 0x7f060003
 			public const int DeleteButton = 2131099651;
@@ -81,62 +81,65 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f060002
 			public const int EditButton = 2131099650;
 			
-			// aapt resource value: 0x7f060015
-			public const int EndHourSpinner = 2131099669;
-			
-			// aapt resource value: 0x7f060017
-			public const int EndMeridianSpinner = 2131099671;
+			// aapt resource value: 0x7f060004
+			public const int EnableDisableSwitch = 2131099652;
 			
 			// aapt resource value: 0x7f060016
-			public const int EndMinuteSpinner = 2131099670;
+			public const int EndHourSpinner = 2131099670;
 			
-			// aapt resource value: 0x7f060007
-			public const int EndTimeText = 2131099655;
+			// aapt resource value: 0x7f060018
+			public const int EndMeridianSpinner = 2131099672;
+			
+			// aapt resource value: 0x7f060017
+			public const int EndMinuteSpinner = 2131099671;
+			
+			// aapt resource value: 0x7f060008
+			public const int EndTimeText = 2131099656;
 			
 			// aapt resource value: 0x7f060000
 			public const int ExerciseCount = 2131099648;
 			
-			// aapt resource value: 0x7f06000a
-			public const int ExerciseList = 2131099658;
+			// aapt resource value: 0x7f06000b
+			public const int ExerciseList = 2131099659;
 			
 			// aapt resource value: 0x7f060001
 			public const int ExerciseName = 2131099649;
 			
-			// aapt resource value: 0x7f06000c
-			public const int ExerciseTypeSpinner = 2131099660;
+			// aapt resource value: 0x7f06000d
+			public const int ExerciseTypeSpinner = 2131099661;
+			
+			// aapt resource value: 0x7f06000a
+			public const int ManageScheduleButton = 2131099658;
 			
 			// aapt resource value: 0x7f060009
-			public const int ManageScheduleButton = 2131099657;
-			
-			// aapt resource value: 0x7f060008
-			public const int ReminderPeriodText = 2131099656;
-			
-			// aapt resource value: 0x7f060011
-			public const int ReminderSpinner = 2131099665;
-			
-			// aapt resource value: 0x7f06000e
-			public const int RepetitionsText = 2131099662;
-			
-			// aapt resource value: 0x7f06000f
-			public const int SaveButton = 2131099663;
+			public const int ReminderPeriodText = 2131099657;
 			
 			// aapt resource value: 0x7f060012
-			public const int StartHourSpinner = 2131099666;
+			public const int ReminderSpinner = 2131099666;
 			
-			// aapt resource value: 0x7f060014
-			public const int StartMeridianSpinner = 2131099668;
+			// aapt resource value: 0x7f06000f
+			public const int RepetitionsText = 2131099663;
+			
+			// aapt resource value: 0x7f060010
+			public const int SaveButton = 2131099664;
 			
 			// aapt resource value: 0x7f060013
-			public const int StartMinuteSpinner = 2131099667;
+			public const int StartHourSpinner = 2131099667;
 			
-			// aapt resource value: 0x7f060004
-			public const int StartServiceButton = 2131099652;
+			// aapt resource value: 0x7f060015
+			public const int StartMeridianSpinner = 2131099669;
 			
-			// aapt resource value: 0x7f060006
-			public const int StartTimeText = 2131099654;
+			// aapt resource value: 0x7f060014
+			public const int StartMinuteSpinner = 2131099668;
 			
 			// aapt resource value: 0x7f060005
-			public const int StopServiceButton = 2131099653;
+			public const int StartServiceButton = 2131099653;
+			
+			// aapt resource value: 0x7f060007
+			public const int StartTimeText = 2131099655;
+			
+			// aapt resource value: 0x7f060006
+			public const int StopServiceButton = 2131099654;
 			
 			static Id()
 			{

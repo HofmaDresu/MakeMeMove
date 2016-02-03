@@ -17,6 +17,7 @@ namespace MakeMeMove.Droid.Adapters
     {
         public EventHandler<Guid> DeleteExerciseClicked;
         public EventHandler<Guid> EditExerciseClicked;
+        public EventHandler<Guid> EnableDisableClicked;
         private readonly List<ExerciseBlock> _exerciseList;
         private readonly Activity _activity;
 
@@ -41,6 +42,9 @@ namespace MakeMeMove.Droid.Adapters
 
             view.FindViewById<Button>(Resource.Id.DeleteButton).Click += (sender, args) => DeleteExerciseClicked?.Invoke(this, thisExercise.Id.Value);
             view.FindViewById<Button>(Resource.Id.EditButton).Click += (sender, args) => EditExerciseClicked?.Invoke(this, thisExercise.Id.Value);
+            var enableDisableSwitch = view.FindViewById<Switch>(Resource.Id.EnableDisableSwitch);
+            enableDisableSwitch.Checked = thisExercise.Enabled.GetValueOrDefault(true);
+            enableDisableSwitch.Click += (sender, args) => EnableDisableClicked?.Invoke(this, thisExercise.Id.Value);
 
             return view;
         }

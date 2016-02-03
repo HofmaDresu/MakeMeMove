@@ -28,5 +28,6 @@ namespace MakeMeMove.Model
         public string CombinedName => string.IsNullOrWhiteSpace(Name) ? Type.Humanize() : Name;
         public PreBuiltExersises Type;
         public int Quantity { get; set; }
+        public bool? Enabled { get; set; }
     }
 }

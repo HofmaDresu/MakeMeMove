@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
@@ -38,9 +39,11 @@ namespace MakeMeMove.Droid
 
         private static void CreateNotification(Context context, ExerciseSchedule exerciseSchedule)
         {
-            var index = new Random().Next(0, exerciseSchedule.Exercises.Count);
+            var enabledExercises = exerciseSchedule.Exercises.Where(e => e.Enabled.GetValueOrDefault(true)).ToList();
 
-            var nextExercise = exerciseSchedule.Exercises[Min(index, exerciseSchedule.Exercises.Count - 1)];
+            var index = new Random().Next(0, enabledExercises.Count);
+
+            var nextExercise = enabledExercises[Min(index, exerciseSchedule.Exercises.Count - 1)];
 
             var completedIntent = new Intent(context, typeof (CompletedActivity));
             completedIntent.PutExtra(Constants.ExerciseName, nextExercise.CombinedName);
@@ -59,14 +62,12 @@ namespace MakeMeMove.Droid
                     .SetVisibility(NotificationVisibility.Public)
                     .SetCategory("reminder")
                     .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
-                    .SetColor(Color.Rgb(215, 78, 10))
-                    .AddAction(new Notification.Action(0, "Complete", pendingIntent));
+                    .SetColor(Color.Rgb(215, 78, 10));
             }
             else if ((int)Build.VERSION.SdkInt >= 20)
             {
                 builder
-                    .SetSmallIcon(Resource.Drawable.icon)
-                    .AddAction(new Notification.Action(0, "Complete", pendingIntent));
+                    .SetSmallIcon(Resource.Drawable.icon);
             }
             else
             {

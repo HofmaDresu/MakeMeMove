@@ -33,5 +33,9 @@
       android:layout_height="wrap_content"
       android:id="@+id/DeleteButton"
       android:text="Delete"/>
+    <Switch
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/EnableDisableSwitch"/>
   </LinearLayout>
 </LinearLayout>

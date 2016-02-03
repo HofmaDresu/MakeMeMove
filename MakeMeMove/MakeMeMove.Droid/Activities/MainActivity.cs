@@ -87,9 +87,9 @@ namespace MakeMeMove.Droid.Activities
             if (selectedExercise != null)
             {
                 _exerciseSchedule.Exercises.Remove(selectedExercise);
+                _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
+                UpdateExerciseList();
             }
-            _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
-            UpdateExerciseList();
         }
 
         private void UpdateExerciseList()
@@ -97,8 +97,20 @@ namespace MakeMeMove.Droid.Activities
             var exerciseListAdapter = new ExerciseListAdapter(_exerciseSchedule.Exercises, this);
             exerciseListAdapter.DeleteExerciseClicked += DeleteExerciseClicked;
             exerciseListAdapter.EditExerciseClicked += EditExerciseClicked;
+            exerciseListAdapter.EnableDisableClicked += EnableDisableClicked;
             _exerciseListView.Adapter = exerciseListAdapter;
             _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
+        }
+
+        private void EnableDisableClicked(object sender, Guid guid)
+        {
+            var selectedExercise = _exerciseSchedule.Exercises.FirstOrDefault(e => e.Id == guid);
+            if (selectedExercise != null)
+            {
+                selectedExercise.Enabled = !selectedExercise.Enabled.GetValueOrDefault(true);
+                _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
+                UpdateExerciseList();
+            }
         }
 
         private void EnableDisableServiceButtons()
