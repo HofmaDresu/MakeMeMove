@@ -109,7 +109,6 @@ namespace MakeMeMove.Droid.Activities
             {
                 selectedExercise.Enabled = !selectedExercise.Enabled.GetValueOrDefault(true);
                 _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
-                UpdateExerciseList();
             }
         }
 
