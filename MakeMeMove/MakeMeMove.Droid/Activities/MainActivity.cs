@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using Android.Support.V7.Widget;
 using Android.Widget;
 using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Droid.Adapters;
@@ -24,7 +25,7 @@ namespace MakeMeMove.Droid.Activities
         private TextView _startTimeText;
         private TextView _endTimeText;
         private TextView _reminderPeriodText;
-        private ListView _exerciseListView;
+        private RecyclerView _exerciseRecyclerView;
         private Button _manageScheduleButton;
         private Button _addExerciseButton;
 
@@ -39,7 +40,7 @@ namespace MakeMeMove.Droid.Activities
             _startTimeText = FindViewById<TextView>(Resource.Id.StartTimeText);
             _endTimeText = FindViewById<TextView>(Resource.Id.EndTimeText);
             _reminderPeriodText = FindViewById<TextView>(Resource.Id.ReminderPeriodText);
-            _exerciseListView = FindViewById<ListView>(Resource.Id.ExerciseList);
+            _exerciseRecyclerView = FindViewById<RecyclerView>(Resource.Id.ExerciseList);
             _manageScheduleButton = FindViewById<Button>(Resource.Id.ManageScheduleButton);
             _addExerciseButton = FindViewById<Button>(Resource.Id.AddExerciseButton);
 
@@ -49,6 +50,8 @@ namespace MakeMeMove.Droid.Activities
             _addExerciseButton.Click += (sender, args) => StartActivity(new Intent(this, typeof(ManageExerciseActivity)));
 
             _permissionRequester.RequestPermissions(this);
+
+            _exerciseRecyclerView.SetLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.Vertical, false));
         }
 
         protected override void OnResume()
@@ -94,11 +97,11 @@ namespace MakeMeMove.Droid.Activities
 
         private void UpdateExerciseList()
         {
-            var exerciseListAdapter = new ExerciseListAdapter(_exerciseSchedule.Exercises, this);
+            var exerciseListAdapter = new ExerciseRecyclerAdapter(_exerciseSchedule.Exercises, this);
             exerciseListAdapter.DeleteExerciseClicked += DeleteExerciseClicked;
             exerciseListAdapter.EditExerciseClicked += EditExerciseClicked;
             exerciseListAdapter.EnableDisableClicked += EnableDisableClicked;
-            _exerciseListView.Adapter = exerciseListAdapter;
+            _exerciseRecyclerView.SetAdapter(exerciseListAdapter);
             _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
         }
 
