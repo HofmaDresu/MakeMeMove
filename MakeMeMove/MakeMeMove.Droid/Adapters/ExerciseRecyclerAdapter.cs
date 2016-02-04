@@ -21,12 +21,10 @@ namespace MakeMeMove.Droid.Adapters
         public EventHandler<Guid> EditExerciseClicked;
         public EventHandler<Guid> EnableDisableClicked;
         private readonly List<ExerciseBlock> _exerciseList;
-        private readonly Activity _activity;
 
-        public ExerciseRecyclerAdapter(List<ExerciseBlock> exerciseList, Activity activity)
+        public ExerciseRecyclerAdapter(List<ExerciseBlock> exerciseList)
         {
             _exerciseList = exerciseList;
-            _activity = activity;
         }
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)

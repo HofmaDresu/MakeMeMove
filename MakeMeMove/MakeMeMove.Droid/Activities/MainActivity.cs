@@ -98,7 +98,7 @@ namespace MakeMeMove.Droid.Activities
 
         private void UpdateExerciseList()
         {
-            var exerciseListAdapter = new ExerciseRecyclerAdapter(_exerciseSchedule.Exercises, this);
+            var exerciseListAdapter = new ExerciseRecyclerAdapter(_exerciseSchedule.Exercises);
             exerciseListAdapter.DeleteExerciseClicked += DeleteExerciseClicked;
             exerciseListAdapter.EditExerciseClicked += EditExerciseClicked;
             exerciseListAdapter.EnableDisableClicked += EnableDisableClicked;
