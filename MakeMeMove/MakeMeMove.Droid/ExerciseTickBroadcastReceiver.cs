@@ -54,7 +54,7 @@ namespace MakeMeMove.Droid
 
             var builder = new Notification.Builder(context)
                 .SetContentTitle("Time to Move")
-                .SetContentText($"It's time to do {nextExercise.Quantity} {nextExercise.Name}")
+                .SetContentText($"It's time to do {nextExercise.Quantity} {nextExercise.CombinedName}")
                 .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate);
             
             if ((int) Build.VERSION.SdkInt >= 21)
