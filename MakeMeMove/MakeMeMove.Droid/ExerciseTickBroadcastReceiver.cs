@@ -39,7 +39,7 @@ namespace MakeMeMove.Droid
 
         private static void CreateNotification(Context context, ExerciseSchedule exerciseSchedule)
         {
-            var enabledExercises = exerciseSchedule.Exercises.Where(e => e.Enabled.GetValueOrDefault(true)).ToList();
+            var enabledExercises = exerciseSchedule.Exercises.Where(e => e.Enabled).ToList();
 
             if (enabledExercises.Count == 0) return;
 

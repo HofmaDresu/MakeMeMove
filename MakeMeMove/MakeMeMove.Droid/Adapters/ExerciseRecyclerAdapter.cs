@@ -31,7 +31,7 @@ namespace MakeMeMove.Droid.Adapters
         {
             var viewHolder = (ExerciseListViewHolder) holder;
             var thisExercise = _exerciseList[position];
-            viewHolder.EnableDisableSwitch.Checked = thisExercise.Enabled.GetValueOrDefault(true);
+            viewHolder.EnableDisableSwitch.Checked = thisExercise.Enabled;
             viewHolder.ExerciseCount.Text = thisExercise.Quantity.ToString();
             viewHolder.ExerciseName.Text = thisExercise.CombinedName;
         }
@@ -41,9 +41,9 @@ namespace MakeMeMove.Droid.Adapters
             var inflater = LayoutInflater.From(parent.Context);
             var view = inflater.Inflate(Resource.Layout.ExerciseListItem, parent, false);
             var exerciseListViewHolder = new ExerciseListViewHolder(view);
-            exerciseListViewHolder.DeleteExerciseClicked += (sender, i) => DeleteExerciseClicked?.Invoke(sender, _exerciseList[i].Id.Value);
-            exerciseListViewHolder.EditExerciseClicked += (sender, i) => EditExerciseClicked?.Invoke(sender, _exerciseList[i].Id.Value);
-            exerciseListViewHolder.EnableDisableClicked += (sender, i) => EnableDisableClicked?.Invoke(sender, _exerciseList[i].Id.Value);
+            exerciseListViewHolder.DeleteExerciseClicked += (sender, i) => DeleteExerciseClicked?.Invoke(sender, _exerciseList[i].Id);
+            exerciseListViewHolder.EditExerciseClicked += (sender, i) => EditExerciseClicked?.Invoke(sender, _exerciseList[i].Id);
+            exerciseListViewHolder.EnableDisableClicked += (sender, i) => EnableDisableClicked?.Invoke(sender, _exerciseList[i].Id);
             return exerciseListViewHolder;
         }
 

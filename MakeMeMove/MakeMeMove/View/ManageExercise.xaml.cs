@@ -87,7 +87,7 @@ namespace MakeMeMove.View
                 ? CustomExerciseEntry.Text
                 : ((PreBuiltExersises) ExerciseTypePicker.SelectedIndex).Humanize();
             _selectedExercise.Quantity = int.Parse(RepititionEntry.Text);
-            _selectedExercise.Id = _selectedExercise.Id ?? Guid.NewGuid();
+            //_selectedExercise.Id = _selectedExercise.Id ?? Guid.NewGuid();
             _selectedExercise.Type = (PreBuiltExersises) ExerciseTypePicker.SelectedIndex;
 
 

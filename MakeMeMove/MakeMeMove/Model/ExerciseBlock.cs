@@ -20,7 +20,7 @@ namespace MakeMeMove.Model
 
     public class ExerciseBlock
     {
-        public Guid? Id { get; set; }
+        public Guid Id { get; set; }
 
         public string IdString => Id.ToString();
 
@@ -28,6 +28,6 @@ namespace MakeMeMove.Model
         public string CombinedName => string.IsNullOrWhiteSpace(Name) ? Type.Humanize() : Name;
         public PreBuiltExersises Type;
         public int Quantity { get; set; }
-        public bool? Enabled { get; set; }
+        public bool Enabled { get; set; }
     }
 }

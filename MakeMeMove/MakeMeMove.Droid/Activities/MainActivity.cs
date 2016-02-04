@@ -111,7 +111,7 @@ namespace MakeMeMove.Droid.Activities
             var selectedExercise = _exerciseSchedule.Exercises.FirstOrDefault(e => e.Id == guid);
             if (selectedExercise != null)
             {
-                selectedExercise.Enabled = !selectedExercise.Enabled.GetValueOrDefault(true);
+                selectedExercise.Enabled = !selectedExercise.Enabled;
                 _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
             }
         }

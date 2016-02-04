@@ -40,42 +40,48 @@ namespace MakeMeMove.Model
                         Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.PushUps.Humanize(),
                         Type = PreBuiltExersises.PushUps,
-                        Quantity = 10
+                        Quantity = 10,
+                        Enabled = true
                     },
                     new ExerciseBlock
                     {
                         Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.SitUps.Humanize(),
                         Type = PreBuiltExersises.SitUps,
-                        Quantity = 10
+                        Quantity = 10,
+                        Enabled = true
                     },
                     new ExerciseBlock
                     {
                         Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.JumpingJacks.Humanize(),
                         Type = PreBuiltExersises.JumpingJacks,
-                        Quantity = 10
+                        Quantity = 10,
+                        Enabled = true
                     },
                     new ExerciseBlock
                     {
                         Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.Squats.Humanize(),
                         Type = PreBuiltExersises.Squats,
-                        Quantity = 10
+                        Quantity = 10,
+                        Enabled = true
                     },
                     new ExerciseBlock
                     {
                         Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.CalfRaises.Humanize(),
                         Type = PreBuiltExersises.CalfRaises,
-                        Quantity = 10
+                        Quantity = 10,
+                        Enabled = true
                     },
                     new ExerciseBlock
                     {
                         Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.Lunges.Humanize(),
                         Type = PreBuiltExersises.Lunges,
-                        Quantity = 5
+                        Quantity = 5,
+                        Enabled = true
                     }
                 }
             };
