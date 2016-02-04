@@ -89,9 +89,10 @@ namespace MakeMeMove.Droid.Activities
             var selectedExercise = _exerciseSchedule.Exercises.FirstOrDefault(e => e.Id == guid);
             if (selectedExercise != null)
             {
+                var exerciseIndex = _exerciseSchedule.Exercises.IndexOf(selectedExercise);
                 _exerciseSchedule.Exercises.Remove(selectedExercise);
                 _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
-                UpdateExerciseList();
+                _exerciseRecyclerView.GetAdapter().NotifyItemRemoved(exerciseIndex);
             }
         }
 
