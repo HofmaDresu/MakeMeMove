@@ -29,7 +29,8 @@ namespace MakeMeMove
 
             _db.CreateTable<ExerciseSchedule>();
 
-            if (!ExerciseSchedules.Any())
+            var hasExerciseSchedule = ExerciseSchedules.Any();
+            if (!hasExerciseSchedule)
             {
                 var defaultSchedule = ExerciseSchedule.CreateDefaultSchedule();
                 _db.Insert(defaultSchedule);
@@ -37,7 +38,7 @@ namespace MakeMeMove
             
             _db.CreateTable<ExerciseBlock>();
 
-            if (!ExerciseSchedules.Any() && !ExerciseBlocks.Any())
+            if (!hasExerciseSchedule && !ExerciseBlocks.Any())
             {
                 var defaultExercises = ExerciseBlock.CreateDefaultExercises();
                 _db.InsertAll(defaultExercises);
