@@ -45,6 +45,7 @@ namespace MakeMeMove
             }
         }
 
+#region Schedule
         public ExerciseSchedule GetExerciseSchedule()
         {
             var schedule = ExerciseSchedules.First();
@@ -55,7 +56,9 @@ namespace MakeMeMove
         {
             _db.Update(exerciseSchedule);
         }
+#endregion
 
+#region ExerciseBlocks
         public List<ExerciseBlock> GetExerciseBlocks()
         {
             return ExerciseBlocks.ToList();
@@ -75,5 +78,6 @@ namespace MakeMeMove
         {
             _db.Update(blockToUpdate);
         }
+#endregion
     }
 }
