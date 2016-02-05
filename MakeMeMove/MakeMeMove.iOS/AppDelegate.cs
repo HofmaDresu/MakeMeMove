@@ -33,7 +33,7 @@ namespace MakeMeMove.iOS
 
 
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            //LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
         }

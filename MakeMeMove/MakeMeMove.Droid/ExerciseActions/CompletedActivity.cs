@@ -20,7 +20,6 @@ namespace MakeMeMove.Droid.ExerciseActions
         {
             base.OnCreate(savedInstanceState);
 
-            new ProgressPersistence().SaveCompletedExercise(DateTime.Now.Date, Intent.GetStringExtra(Constants.ExerciseName), Intent.GetIntExtra(Constants.ExerciseQuantity, 0));
 
             Finish();
         }

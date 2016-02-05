@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using Android.App;
 using Android.Content;
@@ -10,16 +11,20 @@ using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
+using SQLite;
+using Environment = System.Environment;
+using System.Collections.Generic;
 
 namespace MakeMeMove.Droid.Activities
 {
     [Activity(Label = "@string/app_name", Icon = "@drawable/icon", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
     public class MainActivity : Activity
     {
-        private readonly ISchedulePersistence _schedulePersistence = new SchedulePersistence();
+        private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
         private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
         private readonly PermissionRequester _permissionRequester = new PermissionRequester();
         private ExerciseSchedule _exerciseSchedule;
+        private List<ExerciseBlock> _exerciseBlocks;
         private Button _startServiceButton;
         private Button _stopServiceButton;
         private TextView _startTimeText;
@@ -58,15 +63,8 @@ namespace MakeMeMove.Droid.Activities
         {
             base.OnResume();
 
-            if (!_schedulePersistence.HasExerciseSchedule())
-            {
-                _exerciseSchedule = ExerciseSchedule.CreateDefaultSchedule();
-                _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
-            }
-            else
-            {
-                _exerciseSchedule = _schedulePersistence.LoadExerciseSchedule();
-            }
+            _exerciseSchedule = _data.GetExerciseSchedule();
+            _exerciseBlocks = _data.GetExerciseBlocks();
 
             _startTimeText.Text = _exerciseSchedule.StartTime.ToLongTimeString();
             _endTimeText.Text = _exerciseSchedule.EndTime.ToLongTimeString();
@@ -77,28 +75,31 @@ namespace MakeMeMove.Droid.Activities
             EnableDisableServiceButtons();
         }
 
-        private void EditExerciseClicked(object sender, Guid guid)
+        private void EditExerciseClicked(object sender, int id)
         {
             var intent = new Intent(this, typeof (ManageExerciseActivity));
-            intent.PutExtra(Constants.ExerciseId, guid.ToString());
+            intent.PutExtra(Constants.ExerciseId, id);
             StartActivity(intent);
         }
 
-        private void DeleteExerciseClicked(object sender, Guid guid)
+        private void DeleteExerciseClicked(object sender, int id)
         {
-            var selectedExercise = _exerciseSchedule.Exercises.FirstOrDefault(e => e.Id == guid);
+            var selectedExercise = _exerciseBlocks.FirstOrDefault(e => e.Id == id);
             if (selectedExercise != null)
             {
-                var exerciseIndex = _exerciseSchedule.Exercises.IndexOf(selectedExercise);
-                _exerciseSchedule.Exercises.Remove(selectedExercise);
-                _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
-                _exerciseRecyclerView.GetAdapter().NotifyItemRemoved(exerciseIndex);
+                var exerciseIndex = _exerciseBlocks.IndexOf(selectedExercise);
+                _data.DeleteExerciseBlock(selectedExercise.Id);
+                _exerciseBlocks = _data.GetExerciseBlocks();
+
+                var adapter =(ExerciseRecyclerAdapter) _exerciseRecyclerView.GetAdapter();
+                adapter.UpdateExerciseList(_exerciseBlocks);
+                adapter.NotifyItemRemoved(exerciseIndex);
             }
         }
 
         private void UpdateExerciseList()
         {
-            var exerciseListAdapter = new ExerciseRecyclerAdapter(_exerciseSchedule.Exercises);
+            var exerciseListAdapter = new ExerciseRecyclerAdapter(_exerciseBlocks);
             exerciseListAdapter.DeleteExerciseClicked += DeleteExerciseClicked;
             exerciseListAdapter.EditExerciseClicked += EditExerciseClicked;
             exerciseListAdapter.EnableDisableClicked += EnableDisableClicked;
@@ -106,13 +107,14 @@ namespace MakeMeMove.Droid.Activities
             _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
         }
 
-        private void EnableDisableClicked(object sender, Guid guid)
+        private void EnableDisableClicked(object sender, int id)
         {
-            var selectedExercise = _exerciseSchedule.Exercises.FirstOrDefault(e => e.Id == guid);
+            var selectedExercise = _exerciseBlocks.FirstOrDefault(e => e.Id == id);
             if (selectedExercise != null)
             {
-                selectedExercise.Enabled = !selectedExercise.Enabled.GetValueOrDefault(true);
-                _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
+                selectedExercise.Enabled = !selectedExercise.Enabled;
+                _data.UpdateExerciseBlock(selectedExercise);
+                _exerciseBlocks = _data.GetExerciseBlocks();
             }
         }
 

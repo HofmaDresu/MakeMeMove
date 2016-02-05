@@ -1,7 +1,10 @@
+using System;
+using System.IO;
 using Android.App;
 using Android.Content;
 using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
+using SQLite;
 
 namespace MakeMeMove.Droid
 {
@@ -9,14 +12,14 @@ namespace MakeMeMove.Droid
     [IntentFilter(new[] { Intent.ActionBootCompleted }, Priority = (int)IntentFilterPriority.LowPriority)]
     public class ExerciseRebootReceiver : BroadcastReceiver
     {
-        private readonly ISchedulePersistence _schedulePersistence = new SchedulePersistence();
+        private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
 
         public override void OnReceive(Context context, Intent intent)
         {
             var preferences = context.GetSharedPreferences(Constants.SharedPreferencesKey, FileCreationMode.Private);
             if (!preferences.GetBoolean(Constants.ServiceIsStartedKey, false)) return;
 
-            var exerciseSchedule = _schedulePersistence.LoadExerciseSchedule();
+            var exerciseSchedule = _data.GetExerciseSchedule();
             ExerciseServiceManager.SetNextAlarm(context, exerciseSchedule);
         }
     }

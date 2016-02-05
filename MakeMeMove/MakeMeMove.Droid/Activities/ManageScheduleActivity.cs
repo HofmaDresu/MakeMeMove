@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -15,6 +16,8 @@ using Humanizer;
 using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
+using SQLite;
+using Environment = System.Environment;
 
 namespace MakeMeMove.Droid.Activities
 {
@@ -31,7 +34,7 @@ namespace MakeMeMove.Droid.Activities
         private Button _saveButton;
         private Button _cancelButton;
 
-        private readonly ISchedulePersistence _schedulePersistence = new SchedulePersistence();
+        private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
         private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
         private readonly UserNotification _userNotification = new UserNotification();
         private ExerciseSchedule _exerciseSchedule;
@@ -41,7 +44,7 @@ namespace MakeMeMove.Droid.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            _exerciseSchedule = _schedulePersistence.LoadExerciseSchedule();
+            _exerciseSchedule = _data.GetExerciseSchedule();
 
 
             SetContentView(Resource.Layout.ManageSchedule);
@@ -124,7 +127,7 @@ namespace MakeMeMove.Droid.Activities
             _exerciseSchedule.StartTime = startTime;
             _exerciseSchedule.EndTime = endTime;
 
-            _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
+            _data.SaveExerciseSchedule(_exerciseSchedule);
             _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
 
             Finish();

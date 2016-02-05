@@ -10,5 +10,6 @@ namespace MakeMeMove.Droid
         public static string ExerciseName = "ExerciseName";
         public static string ExerciseQuantity = "ExerciseQuantity";
         public static string ExerciseId = "ExerciseId";
+        public static string DatabaseName = "MakeMeMove.db3";
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Android.App;
@@ -11,6 +12,7 @@ using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Droid.ExerciseActions;
 using MakeMeMove.Model;
 using Newtonsoft.Json;
+using SQLite;
 using static System.Math;
 using Environment = System.Environment;
 using Path = System.IO.Path;
@@ -20,32 +22,32 @@ namespace MakeMeMove.Droid
     [BroadcastReceiver]
     public class ExerciseTickBroadcastReceiver : BroadcastReceiver
     {
-        private readonly ISchedulePersistence _schedulePersistence = new SchedulePersistence();
+        private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
 
         public override void OnReceive(Context context, Intent intent)
         {
             var preferences = context.GetSharedPreferences(Constants.SharedPreferencesKey, FileCreationMode.Private);
             if(!preferences.GetBoolean(Constants.ServiceIsStartedKey, false)) return;
 
-            var exerciseSchedule = _schedulePersistence.LoadExerciseSchedule();
+            var exerciseSchedule = _data.GetExerciseSchedule();
             var now = DateTime.Now.TimeOfDay;
             if (now > exerciseSchedule.StartTime.TimeOfDay && now < exerciseSchedule.EndTime.TimeOfDay)
             {
-                CreateNotification(context, exerciseSchedule);
+                CreateNotification(context, _data.GetExerciseBlocks());
             }
 
             ExerciseServiceManager.SetNextAlarm(context, exerciseSchedule);
         }
 
-        private static void CreateNotification(Context context, ExerciseSchedule exerciseSchedule)
+        private static void CreateNotification(Context context, List<ExerciseBlock> exercises)
         {
-            var enabledExercises = exerciseSchedule.Exercises.Where(e => e.Enabled.GetValueOrDefault(true)).ToList();
+            var enabledExercises = exercises.Where(e => e.Enabled).ToList();
 
             if (enabledExercises.Count == 0) return;
 
             var index = new Random().Next(0, enabledExercises.Count);
 
-            var nextExercise = enabledExercises[Min(index, exerciseSchedule.Exercises.Count - 1)];
+            var nextExercise = enabledExercises[Min(index, exercises.Count - 1)];
 
             var completedIntent = new Intent(context, typeof (CompletedActivity));
             completedIntent.PutExtra(Constants.ExerciseName, nextExercise.CombinedName);
@@ -74,8 +76,7 @@ namespace MakeMeMove.Droid
             else
             {
                 builder
-                    .SetSmallIcon(Resource.Drawable.icon)
-                    .AddAction(0, "Complete", pendingIntent);
+                    .SetSmallIcon(Resource.Drawable.icon);
             }
 
             var notification = builder.Build();
