@@ -17,9 +17,9 @@ namespace MakeMeMove.Droid.Adapters
 {
     public class ExerciseRecyclerAdapter : RecyclerView.Adapter
     {
-        public EventHandler<Guid> DeleteExerciseClicked;
-        public EventHandler<Guid> EditExerciseClicked;
-        public EventHandler<Guid> EnableDisableClicked;
+        public EventHandler<int> DeleteExerciseClicked;
+        public EventHandler<int> EditExerciseClicked;
+        public EventHandler<int> EnableDisableClicked;
         private readonly List<ExerciseBlock> _exerciseList;
 
         public ExerciseRecyclerAdapter(List<ExerciseBlock> exerciseList)

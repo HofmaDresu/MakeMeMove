@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Humanizer;
+using SQLite;
 
 namespace MakeMeMove.Model
 {
@@ -18,15 +19,19 @@ namespace MakeMeMove.Model
         Custom
     }
 
+    [Table("ExerciseBlocks")]
     public class ExerciseBlock
     {
-        public Guid Id { get; set; }
-
-        public string IdString => Id.ToString();
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
 
         public string Name { get; set; }
+        [Ignore]
         public string CombinedName => string.IsNullOrWhiteSpace(Name) ? Type.Humanize() : Name;
-        public PreBuiltExersises Type;
+
+
+        
+        public PreBuiltExersises Type { get; set; }
         public int Quantity { get; set; }
         public bool Enabled { get; set; }
     }

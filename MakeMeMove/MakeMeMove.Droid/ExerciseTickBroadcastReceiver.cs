@@ -11,6 +11,7 @@ using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Droid.ExerciseActions;
 using MakeMeMove.Model;
 using Newtonsoft.Json;
+using SQLite;
 using static System.Math;
 using Environment = System.Environment;
 using Path = System.IO.Path;
@@ -20,14 +21,14 @@ namespace MakeMeMove.Droid
     [BroadcastReceiver]
     public class ExerciseTickBroadcastReceiver : BroadcastReceiver
     {
-        private readonly ISchedulePersistence _schedulePersistence = new SchedulePersistence();
+        private readonly Data _data = new Data(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
 
         public override void OnReceive(Context context, Intent intent)
         {
             var preferences = context.GetSharedPreferences(Constants.SharedPreferencesKey, FileCreationMode.Private);
             if(!preferences.GetBoolean(Constants.ServiceIsStartedKey, false)) return;
 
-            var exerciseSchedule = _schedulePersistence.LoadExerciseSchedule();
+            var exerciseSchedule = _data.GetExerciseSchedule();
             var now = DateTime.Now.TimeOfDay;
             if (now > exerciseSchedule.StartTime.TimeOfDay && now < exerciseSchedule.EndTime.TimeOfDay)
             {

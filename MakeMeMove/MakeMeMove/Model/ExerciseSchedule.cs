@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Humanizer;
+using SQLite;
 
 namespace MakeMeMove.Model
 {
@@ -12,6 +13,7 @@ namespace MakeMeMove.Model
         BiHourly
     }
 
+    [Table("ExerciseSchedules")]
     public class ExerciseSchedule
     {
         public ExerciseSchedule()
@@ -19,10 +21,15 @@ namespace MakeMeMove.Model
             Exercises = new List<ExerciseBlock>();
         }
 
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        
         public SchedulePeriod Period { get; set; }
+        [Ignore]
         public string PeriodDisplayString => Period.Humanize();
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+        [Ignore]
         public List<ExerciseBlock> Exercises { get; set; }
 
 
@@ -37,7 +44,6 @@ namespace MakeMeMove.Model
                 {
                     new ExerciseBlock
                     {
-                        Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.PushUps.Humanize(),
                         Type = PreBuiltExersises.PushUps,
                         Quantity = 10,
@@ -45,7 +51,6 @@ namespace MakeMeMove.Model
                     },
                     new ExerciseBlock
                     {
-                        Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.SitUps.Humanize(),
                         Type = PreBuiltExersises.SitUps,
                         Quantity = 10,
@@ -53,7 +58,6 @@ namespace MakeMeMove.Model
                     },
                     new ExerciseBlock
                     {
-                        Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.JumpingJacks.Humanize(),
                         Type = PreBuiltExersises.JumpingJacks,
                         Quantity = 10,
@@ -61,7 +65,6 @@ namespace MakeMeMove.Model
                     },
                     new ExerciseBlock
                     {
-                        Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.Squats.Humanize(),
                         Type = PreBuiltExersises.Squats,
                         Quantity = 10,
@@ -69,7 +72,6 @@ namespace MakeMeMove.Model
                     },
                     new ExerciseBlock
                     {
-                        Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.CalfRaises.Humanize(),
                         Type = PreBuiltExersises.CalfRaises,
                         Quantity = 10,
@@ -77,7 +79,6 @@ namespace MakeMeMove.Model
                     },
                     new ExerciseBlock
                     {
-                        Id = Guid.NewGuid(),
                         Name = PreBuiltExersises.Lunges.Humanize(),
                         Type = PreBuiltExersises.Lunges,
                         Quantity = 5,

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -14,6 +15,8 @@ using Humanizer;
 using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
+using SQLite;
+using Environment = System.Environment;
 
 namespace MakeMeMove.Droid.Activities
 {
@@ -26,16 +29,16 @@ namespace MakeMeMove.Droid.Activities
         private Button _saveButton;
         private Button _cancelButton;
 
-        private readonly ISchedulePersistence _schedulePersistence = new SchedulePersistence();
+        private readonly Data _data = new Data(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
         private ExerciseSchedule _exerciseSchedule;
         private readonly UserNotification _userNotification = new UserNotification();
-        private Guid? _currentExerciseId = null;
+        private int? _currentExerciseId = null;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            _exerciseSchedule = _schedulePersistence.LoadExerciseSchedule();
+            _exerciseSchedule = _data.GetExerciseSchedule();
 
             SetContentView(Resource.Layout.ManageExercise);
 
@@ -47,10 +50,10 @@ namespace MakeMeMove.Droid.Activities
 
             InitializePickers();
 
-            var editExerciseId = Intent.GetStringExtra(Constants.ExerciseId);
-            if (!string.IsNullOrWhiteSpace(editExerciseId))
+            var editExerciseId = Intent.GetIntExtra(Constants.ExerciseId, -1);
+            if (editExerciseId > -1)
             {
-                _currentExerciseId = Guid.Parse(editExerciseId);
+                _currentExerciseId = editExerciseId;
                 SetCurrentExerciseData();
                 Title = "Edit Exercise";
             }
@@ -119,7 +122,6 @@ namespace MakeMeMove.Droid.Activities
             {
                 _exerciseSchedule.Exercises.Add(new ExerciseBlock
                 {
-                    Id = Guid.NewGuid(),
                     Name = exerciseType == PreBuiltExersises.Custom ? _customExerciseNameText.Text : string.Empty,
                     Quantity = repetitions,
                     Type = exerciseType
@@ -127,7 +129,7 @@ namespace MakeMeMove.Droid.Activities
 
             }
 
-            _schedulePersistence.SaveExerciseSchedule(_exerciseSchedule);
+            _data.SaveExerciseSchedule(_exerciseSchedule);
 
             Finish();
         }
