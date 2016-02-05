@@ -10,11 +10,20 @@ namespace MakeMeMove
 {
     public class Data
     {
-        private readonly SQLiteConnection _db;
+        private SQLiteConnection _db;
         private TableQuery<ExerciseSchedule> ExerciseSchedules => _db.Table<ExerciseSchedule>();
         private TableQuery<ExerciseBlock> ExerciseBlocks => _db.Table<ExerciseBlock>();
 
-        public Data(SQLiteConnection conn)
+        private static readonly Lazy<Data> LazyData = new Lazy<Data>();
+
+        public static Data GetInstance(SQLiteConnection conn)
+        {
+            var instance = LazyData.Value;
+            instance.Initalize(conn);
+            return instance;
+        }
+
+        private void Initalize(SQLiteConnection conn)
         {
             _db = conn;
 

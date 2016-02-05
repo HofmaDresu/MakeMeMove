@@ -20,7 +20,7 @@ namespace MakeMeMove.Droid.Activities
     [Activity(Label = "@string/app_name", Icon = "@drawable/icon", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
     public class MainActivity : Activity
     {
-        private readonly Data _data = new Data(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
+        private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
         private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
         private readonly PermissionRequester _permissionRequester = new PermissionRequester();
         private ExerciseSchedule _exerciseSchedule;

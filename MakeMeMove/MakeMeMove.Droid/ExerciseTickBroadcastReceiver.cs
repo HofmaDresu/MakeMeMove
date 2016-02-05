@@ -22,7 +22,7 @@ namespace MakeMeMove.Droid
     [BroadcastReceiver]
     public class ExerciseTickBroadcastReceiver : BroadcastReceiver
     {
-        private readonly Data _data = new Data(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
+        private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
 
         public override void OnReceive(Context context, Intent intent)
         {

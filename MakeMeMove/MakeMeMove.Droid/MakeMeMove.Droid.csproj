@@ -113,7 +113,6 @@
     <Compile Include="Activities\ManageScheduleActivity.cs" />
     <Compile Include="Adapters\ExerciseRecyclerAdapter.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="DeviceSpecificImplementations\ProgressPersistence.cs" />
     <Compile Include="DeviceSpecificImplementations\UserNotification.cs" />
     <Compile Include="ExerciseActions\CompletedActivity.cs" />
     <Compile Include="ExerciseRebootReceiver.cs" />

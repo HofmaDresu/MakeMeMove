@@ -34,7 +34,7 @@ namespace MakeMeMove.Droid.Activities
         private Button _saveButton;
         private Button _cancelButton;
 
-        private readonly Data _data = new Data(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
+        private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
         private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
         private readonly UserNotification _userNotification = new UserNotification();
         private ExerciseSchedule _exerciseSchedule;
