@@ -30,7 +30,7 @@ namespace MakeMeMove.Droid.Activities
         private Button _cancelButton;
 
         private readonly Data _data = new Data(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
-        private ExerciseSchedule _exerciseSchedule;
+        private List<ExerciseBlock> _exerciseBlocks;
         private readonly UserNotification _userNotification = new UserNotification();
         private int? _currentExerciseId = null;
 
@@ -38,7 +38,7 @@ namespace MakeMeMove.Droid.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            _exerciseSchedule = _data.GetExerciseSchedule();
+            _exerciseBlocks = _data.GetExerciseBlocks();
 
             SetContentView(Resource.Layout.ManageExercise);
 
@@ -76,7 +76,7 @@ namespace MakeMeMove.Droid.Activities
 
         private void SetCurrentExerciseData()
         {
-            var currentExercise = _exerciseSchedule.Exercises.Single(e => e.Id == _currentExerciseId);
+            var currentExercise = _exerciseBlocks.Single(e => e.Id == _currentExerciseId);
 
             _exerciseTypeSpinner.SetSelection((int) currentExercise.Type);
             _repetitionText.Text = currentExercise.Quantity.ToString();
@@ -112,15 +112,16 @@ namespace MakeMeMove.Droid.Activities
 
             if (_currentExerciseId.HasValue)
             {
-                var exercise = _exerciseSchedule.Exercises.Single(e => e.Id == _currentExerciseId);
+                var exercise = _exerciseBlocks.Single(e => e.Id == _currentExerciseId);
 
                 exercise.Name = exerciseType == PreBuiltExersises.Custom ? _customExerciseNameText.Text : string.Empty;
                 exercise.Quantity = repetitions;
                 exercise.Type = exerciseType;
+                _data.UpdateExerciseBlock(exercise);
             }
             else
             {
-                _exerciseSchedule.Exercises.Add(new ExerciseBlock
+                _data.InsertExerciseBlock(new ExerciseBlock
                 {
                     Name = exerciseType == PreBuiltExersises.Custom ? _customExerciseNameText.Text : string.Empty,
                     Quantity = repetitions,
@@ -128,8 +129,6 @@ namespace MakeMeMove.Droid.Activities
                 });
 
             }
-
-            _data.SaveExerciseSchedule(_exerciseSchedule);
 
             Finish();
         }

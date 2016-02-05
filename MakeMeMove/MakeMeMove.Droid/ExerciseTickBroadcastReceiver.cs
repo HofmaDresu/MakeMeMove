@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Android.App;
@@ -32,21 +33,21 @@ namespace MakeMeMove.Droid
             var now = DateTime.Now.TimeOfDay;
             if (now > exerciseSchedule.StartTime.TimeOfDay && now < exerciseSchedule.EndTime.TimeOfDay)
             {
-                CreateNotification(context, exerciseSchedule);
+                CreateNotification(context, _data.GetExerciseBlocks());
             }
 
             ExerciseServiceManager.SetNextAlarm(context, exerciseSchedule);
         }
 
-        private static void CreateNotification(Context context, ExerciseSchedule exerciseSchedule)
+        private static void CreateNotification(Context context, List<ExerciseBlock> exercises)
         {
-            var enabledExercises = exerciseSchedule.Exercises.Where(e => e.Enabled).ToList();
+            var enabledExercises = exercises.Where(e => e.Enabled).ToList();
 
             if (enabledExercises.Count == 0) return;
 
             var index = new Random().Next(0, enabledExercises.Count);
 
-            var nextExercise = enabledExercises[Min(index, exerciseSchedule.Exercises.Count - 1)];
+            var nextExercise = enabledExercises[Min(index, exercises.Count - 1)];
 
             var completedIntent = new Intent(context, typeof (CompletedActivity));
             completedIntent.PutExtra(Constants.ExerciseName, nextExercise.CombinedName);

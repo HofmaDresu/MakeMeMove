@@ -13,6 +13,7 @@ using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
 using SQLite;
 using Environment = System.Environment;
+using System.Collections.Generic;
 
 namespace MakeMeMove.Droid.Activities
 {
@@ -23,6 +24,7 @@ namespace MakeMeMove.Droid.Activities
         private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
         private readonly PermissionRequester _permissionRequester = new PermissionRequester();
         private ExerciseSchedule _exerciseSchedule;
+        private List<ExerciseBlock> _exerciseBlocks;
         private Button _startServiceButton;
         private Button _stopServiceButton;
         private TextView _startTimeText;
@@ -62,6 +64,7 @@ namespace MakeMeMove.Droid.Activities
             base.OnResume();
 
             _exerciseSchedule = _data.GetExerciseSchedule();
+            _exerciseBlocks = _data.GetExerciseBlocks();
 
             _startTimeText.Text = _exerciseSchedule.StartTime.ToLongTimeString();
             _endTimeText.Text = _exerciseSchedule.EndTime.ToLongTimeString();
@@ -75,25 +78,26 @@ namespace MakeMeMove.Droid.Activities
         private void EditExerciseClicked(object sender, int id)
         {
             var intent = new Intent(this, typeof (ManageExerciseActivity));
-            intent.PutExtra(Constants.ExerciseId, id.ToString());
+            intent.PutExtra(Constants.ExerciseId, id);
             StartActivity(intent);
         }
 
         private void DeleteExerciseClicked(object sender, int id)
         {
-            var selectedExercise = _exerciseSchedule.Exercises.FirstOrDefault(e => e.Id == id);
+            var selectedExercise = _exerciseBlocks.FirstOrDefault(e => e.Id == id);
             if (selectedExercise != null)
             {
-                var exerciseIndex = _exerciseSchedule.Exercises.IndexOf(selectedExercise);
-                _exerciseSchedule.Exercises.Remove(selectedExercise);
-                _data.SaveExerciseSchedule(_exerciseSchedule);
+                var exerciseIndex = _exerciseBlocks.IndexOf(selectedExercise);
+                _data.DeleteExerciseBlock(selectedExercise.Id);
+                _exerciseBlocks = _data.GetExerciseBlocks();
+
                 _exerciseRecyclerView.GetAdapter().NotifyItemRemoved(exerciseIndex);
             }
         }
 
         private void UpdateExerciseList()
         {
-            var exerciseListAdapter = new ExerciseRecyclerAdapter(_exerciseSchedule.Exercises);
+            var exerciseListAdapter = new ExerciseRecyclerAdapter(_exerciseBlocks);
             exerciseListAdapter.DeleteExerciseClicked += DeleteExerciseClicked;
             exerciseListAdapter.EditExerciseClicked += EditExerciseClicked;
             exerciseListAdapter.EnableDisableClicked += EnableDisableClicked;
@@ -103,11 +107,12 @@ namespace MakeMeMove.Droid.Activities
 
         private void EnableDisableClicked(object sender, int id)
         {
-            var selectedExercise = _exerciseSchedule.Exercises.FirstOrDefault(e => e.Id == id);
+            var selectedExercise = _exerciseBlocks.FirstOrDefault(e => e.Id == id);
             if (selectedExercise != null)
             {
                 selectedExercise.Enabled = !selectedExercise.Enabled;
-                _data.SaveExerciseSchedule(_exerciseSchedule);
+                _data.UpdateExerciseBlock(selectedExercise);
+                _exerciseBlocks = _data.GetExerciseBlocks();
             }
         }
 

@@ -17,55 +17,53 @@ namespace MakeMeMove
         public Data(SQLiteConnection conn)
         {
             _db = conn;
-            _db.Execute("drop table Exerciseschedules; drop table exerciseblocks;");
 
             _db.CreateTable<ExerciseSchedule>();
-            _db.CreateTable<ExerciseBlock>();
 
             if (!ExerciseSchedules.Any())
             {
                 var defaultSchedule = ExerciseSchedule.CreateDefaultSchedule();
-
                 _db.Insert(defaultSchedule);
-                _db.InsertAll(defaultSchedule.Exercises);
+            }
+            
+            _db.CreateTable<ExerciseBlock>();
+
+            if (!ExerciseBlocks.Any())
+            {
+                var defaultExercises = ExerciseBlock.CreateDefaultExercises();
+                _db.InsertAll(defaultExercises);
             }
         }
 
         public ExerciseSchedule GetExerciseSchedule()
         {
             var schedule = ExerciseSchedules.First();
-            schedule.Exercises = ExerciseBlocks.ToList();
             return schedule;
         }
         
         public void SaveExerciseSchedule(ExerciseSchedule exerciseSchedule)
         {
             _db.Update(exerciseSchedule);
-
-            DeleteRemovedExercises(exerciseSchedule);
-
-            UpdateChangedExercises(exerciseSchedule);
-
-            return GetExerciseSchedule();
         }
 
-        private void DeleteRemovedExercises(ExerciseSchedule exerciseSchedule)
+        public List<ExerciseBlock> GetExerciseBlocks()
         {
-            var currentExerciseIds = exerciseSchedule.Exercises.Select(e => e.Id).ToList();
+            return ExerciseBlocks.ToList();
+        } 
 
-            var exerciseIdsToDelete = (from e in ExerciseBlocks
-                where !currentExerciseIds.Contains(e.Id)
-                select e).Select(e => e.Id).ToList();
-
-            ExerciseBlocks.Delete(eb => exerciseIdsToDelete.Contains(eb.Id));
+        public void DeleteExerciseBlock(int id)
+        {
+            _db.Delete<ExerciseBlock>(id);
         }
 
-        private void UpdateChangedExercises(ExerciseSchedule exerciseSchedule)
+        public void InsertExerciseBlock(ExerciseBlock newExerciseBlock)
         {
-            foreach (var VARIABLE in COLLECTION)
-            {
-                
-            }
+            _db.Insert(newExerciseBlock);
+        }
+
+        public void UpdateExerciseBlock(ExerciseBlock blockToUpdate)
+        {
+            _db.Update(blockToUpdate);
         }
     }
 }
