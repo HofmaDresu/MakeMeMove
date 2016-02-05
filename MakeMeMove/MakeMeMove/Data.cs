@@ -13,6 +13,7 @@ namespace MakeMeMove
         private SQLiteConnection _db;
         private TableQuery<ExerciseSchedule> ExerciseSchedules => _db.Table<ExerciseSchedule>();
         private TableQuery<ExerciseBlock> ExerciseBlocks => _db.Table<ExerciseBlock>();
+        private TableQuery<ExerciseHistory> ExerciseHistories => _db.Table<ExerciseHistory>();
 
         private static readonly Lazy<Data> LazyData = new Lazy<Data>();
 
@@ -43,6 +44,8 @@ namespace MakeMeMove
                 var defaultExercises = ExerciseBlock.CreateDefaultExercises();
                 _db.InsertAll(defaultExercises);
             }
+
+            _db.CreateTable<ExerciseHistory>();
         }
 
 #region Schedule
@@ -78,6 +81,59 @@ namespace MakeMeMove
         {
             _db.Update(blockToUpdate);
         }
+        #endregion
+
+#region ExerciseHistory
+
+        public ExerciseHistory GetExerciseHistoryForDay(DateTime date)
+        {
+            return ExerciseHistories.SingleOrDefault(eh => eh.RecordedDate.Date == date.Date);
+        }
+
+        public void MarkExerciseNotified(string exerciseName, int quantity)
+        {
+            var exerciseHistory = ExerciseHistories.SingleOrDefault(eh => eh.RecordedDate.Date == DateTime.Today.Date && eh.ExerciseName == exerciseName);
+
+            if (exerciseHistory == null)
+            {
+                exerciseHistory = new ExerciseHistory
+                {
+                    ExerciseName = exerciseName,
+                    QuantityNotified = quantity,
+                    RecordedDate = DateTime.Today.Date
+                };
+
+                _db.Insert(exerciseHistory);
+            }
+            else
+            {
+                exerciseHistory.QuantityNotified += quantity;
+                _db.Update(exerciseHistory);
+            }
+        }
+
+        public void MarkExerciseCompleted(string exerciseName, int quantity)
+        {
+            var exerciseHistory = ExerciseHistories.SingleOrDefault(eh => eh.RecordedDate.Date == DateTime.Today.Date && eh.ExerciseName == exerciseName);
+
+            if (exerciseHistory == null)
+            {
+                exerciseHistory = new ExerciseHistory
+                {
+                    ExerciseName = exerciseName,
+                    QuantityCompleted = quantity,
+                    RecordedDate = DateTime.Today.Date
+                };
+
+                _db.Insert(exerciseHistory);
+            }
+            else
+            {
+                exerciseHistory.QuantityCompleted += quantity;
+                _db.Update(exerciseHistory);
+            }
+        }
+
 #endregion
     }
 }

@@ -22,7 +22,7 @@ namespace MakeMeMove.Droid
     [BroadcastReceiver]
     public class ExerciseTickBroadcastReceiver : BroadcastReceiver
     {
-        private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
+        private Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
 
         public override void OnReceive(Context context, Intent intent)
         {
@@ -39,7 +39,7 @@ namespace MakeMeMove.Droid
             ExerciseServiceManager.SetNextAlarm(context, exerciseSchedule);
         }
 
-        private static void CreateNotification(Context context, List<ExerciseBlock> exercises)
+        private void CreateNotification(Context context, List<ExerciseBlock> exercises)
         {
             var enabledExercises = exercises.Where(e => e.Enabled).ToList();
 
@@ -54,10 +54,13 @@ namespace MakeMeMove.Droid
             completedIntent.PutExtra(Constants.ExerciseQuantity, nextExercise.Quantity);
             var pendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, completedIntent, 0);
 
+            _data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
+
             var builder = new Notification.Builder(context)
                 .SetContentTitle("Time to Move")
                 .SetContentText($"It's time to do {nextExercise.Quantity} {nextExercise.CombinedName}")
-                .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate);
+                .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate)
+                .AddAction(new Notification.Action(0, "Completed", pendingIntent));
             
             if ((int) Build.VERSION.SdkInt >= 21)
             {
