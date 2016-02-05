@@ -125,7 +125,8 @@ namespace MakeMeMove.Droid.Activities
                 {
                     Name = exerciseType == PreBuiltExersises.Custom ? _customExerciseNameText.Text : string.Empty,
                     Quantity = repetitions,
-                    Type = exerciseType
+                    Type = exerciseType,
+                    Enabled = true
                 });
 
             }
