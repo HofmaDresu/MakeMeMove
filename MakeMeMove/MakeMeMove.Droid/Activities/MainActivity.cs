@@ -48,6 +48,8 @@ namespace MakeMeMove.Droid.Activities
             _manageScheduleButton.Click += (o, e) => StartActivity(new Intent(this, typeof (ManageScheduleActivity)));
             _addExerciseButton.Click += (sender, args) => StartActivity(new Intent(this, typeof(ManageExerciseActivity)));
 
+            FindViewById<Button>(Resource.Id.ViewHistoryButton).Click += (sender, args) => StartActivity(new Intent(this, typeof(ExerciseHistory)));
+
             _permissionRequester.RequestPermissions(this);
 
             _exerciseRecyclerView.SetLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.Vertical, false));

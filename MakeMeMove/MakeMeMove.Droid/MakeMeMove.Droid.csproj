@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\BaseActivity.cs" />
+    <Compile Include="Activities\ExerciseHistory.cs" />
     <Compile Include="Activities\ManageExerciseActivity.cs" />
     <Compile Include="Activities\ManageScheduleActivity.cs" />
     <Compile Include="Adapters\ExerciseRecyclerAdapter.cs" />
@@ -150,6 +151,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\ManageExercise.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ExerciseHistory.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

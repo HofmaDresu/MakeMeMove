@@ -85,14 +85,19 @@ namespace MakeMeMove
 
 #region ExerciseHistory
 
-        public ExerciseHistory GetExerciseHistoryForDay(DateTime date)
+        public List<ExerciseHistory> GetExerciseHistoryForDay(DateTime date)
         {
-            return ExerciseHistories.SingleOrDefault(eh => eh.RecordedDate.Date == date.Date);
+            
+            return ExerciseHistories.Where(eh => eh.RecordedDate == date).ToList();
         }
 
         public void MarkExerciseNotified(string exerciseName, int quantity)
         {
-            var exerciseHistory = ExerciseHistories.SingleOrDefault(eh => eh.RecordedDate.Date == DateTime.Today.Date && eh.ExerciseName == exerciseName);
+            var exerciseHistory = ExerciseHistories.SingleOrDefault(eh =>
+            {
+                var todaysDate = DateTime.Today.Date;
+                return eh.RecordedDate == todaysDate && eh.ExerciseName == exerciseName;
+            });
 
             if (exerciseHistory == null)
             {
@@ -100,7 +105,7 @@ namespace MakeMeMove
                 {
                     ExerciseName = exerciseName,
                     QuantityNotified = quantity,
-                    RecordedDate = DateTime.Today.Date
+                    RecordedDate = DateTime.Today
                 };
 
                 _db.Insert(exerciseHistory);
@@ -114,7 +119,11 @@ namespace MakeMeMove
 
         public void MarkExerciseCompleted(string exerciseName, int quantity)
         {
-            var exerciseHistory = ExerciseHistories.SingleOrDefault(eh => eh.RecordedDate.Date == DateTime.Today.Date && eh.ExerciseName == exerciseName);
+            var exerciseHistory = ExerciseHistories.SingleOrDefault(eh =>
+            {
+                var todaysDate = DateTime.Today.Date;
+                return eh.RecordedDate == todaysDate && eh.ExerciseName == exerciseName;
+            });
 
             if (exerciseHistory == null)
             {
@@ -122,7 +131,7 @@ namespace MakeMeMove
                 {
                     ExerciseName = exerciseName,
                     QuantityCompleted = quantity,
-                    RecordedDate = DateTime.Today.Date
+                    RecordedDate = DateTime.Today
                 };
 
                 _db.Insert(exerciseHistory);
