@@ -1,27 +1,19 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Humanizer;
-using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
-using SQLite;
-using Environment = System.Environment;
 
 namespace MakeMeMove.Droid.Activities
 {
     [Activity(Label = "ManageExerciseActivity", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
-    public class ManageExerciseActivity : Activity
+    public class ManageExerciseActivity : BaseActivity
     {
         private Spinner _exerciseTypeSpinner;
         private EditText _customExerciseNameText;
@@ -29,16 +21,15 @@ namespace MakeMeMove.Droid.Activities
         private Button _saveButton;
         private Button _cancelButton;
 
-        private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
         private List<ExerciseBlock> _exerciseBlocks;
         private readonly UserNotification _userNotification = new UserNotification();
-        private int? _currentExerciseId = null;
+        private int? _currentExerciseId;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            _exerciseBlocks = _data.GetExerciseBlocks();
+            _exerciseBlocks = Data.GetExerciseBlocks();
 
             SetContentView(Resource.Layout.ManageExercise);
 
@@ -117,11 +108,11 @@ namespace MakeMeMove.Droid.Activities
                 exercise.Name = exerciseType == PreBuiltExersises.Custom ? _customExerciseNameText.Text : string.Empty;
                 exercise.Quantity = repetitions;
                 exercise.Type = exerciseType;
-                _data.UpdateExerciseBlock(exercise);
+                Data.UpdateExerciseBlock(exercise);
             }
             else
             {
-                _data.InsertExerciseBlock(new ExerciseBlock
+                Data.InsertExerciseBlock(new ExerciseBlock
                 {
                     Name = exerciseType == PreBuiltExersises.Custom ? _customExerciseNameText.Text : string.Empty,
                     Quantity = repetitions,

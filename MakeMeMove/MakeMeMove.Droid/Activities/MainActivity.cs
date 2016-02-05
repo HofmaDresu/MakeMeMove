@@ -1,26 +1,20 @@
-﻿using System;
-using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.Widget;
 using Android.Widget;
-using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
-using SQLite;
-using Environment = System.Environment;
 using System.Collections.Generic;
 
 namespace MakeMeMove.Droid.Activities
 {
     [Activity(Label = "@string/app_name", Icon = "@drawable/icon", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
-    public class MainActivity : Activity
+    public class MainActivity : BaseActivity
     {
-        private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
         private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
         private readonly PermissionRequester _permissionRequester = new PermissionRequester();
         private ExerciseSchedule _exerciseSchedule;
@@ -63,8 +57,8 @@ namespace MakeMeMove.Droid.Activities
         {
             base.OnResume();
 
-            _exerciseSchedule = _data.GetExerciseSchedule();
-            _exerciseBlocks = _data.GetExerciseBlocks();
+            _exerciseSchedule = Data.GetExerciseSchedule();
+            _exerciseBlocks = Data.GetExerciseBlocks();
 
             _startTimeText.Text = _exerciseSchedule.StartTime.ToLongTimeString();
             _endTimeText.Text = _exerciseSchedule.EndTime.ToLongTimeString();
@@ -88,8 +82,8 @@ namespace MakeMeMove.Droid.Activities
             if (selectedExercise != null)
             {
                 var exerciseIndex = _exerciseBlocks.IndexOf(selectedExercise);
-                _data.DeleteExerciseBlock(selectedExercise.Id);
-                _exerciseBlocks = _data.GetExerciseBlocks();
+                Data.DeleteExerciseBlock(selectedExercise.Id);
+                _exerciseBlocks = Data.GetExerciseBlocks();
 
                 var adapter =(ExerciseRecyclerAdapter) _exerciseRecyclerView.GetAdapter();
                 adapter.UpdateExerciseList(_exerciseBlocks);
@@ -113,8 +107,8 @@ namespace MakeMeMove.Droid.Activities
             if (selectedExercise != null)
             {
                 selectedExercise.Enabled = !selectedExercise.Enabled;
-                _data.UpdateExerciseBlock(selectedExercise);
-                _exerciseBlocks = _data.GetExerciseBlocks();
+                Data.UpdateExerciseBlock(selectedExercise);
+                _exerciseBlocks = Data.GetExerciseBlocks();
             }
         }
 

@@ -1,28 +1,18 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 using Humanizer;
-using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
-using SQLite;
-using Environment = System.Environment;
 
 namespace MakeMeMove.Droid.Activities
 {
     [Activity(Label = "Manage Schedule", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
-    public class ManageScheduleActivity : Activity
+    public class ManageScheduleActivity : BaseActivity
     {
         private Spinner _reminderPeriodSpinner;
         private Spinner _startHourSpinner;
@@ -34,7 +24,6 @@ namespace MakeMeMove.Droid.Activities
         private Button _saveButton;
         private Button _cancelButton;
 
-        private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
         private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
         private readonly UserNotification _userNotification = new UserNotification();
         private ExerciseSchedule _exerciseSchedule;
@@ -44,7 +33,7 @@ namespace MakeMeMove.Droid.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            _exerciseSchedule = _data.GetExerciseSchedule();
+            _exerciseSchedule = Data.GetExerciseSchedule();
 
 
             SetContentView(Resource.Layout.ManageSchedule);
@@ -127,7 +116,7 @@ namespace MakeMeMove.Droid.Activities
             _exerciseSchedule.StartTime = startTime;
             _exerciseSchedule.EndTime = endTime;
 
-            _data.SaveExerciseSchedule(_exerciseSchedule);
+            Data.SaveExerciseSchedule(_exerciseSchedule);
             _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
 
             Finish();
