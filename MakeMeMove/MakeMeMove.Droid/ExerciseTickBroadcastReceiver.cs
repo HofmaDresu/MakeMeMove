@@ -76,8 +76,7 @@ namespace MakeMeMove.Droid
             else
             {
                 builder
-                    .SetSmallIcon(Resource.Drawable.icon)
-                    .AddAction(0, "Complete", pendingIntent);
+                    .SetSmallIcon(Resource.Drawable.icon);
             }
 
             var notification = builder.Build();
