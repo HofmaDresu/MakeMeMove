@@ -20,9 +20,14 @@ namespace MakeMeMove.Droid.Adapters
         public EventHandler<int> DeleteExerciseClicked;
         public EventHandler<int> EditExerciseClicked;
         public EventHandler<int> EnableDisableClicked;
-        private readonly List<ExerciseBlock> _exerciseList;
+        private List<ExerciseBlock> _exerciseList;
 
         public ExerciseRecyclerAdapter(List<ExerciseBlock> exerciseList)
+        {
+            _exerciseList = exerciseList;
+        }
+
+        public void UpdateExerciseList(List<ExerciseBlock> exerciseList)
         {
             _exerciseList = exerciseList;
         }

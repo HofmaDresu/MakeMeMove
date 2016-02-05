@@ -91,7 +91,9 @@ namespace MakeMeMove.Droid.Activities
                 _data.DeleteExerciseBlock(selectedExercise.Id);
                 _exerciseBlocks = _data.GetExerciseBlocks();
 
-                _exerciseRecyclerView.GetAdapter().NotifyItemRemoved(exerciseIndex);
+                var adapter =(ExerciseRecyclerAdapter) _exerciseRecyclerView.GetAdapter();
+                adapter.UpdateExerciseList(_exerciseBlocks);
+                adapter.NotifyItemRemoved(exerciseIndex);
             }
         }
 
