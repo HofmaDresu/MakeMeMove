@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace MakeMeMove.Droid.Activities
 {
-    [Activity(Label = "Exercise History", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize]
+    [Activity(Label = "Exercise History", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
     public class ExerciseHistoryActivity : BaseActivity
     {
         private TextView _date;

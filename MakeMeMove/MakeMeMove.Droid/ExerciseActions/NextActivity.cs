@@ -2,11 +2,12 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using MakeMeMove.Droid.Activities;
+using MakeMeMove.Droid.DeviceSpecificImplementations;
 
 namespace MakeMeMove.Droid.ExerciseActions
 {
     [Activity(TaskAffinity = "", ExcludeFromRecents = true)]
-    public class CompletedActivity : BaseActivity
+    public class NextActivity : BaseActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -19,8 +20,10 @@ namespace MakeMeMove.Droid.ExerciseActions
 
             if (!string.IsNullOrEmpty(exerciseName) && exerciseQuantity > 0)
             {
-                Data.MarkExerciseCompleted(exerciseName, exerciseQuantity);
+                Data.MarkExerciseCompleted(exerciseName, -1 * exerciseQuantity);
             }
+
+            UserNotification.CreateNotification(Data, this);
 
             Finish();
         }

@@ -124,12 +124,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\BaseActivity.cs" />
-    <Compile Include="Activities\ExerciseHistory.cs" />
+    <Compile Include="Activities\ExerciseHistoryActivity.cs" />
     <Compile Include="Activities\ManageExerciseActivity.cs" />
     <Compile Include="Activities\ManageScheduleActivity.cs" />
     <Compile Include="Adapters\ExerciseRecyclerAdapter.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DeviceSpecificImplementations\UserNotification.cs" />
+    <Compile Include="ExerciseActions\NextActivity.cs" />
     <Compile Include="ExerciseActions\CompletedActivity.cs" />
     <Compile Include="ExerciseRebootReceiver.cs" />
     <Compile Include="DeviceSpecificImplementations\ExerciseServiceManager.cs" />
