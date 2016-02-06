@@ -52,7 +52,7 @@ namespace MakeMeMove.Droid
             var completedIntent = new Intent(context, typeof (CompletedActivity));
             completedIntent.PutExtra(Constants.ExerciseName, nextExercise.CombinedName);
             completedIntent.PutExtra(Constants.ExerciseQuantity, nextExercise.Quantity);
-            var pendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, completedIntent, 0);
+            var pendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, completedIntent, PendingIntentFlags.CancelCurrent);
 
             _data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
 
@@ -85,10 +85,9 @@ namespace MakeMeMove.Droid
             var notification = builder.Build();
 
             notification.Flags |= NotificationFlags.AutoCancel;
-
-            const int notificationId = 0;
+            
             var notificationManager = context.GetSystemService(Context.NotificationService) as NotificationManager;
-            notificationManager?.Notify(notificationId, notification);
+            notificationManager?.Notify(Constants.NotificationId, notification);
         }
     }
 }

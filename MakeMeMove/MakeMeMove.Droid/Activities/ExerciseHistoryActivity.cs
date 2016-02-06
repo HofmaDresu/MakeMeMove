@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -12,8 +13,8 @@ using Android.Widget;
 
 namespace MakeMeMove.Droid.Activities
 {
-    [Activity(Label = "ExerciseHistory")]
-    public class ExerciseHistory : BaseActivity
+    [Activity(Label = "Exercise History", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize]
+    public class ExerciseHistoryActivity : BaseActivity
     {
         private TextView _date;
         private ListView _stats;
