@@ -51,8 +51,8 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             var completedPendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, completedIntent, PendingIntentFlags.CancelCurrent);
 
             var nextIntent = new Intent(context, typeof(CompletedActivity));
-            completedIntent.PutExtra(Constants.ExerciseName, nextExercise.CombinedName);
-            completedIntent.PutExtra(Constants.ExerciseQuantity, nextExercise.Quantity);
+            nextIntent.PutExtra(Constants.ExerciseName, nextExercise.CombinedName);
+            nextIntent.PutExtra(Constants.ExerciseQuantity, nextExercise.Quantity);
             var nextPendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, nextIntent, PendingIntentFlags.CancelCurrent);
 
             data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);

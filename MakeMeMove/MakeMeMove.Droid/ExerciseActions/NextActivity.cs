@@ -20,7 +20,7 @@ namespace MakeMeMove.Droid.ExerciseActions
 
             if (!string.IsNullOrEmpty(exerciseName) && exerciseQuantity > 0)
             {
-                Data.MarkExerciseCompleted(exerciseName, -1 * exerciseQuantity);
+                Data.MarkExerciseNotified(exerciseName, -1 * exerciseQuantity);
             }
 
             UserNotification.CreateNotification(Data, this);
