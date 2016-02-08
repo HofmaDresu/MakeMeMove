@@ -50,7 +50,7 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             completedIntent.PutExtra(Constants.ExerciseQuantity, nextExercise.Quantity);
             var completedPendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, completedIntent, PendingIntentFlags.CancelCurrent);
 
-            var nextIntent = new Intent(context, typeof(CompletedActivity));
+            var nextIntent = new Intent(context, typeof(NextActivity));
             nextIntent.PutExtra(Constants.ExerciseName, nextExercise.CombinedName);
             nextIntent.PutExtra(Constants.ExerciseQuantity, nextExercise.Quantity);
             var nextPendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, nextIntent, PendingIntentFlags.CancelCurrent);
