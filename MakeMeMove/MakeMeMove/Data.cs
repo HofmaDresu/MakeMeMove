@@ -88,7 +88,7 @@ namespace MakeMeMove
         public List<ExerciseHistory> GetExerciseHistoryForDay(DateTime date)
         {
             
-            return ExerciseHistories.Where(eh => eh.RecordedDate == date).ToList();
+            return ExerciseHistories.Where(eh => eh.RecordedDate == date).OrderBy(eh => eh.ExerciseName).ToList();
         }
 
         public void MarkExerciseNotified(string exerciseName, int quantity)
