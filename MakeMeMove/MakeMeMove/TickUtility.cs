@@ -5,70 +5,71 @@ namespace MakeMeMove
 {
     public static class TickUtility
     {
-        public static int GetPollPeriod(SchedulePeriod schedulePeriod)
-        {
-            switch (schedulePeriod)
-            {
-                case SchedulePeriod.HalfHourly:
-                    return MinutesToMilliseconds(30);
-                case SchedulePeriod.Hourly:
-                    return MinutesToMilliseconds(60);
-                case SchedulePeriod.BiHourly:
-                    return MinutesToMilliseconds(120);
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
 
         public static DateTime GetNextRunTime(ExerciseSchedule schedule, DateTime? fromDate = null)
         {
             var fromDateValue = fromDate.GetValueOrDefault(DateTime.Now);
             if (fromDateValue.TimeOfDay > schedule.EndTime.TimeOfDay)
             {
-                return new DateTime(fromDateValue.Year, fromDateValue.Month, fromDateValue.Day + 1, schedule.StartTime.Hour, schedule.StartTime.Minute,schedule.StartTime.Second);
+                return GetStartOfNextDay(schedule, fromDateValue);
             }
 
             if (fromDateValue.TimeOfDay < schedule.StartTime.TimeOfDay)
             {
-                return new DateTime(fromDateValue.Year, fromDateValue.Month, fromDateValue.Day, schedule.StartTime.Hour, schedule.StartTime.Minute, schedule.StartTime.Second);
+                return GetStartOfToday(schedule, fromDateValue);
             }
 
             switch (schedule.Period)
             {
                 case SchedulePeriod.HalfHourly:
-                    return new DateTime(fromDateValue.Year, fromDateValue.Month, fromDateValue.Day, (fromDateValue.Minute < 30) ? fromDateValue.Hour : fromDateValue.Hour + 1, (fromDateValue.Minute < 30) ? 30 : 0, 0);
+                    return GetNextHalfHourlyRun(fromDateValue);
                 case SchedulePeriod.Hourly:
-                    return new DateTime(fromDateValue.Year, fromDateValue.Month, fromDateValue.Day, fromDateValue.Hour + 1, 0, 0);
+                    return GetNextHourlyRun(schedule, fromDateValue);
                 case SchedulePeriod.BiHourly:
-                    return new DateTime(fromDateValue.Year, fromDateValue.Month, fromDateValue.Day,
-                        FindFirstRunHourForBiHourly(schedule.StartTime.Hour, schedule.EndTime.Hour, fromDateValue), 0, 0);
+                    return GetNextBiHourlyRun(schedule, fromDateValue);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        private static int FindFirstRunHourForBiHourly(int startHour, int endHour, DateTime now)
+        private static DateTime GetNextHalfHourlyRun(DateTime fromDateValue)
         {
-            var firstRunHour = startHour;
-            for (; firstRunHour <= endHour; firstRunHour += 2)
-            {
-                if (firstRunHour > now.Hour)
-                {
-                    return firstRunHour;
-                }
-            }
-
-            return startHour;
+            return new DateTime(fromDateValue.Year, fromDateValue.Month, fromDateValue.Day, (fromDateValue.Minute < 30) ? fromDateValue.Hour : fromDateValue.Hour + 1, (fromDateValue.Minute < 30) ? 30 : 0, 0);
         }
 
-        private static int MinutesToMilliseconds(int minutes)
+        private static DateTime GetNextHourlyRun(ExerciseSchedule schedule, DateTime fromDateValue)
         {
-            return minutes*SecondsToMilliseconds(60);
+            return GetStartNextDayIfOverTodaysEnd(schedule, ZeroOutMinutesAndLower(fromDateValue.AddHours(1)));
         }
 
-        private static int SecondsToMilliseconds(int seconds)
+        private static DateTime GetNextBiHourlyRun(ExerciseSchedule schedule, DateTime fromDateValue)
         {
-            return seconds*1000;
+            return GetStartNextDayIfOverTodaysEnd(schedule, ZeroOutMinutesAndLower(fromDateValue.AddHours(2)));
+        }
+
+        private static DateTime GetStartNextDayIfOverTodaysEnd(ExerciseSchedule schedule, DateTime target)
+        {
+            return target.TimeOfDay <= schedule.EndTime.TimeOfDay ? target : GetStartOfNextDay(schedule, target);
+        }
+
+        private static DateTime GetStartOfNextDay(ExerciseSchedule schedule, DateTime fromDateValue)
+        {
+            return GetStartOfToday(schedule, fromDateValue).AddDays(1);
+        }
+
+        private static DateTime GetStartOfToday(ExerciseSchedule schedule, DateTime fromDateValue)
+        {
+            return new DateTime(fromDateValue.Year, fromDateValue.Month, fromDateValue.Day, schedule.StartTime.Hour, schedule.StartTime.Minute, schedule.StartTime.Second);
+        }
+
+        private static DateTime ZeroOutMinutesAndLower(DateTime dateTime)
+        {
+            return ZeroOutSecondsAndLower(dateTime).AddMinutes(-1*dateTime.Minute);
+        }
+
+        private static DateTime ZeroOutSecondsAndLower(DateTime dateTime)
+        {
+            return dateTime.AddSeconds(-1*dateTime.Second).AddMilliseconds(-1*dateTime.Millisecond);
         }
     }
 }
