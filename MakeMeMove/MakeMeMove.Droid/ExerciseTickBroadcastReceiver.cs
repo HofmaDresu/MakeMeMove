@@ -1,17 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Android.App;
 using Android.Content;
-using Android.Graphics;
-using Android.OS;
-using Android.Util;
-using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
-using MakeMeMove.Droid.ExerciseActions;
-using MakeMeMove.Model;
-using Newtonsoft.Json;
 using SQLite;
 using Environment = System.Environment;
 using Path = System.IO.Path;

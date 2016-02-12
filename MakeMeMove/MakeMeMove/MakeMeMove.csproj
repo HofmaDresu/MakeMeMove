@@ -36,11 +36,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Data.cs" />
-    <Compile Include="DeviceSpecificInterfaces\IPermissionRequester.cs" />
-    <Compile Include="DeviceSpecificInterfaces\IProgressPersistence.cs" />
-    <Compile Include="DeviceSpecificInterfaces\ISchedulePersistence.cs" />
-    <Compile Include="DeviceSpecificInterfaces\IServiceManager.cs" />
-    <Compile Include="DeviceSpecificInterfaces\IUserNotification.cs" />
     <Compile Include="Model\ExerciseHistory.cs" />
     <Compile Include="Model\ExerciseBlock.cs" />
     <Compile Include="Model\ExerciseSchedule.cs" />

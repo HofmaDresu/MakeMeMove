@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using Android.App;
 using Android.Content;
-using MakeMeMove.DeviceSpecificInterfaces;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using SQLite;
 
