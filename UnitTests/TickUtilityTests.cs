@@ -59,13 +59,55 @@ namespace UnitTests
                 EndTime = new DateTime(1, 1, 1, 17, 30, 0),
                 Period = SchedulePeriod.Hourly
             };
+            RunHourlyTestLoop(schedule);
+        }
+
+        [TestMethod]
+        public void TestHourlySchedule_EndOfDay()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 8, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 23, 30, 0),
+                Period = SchedulePeriod.Hourly
+            };
+            RunHourlyTestLoop(schedule);
+        }
+
+        [TestMethod]
+        public void TestHourlySchedule_BeginningOfDay()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 17, 30, 0),
+                Period = SchedulePeriod.Hourly
+            };
+            RunHourlyTestLoop(schedule);
+        }
+
+        [TestMethod]
+        public void TestHourlySchedule_BeginningAndEndOfDay()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 23, 30, 0),
+                Period = SchedulePeriod.Hourly
+            };
+            RunHourlyTestLoop(schedule);
+        }
+
+        private void RunHourlyTestLoop(ExerciseSchedule schedule)
+        {
             DateTime? previousRunTime = null;
 
             for (var testTime = _startTime; testTime <= _startTime.AddDays(1).AddMinutes(-1); testTime = testTime.AddMinutes(1))
             {
                 var nextRunTime = TickUtility.GetNextRunTime(schedule, testTime);
 
-                Assert.IsTrue(nextRunTime.Minute == 0, $"Minutes generated for {testTime} must equal 0. Current value is {nextRunTime.Minute}");
+                Assert.IsTrue(nextRunTime.Minute == 0,
+                    $"Minutes generated for {testTime} must equal 0. Current value is {nextRunTime.Minute}");
 
                 if (testTime.TimeOfDay < schedule.StartTime.TimeOfDay)
                 {
@@ -79,20 +121,24 @@ namespace UnitTests
                 {
                     if (testTime.Hour == 23)
                     {
-                        Assert.IsTrue(GetTomorrowsStartTime(schedule) == nextRunTime, $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
+                        Assert.IsTrue(GetTomorrowsStartTime(schedule) == nextRunTime,
+                            $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
                     }
                     else if (testTime.Hour == previousRunTime.Value.AddHours(-1).Hour)
                     {
-                        Assert.IsTrue(previousRunTime.Value == nextRunTime, $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
+                        Assert.IsTrue(previousRunTime.Value == nextRunTime,
+                            $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
                     }
                     else if (previousRunTime.Value.Hour == schedule.EndTime.Hour)
                     {
-                        Assert.IsTrue(GetTomorrowsStartTime(schedule) == nextRunTime, $"Start Time: {GetTomorrowsStartTime(schedule)}, Next Run Time {nextRunTime}");
+                        Assert.IsTrue(GetTomorrowsStartTime(schedule) == nextRunTime,
+                            $"Start Time: {GetTomorrowsStartTime(schedule)}, Next Run Time {nextRunTime}");
                     }
                     else
                     {
                         Assert.IsTrue(previousRunTime.Value.AddHours(1) == nextRunTime
-                            || GetTomorrowsStartTime(schedule) == nextRunTime, $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
+                                      || GetTomorrowsStartTime(schedule) == nextRunTime,
+                            $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
                     }
                 }
 
