@@ -11,7 +11,7 @@ namespace UnitTests
         private readonly ExerciseSchedule _schedule = new ExerciseSchedule
         {
             StartTime = new DateTime(1, 1, 1, 8, 0, 0),
-            EndTime = new DateTime(1, 1, 1, 23, 30, 0)
+            EndTime = new DateTime(1, 1, 1, 17, 30, 0)
         };
         private readonly DateTime _startTime = new DateTime(2015, 12, 31, 0, 0, 0);
 
@@ -71,7 +71,23 @@ namespace UnitTests
                 }
                 else if (previousRunTime.HasValue)
                 {
-                    Assert.IsTrue(previousRunTime.Value == nextRunTime || previousRunTime.Value.AddHours(1) == nextRunTime, $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
+                    if (testTime.Hour == 23)
+                    {
+                        Assert.IsTrue(_startTime.AddDays(1).AddHours(_schedule.StartTime.Hour).AddMinutes(_schedule.StartTime.Minute) == nextRunTime, $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
+                    }
+                    else if (testTime.Hour == previousRunTime.Value.AddHours(-1).Hour)
+                    {
+                        Assert.IsTrue(previousRunTime.Value == nextRunTime, $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
+                    }
+                    else if (previousRunTime.Value.Hour == _schedule.EndTime.Hour)
+                    {
+                        Assert.IsTrue(GetTomorrowsStartTime()== nextRunTime, $"Start Time: {GetTomorrowsStartTime()}, Next Run Time {nextRunTime}");
+                    }
+                    else
+                    {
+                        Assert.IsTrue(previousRunTime.Value.AddHours(1) == nextRunTime
+                            || GetTomorrowsStartTime() == nextRunTime, $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
+                    }
                 }
 
                 previousRunTime = nextRunTime;
@@ -109,6 +125,16 @@ namespace UnitTests
                 previousRunTime = nextRunTime;
                 testTime = nextRunTime;
             }
+        }
+
+        private DateTime GetTomorrowsStartTime()
+        {
+            return GetTodaysStartTime().AddDays(1);
+        }
+
+        private DateTime GetTodaysStartTime()
+        {
+            return _startTime.AddHours(_schedule.StartTime.Hour).AddMinutes(_schedule.StartTime.Minute);
         }
     }
 }

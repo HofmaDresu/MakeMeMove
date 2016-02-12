@@ -49,7 +49,18 @@ namespace MakeMeMove
 
         private static DateTime GetStartNextDayIfOverTodaysEnd(ExerciseSchedule schedule, DateTime target)
         {
-            return target.TimeOfDay <= schedule.EndTime.TimeOfDay ? target : GetStartOfNextDay(schedule, target);
+            if (target.TimeOfDay <= schedule.EndTime.TimeOfDay && target.TimeOfDay >= schedule.StartTime.TimeOfDay)
+            {
+                return target;
+            }
+            else if (target.TimeOfDay > schedule.EndTime.TimeOfDay)
+            {
+                return GetStartOfNextDay(schedule, target);
+            }
+            else 
+            {
+                return GetStartOfToday(schedule, target);
+            }
         }
 
         private static DateTime GetStartOfNextDay(ExerciseSchedule schedule, DateTime fromDateValue)
