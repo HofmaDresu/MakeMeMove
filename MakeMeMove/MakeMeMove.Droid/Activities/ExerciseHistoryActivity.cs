@@ -66,7 +66,11 @@ namespace MakeMeMove.Droid.Activities
                 })
                 .SetNegativeButton("Next", (sender, args) =>
                 {
+                    Data.MarkExerciseNotified(selectedExercise.CombinedName, -1 * selectedExercise.Quantity);
+
                     var nextExercise = Data.GetNextEnabledExercise();
+                    Data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
+
                     UpdateData();
                     ShowTimeToMovePrompt(nextExercise);
                 })
