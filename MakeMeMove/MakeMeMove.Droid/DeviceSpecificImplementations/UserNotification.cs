@@ -46,10 +46,14 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             nextIntent.PutExtra(Constants.ExerciseQuantity, nextExercise.Quantity);
             var nextPendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, nextIntent, PendingIntentFlags.CancelCurrent);
 
+            
             var clickIntent = new Intent(context, typeof(ExerciseHistoryActivity));
             clickIntent.PutExtra(Constants.ShowMarkedExercisePrompt, true);
             clickIntent.PutExtra(Constants.ExerciseId, nextExercise.Id);
-            var clickPendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, clickIntent, PendingIntentFlags.CancelCurrent);
+            var stackBuilder = TaskStackBuilder.Create(context);
+            stackBuilder.AddParentStack(Java.Lang.Class.FromType(typeof(ExerciseHistoryActivity)));
+            stackBuilder.AddNextIntent(clickIntent);
+            var clickPendingIntent = stackBuilder.GetPendingIntent(0, PendingIntentFlags.CancelCurrent);
 
             data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
 

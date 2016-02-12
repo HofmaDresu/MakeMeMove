@@ -14,7 +14,8 @@ using MakeMeMove.Model;
 
 namespace MakeMeMove.Droid.Activities
 {
-    [Activity(Label = "Exercise History", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
+    [Activity(Label = "Exercise History", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize,
+        ParentActivity = typeof(MainActivity))]
     public class ExerciseHistoryActivity : BaseActivity
     {
         private TextView _date;
