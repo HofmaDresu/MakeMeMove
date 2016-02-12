@@ -1,14 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.OS;
 using MakeMeMove.Droid.Activities;
 using MakeMeMove.Droid.ExerciseActions;
-using MakeMeMove.Model;
-using static System.Math;
 
 namespace MakeMeMove.Droid.DeviceSpecificImplementations
 {

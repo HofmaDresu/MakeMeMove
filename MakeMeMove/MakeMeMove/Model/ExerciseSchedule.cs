@@ -8,7 +8,11 @@ namespace MakeMeMove.Model
     {
         HalfHourly = 0,
         Hourly = 1,
-        BiHourly = 2
+        BiHourly = 2,
+#if DEBUG
+        //For Debug use only, this is not well tested and may break under real conditions
+        EveryFiveMinutes = 3
+#endif
     }
 
     [Table("ExerciseSchedules")]
@@ -29,7 +33,12 @@ namespace MakeMeMove.Model
         {
             return new ExerciseSchedule
             {
+#if DEBUG
+                Period = SchedulePeriod.EveryFiveMinutes,
+
+#else
                 Period = SchedulePeriod.HalfHourly,
+#endif
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 19, 0, 0)
             };
