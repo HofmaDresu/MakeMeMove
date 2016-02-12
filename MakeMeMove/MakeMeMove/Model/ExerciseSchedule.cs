@@ -6,9 +6,9 @@ namespace MakeMeMove.Model
 {
     public enum SchedulePeriod
     {
-        HalfHourly,
-        Hourly,
-        BiHourly
+        HalfHourly = 0,
+        Hourly = 1,
+        BiHourly = 2
     }
 
     [Table("ExerciseSchedules")]
