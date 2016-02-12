@@ -13,6 +13,7 @@ namespace UnitTests
             StartTime = new DateTime(1, 1, 1, 8, 0, 0),
             EndTime = new DateTime(1, 1, 1, 17, 30, 0)
         };
+        //DO NOT CHANGE, LOGIC DEPENDS ON THIS BEING AT THE VERY BEGINNING OF THE DAY (plus this tests both year and month rollover)
         private readonly DateTime _startTime = new DateTime(2015, 12, 31, 0, 0, 0);
 
         [TestMethod]
@@ -28,11 +29,11 @@ namespace UnitTests
 
                 if (testTime.TimeOfDay < _schedule.StartTime.TimeOfDay)
                 {
-                    Assert.AreEqual(_startTime.AddHours(_schedule.StartTime.Hour).AddMinutes(_schedule.StartTime.Minute), nextRunTime);
+                    Assert.AreEqual(GetTodaysStartTime(), nextRunTime);
                 }
                 else if (testTime.TimeOfDay >= _schedule.EndTime.TimeOfDay)
                 {
-                    Assert.AreEqual(_startTime.AddDays(1).AddHours(_schedule.StartTime.Hour).AddMinutes(_schedule.StartTime.Minute), nextRunTime);
+                    Assert.AreEqual(GetTomorrowsStartTime(), nextRunTime);
                 }
                 else
                 {
@@ -63,17 +64,17 @@ namespace UnitTests
 
                 if (testTime.TimeOfDay < _schedule.StartTime.TimeOfDay)
                 {
-                    Assert.AreEqual(_startTime.AddHours(_schedule.StartTime.Hour).AddMinutes(_schedule.StartTime.Minute), nextRunTime);
+                    Assert.AreEqual(GetTodaysStartTime(), nextRunTime);
                 }
                 else if (testTime.TimeOfDay >= _schedule.EndTime.TimeOfDay)
                 {
-                    Assert.AreEqual(_startTime.AddDays(1).AddHours(_schedule.StartTime.Hour).AddMinutes(_schedule.StartTime.Minute), nextRunTime);
+                    Assert.AreEqual(GetTomorrowsStartTime(), nextRunTime);
                 }
                 else if (previousRunTime.HasValue)
                 {
                     if (testTime.Hour == 23)
                     {
-                        Assert.IsTrue(_startTime.AddDays(1).AddHours(_schedule.StartTime.Hour).AddMinutes(_schedule.StartTime.Minute) == nextRunTime, $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
+                        Assert.IsTrue(GetTomorrowsStartTime() == nextRunTime, $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
                     }
                     else if (testTime.Hour == previousRunTime.Value.AddHours(-1).Hour)
                     {
@@ -109,17 +110,17 @@ namespace UnitTests
 
                 if (testTime.TimeOfDay < _schedule.StartTime.TimeOfDay)
                 {
-                    Assert.AreEqual(_startTime.AddHours(_schedule.StartTime.Hour).AddMinutes(_schedule.StartTime.Minute), nextRunTime);
+                    Assert.AreEqual(GetTodaysStartTime(), nextRunTime);
                 }
                 else if (testTime.TimeOfDay >= _schedule.EndTime.TimeOfDay)
                 {
-                    Assert.AreEqual(_startTime.AddDays(1).AddHours(_schedule.StartTime.Hour).AddMinutes(_schedule.StartTime.Minute), nextRunTime);
+                    Assert.AreEqual(GetTomorrowsStartTime(), nextRunTime);
                 }
                 else if (previousRunTime.HasValue)
                 {
                     Assert.IsTrue(previousRunTime.Value == nextRunTime 
                         || previousRunTime.Value.AddHours(2) == nextRunTime
-                        || nextRunTime == _startTime.AddDays(1).AddHours(_schedule.StartTime.Hour).AddMinutes(_schedule.StartTime.Minute), $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
+                        || nextRunTime == GetTomorrowsStartTime(), $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
                 }
 
                 previousRunTime = nextRunTime;
