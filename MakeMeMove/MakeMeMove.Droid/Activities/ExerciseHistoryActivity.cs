@@ -18,11 +18,17 @@ namespace MakeMeMove.Droid.Activities
     {
         private TextView _date;
         private ListView _stats;
+        private bool _showMarkExercisePrompt;
+        private int _notifiedExerciseId = -1;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.ExerciseHistory);
+            ResetPromptData();
+
+            _showMarkExercisePrompt = Intent.GetBooleanExtra(Constants.ShowMarkedExercisePrompt, false);
+            _notifiedExerciseId = Intent.GetIntExtra(Constants.ExerciseId, -1);
 
 
             _date = FindViewById<TextView>(Resource.Id.Date);
@@ -37,6 +43,34 @@ namespace MakeMeMove.Droid.Activities
             _date.Text = DateTime.Today.ToShortDateString();
 
             _stats.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, todaysStats.Where(s => s.QuantityNotified > 0).Select(s => $"{s.ExerciseName}: {s.QuantityCompleted} / {s.QuantityNotified}").ToList());
+
+            if (_showMarkExercisePrompt)
+            {
+                var selectedExercise = Data.GetExerciseById(_notifiedExerciseId);
+                if (selectedExercise == null) return;
+
+                new AlertDialog.Builder(this)
+                    .SetTitle("It's time to move")
+                    .SetMessage($"It's time to do {selectedExercise.Quantity} {selectedExercise.CombinedName}")
+                    .SetCancelable(false)
+                    .SetPositiveButton("Completed", (sender, args) =>
+                    {
+                        Data.MarkExerciseCompleted(selectedExercise.CombinedName, selectedExercise.Quantity);
+                        ResetPromptData();
+                    })
+                    .SetNegativeButton("Next", (sender, args) =>
+                    {
+                        ResetPromptData();
+                    })
+                    .SetNeutralButton("Ignore", (sender, args) => ResetPromptData())
+                    .Show();
+            }
+        }
+
+        private void ResetPromptData()
+        {
+            _showMarkExercisePrompt = false;
+            _notifiedExerciseId = -1;
         }
     }
 }

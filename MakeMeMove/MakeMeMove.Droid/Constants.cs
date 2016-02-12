@@ -12,5 +12,6 @@ namespace MakeMeMove.Droid
         public static string ExerciseId = "ExerciseId";
         public static string DatabaseName = "MakeMeMove.db3";
         public static int NotificationId = 0;
+        public static string ShowMarkedExercisePrompt = "ShowMarkeExercisePrompt";
     }
 }

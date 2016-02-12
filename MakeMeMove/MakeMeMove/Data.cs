@@ -81,6 +81,11 @@ namespace MakeMeMove
         {
             _db.Update(blockToUpdate);
         }
+
+        public ExerciseBlock GetExerciseById(int id)
+        {
+            return ExerciseBlocks.SingleOrDefault(e => e.Id == id);
+        }
         #endregion
 
 #region ExerciseHistory

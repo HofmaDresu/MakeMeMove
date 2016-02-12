@@ -5,6 +5,7 @@ using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.OS;
+using MakeMeMove.Droid.Activities;
 using MakeMeMove.Droid.ExerciseActions;
 using MakeMeMove.Model;
 using static System.Math;
@@ -55,6 +56,11 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             nextIntent.PutExtra(Constants.ExerciseQuantity, nextExercise.Quantity);
             var nextPendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, nextIntent, PendingIntentFlags.CancelCurrent);
 
+            var clickIntent = new Intent(context, typeof(ExerciseHistoryActivity));
+            clickIntent.PutExtra(Constants.ShowMarkedExercisePrompt, true);
+            clickIntent.PutExtra(Constants.ExerciseId, nextExercise.Id);
+            var clickPendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, clickIntent, PendingIntentFlags.CancelCurrent);
+
             data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
 
             var builder = new Notification.Builder(context)
@@ -62,7 +68,8 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                 .SetContentText($"It's time to do {nextExercise.Quantity} {nextExercise.CombinedName}")
                 .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate)
                 .AddAction(new Notification.Action(0, "Completed", completedPendingIntent))
-                .AddAction(new Notification.Action(0, "Next", nextPendingIntent));
+                .AddAction(new Notification.Action(0, "Next", nextPendingIntent))
+                .SetContentIntent(clickPendingIntent);
 
             if ((int)Build.VERSION.SdkInt >= 21)
             {
