@@ -6,7 +6,6 @@ using Android.OS;
 using Android.Widget;
 using MakeMeMove.Model;
 using Newtonsoft.Json;
-using Xamarin.Forms;
 using Environment = System.Environment;
 
 namespace MakeMeMove.Droid.DeviceSpecificImplementations
