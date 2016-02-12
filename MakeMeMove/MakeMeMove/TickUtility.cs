@@ -39,7 +39,7 @@ namespace MakeMeMove
         private static DateTime GetNextFiveMinuteRun(ExerciseSchedule schedule, DateTime fromDateValue)
         {
             var fromDatePrevious5 = (fromDateValue.Minute/5)*5;
-            var fromDatePrevious5Value = ZeroOutMinutesAndLower(fromDateValue).AddMinutes(fromDatePrevious5*5);
+            var fromDatePrevious5Value = ZeroOutMinutesAndLower(fromDateValue).AddMinutes(fromDatePrevious5);
             return GetStartNextDayIfOverTodaysEnd(schedule, fromDatePrevious5Value.AddMinutes(5));
         }
 
