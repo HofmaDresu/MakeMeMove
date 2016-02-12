@@ -21,11 +21,56 @@ namespace UnitTests
                 Period = SchedulePeriod.HalfHourly
             };
 
+            RunHalfHourlyTestLoop(schedule);
+        }
+
+        [TestMethod]
+        public void TestHalfHourlySchedule_EndOfDay()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 8, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 23, 30, 0),
+                Period = SchedulePeriod.HalfHourly
+            };
+
+            RunHalfHourlyTestLoop(schedule);
+        }
+
+        [TestMethod]
+        public void TestHalfHourlySchedule_BeginningOfDay()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 17, 30, 0),
+                Period = SchedulePeriod.HalfHourly
+            };
+
+            RunHalfHourlyTestLoop(schedule);
+        }
+
+        [TestMethod]
+        public void TestHalfHourlySchedule_BeginningAndEndOfDay()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 23, 30, 0),
+                Period = SchedulePeriod.HalfHourly
+            };
+
+            RunHalfHourlyTestLoop(schedule);
+        }
+
+        private void RunHalfHourlyTestLoop(ExerciseSchedule schedule)
+        {
             for (var testTime = _startTime; testTime <= _startTime.AddDays(1).AddMinutes(-1); testTime = testTime.AddMinutes(1))
             {
                 var nextRunTime = TickUtility.GetNextRunTime(schedule, testTime);
 
-                Assert.IsTrue(nextRunTime.Minute == 0 || nextRunTime.Minute == 30, $"Minutes generated for {testTime} must equal 0 or 30. Current value is {nextRunTime.Minute}");
+                Assert.IsTrue(nextRunTime.Minute == 0 || nextRunTime.Minute == 30,
+                    $"Minutes generated for {testTime} must equal 0 or 30. Current value is {nextRunTime.Minute}");
 
                 if (testTime.TimeOfDay < schedule.StartTime.TimeOfDay)
                 {
@@ -39,13 +84,14 @@ namespace UnitTests
                 {
                     if (testTime.Minute < 30)
                     {
-                        Assert.IsTrue(nextRunTime.Minute == 30, $"Minutes must be set to 30 for {testTime}. Current value is {nextRunTime.Minute}");
+                        Assert.IsTrue(nextRunTime.Minute == 30,
+                            $"Minutes must be set to 30 for {testTime}. Current value is {nextRunTime.Minute}");
                     }
                     else
                     {
-                        Assert.IsTrue(nextRunTime.Minute == 0, $"Minutes must be set to 0 for {testTime}. Current value is {nextRunTime.Minute}");
+                        Assert.IsTrue(nextRunTime.Minute == 0,
+                            $"Minutes must be set to 0 for {testTime}. Current value is {nextRunTime.Minute}");
                     }
-
                 }
             }
         }
