@@ -38,11 +38,7 @@ namespace MakeMeMove.Droid.Activities
         protected override void OnResume()
         {
             base.OnResume();
-            var todaysStats = Data.GetExerciseHistoryForDay(DateTime.Today);
-
-            _date.Text = DateTime.Today.ToShortDateString();
-
-            _stats.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, todaysStats.Where(s => s.QuantityNotified > 0).Select(s => $"{s.ExerciseName}: {s.QuantityCompleted} / {s.QuantityNotified}").ToList());
+            UpdateData();
 
             if (_showMarkExercisePrompt)
             {
@@ -56,6 +52,7 @@ namespace MakeMeMove.Droid.Activities
                     .SetPositiveButton("Completed", (sender, args) =>
                     {
                         Data.MarkExerciseCompleted(selectedExercise.CombinedName, selectedExercise.Quantity);
+                        UpdateData();
                         ResetPromptData();
                     })
                     .SetNegativeButton("Next", (sender, args) =>
@@ -65,6 +62,18 @@ namespace MakeMeMove.Droid.Activities
                     .SetNeutralButton("Ignore", (sender, args) => ResetPromptData())
                     .Show();
             }
+        }
+
+        private void UpdateData()
+        {
+            var todaysStats = Data.GetExerciseHistoryForDay(DateTime.Today);
+
+            _date.Text = DateTime.Today.ToShortDateString();
+
+            _stats.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1,
+                todaysStats.Where(s => s.QuantityNotified > 0)
+                    .Select(s => $"{s.ExerciseName}: {s.QuantityCompleted} / {s.QuantityNotified}")
+                    .ToList());
         }
 
         private void ResetPromptData()
