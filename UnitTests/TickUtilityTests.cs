@@ -8,32 +8,32 @@ namespace UnitTests
     [TestClass]
     public class TickUtilityTests
     {
-        private readonly ExerciseSchedule _schedule = new ExerciseSchedule
-        {
-            StartTime = new DateTime(1, 1, 1, 8, 0, 0),
-            EndTime = new DateTime(1, 1, 1, 17, 30, 0)
-        };
         //DO NOT CHANGE, LOGIC DEPENDS ON THIS BEING AT THE VERY BEGINNING OF THE DAY (plus this tests both year and month rollover)
         private readonly DateTime _startTime = new DateTime(2015, 12, 31, 0, 0, 0);
 
         [TestMethod]
         public void TestHalfHourlySchedule()
         {
-            _schedule.Period = SchedulePeriod.HalfHourly;
+            var  schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 8, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 17, 30, 0),
+                Period = SchedulePeriod.HalfHourly
+            };
 
             for (var testTime = _startTime; testTime <= _startTime.AddDays(1).AddMinutes(-1); testTime = testTime.AddMinutes(1))
             {
-                var nextRunTime = TickUtility.GetNextRunTime(_schedule, testTime);
+                var nextRunTime = TickUtility.GetNextRunTime(schedule, testTime);
 
                 Assert.IsTrue(nextRunTime.Minute == 0 || nextRunTime.Minute == 30, $"Minutes generated for {testTime} must equal 0 or 30. Current value is {nextRunTime.Minute}");
 
-                if (testTime.TimeOfDay < _schedule.StartTime.TimeOfDay)
+                if (testTime.TimeOfDay < schedule.StartTime.TimeOfDay)
                 {
-                    Assert.AreEqual(GetTodaysStartTime(), nextRunTime);
+                    Assert.AreEqual(GetTodaysStartTime(schedule), nextRunTime);
                 }
-                else if (testTime.TimeOfDay >= _schedule.EndTime.TimeOfDay)
+                else if (testTime.TimeOfDay >= schedule.EndTime.TimeOfDay)
                 {
-                    Assert.AreEqual(GetTomorrowsStartTime(), nextRunTime);
+                    Assert.AreEqual(GetTomorrowsStartTime(schedule), nextRunTime);
                 }
                 else
                 {
@@ -53,41 +53,46 @@ namespace UnitTests
         [TestMethod]
         public void TestHourlySchedule()
         {
-            _schedule.Period = SchedulePeriod.Hourly;
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 8, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 17, 30, 0),
+                Period = SchedulePeriod.Hourly
+            };
             DateTime? previousRunTime = null;
 
             for (var testTime = _startTime; testTime <= _startTime.AddDays(1).AddMinutes(-1); testTime = testTime.AddMinutes(1))
             {
-                var nextRunTime = TickUtility.GetNextRunTime(_schedule, testTime);
+                var nextRunTime = TickUtility.GetNextRunTime(schedule, testTime);
 
                 Assert.IsTrue(nextRunTime.Minute == 0, $"Minutes generated for {testTime} must equal 0. Current value is {nextRunTime.Minute}");
 
-                if (testTime.TimeOfDay < _schedule.StartTime.TimeOfDay)
+                if (testTime.TimeOfDay < schedule.StartTime.TimeOfDay)
                 {
-                    Assert.AreEqual(GetTodaysStartTime(), nextRunTime);
+                    Assert.AreEqual(GetTodaysStartTime(schedule), nextRunTime);
                 }
-                else if (testTime.TimeOfDay >= _schedule.EndTime.TimeOfDay)
+                else if (testTime.TimeOfDay >= schedule.EndTime.TimeOfDay)
                 {
-                    Assert.AreEqual(GetTomorrowsStartTime(), nextRunTime);
+                    Assert.AreEqual(GetTomorrowsStartTime(schedule), nextRunTime);
                 }
                 else if (previousRunTime.HasValue)
                 {
                     if (testTime.Hour == 23)
                     {
-                        Assert.IsTrue(GetTomorrowsStartTime() == nextRunTime, $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
+                        Assert.IsTrue(GetTomorrowsStartTime(schedule) == nextRunTime, $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
                     }
                     else if (testTime.Hour == previousRunTime.Value.AddHours(-1).Hour)
                     {
                         Assert.IsTrue(previousRunTime.Value == nextRunTime, $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
                     }
-                    else if (previousRunTime.Value.Hour == _schedule.EndTime.Hour)
+                    else if (previousRunTime.Value.Hour == schedule.EndTime.Hour)
                     {
-                        Assert.IsTrue(GetTomorrowsStartTime()== nextRunTime, $"Start Time: {GetTomorrowsStartTime()}, Next Run Time {nextRunTime}");
+                        Assert.IsTrue(GetTomorrowsStartTime(schedule) == nextRunTime, $"Start Time: {GetTomorrowsStartTime(schedule)}, Next Run Time {nextRunTime}");
                     }
                     else
                     {
                         Assert.IsTrue(previousRunTime.Value.AddHours(1) == nextRunTime
-                            || GetTomorrowsStartTime() == nextRunTime, $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
+                            || GetTomorrowsStartTime(schedule) == nextRunTime, $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
                     }
                 }
 
@@ -98,29 +103,76 @@ namespace UnitTests
         [TestMethod]
         public void TestBiHourlySchedule()
         {
-            _schedule.Period = SchedulePeriod.BiHourly;
-            _schedule.EndTime = new DateTime(1, 1, 1, 20, 0, 0);
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 8, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 17, 30, 0),
+                Period = SchedulePeriod.BiHourly
+            };
+            RunBiHourlyTestLoop(schedule);
+        }
+
+        [TestMethod]
+        public void TestBiHourlySchedule_EndOfDay()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 8, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                Period = SchedulePeriod.BiHourly
+            };
+            RunBiHourlyTestLoop(schedule);
+        }
+
+        [TestMethod]
+        public void TestBiHourlySchedule_BeginningOfDay()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 17, 30, 0),
+                Period = SchedulePeriod.BiHourly
+            };
+            RunBiHourlyTestLoop(schedule);
+        }
+
+        [TestMethod]
+        public void TestBiHourlySchedule_BeginningAndEndOfDay()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                Period = SchedulePeriod.BiHourly
+            };
+            RunBiHourlyTestLoop(schedule);
+        }
+
+        private void RunBiHourlyTestLoop(ExerciseSchedule schedule)
+        {
             DateTime? previousRunTime = null;
 
-            for (var testTime = _startTime; testTime <= _startTime.AddDays(1).AddMinutes(-1); )
+            for (var testTime = _startTime; testTime <= _startTime.AddDays(1).AddMinutes(-1);)
             {
-                var nextRunTime = TickUtility.GetNextRunTime(_schedule, testTime);
+                var nextRunTime = TickUtility.GetNextRunTime(schedule, testTime);
 
-                Assert.IsTrue(nextRunTime.Minute == 0, $"Minutes generated for {testTime} must equal 0. Current value is {nextRunTime.Minute}");
+                Assert.IsTrue(nextRunTime.Minute == 0,
+                    $"Minutes generated for {testTime} must equal 0. Current value is {nextRunTime.Minute}");
 
-                if (testTime.TimeOfDay < _schedule.StartTime.TimeOfDay)
+                if (testTime.TimeOfDay < schedule.StartTime.TimeOfDay)
                 {
-                    Assert.AreEqual(GetTodaysStartTime(), nextRunTime);
+                    Assert.AreEqual(GetTodaysStartTime(schedule), nextRunTime);
                 }
-                else if (testTime.TimeOfDay >= _schedule.EndTime.TimeOfDay)
+                else if (testTime.TimeOfDay >= schedule.EndTime.TimeOfDay)
                 {
-                    Assert.AreEqual(GetTomorrowsStartTime(), nextRunTime);
+                    Assert.AreEqual(GetTomorrowsStartTime(schedule), nextRunTime);
                 }
                 else if (previousRunTime.HasValue)
                 {
-                    Assert.IsTrue(previousRunTime.Value == nextRunTime 
-                        || previousRunTime.Value.AddHours(2) == nextRunTime
-                        || nextRunTime == GetTomorrowsStartTime(), $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
+                    Assert.IsTrue(previousRunTime.Value == nextRunTime
+                                  || previousRunTime.Value.AddHours(2) == nextRunTime
+                                  || nextRunTime == GetTomorrowsStartTime(schedule),
+                        $"Previous Run Time: {previousRunTime.Value}, Next Run Time {nextRunTime}");
                 }
 
                 previousRunTime = nextRunTime;
@@ -128,14 +180,14 @@ namespace UnitTests
             }
         }
 
-        private DateTime GetTomorrowsStartTime()
+        private DateTime GetTomorrowsStartTime(ExerciseSchedule schedule)
         {
-            return GetTodaysStartTime().AddDays(1);
+            return GetTodaysStartTime(schedule).AddDays(1);
         }
 
-        private DateTime GetTodaysStartTime()
+        private DateTime GetTodaysStartTime(ExerciseSchedule schedule)
         {
-            return _startTime.AddHours(_schedule.StartTime.Hour).AddMinutes(_schedule.StartTime.Minute);
+            return _startTime.AddHours(schedule.StartTime.Hour).AddMinutes(schedule.StartTime.Minute);
         }
     }
 }
