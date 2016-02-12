@@ -103,8 +103,22 @@ namespace MakeMeMove
 
         public List<ExerciseHistory> GetExerciseHistoryForDay(DateTime date)
         {
-            
-            return ExerciseHistories.Where(eh => eh.RecordedDate == date).OrderBy(eh => eh.ExerciseName).ToList();
+            return ExerciseHistories.Where(eh => eh.RecordedDate == date && eh.QuantityNotified > 0).OrderBy(eh => eh.ExerciseName).ToList();
+        }
+
+        public List<ExerciseHistory> GetPreviousExerciseHistory(DateTime currentDate)
+        {
+            return GetExerciseHistoryForDay(currentDate.AddDays(-1));
+        }
+
+        public List<ExerciseHistory> GetNextExerciseHistory(DateTime currentDate)
+        {
+            return GetExerciseHistoryForDay(currentDate.AddDays(1));
+        }
+
+        public DateTime GetMinimumExerciseHistoryDate()
+        {
+            return ExerciseHistories.Where(eh => eh.QuantityNotified > 0).OrderBy(eh => eh.RecordedDate).FirstOrDefault()?.RecordedDate ?? DateTime.Now.Date;
         }
 
         public void MarkExerciseNotified(string exerciseName, int quantity)

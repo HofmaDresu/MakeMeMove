@@ -86,7 +86,7 @@ namespace MakeMeMove.Droid.Activities
             _date.Text = DateTime.Today.ToShortDateString();
 
             _stats.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1,
-                todaysStats.Where(s => s.QuantityNotified > 0)
+                todaysStats
                     .Select(s => $"{s.ExerciseName}: {s.QuantityCompleted} / {s.QuantityNotified}")
                     .ToList());
         }
