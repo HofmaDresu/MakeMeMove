@@ -67,6 +67,7 @@ namespace MakeMeMove.Droid.Activities
                 .SetNegativeButton("Next", (sender, args) =>
                 {
                     var nextExercise = Data.GetNextEnabledExercise();
+                    UpdateData();
                     ShowTimeToMovePrompt(nextExercise);
                 })
                 .SetNeutralButton("Ignore", (sender, args) => ResetPromptData())
