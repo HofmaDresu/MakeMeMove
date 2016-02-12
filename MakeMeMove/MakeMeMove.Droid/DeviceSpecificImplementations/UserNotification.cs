@@ -37,14 +37,8 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
 
         public static void CreateNotification(Data data, Context context)
         {
-            var exercises = data.GetExerciseBlocks();
-            var enabledExercises = exercises.Where(e => e.Enabled).ToList();
-
-            if (enabledExercises.Count == 0) return;
-
-            var index = new Random().Next(0, enabledExercises.Count);
-
-            var nextExercise = enabledExercises[Min(index, exercises.Count - 1)];
+            var nextExercise = data.GetNextEnabledExercise();
+            if (nextExercise == null) return;
 
             var completedIntent = new Intent(context, typeof(CompletedActivity));
             completedIntent.PutExtra(Constants.ExerciseName, nextExercise.CombinedName);

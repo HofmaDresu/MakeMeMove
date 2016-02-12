@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MakeMeMove.Model;
 using SQLite;
+using static System.Math;
 
 namespace MakeMeMove
 {
@@ -85,6 +86,18 @@ namespace MakeMeMove
         public ExerciseBlock GetExerciseById(int id)
         {
             return ExerciseBlocks.SingleOrDefault(e => e.Id == id);
+        }
+
+        public ExerciseBlock GetNextEnabledExercise()
+        {
+            var exercises = GetExerciseBlocks();
+            var enabledExercises = exercises.Where(e => e.Enabled).ToList();
+
+            if (enabledExercises.Count == 0) return null;
+
+            var index = new Random().Next(0, enabledExercises.Count);
+
+            return enabledExercises[Min(index, exercises.Count - 1)];
         }
         #endregion
 

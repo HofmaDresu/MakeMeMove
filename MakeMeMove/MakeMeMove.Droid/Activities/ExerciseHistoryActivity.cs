@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using MakeMeMove.Model;
 
 namespace MakeMeMove.Droid.Activities
 {
@@ -20,6 +21,7 @@ namespace MakeMeMove.Droid.Activities
         private ListView _stats;
         private bool _showMarkExercisePrompt;
         private int _notifiedExerciseId = -1;
+        private Dialog _notificationDialog;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -45,23 +47,30 @@ namespace MakeMeMove.Droid.Activities
                 var selectedExercise = Data.GetExerciseById(_notifiedExerciseId);
                 if (selectedExercise == null) return;
 
-                new AlertDialog.Builder(this)
-                    .SetTitle("It's time to move")
-                    .SetMessage($"It's time to do {selectedExercise.Quantity} {selectedExercise.CombinedName}")
-                    .SetCancelable(false)
-                    .SetPositiveButton("Completed", (sender, args) =>
-                    {
-                        Data.MarkExerciseCompleted(selectedExercise.CombinedName, selectedExercise.Quantity);
-                        UpdateData();
-                        ResetPromptData();
-                    })
-                    .SetNegativeButton("Next", (sender, args) =>
-                    {
-                        ResetPromptData();
-                    })
-                    .SetNeutralButton("Ignore", (sender, args) => ResetPromptData())
-                    .Show();
+                ShowTimeToMovePrompt(selectedExercise);
             }
+        }
+
+        private void ShowTimeToMovePrompt(ExerciseBlock selectedExercise)
+        {
+            _notificationDialog?.Dismiss();
+            _notificationDialog = new AlertDialog.Builder(this)
+                .SetTitle("It's time to move")
+                .SetMessage($"It's time to do {selectedExercise.Quantity} {selectedExercise.CombinedName}")
+                .SetCancelable(false)
+                .SetPositiveButton("Completed", (sender, args) =>
+                {
+                    Data.MarkExerciseCompleted(selectedExercise.CombinedName, selectedExercise.Quantity);
+                    UpdateData();
+                    ResetPromptData();
+                })
+                .SetNegativeButton("Next", (sender, args) =>
+                {
+                    var nextExercise = Data.GetNextEnabledExercise();
+                    ShowTimeToMovePrompt(nextExercise);
+                })
+                .SetNeutralButton("Ignore", (sender, args) => ResetPromptData())
+                .Show();
         }
 
         private void UpdateData()
@@ -80,6 +89,12 @@ namespace MakeMeMove.Droid.Activities
         {
             _showMarkExercisePrompt = false;
             _notifiedExerciseId = -1;
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            _notificationDialog?.Dismiss();
         }
     }
 }
