@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Support.V4.View;
+using Android.Views;
 using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Model;
 using SQLite;
@@ -15,10 +16,10 @@ namespace MakeMeMove.Droid.Activities
         ParentActivity = typeof(MainActivity))]
     public class ExerciseHistoryActivity : BaseActivity
     {
-        private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
         private bool _showMarkExercisePrompt;
         private int _notifiedExerciseId = -1;
         private Dialog _notificationDialog;
+        private Dialog _confirmDeleteDialog;
         private ViewPager _pager;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -44,7 +45,7 @@ namespace MakeMeMove.Droid.Activities
 
             if (_showMarkExercisePrompt)
             {
-                var selectedExercise = _data.GetExerciseById(_notifiedExerciseId);
+                var selectedExercise = Data.GetExerciseById(_notifiedExerciseId);
                 if (selectedExercise == null) return;
 
                 ShowTimeToMovePrompt(selectedExercise);
@@ -60,16 +61,16 @@ namespace MakeMeMove.Droid.Activities
                 .SetCancelable(false)
                 .SetPositiveButton("Completed", (sender, args) =>
                 {
-                    _data.MarkExerciseCompleted(selectedExercise.CombinedName, selectedExercise.Quantity);
+                    Data.MarkExerciseCompleted(selectedExercise.CombinedName, selectedExercise.Quantity);
                     UpdateData();
                     ResetPromptData();
                 })
                 .SetNegativeButton("Next", (sender, args) =>
                 {
-                    _data.MarkExerciseNotified(selectedExercise.CombinedName, -1 * selectedExercise.Quantity);
+                    Data.MarkExerciseNotified(selectedExercise.CombinedName, -1 * selectedExercise.Quantity);
 
-                    var nextExercise = _data.GetNextEnabledExercise();
-                    _data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
+                    var nextExercise = Data.GetNextEnabledExercise();
+                    Data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
 
                     UpdateData();
                     ShowTimeToMovePrompt(nextExercise);
@@ -97,6 +98,37 @@ namespace MakeMeMove.Droid.Activities
         {
             base.OnPause();
             _notificationDialog?.Dismiss();
+            _confirmDeleteDialog?.Dismiss();
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.HistorySettings, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem selectedItem)
+        {
+            if (selectedItem.ItemId == Resource.Id.DeleteHistory)
+            {
+                _confirmDeleteDialog?.Dismiss();
+                _confirmDeleteDialog = new AlertDialog.Builder(this)
+                    .SetTitle("Delete Exercise History")
+                    .SetMessage("This will permanently delete your exercise history. Do you wish to continue?")
+                    .SetPositiveButton("Yes", (sender, args) =>
+                    {
+                        Data.DeleteAllHistory();
+                        UpdateData();
+                    })
+                    .SetNegativeButton("No", (sender, args) => { })
+                    .Show();
+
+                return true;
+            }
+            else
+            {
+                return base.OnOptionsItemSelected(selectedItem);
+            }
         }
     }
 }

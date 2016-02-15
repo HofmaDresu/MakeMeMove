@@ -97,7 +97,7 @@ namespace MakeMeMove
 
             return enabledExercises[Min(index, exercises.Count - 1)];
         }
-        #endregion
+#endregion
 
 #region ExerciseHistory
 
@@ -171,6 +171,11 @@ namespace MakeMeMove
                 exerciseHistory.QuantityCompleted += quantity;
                 _db.Update(exerciseHistory);
             }
+        }
+
+        public void DeleteAllHistory()
+        {
+            _db.DeleteAll<ExerciseHistory>();
         }
 
 #endregion

@@ -1462,6 +1462,9 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f060056
 			public const int DeleteButton = 2131099734;
 			
+			// aapt resource value: 0x7f06007c
+			public const int DeleteHistory = 2131099772;
+			
 			// aapt resource value: 0x7f060055
 			public const int EditButton = 2131099733;
 			
@@ -1753,8 +1756,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f060050
 			public const int select_dialog_listview = 2131099728;
 			
-			// aapt resource value: 0x7f06007c
-			public const int settings_menu = 2131099772;
+			// aapt resource value: 0x7f06007d
+			public const int settings_menu = 2131099773;
 			
 			// aapt resource value: 0x7f06003b
 			public const int shortcut = 2131099707;
@@ -2012,7 +2015,10 @@ namespace MakeMeMove.Droid
 		{
 			
 			// aapt resource value: 0x7f0c0000
-			public const int Settings = 2131492864;
+			public const int HistorySettings = 2131492864;
+			
+			// aapt resource value: 0x7f0c0001
+			public const int Settings = 2131492865;
 			
 			static Menu()
 			{
