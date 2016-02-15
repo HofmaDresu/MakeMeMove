@@ -53,7 +53,11 @@ namespace MakeMeMove.Droid.Activities
             _manageScheduleButton.Click += (o, e) => StartActivity(new Intent(this, typeof (ManageScheduleActivity)));
             _addExerciseButton.Click += (sender, args) => StartActivity(new Intent(this, typeof(ManageExerciseActivity)));
 
-            FindViewById(Resource.Id.ViewHistoryButton).Click += (sender, args) => StartActivity(new Intent(this, typeof(ExerciseHistoryActivity)));
+            FindViewById(Resource.Id.ViewHistoryButton).Click += (sender, args) =>
+            {
+                _drawer.CloseDrawer(GravityCompat.Start);
+                StartActivity(new Intent(this, typeof (ExerciseHistoryActivity)));
+            };
 
             _permissionRequester.RequestPermissions(this);
 
