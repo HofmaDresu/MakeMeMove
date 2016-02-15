@@ -9,6 +9,9 @@ using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
 using System.Collections.Generic;
+using Android.Support.V4.View;
+using Android.Support.V4.Widget;
+using Android.Views;
 
 namespace MakeMeMove.Droid.Activities
 {
@@ -27,6 +30,7 @@ namespace MakeMeMove.Droid.Activities
         private RecyclerView _exerciseRecyclerView;
         private Button _manageScheduleButton;
         private Button _addExerciseButton;
+        private DrawerLayout _drawer;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -42,13 +46,14 @@ namespace MakeMeMove.Droid.Activities
             _exerciseRecyclerView = FindViewById<RecyclerView>(Resource.Id.ExerciseList);
             _manageScheduleButton = FindViewById<Button>(Resource.Id.ManageScheduleButton);
             _addExerciseButton = FindViewById<Button>(Resource.Id.AddExerciseButton);
+            _drawer = FindViewById<DrawerLayout>(Resource.Id.drawerLayout);
 
             _startServiceButton.Click += (o, e) => StartService();
             _stopServiceButton.Click += (o, e) => StopService();
             _manageScheduleButton.Click += (o, e) => StartActivity(new Intent(this, typeof (ManageScheduleActivity)));
             _addExerciseButton.Click += (sender, args) => StartActivity(new Intent(this, typeof(ManageExerciseActivity)));
 
-            FindViewById<Button>(Resource.Id.ViewHistoryButton).Click += (sender, args) => StartActivity(new Intent(this, typeof(ExerciseHistoryActivity)));
+            FindViewById(Resource.Id.ViewHistoryButton).Click += (sender, args) => StartActivity(new Intent(this, typeof(ExerciseHistoryActivity)));
 
             _permissionRequester.RequestPermissions(this);
 
@@ -130,6 +135,25 @@ namespace MakeMeMove.Droid.Activities
         {
             _serviceManager.StopNotificationService(this, _exerciseSchedule);
             EnableDisableServiceButtons();
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.Settings, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem selectedItem)
+        {
+            if (_drawer.IsDrawerOpen(GravityCompat.Start))
+            {
+                _drawer.CloseDrawer(GravityCompat.Start);
+            }
+            else
+            {
+                _drawer.OpenDrawer(GravityCompat.Start);
+            }
+            return true;
         }
     }
 }

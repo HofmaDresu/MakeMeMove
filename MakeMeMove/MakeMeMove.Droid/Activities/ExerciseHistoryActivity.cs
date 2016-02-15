@@ -1,18 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Runtime;
 using Android.Support.V4.View;
-using Android.Support.V7.App;
-using Android.Views;
-using Android.Widget;
 using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Model;
 using SQLite;
@@ -90,7 +80,11 @@ namespace MakeMeMove.Droid.Activities
 
         private void UpdateData()
         {
-            var todaysStats = _data.GetExerciseHistoryForDay(DateTime.Today);
+            var currentPosition = _pager.CurrentItem;
+            var adapter = new ExerciseHistoryFragmentAdapter(FragmentManager);
+            
+            _pager.Adapter = adapter;
+            _pager.SetCurrentItem(currentPosition, false);
         }
 
         private void ResetPromptData()
