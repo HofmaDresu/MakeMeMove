@@ -12,7 +12,9 @@
       android:layout_height="match_parent"
       android:scrollbars="vertical"
       android:layout_gravity="start"
-      android:background="#000000">
+      android:background="#000000"
+      android:clickable="true"
+      android:importantForAccessibility="no">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
