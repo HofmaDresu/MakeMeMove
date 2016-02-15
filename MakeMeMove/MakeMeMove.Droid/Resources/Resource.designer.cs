@@ -1459,9 +1459,6 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f060062
 			public const int CustomExerciseNameBox = 2131099746;
 			
-			// aapt resource value: 0x7f060051
-			public const int Date = 2131099729;
-			
 			// aapt resource value: 0x7f060056
 			public const int DeleteButton = 2131099734;
 			
@@ -1638,6 +1635,9 @@ namespace MakeMeMove.Droid
 			
 			// aapt resource value: 0x7f060039
 			public const int expanded_menu = 2131099705;
+			
+			// aapt resource value: 0x7f060051
+			public const int historyPager = 2131099729;
 			
 			// aapt resource value: 0x7f060005
 			public const int home = 2131099653;
@@ -1936,52 +1936,55 @@ namespace MakeMeMove.Droid
 			public const int ExerciseHistory = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int ExerciseListItem = 2130903066;
+			public const int ExerciseHistoryFragment = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int Main = 2130903067;
+			public const int ExerciseListItem = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int ManageExercise = 2130903068;
+			public const int Main = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int ManageSchedule = 2130903069;
+			public const int ManageExercise = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int notification_media_action = 2130903070;
+			public const int ManageSchedule = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int notification_media_cancel_action = 2130903071;
+			public const int notification_media_action = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int notification_template_big_media = 2130903072;
+			public const int notification_media_cancel_action = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int notification_template_big_media_narrow = 2130903073;
+			public const int notification_template_big_media = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int notification_template_lines = 2130903074;
+			public const int notification_template_big_media_narrow = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int notification_template_media = 2130903075;
+			public const int notification_template_lines = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int notification_template_part_chronometer = 2130903076;
+			public const int notification_template_media = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int notification_template_part_time = 2130903077;
+			public const int notification_template_part_chronometer = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int select_dialog_item_material = 2130903078;
+			public const int notification_template_part_time = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int select_dialog_multichoice_material = 2130903079;
+			public const int select_dialog_item_material = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int select_dialog_singlechoice_material = 2130903080;
+			public const int select_dialog_multichoice_material = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int support_simple_spinner_dropdown_item = 2130903081;
+			public const int select_dialog_singlechoice_material = 2130903081;
+			
+			// aapt resource value: 0x7f03002a
+			public const int support_simple_spinner_dropdown_item = 2130903082;
 			
 			static Layout()
 			{

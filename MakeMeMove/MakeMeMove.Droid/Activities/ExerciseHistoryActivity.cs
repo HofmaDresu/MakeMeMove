@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -8,9 +9,15 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.View;
+using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Model;
+using SQLite;
+using AlertDialog = Android.App.AlertDialog;
+using Environment = System.Environment;
 
 namespace MakeMeMove.Droid.Activities
 {
@@ -18,11 +25,11 @@ namespace MakeMeMove.Droid.Activities
         ParentActivity = typeof(MainActivity))]
     public class ExerciseHistoryActivity : BaseActivity
     {
-        private TextView _date;
-        private ListView _stats;
+        private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
         private bool _showMarkExercisePrompt;
         private int _notifiedExerciseId = -1;
         private Dialog _notificationDialog;
+        private ViewPager _pager;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -33,9 +40,11 @@ namespace MakeMeMove.Droid.Activities
             _showMarkExercisePrompt = Intent.GetBooleanExtra(Constants.ShowMarkedExercisePrompt, false);
             _notifiedExerciseId = Intent.GetIntExtra(Constants.ExerciseId, -1);
 
+            var adapter = new ExerciseHistoryFragmentAdapter(FragmentManager);
 
-            _date = FindViewById<TextView>(Resource.Id.Date);
-            _stats = FindViewById<ListView>(Resource.Id.Stats);
+            _pager = FindViewById<ViewPager>(Resource.Id.historyPager);
+            _pager.Adapter = adapter;
+            _pager.SetCurrentItem(adapter.Count, false);
         }
 
         protected override void OnResume()
@@ -45,7 +54,7 @@ namespace MakeMeMove.Droid.Activities
 
             if (_showMarkExercisePrompt)
             {
-                var selectedExercise = Data.GetExerciseById(_notifiedExerciseId);
+                var selectedExercise = _data.GetExerciseById(_notifiedExerciseId);
                 if (selectedExercise == null) return;
 
                 ShowTimeToMovePrompt(selectedExercise);
@@ -61,16 +70,16 @@ namespace MakeMeMove.Droid.Activities
                 .SetCancelable(false)
                 .SetPositiveButton("Completed", (sender, args) =>
                 {
-                    Data.MarkExerciseCompleted(selectedExercise.CombinedName, selectedExercise.Quantity);
+                    _data.MarkExerciseCompleted(selectedExercise.CombinedName, selectedExercise.Quantity);
                     UpdateData();
                     ResetPromptData();
                 })
                 .SetNegativeButton("Next", (sender, args) =>
                 {
-                    Data.MarkExerciseNotified(selectedExercise.CombinedName, -1 * selectedExercise.Quantity);
+                    _data.MarkExerciseNotified(selectedExercise.CombinedName, -1 * selectedExercise.Quantity);
 
-                    var nextExercise = Data.GetNextEnabledExercise();
-                    Data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
+                    var nextExercise = _data.GetNextEnabledExercise();
+                    _data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
 
                     UpdateData();
                     ShowTimeToMovePrompt(nextExercise);
@@ -81,14 +90,7 @@ namespace MakeMeMove.Droid.Activities
 
         private void UpdateData()
         {
-            var todaysStats = Data.GetExerciseHistoryForDay(DateTime.Today);
-
-            _date.Text = DateTime.Today.ToShortDateString();
-
-            _stats.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1,
-                todaysStats
-                    .Select(s => $"{s.ExerciseName}: {s.QuantityCompleted} / {s.QuantityNotified}")
-                    .ToList());
+            var todaysStats = _data.GetExerciseHistoryForDay(DateTime.Today);
         }
 
         private void ResetPromptData()
