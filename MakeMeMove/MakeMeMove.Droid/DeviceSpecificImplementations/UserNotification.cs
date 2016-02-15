@@ -61,8 +61,6 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                 .SetContentTitle("Time to Move")
                 .SetContentText($"It's time to do {nextExercise.Quantity} {nextExercise.CombinedName}")
                 .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate)
-                .AddAction(new Notification.Action(0, "Completed", completedPendingIntent))
-                .AddAction(new Notification.Action(0, "Next", nextPendingIntent))
                 .SetContentIntent(clickPendingIntent);
 
             if ((int)Build.VERSION.SdkInt >= 21)
@@ -72,17 +70,23 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                     .SetVisibility(NotificationVisibility.Public)
                     .SetCategory("reminder")
                     .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
-                    .SetColor(Color.Rgb(215, 78, 10));
+                    .SetColor(Color.Rgb(215, 78, 10))
+                    .AddAction(new Notification.Action(0, "Completed", completedPendingIntent))
+                    .AddAction(new Notification.Action(0, "Next", nextPendingIntent));
             }
             else if ((int)Build.VERSION.SdkInt >= 20)
             {
                 builder
-                    .SetSmallIcon(Resource.Drawable.icon);
+                    .SetSmallIcon(Resource.Drawable.icon)
+                    .AddAction(new Notification.Action(0, "Completed", completedPendingIntent))
+                    .AddAction(new Notification.Action(0, "Next", nextPendingIntent));
             }
             else
             {
                 builder
-                    .SetSmallIcon(Resource.Drawable.icon);
+                    .SetSmallIcon(Resource.Drawable.icon)
+                    .AddAction(0, "Completed", completedPendingIntent)
+                    .AddAction(0, "Next", nextPendingIntent);
             }
 
             var notification = builder.Build();
