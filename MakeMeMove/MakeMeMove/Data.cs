@@ -45,6 +45,37 @@ namespace MakeMeMove
             }
 
             _db.CreateTable<ExerciseHistory>();
+
+#if DEBUG
+            var now = DateTime.Now.Date;
+            if (!ExerciseHistories.Any(eh => eh.RecordedDate < now))
+            {
+                _db.InsertAll(new List<ExerciseHistory>
+                {
+                    new ExerciseHistory
+                    {
+                        QuantityNotified = 10,
+                        ExerciseName = "test",
+                        RecordedDate = DateTime.Now.AddDays(-1),
+                        QuantityCompleted = 10
+                    },
+                    new ExerciseHistory
+                    {
+                        QuantityNotified = 10,
+                        ExerciseName = "test",
+                        RecordedDate = DateTime.Now.AddDays(-2),
+                        QuantityCompleted = 10
+                    },
+                    new ExerciseHistory
+                    {
+                        QuantityNotified = 10,
+                        ExerciseName = "test",
+                        RecordedDate = DateTime.Now.AddDays(-3),
+                        QuantityCompleted = 10
+                    },
+                });
+            }
+#endif
         }
 
 #region Schedule
