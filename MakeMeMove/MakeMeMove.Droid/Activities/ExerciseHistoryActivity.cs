@@ -1,4 +1,3 @@
-using System.IO;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
@@ -6,9 +5,7 @@ using Android.Support.V4.View;
 using Android.Views;
 using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Model;
-using SQLite;
 using AlertDialog = Android.App.AlertDialog;
-using Environment = System.Environment;
 
 namespace MakeMeMove.Droid.Activities
 {
@@ -45,6 +42,7 @@ namespace MakeMeMove.Droid.Activities
 
             if (_showMarkExercisePrompt)
             {
+                _pager.SetCurrentItem(_pager.Adapter.Count, false);
                 var selectedExercise = Data.GetExerciseById(_notifiedExerciseId);
                 if (selectedExercise == null) return;
 
