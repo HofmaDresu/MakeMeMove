@@ -5,6 +5,7 @@ using Android.Graphics;
 using Android.OS;
 using MakeMeMove.Droid.Activities;
 using MakeMeMove.Droid.ExerciseActions;
+using MakeMeMove.Droid.Utilities;
 
 namespace MakeMeMove.Droid.DeviceSpecificImplementations
 {
@@ -31,8 +32,11 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                 .Show();
         }
 
-        public static void CreateNotification(Data data, Context context)
+        public static async void CreateNotification(Data data, Context context)
         {
+            var userIsPremium =
+                AuthorizationSingleton.PersonIsProOrHigherUser(
+                    await AuthorizationSingleton.GetInstance().GetPerson(context));
             var nextExercise = data.GetNextEnabledExercise();
             if (nextExercise == null) return;
 
@@ -46,14 +50,22 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             nextIntent.PutExtra(Constants.ExerciseQuantity, nextExercise.Quantity);
             var nextPendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, nextIntent, PendingIntentFlags.CancelCurrent);
 
-            
-            var clickIntent = new Intent(context, typeof(ExerciseHistoryActivity));
-            clickIntent.PutExtra(Constants.ShowMarkedExercisePrompt, true);
-            clickIntent.PutExtra(Constants.ExerciseId, nextExercise.Id);
-            var stackBuilder = TaskStackBuilder.Create(context);
-            stackBuilder.AddParentStack(Java.Lang.Class.FromType(typeof(ExerciseHistoryActivity)));
-            stackBuilder.AddNextIntent(clickIntent);
-            var clickPendingIntent = stackBuilder.GetPendingIntent(0, PendingIntentFlags.CancelCurrent);
+            PendingIntent clickPendingIntent;
+            if (userIsPremium)
+            {
+                var clickIntent = new Intent(context, typeof (ExerciseHistoryActivity));
+                clickIntent.PutExtra(Constants.ShowMarkedExercisePrompt, true);
+                clickIntent.PutExtra(Constants.ExerciseId, nextExercise.Id);
+                var stackBuilder = TaskStackBuilder.Create(context);
+                stackBuilder.AddParentStack(Java.Lang.Class.FromType(typeof (ExerciseHistoryActivity)));
+                stackBuilder.AddNextIntent(clickIntent);
+                clickPendingIntent = stackBuilder.GetPendingIntent(0, PendingIntentFlags.CancelCurrent);
+            }
+            else
+            {
+                var clickIntent = new Intent(context, typeof(MainActivity));
+                clickPendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, clickIntent, PendingIntentFlags.CancelCurrent);
+            }
 
             data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
 
@@ -63,6 +75,7 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                 .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate)
                 .SetContentIntent(clickPendingIntent);
 
+
             if ((int)Build.VERSION.SdkInt >= 21)
             {
                 builder
@@ -70,9 +83,13 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                     .SetVisibility(NotificationVisibility.Public)
                     .SetCategory("reminder")
                     .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
-                    .SetColor(Color.Rgb(215, 78, 10))
-                    .AddAction(new Notification.Action(0, "Completed", completedPendingIntent))
-                    .AddAction(new Notification.Action(0, "Next", nextPendingIntent));
+                    .SetColor(Color.Rgb(215, 78, 10));
+                if (userIsPremium)
+                {
+                    builder
+                        .AddAction(new Notification.Action(0, "Completed", completedPendingIntent))
+                        .AddAction(new Notification.Action(0, "Next", nextPendingIntent));
+                }
             }
             else if ((int)Build.VERSION.SdkInt >= 20)
             {
@@ -80,13 +97,24 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                     .SetSmallIcon(Resource.Drawable.icon)
                     .AddAction(new Notification.Action(0, "Completed", completedPendingIntent))
                     .AddAction(new Notification.Action(0, "Next", nextPendingIntent));
+                if (userIsPremium)
+                {
+                    builder
+                        .AddAction(new Notification.Action(0, "Completed", completedPendingIntent))
+                        .AddAction(new Notification.Action(0, "Next", nextPendingIntent));
+                }
             }
             else
             {
                 builder
-                    .SetSmallIcon(Resource.Drawable.icon)
-                    .AddAction(0, "Completed", completedPendingIntent)
-                    .AddAction(0, "Next", nextPendingIntent);
+                    .SetSmallIcon(Resource.Drawable.icon);
+                if (userIsPremium)
+                {
+                    // Yes, resharper, I know this is deprecated. but this is how you did it in pre-20
+                    builder
+                        .AddAction(0, "Completed", completedPendingIntent)
+                        .AddAction(0, "Next", nextPendingIntent);
+                }
             }
 
             var notification = builder.Build();

@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Views;
+using MacroEatMobile.Core;
+using MakeMeMove.Droid.Utilities;
 
 namespace MakeMeMove.Droid.Activities
 {
@@ -31,6 +33,7 @@ namespace MakeMeMove.Droid.Activities
         private Button _manageScheduleButton;
         private Button _addExerciseButton;
         private DrawerLayout _drawer;
+        private Person _person;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -56,7 +59,27 @@ namespace MakeMeMove.Droid.Activities
             FindViewById(Resource.Id.ViewHistoryButton).Click += (sender, args) =>
             {
                 _drawer.CloseDrawer(GravityCompat.Start);
-                StartActivity(new Intent(this, typeof (ExerciseHistoryActivity)));
+                if (AuthorizationSingleton.PersonIsProOrHigherUser(_person))
+                {
+                    StartActivity(new Intent(this, typeof(ExerciseHistoryActivity)));
+                }
+                else if(_person == null)
+                {
+                    new AlertDialog.Builder(this)
+                        .SetTitle("Account Needed")
+                        .SetMessage("You must sign in as a Fudist Premium user to access your exercise history. Would you like to sign in?")
+                        .SetPositiveButton("Yes", (o, eventArgs) => { }) 
+                        .SetNegativeButton("No", (o, eventArgs) => { })
+                        .Show();
+                }
+                else
+                {
+                    new AlertDialog.Builder(this)
+                        .SetTitle("Premium Account Needed")
+                        .SetMessage("Your current account is not subscribed to Fudist Premium. Please double check your subscription status and try again.")
+                        .SetPositiveButton("OK", (o, eventArgs) => { })
+                        .Show();
+                }
             };
 
             _permissionRequester.RequestPermissions(this);
@@ -64,9 +87,10 @@ namespace MakeMeMove.Droid.Activities
             _exerciseRecyclerView.SetLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.Vertical, false));
         }
 
-        protected override void OnResume()
+        protected override async void OnResume()
         {
             base.OnResume();
+            _person = await AuthorizationSingleton.GetInstance().GetPerson(this, true);
 
             _exerciseSchedule = Data.GetExerciseSchedule();
             _exerciseBlocks = Data.GetExerciseBlocks();

@@ -22,7 +22,7 @@ namespace MakeMeMove.Droid.Utilities
         }
 
         private static UnifiedAnalytics _unifiedAnalytics;
-        public static UnifiedAnalytics GetInstance(Activity context)
+        public static UnifiedAnalytics GetInstance(Context context)
         {
             if (_unifiedAnalytics == null)
             {

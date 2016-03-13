@@ -26,6 +26,8 @@ namespace MakeMeMove.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::MacroEatMobile.Core.Android.Resource.String.library_name = global::MakeMeMove.Droid.Resource.String.library_name;
+			global::ModernHttpClient.Resource.String.library_name = global::MakeMeMove.Droid.Resource.String.library_name;
 		}
 		
 		public partial class Animation
@@ -2096,8 +2098,11 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070012
 			public const int abc_toolbar_collapse_description = 2131165202;
 			
+			// aapt resource value: 0x7f070015
+			public const int app_name = 2131165205;
+			
 			// aapt resource value: 0x7f070014
-			public const int app_name = 2131165204;
+			public const int library_name = 2131165204;
 			
 			// aapt resource value: 0x7f070013
 			public const int status_bar_notification_info_overflow = 2131165203;
