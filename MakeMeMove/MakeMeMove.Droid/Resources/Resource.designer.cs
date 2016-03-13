@@ -1450,20 +1450,20 @@ namespace MakeMeMove.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060062
-			public const int AddExerciseButton = 2131099746;
-			
-			// aapt resource value: 0x7f060067
-			public const int CancelButton = 2131099751;
-			
 			// aapt resource value: 0x7f060064
-			public const int CustomExerciseNameBox = 2131099748;
+			public const int AddExerciseButton = 2131099748;
+			
+			// aapt resource value: 0x7f060069
+			public const int CancelButton = 2131099753;
+			
+			// aapt resource value: 0x7f060066
+			public const int CustomExerciseNameBox = 2131099750;
 			
 			// aapt resource value: 0x7f060056
 			public const int DeleteButton = 2131099734;
 			
-			// aapt resource value: 0x7f06007c
-			public const int DeleteHistory = 2131099772;
+			// aapt resource value: 0x7f06007e
+			public const int DeleteHistory = 2131099774;
 			
 			// aapt resource value: 0x7f060055
 			public const int EditButton = 2131099733;
@@ -1471,71 +1471,77 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f060057
 			public const int EnableDisableSwitch = 2131099735;
 			
-			// aapt resource value: 0x7f06006c
-			public const int EndHourSpinner = 2131099756;
-			
 			// aapt resource value: 0x7f06006e
-			public const int EndMeridianSpinner = 2131099758;
+			public const int EndHourSpinner = 2131099758;
 			
-			// aapt resource value: 0x7f06006d
-			public const int EndMinuteSpinner = 2131099757;
+			// aapt resource value: 0x7f060070
+			public const int EndMeridianSpinner = 2131099760;
 			
-			// aapt resource value: 0x7f06005e
-			public const int EndTimeText = 2131099742;
+			// aapt resource value: 0x7f06006f
+			public const int EndMinuteSpinner = 2131099759;
+			
+			// aapt resource value: 0x7f060060
+			public const int EndTimeText = 2131099744;
 			
 			// aapt resource value: 0x7f060053
 			public const int ExerciseCount = 2131099731;
 			
-			// aapt resource value: 0x7f060061
-			public const int ExerciseList = 2131099745;
+			// aapt resource value: 0x7f060063
+			public const int ExerciseList = 2131099747;
 			
 			// aapt resource value: 0x7f060054
 			public const int ExerciseName = 2131099732;
 			
-			// aapt resource value: 0x7f060063
-			public const int ExerciseTypeSpinner = 2131099747;
-			
-			// aapt resource value: 0x7f060060
-			public const int ManageScheduleButton = 2131099744;
-			
-			// aapt resource value: 0x7f06005f
-			public const int ReminderPeriodText = 2131099743;
-			
-			// aapt resource value: 0x7f060068
-			public const int ReminderSpinner = 2131099752;
-			
 			// aapt resource value: 0x7f060065
-			public const int RepetitionsText = 2131099749;
-			
-			// aapt resource value: 0x7f060066
-			public const int SaveButton = 2131099750;
-			
-			// aapt resource value: 0x7f060069
-			public const int StartHourSpinner = 2131099753;
-			
-			// aapt resource value: 0x7f06006b
-			public const int StartMeridianSpinner = 2131099755;
-			
-			// aapt resource value: 0x7f06006a
-			public const int StartMinuteSpinner = 2131099754;
+			public const int ExerciseTypeSpinner = 2131099749;
 			
 			// aapt resource value: 0x7f06005b
-			public const int StartServiceButton = 2131099739;
+			public const int LogInOutButton = 2131099739;
+			
+			// aapt resource value: 0x7f06005c
+			public const int LogInOutText = 2131099740;
+			
+			// aapt resource value: 0x7f060062
+			public const int ManageScheduleButton = 2131099746;
+			
+			// aapt resource value: 0x7f060061
+			public const int ReminderPeriodText = 2131099745;
+			
+			// aapt resource value: 0x7f06006a
+			public const int ReminderSpinner = 2131099754;
+			
+			// aapt resource value: 0x7f060067
+			public const int RepetitionsText = 2131099751;
+			
+			// aapt resource value: 0x7f060068
+			public const int SaveButton = 2131099752;
+			
+			// aapt resource value: 0x7f06006b
+			public const int StartHourSpinner = 2131099755;
+			
+			// aapt resource value: 0x7f06006d
+			public const int StartMeridianSpinner = 2131099757;
+			
+			// aapt resource value: 0x7f06006c
+			public const int StartMinuteSpinner = 2131099756;
 			
 			// aapt resource value: 0x7f06005d
-			public const int StartTimeText = 2131099741;
+			public const int StartServiceButton = 2131099741;
+			
+			// aapt resource value: 0x7f06005f
+			public const int StartTimeText = 2131099743;
 			
 			// aapt resource value: 0x7f060052
 			public const int Stats = 2131099730;
 			
-			// aapt resource value: 0x7f06005c
-			public const int StopServiceButton = 2131099740;
+			// aapt resource value: 0x7f06005e
+			public const int StopServiceButton = 2131099742;
 			
 			// aapt resource value: 0x7f06005a
 			public const int ViewHistoryButton = 2131099738;
 			
-			// aapt resource value: 0x7f06006f
-			public const int action0 = 2131099759;
+			// aapt resource value: 0x7f060071
+			public const int action0 = 2131099761;
 			
 			// aapt resource value: 0x7f060042
 			public const int action_bar = 2131099714;
@@ -1561,8 +1567,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f060043
 			public const int action_context_bar = 2131099715;
 			
-			// aapt resource value: 0x7f060073
-			public const int action_divider = 2131099763;
+			// aapt resource value: 0x7f060075
+			public const int action_divider = 2131099765;
 			
 			// aapt resource value: 0x7f060003
 			public const int action_menu_divider = 2131099651;
@@ -1594,14 +1600,14 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f06002c
 			public const int buttonPanel = 2131099692;
 			
-			// aapt resource value: 0x7f060070
-			public const int cancel_action = 2131099760;
+			// aapt resource value: 0x7f060072
+			public const int cancel_action = 2131099762;
 			
 			// aapt resource value: 0x7f06003a
 			public const int checkbox = 2131099706;
 			
-			// aapt resource value: 0x7f060076
-			public const int chronometer = 2131099766;
+			// aapt resource value: 0x7f060078
+			public const int chronometer = 2131099768;
 			
 			// aapt resource value: 0x7f06001d
 			public const int collapseActionView = 2131099677;
@@ -1636,8 +1642,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f06001a
 			public const int end = 2131099674;
 			
-			// aapt resource value: 0x7f06007b
-			public const int end_padder = 2131099771;
+			// aapt resource value: 0x7f06007d
+			public const int end_padder = 2131099773;
 			
 			// aapt resource value: 0x7f060026
 			public const int expand_activities_button = 2131099686;
@@ -1663,17 +1669,17 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f060027
 			public const int image = 2131099687;
 			
-			// aapt resource value: 0x7f06007a
-			public const int info = 2131099770;
+			// aapt resource value: 0x7f06007c
+			public const int info = 2131099772;
 			
 			// aapt resource value: 0x7f060000
 			public const int item_touch_helper_previous_elevation = 2131099648;
 			
-			// aapt resource value: 0x7f060074
-			public const int line1 = 2131099764;
+			// aapt resource value: 0x7f060076
+			public const int line1 = 2131099766;
 			
-			// aapt resource value: 0x7f060078
-			public const int line3 = 2131099768;
+			// aapt resource value: 0x7f06007a
+			public const int line3 = 2131099770;
 			
 			// aapt resource value: 0x7f06000a
 			public const int listMode = 2131099658;
@@ -1681,8 +1687,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f060029
 			public const int list_item = 2131099689;
 			
-			// aapt resource value: 0x7f060072
-			public const int media_actions = 2131099762;
+			// aapt resource value: 0x7f060074
+			public const int media_actions = 2131099764;
 			
 			// aapt resource value: 0x7f06001b
 			public const int middle = 2131099675;
@@ -1756,8 +1762,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f060050
 			public const int select_dialog_listview = 2131099728;
 			
-			// aapt resource value: 0x7f06007d
-			public const int settings_menu = 2131099773;
+			// aapt resource value: 0x7f06007f
+			public const int settings_menu = 2131099775;
 			
 			// aapt resource value: 0x7f06003b
 			public const int shortcut = 2131099707;
@@ -1786,8 +1792,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f060018
 			public const int src_over = 2131099672;
 			
-			// aapt resource value: 0x7f060071
-			public const int status_bar_latest_event_content = 2131099761;
+			// aapt resource value: 0x7f060073
+			public const int status_bar_latest_event_content = 2131099763;
 			
 			// aapt resource value: 0x7f06004d
 			public const int submit_area = 2131099725;
@@ -1795,17 +1801,17 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f06000c
 			public const int tabMode = 2131099660;
 			
-			// aapt resource value: 0x7f060079
-			public const int text = 2131099769;
+			// aapt resource value: 0x7f06007b
+			public const int text = 2131099771;
 			
-			// aapt resource value: 0x7f060077
-			public const int text2 = 2131099767;
+			// aapt resource value: 0x7f060079
+			public const int text2 = 2131099769;
 			
 			// aapt resource value: 0x7f060035
 			public const int textSpacerNoButtons = 2131099701;
 			
-			// aapt resource value: 0x7f060075
-			public const int time = 2131099765;
+			// aapt resource value: 0x7f060077
+			public const int time = 2131099767;
 			
 			// aapt resource value: 0x7f06002b
 			public const int title = 2131099691;
