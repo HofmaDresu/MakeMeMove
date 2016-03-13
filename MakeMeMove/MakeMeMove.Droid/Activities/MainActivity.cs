@@ -68,7 +68,7 @@ namespace MakeMeMove.Droid.Activities
                     new AlertDialog.Builder(this)
                         .SetTitle("Account Needed")
                         .SetMessage("You must sign in as a Fudist Premium user to access your exercise history. Would you like to sign in?")
-                        .SetPositiveButton("Yes", (o, eventArgs) => { }) 
+                        .SetPositiveButton("Yes", (o, eventArgs) => { StartActivity(new Intent(this, typeof(LoginActivity))); }) 
                         .SetNegativeButton("No", (o, eventArgs) => { })
                         .Show();
                 }

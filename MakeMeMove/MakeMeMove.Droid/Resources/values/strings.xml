@@ -1,4 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">Make Me Move</string>
+  <string name="log_in_title">Sign In</string>
+  <string name="log_in">Sign In</string>
+  <string name="log_in_with_fudist">Sign In with Fudist</string>
+  <string name="username">Username</string>
+  <string name="password">Password</string>
+  <string name="login_failure">Sign in failure. Please check that you have a Fudist subscription.</string>
+  <string name="log_out">Log Out</string>
+  <string name="no_account_text">Don\'t have an account? Visit our website to create a Fudist account, or tap cancel to sign up with Google or Facebook.</string>
+  <string name="cancel">Cancel</string>
 </resources>

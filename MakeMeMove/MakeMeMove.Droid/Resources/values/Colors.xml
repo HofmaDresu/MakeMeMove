@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<resources>
+  <color name="PrimaryColor" >#d74e0a</color>
+  <color name="PrimaryColorDark" >#CA4100</color>
+  <color name="PressedBottomButtonColor" >#ccd74e0a</color>
+  <color name="SectionHighlightColor" >#aad74e0a</color>
+  <color name="FreeButtonRippleColor">#D6AC98</color>
+  <color name="SecondaryColor" >#77d74e0a</color>
+  <color name="TertiaryColor" >#fcd2be</color>
+  <color name="Gold" >#f89406</color>
+  <color name="InteractibleTextColor" >#00AA0B</color>
+  <color name="FailureColor">#FF0000</color>
+  <color name="White">#FFFFFF</color>
+  <color name="Black">#000000</color>
+  <color name="HighlightBackgroundColor">#efe4e0</color>
+  <color name="MainBackgroundColor">#efefef</color>
+  <color name="WarningColor">#FF4B0A</color>
+  <color name="GrayFont">#757575</color>
+  <color name="GrayDivider">#bababa</color>
+</resources>

@@ -33,7 +33,7 @@ namespace MakeMeMove.Droid.Utilities
 
         public void SetPerson(Person person, Context context)
         {
-            throw new NotImplementedException("Make Me Move should not set person");
+            _person = person;
         }
 
         public AuthToken GetAuthToken(Context context)
