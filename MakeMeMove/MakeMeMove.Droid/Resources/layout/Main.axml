@@ -2,7 +2,7 @@
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:id="@+id/drawerLayout">
+    android:id="@+id/DrawerLayout">
   <include
       layout="@layout/Main_ContentArea" />
   <RelativeLayout

@@ -11,9 +11,11 @@ using MakeMeMove.Model;
 using System.Collections.Generic;
 using Android.Support.V4.View;
 using Android.Support.V4.Widget;
+using Android.Support.V7.App;
 using Android.Views;
 using MacroEatMobile.Core;
 using MakeMeMove.Droid.Utilities;
+using AlertDialog = Android.App.AlertDialog;
 
 namespace MakeMeMove.Droid.Activities
 {
@@ -33,6 +35,7 @@ namespace MakeMeMove.Droid.Activities
         private Button _manageScheduleButton;
         private Button _addExerciseButton;
         private DrawerLayout _drawer;
+        private ActionBarDrawerToggle _toggle;
         private TextView _logInOutText;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -49,13 +52,17 @@ namespace MakeMeMove.Droid.Activities
             _exerciseRecyclerView = FindViewById<RecyclerView>(Resource.Id.ExerciseList);
             _manageScheduleButton = FindViewById<Button>(Resource.Id.ManageScheduleButton);
             _addExerciseButton = FindViewById<Button>(Resource.Id.AddExerciseButton);
-            _drawer = FindViewById<DrawerLayout>(Resource.Id.drawerLayout);
+            _drawer = FindViewById<DrawerLayout>(Resource.Id.DrawerLayout);
             _logInOutText = FindViewById<TextView>(Resource.Id.LogInOutText);
 
             _startServiceButton.Click += (o, e) => StartService();
             _stopServiceButton.Click += (o, e) => StopService();
             _manageScheduleButton.Click += (o, e) => StartActivity(new Intent(this, typeof (ManageScheduleActivity)));
             _addExerciseButton.Click += (sender, args) => StartActivity(new Intent(this, typeof(ManageExerciseActivity)));
+
+            _toggle = new ActionBarDrawerToggle(this, _drawer, Resource.String.DrawerOpenDescription, Resource.String.DrawerCloseDescription);
+            _drawer.SetDrawerListener(_toggle);
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
 
             FindViewById(Resource.Id.ViewHistoryButton).Click += (sender, args) =>
             {
@@ -200,23 +207,20 @@ namespace MakeMeMove.Droid.Activities
             EnableDisableServiceButtons();
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
+        public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            MenuInflater.Inflate(Resource.Menu.Settings, menu);
-            return base.OnCreateOptionsMenu(menu);
+
+            if (_toggle.OnOptionsItemSelected(item))
+            {
+                return true;
+            }
+            return base.OnOptionsItemSelected(item);
         }
 
-        public override bool OnOptionsItemSelected(IMenuItem selectedItem)
+        protected override void OnPostCreate(Bundle savedInstanceState)
         {
-            if (_drawer.IsDrawerOpen(GravityCompat.Start))
-            {
-                _drawer.CloseDrawer(GravityCompat.Start);
-            }
-            else
-            {
-                _drawer.OpenDrawer(GravityCompat.Start);
-            }
-            return true;
+            _toggle.SyncState();
+            base.OnPostCreate(savedInstanceState);
         }
     }
 }

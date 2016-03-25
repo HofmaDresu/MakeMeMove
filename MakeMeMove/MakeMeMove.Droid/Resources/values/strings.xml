@@ -10,4 +10,6 @@
   <string name="log_out">Log Out</string>
   <string name="no_account_text">Don\'t have an account? Visit our website to create a Fudist account, or tap cancel to sign up with Google or Facebook.</string>
   <string name="cancel">Cancel</string>
+  <string name="DrawerOpenDescription">Open navigation drawer</string>
+  <string name="DrawerCloseDescription">Close navigation drawer</string>
 </resources>

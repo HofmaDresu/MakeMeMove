@@ -1743,6 +1743,9 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f090093
 			public const int DeleteHistory = 2131296403;
 			
+			// aapt resource value: 0x7f09006e
+			public const int DrawerLayout = 2131296366;
+			
 			// aapt resource value: 0x7f09005d
 			public const int EditButton = 2131296349;
 			
@@ -1925,9 +1928,6 @@ namespace MakeMeMove.Droid
 			
 			// aapt resource value: 0x7f09006f
 			public const int drawer = 2131296367;
-			
-			// aapt resource value: 0x7f09006e
-			public const int drawerLayout = 2131296366;
 			
 			// aapt resource value: 0x7f09004c
 			public const int edit_query = 2131296332;
@@ -2385,6 +2385,12 @@ namespace MakeMeMove.Droid
 		
 		public partial class String
 		{
+			
+			// aapt resource value: 0x7f05003f
+			public const int DrawerCloseDescription = 2131034175;
+			
+			// aapt resource value: 0x7f05003e
+			public const int DrawerOpenDescription = 2131034174;
 			
 			// aapt resource value: 0x7f05001f
 			public const int abc_action_bar_home_description = 2131034143;
