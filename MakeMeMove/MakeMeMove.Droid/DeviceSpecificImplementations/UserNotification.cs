@@ -82,22 +82,22 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                     .SetCategory("reminder")
                     .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
                     .SetColor(Color.Rgb(215, 78, 10))
-                    .AddAction(new Notification.Action(0, "Next", nextPendingIntent));
+                    .AddAction(new Notification.Action(Resource.Drawable.ic_shuffle_black_24dp, "Change", nextPendingIntent));
                 if (userIsPremium)
                 {
                     builder
-                        .AddAction(new Notification.Action(0, "Completed", completedPendingIntent));
+                        .AddAction(new Notification.Action(Resource.Drawable.ic_done_black_24dp, "Completed", completedPendingIntent));
                 }
             }
             else if ((int)Build.VERSION.SdkInt >= 20)
             {
                 builder
                     .SetSmallIcon(Resource.Drawable.icon)
-                    .AddAction(new Notification.Action(0, "Next", nextPendingIntent));
+                    .AddAction(new Notification.Action(Resource.Drawable.ic_shuffle_black_24dp, "Change", nextPendingIntent));
                 if (userIsPremium)
                 {
                     builder
-                        .AddAction(new Notification.Action(0, "Completed", completedPendingIntent));
+                        .AddAction(new Notification.Action(Resource.Drawable.ic_done_black_24dp, "Completed", completedPendingIntent));
                 }
             }
             else
@@ -105,11 +105,11 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                 // Yes, resharper, I know this is deprecated. but this is how you did it in pre-20
                 builder
                     .SetSmallIcon(Resource.Drawable.icon)
-                    .AddAction(0, "Next", nextPendingIntent);
+                    .AddAction(Resource.Drawable.ic_shuffle_white_24dp, "Change", nextPendingIntent);
                 if (userIsPremium)
                 {
                     builder
-                        .AddAction(0, "Completed", completedPendingIntent);
+                        .AddAction(Resource.Drawable.ic_done_white_24dp, "Completed", completedPendingIntent);
                 }
             }
 

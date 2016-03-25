@@ -225,8 +225,7 @@ namespace MakeMeMove.Droid.Activities
                         _mainContentArea.LayoutParameters = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent,
                             ViewGroup.LayoutParams.WrapContent, 0);
                         HideLoadingOverlayFudistLogin();
-                        //TODO: Implement network error dialog
-                        //GeneralDialogs.ShowNetworkErrorDialog(this, false);
+                        GeneralDialogs.ShowNetworkErrorDialog(this, false);
                         _fudistLoginButton.Click += LoginClick;
                     }
                     else
