@@ -32,11 +32,9 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                 .Show();
         }
 
-        public static async void CreateNotification(Data data, Context context)
+        public static void CreateNotification(Data data, Context context)
         {
-            var userIsPremium =
-                AuthorizationSingleton.PersonIsProOrHigherUser(
-                    await AuthorizationSingleton.GetInstance().GetPerson(context));
+            var userIsPremium = data.UserIsPremium();
             var nextExercise = data.GetNextEnabledExercise();
             if (nextExercise == null) return;
 
@@ -83,37 +81,35 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                     .SetVisibility(NotificationVisibility.Public)
                     .SetCategory("reminder")
                     .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
-                    .SetColor(Color.Rgb(215, 78, 10));
+                    .SetColor(Color.Rgb(215, 78, 10))
+                    .AddAction(new Notification.Action(0, "Next", nextPendingIntent));
                 if (userIsPremium)
                 {
                     builder
-                        .AddAction(new Notification.Action(0, "Completed", completedPendingIntent))
-                        .AddAction(new Notification.Action(0, "Next", nextPendingIntent));
+                        .AddAction(new Notification.Action(0, "Completed", completedPendingIntent));
                 }
             }
             else if ((int)Build.VERSION.SdkInt >= 20)
             {
                 builder
                     .SetSmallIcon(Resource.Drawable.icon)
-                    .AddAction(new Notification.Action(0, "Completed", completedPendingIntent))
                     .AddAction(new Notification.Action(0, "Next", nextPendingIntent));
                 if (userIsPremium)
                 {
                     builder
-                        .AddAction(new Notification.Action(0, "Completed", completedPendingIntent))
-                        .AddAction(new Notification.Action(0, "Next", nextPendingIntent));
+                        .AddAction(new Notification.Action(0, "Completed", completedPendingIntent));
                 }
             }
             else
             {
+                // Yes, resharper, I know this is deprecated. but this is how you did it in pre-20
                 builder
-                    .SetSmallIcon(Resource.Drawable.icon);
+                    .SetSmallIcon(Resource.Drawable.icon)
+                    .AddAction(0, "Next", nextPendingIntent);
                 if (userIsPremium)
                 {
-                    // Yes, resharper, I know this is deprecated. but this is how you did it in pre-20
                     builder
-                        .AddAction(0, "Completed", completedPendingIntent)
-                        .AddAction(0, "Next", nextPendingIntent);
+                        .AddAction(0, "Completed", completedPendingIntent);
                 }
             }
 

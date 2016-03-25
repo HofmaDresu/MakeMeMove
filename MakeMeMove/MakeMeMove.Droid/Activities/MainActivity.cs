@@ -33,7 +33,7 @@ namespace MakeMeMove.Droid.Activities
         private Button _manageScheduleButton;
         private Button _addExerciseButton;
         private DrawerLayout _drawer;
-        private Person _person;
+        private TextView _logInOutText;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -50,6 +50,7 @@ namespace MakeMeMove.Droid.Activities
             _manageScheduleButton = FindViewById<Button>(Resource.Id.ManageScheduleButton);
             _addExerciseButton = FindViewById<Button>(Resource.Id.AddExerciseButton);
             _drawer = FindViewById<DrawerLayout>(Resource.Id.drawerLayout);
+            _logInOutText = FindViewById<TextView>(Resource.Id.LogInOutText);
 
             _startServiceButton.Click += (o, e) => StartService();
             _stopServiceButton.Click += (o, e) => StopService();
@@ -59,26 +60,40 @@ namespace MakeMeMove.Droid.Activities
             FindViewById(Resource.Id.ViewHistoryButton).Click += (sender, args) =>
             {
                 _drawer.CloseDrawer(GravityCompat.Start);
-                if (AuthorizationSingleton.PersonIsProOrHigherUser(_person))
+                if (Data.UserIsPremium())
                 {
                     StartActivity(new Intent(this, typeof(ExerciseHistoryActivity)));
                 }
-                else if(_person == null)
-                {
-                    new AlertDialog.Builder(this)
-                        .SetTitle("Account Needed")
-                        .SetMessage("You must sign in as a Fudist Premium user to access your exercise history. Would you like to sign in?")
-                        .SetPositiveButton("Yes", (o, eventArgs) => { StartActivity(new Intent(this, typeof(LoginActivity))); }) 
-                        .SetNegativeButton("No", (o, eventArgs) => { })
-                        .Show();
-                }
-                else
+                else if(Data.UserIsSignedIn())
                 {
                     new AlertDialog.Builder(this)
                         .SetTitle("Premium Account Needed")
                         .SetMessage("Your current account is not subscribed to Fudist Premium. Please double check your subscription status and try again.")
                         .SetPositiveButton("OK", (o, eventArgs) => { })
                         .Show();
+                }
+                else
+                {
+                    new AlertDialog.Builder(this)
+                        .SetTitle("Account Needed")
+                        .SetMessage("You must sign in as a Fudist Premium user to access your exercise history. Would you like to sign in?")
+                        .SetPositiveButton("Yes", (o, eventArgs) => { StartActivity(new Intent(this, typeof(LoginActivity))); })
+                        .SetNegativeButton("No", (o, eventArgs) => { })
+                        .Show();
+                }
+            };
+
+            var logInOutButton = FindViewById(Resource.Id.LogInOutButton);
+            logInOutButton.Click += (sender, args) =>
+            {
+                if (!Data.UserIsSignedIn())
+                {
+                    StartActivity(new Intent(this, typeof (LoginActivity)));
+                }
+                else
+                {
+                    AuthorizationSingleton.GetInstance().ClearPerson(this);
+                    _logInOutText.Text ="Sign In With Fudist";
                 }
             };
 
@@ -90,7 +105,6 @@ namespace MakeMeMove.Droid.Activities
         protected override async void OnResume()
         {
             base.OnResume();
-            _person = await AuthorizationSingleton.GetInstance().GetPerson(this, true);
 
             _exerciseSchedule = Data.GetExerciseSchedule();
             _exerciseBlocks = Data.GetExerciseBlocks();
@@ -100,8 +114,19 @@ namespace MakeMeMove.Droid.Activities
             _reminderPeriodText.Text = _exerciseSchedule.PeriodDisplayString;
             UpdateExerciseList();
 
-
             EnableDisableServiceButtons();
+
+            if (Data.UserPremiumStatusNeedsToBeChecked())
+            {
+                var person = await AuthorizationSingleton.GetInstance().GetPerson(this, true);
+                if (person != null)
+                {
+                    Data.SignUserIn(person, AuthorizationSingleton.PersonIsProOrHigherUser(person));
+                }
+            }
+
+
+            _logInOutText.Text = Data.UserIsSignedIn() ? "Sign Out" : "Sign In With Fudist";
         }
 
         private void EditExerciseClicked(object sender, int id)

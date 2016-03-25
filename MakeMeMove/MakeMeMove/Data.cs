@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MacroEatMobile.Core;
 using MakeMeMove.Model;
 using SQLite;
 using static System.Math;
@@ -13,6 +14,7 @@ namespace MakeMeMove
         private TableQuery<ExerciseSchedule> ExerciseSchedules => _db.Table<ExerciseSchedule>();
         private TableQuery<ExerciseBlock> ExerciseBlocks => _db.Table<ExerciseBlock>();
         private TableQuery<ExerciseHistory> ExerciseHistories => _db.Table<ExerciseHistory>();
+        private TableQuery<FudistUser> FudistUsers => _db.Table<FudistUser>();
 
         private static readonly Lazy<Data> LazyData = new Lazy<Data>();
 
@@ -76,6 +78,9 @@ namespace MakeMeMove
                 });
             }
 #endif
+
+
+            _db.CreateTable<FudistUser>();
         }
 
 #region Schedule
@@ -209,6 +214,41 @@ namespace MakeMeMove
             _db.DeleteAll<ExerciseHistory>();
         }
 
+        #endregion
+
+#region FudistUser
+        public void SignUserIn(Person person, bool userIsPremium)
+        {
+            //Make sure we only have one user at a time
+            SignUserOut();
+            _db.Insert(new FudistUser
+            {
+                UserName = person.Username,
+                UserIsPremium = userIsPremium,
+                LastChecked = DateTime.Now
+            });
+        }
+
+        public void SignUserOut()
+        {
+            _db.DeleteAll<FudistUser>();
+        }
+
+        public bool UserIsSignedIn()
+        {
+            return FudistUsers.Any();
+        }
+
+        public bool UserIsPremium()
+        {
+            return FudistUsers.Any(u => u.UserIsPremium);
+        }
+
+        public bool UserPremiumStatusNeedsToBeChecked()
+        {
+            var oldestPreviousCheckTime = DateTime.Now.AddMonths(-1);
+            return FudistUsers.Any(u => !u.UserIsPremium || u.LastChecked < oldestPreviousCheckTime);
+        }
 #endregion
     }
 }

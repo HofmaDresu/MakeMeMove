@@ -22,7 +22,7 @@ namespace MakeMeMove.Droid.Activities
 {
     [Activity(ScreenOrientation = ScreenOrientation.Portrait,
         WindowSoftInputMode = SoftInput.AdjustResize | SoftInput.StateHidden)]
-    public class LoginActivity : Activity
+    public class LoginActivity : BaseActivity
     {
         private TextView _expandFudistLoginButton;
         private TextView _fudistLoginButton;
@@ -89,9 +89,6 @@ namespace MakeMeMove.Droid.Activities
             _googleLoginButton.SetSize(SignInButton.SizeWide);
 
             _unifiedAnalytics = UnifiedAnalytics.GetInstance(this);
-
-
-            
         }
 
         protected override void OnPause()
@@ -195,13 +192,14 @@ namespace MakeMeMove.Droid.Activities
                 ShowLoadingOverlay();
                 person = await FudistPersonAdapter.AuthPersonWithToken(accessToken, socialProvider, _unifiedAnalytics, AuthorizationSingleton.CreateIAuthorization(this));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ShowErrorMessage(Resource.String.login_failure);
                 HideLoadingOverlayMainScreen();
                 return;
             }
             AuthorizationSingleton.GetInstance().SetPerson(person, this);
+            Data.SignUserIn(person, AuthorizationSingleton.PersonIsProOrHigherUser(person));
             NavigateToMainScreen();
         }
 
@@ -241,22 +239,10 @@ namespace MakeMeMove.Droid.Activities
                         }
 
                         AuthorizationSingleton.GetInstance().SetPerson(result.Result, this);
+                        Data.SignUserIn(result.Result, AuthorizationSingleton.PersonIsProOrHigherUser(result.Result));
                         NavigateToMainScreen();
                     }
                 }));
-        }
-
-        private void LogInAsGuestClick(object sender, EventArgs e)
-        {
-            ShowLoadingOverlay();
-
-            FudistPersonAdapter.SignInAsGuest(_unifiedAnalytics, AuthorizationSingleton.CreateIAuthorization(this))
-                .ContinueWith(result => RunOnUiThread(() =>
-                {
-                    AuthorizationSingleton.GetInstance().SetPerson(result.Result, this);
-                    NavigateToMainScreen();
-                }));
-
         }
 
         private void ShowErrorMessage(int messageResourceId)
