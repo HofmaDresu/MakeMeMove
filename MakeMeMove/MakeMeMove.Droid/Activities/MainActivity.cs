@@ -119,11 +119,20 @@ namespace MakeMeMove.Droid.Activities
 
             if (Data.UserPremiumStatusNeedsToBeChecked())
             {
-                var person = await AuthorizationSingleton.GetInstance().GetPerson(this, true);
-                if (person != null)
-                {
-                    Data.SignUserIn(person, AuthorizationSingleton.PersonIsProOrHigherUser(person));
-                }
+                await AuthorizationSingleton.GetInstance().GetPerson(this, true)
+                    .ContinueWith(data =>
+                    {
+                        if (data.IsCanceled || data.IsFaulted)
+                        {
+                            return;
+                        }
+                        var person = data.Result;
+
+                        if (person != null)
+                        {
+                            Data.SignUserIn(person, AuthorizationSingleton.PersonIsProOrHigherUser(person));
+                        }
+                    });
             }
 
 
