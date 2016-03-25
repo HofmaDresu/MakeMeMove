@@ -93,6 +93,7 @@ namespace MakeMeMove.Droid.Activities
                 else
                 {
                     AuthorizationSingleton.GetInstance().ClearPerson(this);
+                    Data.SignUserOut();
                     _logInOutText.Text ="Sign In With Fudist";
                 }
             };
