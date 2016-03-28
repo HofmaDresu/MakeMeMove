@@ -5,7 +5,7 @@ using MakeMeMove.Droid.Activities;
 
 namespace MakeMeMove.Droid.ExerciseActions
 {
-    [Activity(TaskAffinity = "", ExcludeFromRecents = true)]
+    [Activity(TaskAffinity = "", ExcludeFromRecents = true, Theme = "@android:style/Theme.Translucent")]
     public class CompletedActivity : BaseActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

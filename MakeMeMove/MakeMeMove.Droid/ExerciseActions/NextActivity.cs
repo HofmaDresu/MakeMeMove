@@ -6,7 +6,7 @@ using MakeMeMove.Droid.DeviceSpecificImplementations;
 
 namespace MakeMeMove.Droid.ExerciseActions
 {
-    [Activity(TaskAffinity = "", ExcludeFromRecents = true)]
+    [Activity(TaskAffinity = "", ExcludeFromRecents = true, Theme = "@android:style/Theme.Translucent")]
     public class NextActivity : BaseActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
