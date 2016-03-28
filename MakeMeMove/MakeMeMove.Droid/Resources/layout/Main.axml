@@ -12,13 +12,40 @@
       android:layout_height="match_parent"
       android:scrollbars="vertical"
       android:layout_gravity="start"
-      android:background="#000000"
+      android:background="@color/White"
       android:clickable="true"
       android:importantForAccessibility="no">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
+      <LinearLayout
+          android:orientation="vertical"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/UserNameSection"
+          android:visibility="gone">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/SettingsHeader">
+          <TextView
+              android:text="@string/LoggedInAsText"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              style="@style/SettingsHeaderMainText" />
+          <TextView
+              android:id="@+id/UserNameText"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              style="@style/SettingsHeaderDetailsText" />
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/PrimaryColor" />
+      </LinearLayout>
       <LinearLayout
           android:orientation="vertical"
           android:layout_width="fill_parent"
@@ -39,7 +66,7 @@
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="#FFFFFF" />
+            android:background="@color/PrimaryColor" />
       </LinearLayout>
       <LinearLayout
           android:orientation="vertical"
@@ -62,7 +89,7 @@
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="#FFFFFF" />
+            android:background="@color/PrimaryColor" />
       </LinearLayout>
     </LinearLayout>
   </RelativeLayout>

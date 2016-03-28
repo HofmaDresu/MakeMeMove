@@ -37,6 +37,8 @@ namespace MakeMeMove.Droid.Activities
         private DrawerLayout _drawer;
         private ActionBarDrawerToggle _toggle;
         private TextView _logInOutText;
+        private View _userNameSection;
+        private TextView _userNameText;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -54,6 +56,8 @@ namespace MakeMeMove.Droid.Activities
             _addExerciseButton = FindViewById<Button>(Resource.Id.AddExerciseButton);
             _drawer = FindViewById<DrawerLayout>(Resource.Id.DrawerLayout);
             _logInOutText = FindViewById<TextView>(Resource.Id.LogInOutText);
+            _userNameSection = FindViewById(Resource.Id.UserNameSection);
+            _userNameText = FindViewById<TextView>(Resource.Id.UserNameText);
 
             _startServiceButton.Click += (o, e) => StartService();
             _stopServiceButton.Click += (o, e) => StopService();
@@ -101,7 +105,7 @@ namespace MakeMeMove.Droid.Activities
                 {
                     AuthorizationSingleton.GetInstance().ClearPerson(this);
                     Data.SignUserOut();
-                    _logInOutText.Text ="Sign In With Fudist";
+                    ShowUserSignedOut();
                 }
             };
 
@@ -143,7 +147,22 @@ namespace MakeMeMove.Droid.Activities
             }
 
 
-            _logInOutText.Text = Data.UserIsSignedIn() ? "Sign Out" : "Sign In With Fudist";
+            if (!Data.UserIsSignedIn())
+            {
+                ShowUserSignedOut();
+            }
+            else
+            {
+                _logInOutText.Text = "Sign Out";
+                _userNameSection.Visibility = ViewStates.Visible;
+                _userNameText.Text = Data.GetUserName();
+            }
+        }
+
+        private void ShowUserSignedOut()
+        {
+            _logInOutText.Text = "Sign In With Fudist";
+            _userNameSection.Visibility = ViewStates.Gone;
         }
 
         private void EditExerciseClicked(object sender, int id)

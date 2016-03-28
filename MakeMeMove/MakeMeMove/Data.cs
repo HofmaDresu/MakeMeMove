@@ -249,6 +249,11 @@ namespace MakeMeMove
             var oldestPreviousCheckTime = DateTime.Now.AddMonths(-1);
             return FudistUsers.Any(u => !u.UserIsPremium || u.LastChecked < oldestPreviousCheckTime);
         }
+
+        public string GetUserName()
+        {
+            return FudistUsers.FirstOrDefault()?.UserName ?? "";
+        }
 #endregion
     }
 }
