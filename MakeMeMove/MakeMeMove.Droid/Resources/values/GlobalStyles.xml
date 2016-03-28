@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <style name="ActivityStyle">
+  <style name="ActivityStyle" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <item name="colorPrimary">@color/PrimaryColor</item>
+    <item name="colorPrimaryDark">@color/PrimaryColorDark</item>
+    <item name="colorAccent">@color/InteractibleTextColor</item>
+    <item name="android:textColor">@color/PrimaryColor</item>
+    <item name="android:windowBackground">@color/MainBackgroundColor</item>
+    <item name="android:spinnerStyle">@style/FudistSpinner</item>
+  </style>
+  <style name="FudistSpinner" parent="android:Widget.Holo.Light.Spinner">
   </style>
   <style name="TopMarginedLayoutElement">
     <item name="android:layout_width">match_parent</item>

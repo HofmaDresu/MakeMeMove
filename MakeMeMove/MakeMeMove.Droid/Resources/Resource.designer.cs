@@ -3053,8 +3053,11 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f0b0073
 			public const int Base_Widget_AppCompat_Toolbar_Button_Navigation = 2131427443;
 			
-			// aapt resource value: 0x7f0b0135
-			public const int FailingText = 2131427637;
+			// aapt resource value: 0x7f0b0136
+			public const int FailingText = 2131427638;
+			
+			// aapt resource value: 0x7f0b0134
+			public const int FudistSpinner = 2131427636;
 			
 			// aapt resource value: 0x7f0b0010
 			public const int Platform_AppCompat = 2131427344;
@@ -3341,8 +3344,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f0b00ee
 			public const int ThemeOverlay_AppCompat_Light = 2131427566;
 			
-			// aapt resource value: 0x7f0b0134
-			public const int TopMarginedLayoutElement = 2131427636;
+			// aapt resource value: 0x7f0b0135
+			public const int TopMarginedLayoutElement = 2131427637;
 			
 			// aapt resource value: 0x7f0b00ef
 			public const int Widget_AppCompat_ActionBar = 2131427567;

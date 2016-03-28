@@ -63,8 +63,8 @@ namespace MakeMeMove.Droid.Activities
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            ActionBar.SetDisplayHomeAsUpEnabled(false);
-            ActionBar.SetHomeButtonEnabled(false);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(false);
+            SupportActionBar.SetHomeButtonEnabled(false);
             SetTitle(Resource.String.log_in_title);
 
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
