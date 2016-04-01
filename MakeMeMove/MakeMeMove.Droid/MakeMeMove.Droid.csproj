@@ -425,13 +425,16 @@
     <AndroidResource Include="Resources\values-v21\GlobalStyles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ButtonBottom.xml" />
+    <AndroidResource Include="Resources\drawable\PrimaryColorButton.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-v21\ButtonBottomRipple.xml" />
+    <AndroidResource Include="Resources\drawable-v21\PrimaryColorButtonRipple.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-v21\ButtonBottomMaterial.xml" />
+    <AndroidResource Include="Resources\drawable-v21\PrimaryColorButtonMaterial.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v21\MainTabUnselected.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
