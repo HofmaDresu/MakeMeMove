@@ -8,6 +8,7 @@ using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Views;
+using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Droid.Fragments;
 using MakeMeMove.Droid.Utilities;
 using AlertDialog = Android.App.AlertDialog;
@@ -83,18 +84,7 @@ namespace MakeMeMove.Droid.Activities
 
             _permissionRequester.RequestPermissions(this);
 
-            var scheduleFragment = new ScheduleFragment();
-            scheduleFragment.Initialize(Data);
-
-            var exerciseListFragment = new ExerciseListFragment();
-            exerciseListFragment.Initialize(Data);
-
-            using (var tx = FragmentManager.BeginTransaction())
-            {
-                tx.Add(Resource.Id.ScheduleFragment, scheduleFragment);
-                tx.Add(Resource.Id.ExerciseListFragment, exerciseListFragment);
-                tx.Commit();
-            }
+            FindViewById<ViewPager>(Resource.Id.ViewPager).Adapter = new MainFragmentAdapter(FragmentManager, Data);
         }
 
         protected override async void OnResume()

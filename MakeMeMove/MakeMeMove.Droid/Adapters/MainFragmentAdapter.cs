@@ -2,6 +2,7 @@ using System;
 using Android.App;
 using Android.Runtime;
 using Android.Support.V13.App;
+using Java.Lang;
 using MakeMeMove.Droid.Fragments;
 
 namespace MakeMeMove.Droid.Adapters
@@ -29,13 +30,19 @@ namespace MakeMeMove.Droid.Adapters
         {
             switch (position)
             {
-                case 1:
+                case 0:
                     return _scheduleFragment;
-                case 2:
+                case 1:
                     return _exerciseListFragment;
                 default:
                     throw new NotImplementedException();
             }
+        }
+
+        public override ICharSequence GetPageTitleFormatted(int position)
+        {
+            var title = (GetItem(position) as BaseMainFragment)?.Title ?? "";
+            return new Java.Lang.String(title);
         }
     }
 }
