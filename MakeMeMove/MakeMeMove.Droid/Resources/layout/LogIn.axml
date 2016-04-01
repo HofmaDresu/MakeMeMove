@@ -3,8 +3,6 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:minWidth="25px"
-    android:minHeight="25px"
     android:animateLayoutChanges="true">
   <LinearLayout
       android:orientation="vertical"
@@ -49,12 +47,13 @@
           android:layout_marginTop="40dp"
           android:text="@string/log_in_with_fudist"
           android:id="@+id/expand_fudist_login_button"
+          style="@style/FreeButton"
           android:layout_gravity="center" />
       <RelativeLayout
           android:orientation="vertical"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:layout_marginTop="30dp"
+          style="@style/TopAndSideSpacedRootElement"
           android:visibility="gone"
           android:animateLayoutChanges="true"
           android:id="@+id/fudistLoginArea">
@@ -80,7 +79,8 @@
             android:id="@+id/CancelButton"
             android:layout_marginTop="10dp"
             android:layout_below="@id/password"
-            android:layout_alignParentLeft="true" />
+            android:layout_alignParentLeft="true" 
+            style="@style/FreeButton"/>
         <Button
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -88,7 +88,8 @@
             android:id="@+id/AuthorizeBtn"
             android:layout_marginTop="10dp"
             android:layout_below="@id/password"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            style="@style/FreeButton" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
