@@ -3,74 +3,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:orientation="horizontal"
-        style="@style/TopMarginedLayoutElement">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/StartServiceButton"
-            android:text="Start Service" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/StopServiceButton"
-            android:text="Stop Service" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        style="@style/TopMarginedLayoutElement">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Start Time:" />
-        <TextView
-            android:id="@+id/StartTimeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        style="@style/TopMarginedLayoutElement">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="End Time:" />
-        <TextView
-            android:id="@+id/EndTimeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        style="@style/TopMarginedLayoutElement">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reminder Period:" />
-        <TextView
-            android:id="@+id/ReminderPeriodText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp" />
-    </LinearLayout>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:id="@+id/ManageScheduleButton"
-        android:text="Change Schedule" />
-  <android.support.v7.widget.RecyclerView
-      android:id="@+id/ExerciseList"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/AddExerciseButton"
-        android:text="Add Exercise"
-        android:layout_alignParentBottom="true" />
+  <FrameLayout
+    android:id="@+id/ScheduleFragment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+  <FrameLayout
+    android:id="@+id/ExerciseListFragment"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"/>
 </LinearLayout>

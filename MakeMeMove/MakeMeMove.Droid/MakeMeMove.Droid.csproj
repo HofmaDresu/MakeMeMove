@@ -144,6 +144,7 @@
     <Compile Include="Activities\ManageScheduleActivity.cs" />
     <Compile Include="Adapters\ExerciseHistoryFragmentAdapter.cs" />
     <Compile Include="Adapters\ExerciseRecyclerAdapter.cs" />
+    <Compile Include="Adapters\MainFragmentAdapter.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DeviceSpecificImplementations\UserNotification.cs" />
     <Compile Include="ExerciseActions\NextActivity.cs" />
@@ -153,7 +154,10 @@
     <Compile Include="ExerciseTickBroadcastReceiver.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="DeviceSpecificImplementations\PermissionRequester.cs" />
+    <Compile Include="Fragments\BaseMainFragment.cs" />
     <Compile Include="Fragments\ExerciseHistoryDayFragment.cs" />
+    <Compile Include="Fragments\ExerciseListFragment.cs" />
+    <Compile Include="Fragments\ScheduleFragment.cs" />
     <Compile Include="GeneralDialogs.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,6 +197,12 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\LoadingOverlay.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Main_ExerciseSchedule.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Main_ExerciseList.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

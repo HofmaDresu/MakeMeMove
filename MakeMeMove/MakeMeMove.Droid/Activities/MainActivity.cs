@@ -1,19 +1,14 @@
-﻿using System.Linq;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Support.V7.Widget;
 using Android.Widget;
-using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
-using MakeMeMove.Model;
-using System.Collections.Generic;
 using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Views;
-using MacroEatMobile.Core;
+using MakeMeMove.Droid.Fragments;
 using MakeMeMove.Droid.Utilities;
 using AlertDialog = Android.App.AlertDialog;
 
@@ -22,18 +17,7 @@ namespace MakeMeMove.Droid.Activities
     [Activity(Label = "@string/app_name", Icon = "@drawable/icon", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
     public class MainActivity : BaseActivity
     {
-        private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
         private readonly PermissionRequester _permissionRequester = new PermissionRequester();
-        private ExerciseSchedule _exerciseSchedule;
-        private List<ExerciseBlock> _exerciseBlocks;
-        private Button _startServiceButton;
-        private Button _stopServiceButton;
-        private TextView _startTimeText;
-        private TextView _endTimeText;
-        private TextView _reminderPeriodText;
-        private RecyclerView _exerciseRecyclerView;
-        private Button _manageScheduleButton;
-        private Button _addExerciseButton;
         private DrawerLayout _drawer;
         private ActionBarDrawerToggle _toggle;
         private TextView _logInOutText;
@@ -46,23 +30,11 @@ namespace MakeMeMove.Droid.Activities
 
             SetContentView(Resource.Layout.Main);
 
-            _startServiceButton = FindViewById<Button>(Resource.Id.StartServiceButton);
-            _stopServiceButton = FindViewById<Button>(Resource.Id.StopServiceButton);
-            _startTimeText = FindViewById<TextView>(Resource.Id.StartTimeText);
-            _endTimeText = FindViewById<TextView>(Resource.Id.EndTimeText);
-            _reminderPeriodText = FindViewById<TextView>(Resource.Id.ReminderPeriodText);
-            _exerciseRecyclerView = FindViewById<RecyclerView>(Resource.Id.ExerciseList);
-            _manageScheduleButton = FindViewById<Button>(Resource.Id.ManageScheduleButton);
-            _addExerciseButton = FindViewById<Button>(Resource.Id.AddExerciseButton);
             _drawer = FindViewById<DrawerLayout>(Resource.Id.DrawerLayout);
             _logInOutText = FindViewById<TextView>(Resource.Id.LogInOutText);
             _userNameSection = FindViewById(Resource.Id.UserNameSection);
             _userNameText = FindViewById<TextView>(Resource.Id.UserNameText);
 
-            _startServiceButton.Click += (o, e) => StartService();
-            _stopServiceButton.Click += (o, e) => StopService();
-            _manageScheduleButton.Click += (o, e) => StartActivity(new Intent(this, typeof (ManageScheduleActivity)));
-            _addExerciseButton.Click += (sender, args) => StartActivity(new Intent(this, typeof(ManageExerciseActivity)));
 
             _toggle = new ActionBarDrawerToggle(this, _drawer, Resource.String.DrawerOpenDescription, Resource.String.DrawerCloseDescription);
             _drawer.SetDrawerListener(_toggle);
@@ -111,22 +83,26 @@ namespace MakeMeMove.Droid.Activities
 
             _permissionRequester.RequestPermissions(this);
 
-            _exerciseRecyclerView.SetLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.Vertical, false));
+            var scheduleFragment = new ScheduleFragment();
+            scheduleFragment.Initialize(Data);
+
+            var exerciseListFragment = new ExerciseListFragment();
+            exerciseListFragment.Initialize(Data);
+
+            using (var tx = FragmentManager.BeginTransaction())
+            {
+                tx.Add(Resource.Id.ScheduleFragment, scheduleFragment);
+                tx.Add(Resource.Id.ExerciseListFragment, exerciseListFragment);
+                tx.Commit();
+            }
         }
 
         protected override async void OnResume()
         {
             base.OnResume();
 
-            _exerciseSchedule = Data.GetExerciseSchedule();
-            _exerciseBlocks = Data.GetExerciseBlocks();
 
-            _startTimeText.Text = _exerciseSchedule.StartTime.ToLongTimeString();
-            _endTimeText.Text = _exerciseSchedule.EndTime.ToLongTimeString();
-            _reminderPeriodText.Text = _exerciseSchedule.PeriodDisplayString;
-            UpdateExerciseList();
 
-            EnableDisableServiceButtons();
 
             if (Data.UserPremiumStatusNeedsToBeChecked())
             {
@@ -163,67 +139,6 @@ namespace MakeMeMove.Droid.Activities
         {
             _logInOutText.Text = "Sign In With Fudist";
             _userNameSection.Visibility = ViewStates.Gone;
-        }
-
-        private void EditExerciseClicked(object sender, int id)
-        {
-            var intent = new Intent(this, typeof (ManageExerciseActivity));
-            intent.PutExtra(Constants.ExerciseId, id);
-            StartActivity(intent);
-        }
-
-        private void DeleteExerciseClicked(object sender, int id)
-        {
-            var selectedExercise = _exerciseBlocks.FirstOrDefault(e => e.Id == id);
-            if (selectedExercise != null)
-            {
-                var exerciseIndex = _exerciseBlocks.IndexOf(selectedExercise);
-                Data.DeleteExerciseBlock(selectedExercise.Id);
-                _exerciseBlocks = Data.GetExerciseBlocks();
-
-                var adapter =(ExerciseRecyclerAdapter) _exerciseRecyclerView.GetAdapter();
-                adapter.UpdateExerciseList(_exerciseBlocks);
-                adapter.NotifyItemRemoved(exerciseIndex);
-            }
-        }
-
-        private void UpdateExerciseList()
-        {
-            var exerciseListAdapter = new ExerciseRecyclerAdapter(_exerciseBlocks);
-            exerciseListAdapter.DeleteExerciseClicked += DeleteExerciseClicked;
-            exerciseListAdapter.EditExerciseClicked += EditExerciseClicked;
-            exerciseListAdapter.EnableDisableClicked += EnableDisableClicked;
-            _exerciseRecyclerView.SetAdapter(exerciseListAdapter);
-            _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
-        }
-
-        private void EnableDisableClicked(object sender, int id)
-        {
-            var selectedExercise = _exerciseBlocks.FirstOrDefault(e => e.Id == id);
-            if (selectedExercise != null)
-            {
-                selectedExercise.Enabled = !selectedExercise.Enabled;
-                Data.UpdateExerciseBlock(selectedExercise);
-                _exerciseBlocks = Data.GetExerciseBlocks();
-            }
-        }
-
-        private void EnableDisableServiceButtons()
-        {
-            _startServiceButton.Enabled = !_serviceManager.NotificationServiceIsRunning(this);
-            _stopServiceButton.Enabled = _serviceManager.NotificationServiceIsRunning(this);
-        }
-
-        private void StartService()
-        {
-            _serviceManager.StartNotificationService(this, _exerciseSchedule);
-            EnableDisableServiceButtons();
-        }
-
-        private void StopService()
-        {
-            _serviceManager.StopNotificationService(this, _exerciseSchedule);
-            EnableDisableServiceButtons();
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
