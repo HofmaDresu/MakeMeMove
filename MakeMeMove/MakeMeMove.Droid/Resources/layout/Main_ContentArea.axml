@@ -8,19 +8,20 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:elevation="8dp"
-    android:background="@color/PrimaryColor"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+    android:background="@color/PrimaryColor">
     <RelativeLayout
       android:layout_width="0dp"
       android:layout_weight="1"
-      android:layout_height="wrap_content">
+      android:layout_height="wrap_content"
+      android:paddingTop="10dp"
+      android:paddingBottom="10dp"
+      android:id="@+id/ScheduleLayout">
       <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/ic_today_white_36dp"
+        android:src="@drawable/ScheduleSelected"
         android:id="@+id/ScheduleIcon"/>
       <TextView
         android:layout_width="wrap_content"
@@ -28,26 +29,32 @@
         android:layout_centerInParent="true"
         android:layout_below="@id/ScheduleIcon"
         android:text="My Schedule"
-        android:textColor="@color/White"/>
+        android:textColor="@color/White"
+        android:textStyle="bold"
+        android:id="@+id/ScheduleText"/>
     </RelativeLayout>
     <RelativeLayout
       android:layout_width="0dp"
       android:layout_weight="1"
-      android:layout_height="wrap_content">
+      android:layout_height="wrap_content"
+      android:paddingTop="10dp"
+      android:paddingBottom="10dp"
+      android:id="@+id/ExerciseListLayout">
       <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/ic_list_white_36dp"
-        android:id="@+id/ListIcon"/>
+        android:src="@drawable/ExerciseListUnselected"
+        android:id="@+id/ExerciseListIcon"/>
       <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_below="@id/ListIcon"
+        android:layout_below="@id/ExerciseListIcon"
         android:text="My Exercises"
-        android:textColor="@color/White"/>
+        android:textColor="@color/White"
+        android:id="@+id/ExerciseListText"/>
     </RelativeLayout>
   </LinearLayout>
   <android.support.v4.view.ViewPager
