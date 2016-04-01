@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Graphics;
 using Android.OS;
 using Android.Widget;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
@@ -8,6 +9,7 @@ using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Views;
+using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Droid.Fragments;
 using MakeMeMove.Droid.Utilities;
 using AlertDialog = Android.App.AlertDialog;
@@ -23,6 +25,13 @@ namespace MakeMeMove.Droid.Activities
         private TextView _logInOutText;
         private View _userNameSection;
         private TextView _userNameText;
+        private View _scheduleLayout;
+        private View _exerciseListLayout;
+        private ViewPager _viewPager;
+        private TextView _scheduleText;
+        private ImageView _scheduleIcon;
+        private TextView _exerciseListText;
+        private ImageView _exerciseListIcon;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -30,10 +39,18 @@ namespace MakeMeMove.Droid.Activities
 
             SetContentView(Resource.Layout.Main);
 
+            SupportActionBar.Elevation = 2;
+
             _drawer = FindViewById<DrawerLayout>(Resource.Id.DrawerLayout);
             _logInOutText = FindViewById<TextView>(Resource.Id.LogInOutText);
             _userNameSection = FindViewById(Resource.Id.UserNameSection);
             _userNameText = FindViewById<TextView>(Resource.Id.UserNameText);
+            _scheduleLayout = FindViewById(Resource.Id.ScheduleLayout);
+            _exerciseListLayout = FindViewById(Resource.Id.ExerciseListLayout);
+            _scheduleText = FindViewById<TextView>(Resource.Id.ScheduleText);
+            _scheduleIcon = FindViewById<ImageView>(Resource.Id.ScheduleIcon);
+            _exerciseListText = FindViewById<TextView>(Resource.Id.ExerciseListText);
+            _exerciseListIcon = FindViewById<ImageView>(Resource.Id.ExerciseListIcon);
 
 
             _toggle = new ActionBarDrawerToggle(this, _drawer, Resource.String.DrawerOpenDescription, Resource.String.DrawerCloseDescription);
@@ -83,27 +100,44 @@ namespace MakeMeMove.Droid.Activities
 
             _permissionRequester.RequestPermissions(this);
 
-            var scheduleFragment = new ScheduleFragment();
-            scheduleFragment.Initialize(Data);
+            _viewPager = FindViewById<ViewPager>(Resource.Id.ViewPager);
+            _viewPager.Adapter = new MainFragmentAdapter(FragmentManager, Data);
+            _viewPager.PageSelected += ViewPager_PageSelected;
 
-            var exerciseListFragment = new ExerciseListFragment();
-            exerciseListFragment.Initialize(Data);
+            _scheduleLayout.Click += (sender, args) => _viewPager.SetCurrentItem(0, true);
+            _exerciseListLayout.Click += (sender, args) => _viewPager.SetCurrentItem(1, true);
+        }
 
-            using (var tx = FragmentManager.BeginTransaction())
+        private void ViewPager_PageSelected(object sender, ViewPager.PageSelectedEventArgs e)
+        {
+            var selectedPage = (_viewPager.Adapter as MainFragmentAdapter).GetItem(e.Position);
+
+            if (selectedPage is ExerciseListFragment)
             {
-                tx.Add(Resource.Id.ScheduleFragment, scheduleFragment);
-                tx.Add(Resource.Id.ExerciseListFragment, exerciseListFragment);
-                tx.Commit();
+                _scheduleIcon.SetImageResource(Resource.Drawable.ScheduleUnselected);
+                _scheduleText.Typeface = Typeface.Default;
+                _scheduleLayout.SetBackgroundResource(Resource.Drawable.MainTabUnselected);
+                 
+                _exerciseListIcon.SetImageResource(Resource.Drawable.ExerciseListSelected);
+                _exerciseListText.Typeface = Typeface.DefaultBold;
+                _exerciseListLayout.SetBackgroundResource(Resource.Drawable.MainTabSelected);
+            }
+            else
+            {
+                _scheduleIcon.SetImageResource(Resource.Drawable.ScheduleSelected);
+                _scheduleText.Typeface = Typeface.DefaultBold;
+                _scheduleLayout.SetBackgroundResource(Resource.Drawable.MainTabSelected);
+
+                _exerciseListIcon.SetImageResource(Resource.Drawable.ExerciseListUnselected);
+                _exerciseListText.Typeface = Typeface.Default;
+                _exerciseListLayout.SetBackgroundResource(Resource.Drawable.MainTabUnselected);
             }
         }
 
         protected override async void OnResume()
         {
             base.OnResume();
-
-
-
-
+            
             if (Data.UserPremiumStatusNeedsToBeChecked())
             {
                 await AuthorizationSingleton.GetInstance().GetPerson(this, true)
@@ -143,7 +177,6 @@ namespace MakeMeMove.Droid.Activities
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-
             if (_toggle.OnOptionsItemSelected(item))
             {
                 return true;

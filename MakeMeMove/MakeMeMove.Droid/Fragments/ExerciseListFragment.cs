@@ -7,7 +7,6 @@ using Android.Views;
 using Android.Widget;
 using MakeMeMove.Droid.Activities;
 using MakeMeMove.Droid.Adapters;
-using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
 
 namespace MakeMeMove.Droid.Fragments
@@ -15,7 +14,6 @@ namespace MakeMeMove.Droid.Fragments
     public class ExerciseListFragment : BaseMainFragment
     {
         private Data _data;
-        //private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
         private List<ExerciseBlock> _exerciseBlocks;
         private RecyclerView _exerciseRecyclerView;
         private Button _addExerciseButton;
@@ -78,7 +76,6 @@ namespace MakeMeMove.Droid.Fragments
             exerciseListAdapter.EditExerciseClicked += EditExerciseClicked;
             exerciseListAdapter.EnableDisableClicked += EnableDisableClicked;
             _exerciseRecyclerView.SetAdapter(exerciseListAdapter);
-            //_serviceManager.RestartNotificationServiceIfNeeded(Activity, _exerciseSchedule);
         }
 
         private void EnableDisableClicked(object sender, int id)
