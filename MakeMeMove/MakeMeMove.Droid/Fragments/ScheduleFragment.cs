@@ -1,12 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using MakeMeMove.Droid.Activities;
@@ -20,12 +13,13 @@ namespace MakeMeMove.Droid.Fragments
         private Data _data;
         private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
         private ExerciseSchedule _exerciseSchedule;
-        private Button _startServiceButton;
-        private Button _stopServiceButton;
         private TextView _startTimeText;
         private TextView _endTimeText;
         private TextView _reminderPeriodText;
         private Button _manageScheduleButton;
+        private View _serviceToggle;
+        private TextView _serviceStopped;
+        private TextView _serviceStarted;
 
         public void Initialize(Data data)
         {
@@ -36,17 +30,19 @@ namespace MakeMeMove.Droid.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = inflater.Inflate(Resource.Layout.Main_ExerciseSchedule, container, false);
-
-            _startServiceButton = view.FindViewById<Button>(Resource.Id.StartServiceButton);
-            _stopServiceButton = view.FindViewById<Button>(Resource.Id.StopServiceButton);
+            
             _startTimeText = view.FindViewById<TextView>(Resource.Id.StartTimeText);
             _endTimeText = view.FindViewById<TextView>(Resource.Id.EndTimeText);
             _reminderPeriodText = view.FindViewById<TextView>(Resource.Id.ReminderPeriodText);
             _manageScheduleButton = view.FindViewById<Button>(Resource.Id.ManageScheduleButton);
 
+            _serviceToggle = view.FindViewById(Resource.Id.ServiceToggle);
+            _serviceStopped = view.FindViewById<TextView>(Resource.Id.ServiceStopped);
+            _serviceStarted = view.FindViewById<TextView>(Resource.Id.ServiceStarted);
+
             _manageScheduleButton.Click += (o, e) => StartActivity(new Intent(Activity, typeof(ManageScheduleActivity)));
-            _startServiceButton.Click += (o, e) => StartService();
-            _stopServiceButton.Click += (o, e) => StopService();
+
+            _serviceToggle.Click += (sender, args) => ToggleService();
             return view;
         }
 
@@ -64,19 +60,36 @@ namespace MakeMeMove.Droid.Fragments
 
         private void EnableDisableServiceButtons()
         {
-            _startServiceButton.Enabled = !_serviceManager.NotificationServiceIsRunning(Activity);
-            _stopServiceButton.Enabled = _serviceManager.NotificationServiceIsRunning(Activity);
+            if (_serviceManager.NotificationServiceIsRunning(Activity))
+            {
+                _serviceStarted.SetBackgroundResource(Resource.Drawable.CustomSwitchPositiveActive);
+                _serviceStarted.Text = "STARTED";
+
+                _serviceStopped.SetBackgroundResource(Android.Resource.Color.Transparent);
+                _serviceStopped.Text = "";
+            }
+            else
+            {
+                _serviceStarted.SetBackgroundResource(Android.Resource.Color.Transparent);
+                _serviceStarted.Text = "";
+
+                _serviceStopped.SetBackgroundResource(Resource.Drawable.CustomSwitchNegativeActive);
+                _serviceStopped.Text = "STOPPED";
+            }
         }
 
-        private void StartService()
+        private void ToggleService()
         {
-            _serviceManager.StartNotificationService(Activity, _exerciseSchedule);
-            EnableDisableServiceButtons();
-        }
+            if (_serviceManager.NotificationServiceIsRunning(Activity))
+            {
+                _serviceManager.StopNotificationService(Activity, _exerciseSchedule);
+            }
+            else
+            {
+                _serviceManager.StartNotificationService(Activity, _exerciseSchedule);
 
-        private void StopService()
-        {
-            _serviceManager.StopNotificationService(Activity, _exerciseSchedule);
+            }
+
             EnableDisableServiceButtons();
         }
     }

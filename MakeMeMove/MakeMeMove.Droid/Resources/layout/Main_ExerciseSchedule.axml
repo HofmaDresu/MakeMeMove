@@ -1,61 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  style="@style/TopAndSideSpacedRootElement">
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Schedule Status:"
+    android:textAppearance="?android:attr/textAppearanceLarge"/>
   <LinearLayout
-      android:orientation="horizontal"
-      style="@style/TopMarginedLayoutElement">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/StartServiceButton"
-        android:text="Start Service" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/StopServiceButton"
-        android:text="Stop Service" />
+    android:id="@+id/ServiceToggle"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="2dp"
+    android:background="@drawable/CustomSwitchBackground"
+    android:layout_marginLeft="30dp">
+    <TextView
+      android:id="@+id/ServiceStopped"
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+      android:padding="5dp"
+      android:textStyle="bold"
+      android:gravity="center"/>
+    <TextView
+      android:id="@+id/ServiceStarted"
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+      android:padding="5dp"
+      android:textStyle="bold"
+      android:gravity="center"
+      android:textColor="@color/White"/>
   </LinearLayout>
-  <LinearLayout
-      android:orientation="horizontal"
-      style="@style/TopMarginedLayoutElement">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Time:" />
-    <TextView
-        android:id="@+id/StartTimeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp" />
-  </LinearLayout>
-  <LinearLayout
-      android:orientation="horizontal"
-      style="@style/TopMarginedLayoutElement">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="End Time:" />
-    <TextView
-        android:id="@+id/EndTimeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp" />
-  </LinearLayout>
-  <LinearLayout
-      android:orientation="horizontal"
-      style="@style/TopMarginedLayoutElement">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Reminder Period:" />
-    <TextView
-        android:id="@+id/ReminderPeriodText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp" />
-  </LinearLayout>
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Start Time:"
+      android:textAppearance="?android:attr/textAppearanceLarge" />
+  <TextView
+      android:id="@+id/StartTimeText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="30dp"
+      android:textAppearance="?android:attr/textAppearanceLarge" />
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="End Time:"
+      android:textAppearance="?android:attr/textAppearanceLarge" />
+  <TextView
+      android:id="@+id/EndTimeText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="30dp"
+      android:textAppearance="?android:attr/textAppearanceLarge" />
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Reminder Period:"
+      android:textAppearance="?android:attr/textAppearanceLarge" />
+  <TextView
+      android:id="@+id/ReminderPeriodText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="30dp"
+      android:textAppearance="?android:attr/textAppearanceLarge" />
   <Button
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
