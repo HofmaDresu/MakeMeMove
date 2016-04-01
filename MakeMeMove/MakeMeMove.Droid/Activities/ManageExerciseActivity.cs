@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
+using Android.Views.InputMethods;
 using Android.Widget;
 using Humanizer;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
@@ -77,7 +79,18 @@ namespace MakeMeMove.Droid.Activities
         private void ShowHideCustomText()
         {
             var selectedExerciseType = (PreBuiltExersises)_exerciseTypeSpinner.SelectedItemPosition;
-            _customExerciseNameText.Visibility = selectedExerciseType == PreBuiltExersises.Custom ? ViewStates.Visible : ViewStates.Gone;
+
+            if (selectedExerciseType == PreBuiltExersises.Custom)
+            {
+                _customExerciseNameText.Visibility = ViewStates.Visible;
+                _customExerciseNameText.RequestFocus();
+                var imm = (InputMethodManager)GetSystemService(InputMethodService);
+                imm.ShowSoftInput(_customExerciseNameText, ShowFlags.Implicit);
+            }
+            else
+            {
+                _customExerciseNameText.Visibility = ViewStates.Gone;
+            }
         }
 
         private void SaveData()

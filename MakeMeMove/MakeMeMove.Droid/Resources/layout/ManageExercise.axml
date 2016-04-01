@@ -2,44 +2,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    style="@style/TopAndSideSpacedRootElement">
     <TextView
         android:text="Exercise Type"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ExerciseTypeSpinner" />
+        android:id="@+id/ExerciseTypeSpinner"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     <EditText
         android:hint="Custom Exercise Name"
         android:id="@+id/CustomExerciseNameBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     <TextView
         android:text="Number of Repetitions"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        style="@style/TopSpacedElement" />
     <EditText
         android:id="@+id/RepetitionsText"
         android:text="10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
   <LinearLayout
       android:orientation="horizontal"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content">
+      android:layout_height="wrap_content"
+        style="@style/TopSpacedElement">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/SaveButton"
-        android:text="Save" />
+        android:text="Save"
+        style="@style/FreeButton"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:id="@+id/CancelButton"
-        android:text="Cancel" />
+        android:text="Cancel"
+        style="@style/FreeButton" />
   </LinearLayout>
 </LinearLayout>
