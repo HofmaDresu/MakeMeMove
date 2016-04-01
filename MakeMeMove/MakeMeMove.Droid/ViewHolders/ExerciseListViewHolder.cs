@@ -15,8 +15,7 @@ namespace MakeMeMove.Droid.ViewHolders
 {
     public class ExerciseListViewHolder: RecyclerView.ViewHolder
     {
-        public TextView ExerciseCount { get; }
-        public TextView ExerciseName { get; }
+        public TextView ExerciseTitle { get; }
         public Switch EnableDisableSwitch { get; }
         private readonly Button _editButton;
         private readonly Button _deleteButton;
@@ -28,8 +27,7 @@ namespace MakeMeMove.Droid.ViewHolders
         public ExerciseListViewHolder(Android.Views.View view) 
             : base(view)
         {
-            ExerciseCount = view.FindViewById<TextView>(Resource.Id.ExerciseCount);
-            ExerciseName = view.FindViewById<TextView>(Resource.Id.ExerciseName);
+            ExerciseTitle = view.FindViewById<TextView>(Resource.Id.ExerciseTitle);
             _editButton = view.FindViewById<Button>(Resource.Id.EditButton);
             _deleteButton = view.FindViewById<Button>(Resource.Id.DeleteButton);
             EnableDisableSwitch = EnableDisableSwitch = view.FindViewById<Switch>(Resource.Id.EnableDisableSwitch);

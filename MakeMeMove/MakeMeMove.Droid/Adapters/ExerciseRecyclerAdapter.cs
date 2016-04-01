@@ -37,8 +37,7 @@ namespace MakeMeMove.Droid.Adapters
             var viewHolder = (ExerciseListViewHolder) holder;
             var thisExercise = _exerciseList[position];
             viewHolder.EnableDisableSwitch.Checked = thisExercise.Enabled;
-            viewHolder.ExerciseCount.Text = thisExercise.Quantity.ToString();
-            viewHolder.ExerciseName.Text = thisExercise.CombinedName;
+            viewHolder.ExerciseTitle.Text = $"{thisExercise.Quantity} {thisExercise.CombinedName}";
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

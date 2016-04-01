@@ -215,7 +215,7 @@
     <AndroidResource Include="Resources\drawable\Mmm_white_icon.png" />
     <AndroidResource Include="Resources\drawable\settings.png" />
     <AndroidResource Include="Resources\values\GlobalStyles.xml" />
-    <AndroidResource Include="Resources\layout\ExerciseListItem.xml" />
+    <AndroidResource Include="Resources\layout\ExerciseListItem.axml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">
