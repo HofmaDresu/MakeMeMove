@@ -83,9 +83,14 @@ namespace MakeMeMove.Droid.Fragments
             var selectedExercise = _exerciseBlocks.FirstOrDefault(e => e.Id == id);
             if (selectedExercise != null)
             {
+                var exerciseIndex = _exerciseBlocks.IndexOf(selectedExercise);
                 selectedExercise.Enabled = !selectedExercise.Enabled;
                 _data.UpdateExerciseBlock(selectedExercise);
                 _exerciseBlocks = _data.GetExerciseBlocks();
+
+                var adapter = (ExerciseRecyclerAdapter)_exerciseRecyclerView.GetAdapter();
+                adapter.UpdateExerciseList(_exerciseBlocks);
+                adapter.NotifyItemChanged(exerciseIndex);
             }
         }
     }

@@ -1,15 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Support.V7.Widget;
 using Android.Views;
-using Android.Widget;
 using MakeMeMove.Droid.ViewHolders;
 using MakeMeMove.Model;
 
@@ -36,7 +28,25 @@ namespace MakeMeMove.Droid.Adapters
         {
             var viewHolder = (ExerciseListViewHolder) holder;
             var thisExercise = _exerciseList[position];
-            viewHolder.EnableDisableSwitch.Checked = thisExercise.Enabled;
+
+            if (thisExercise.Enabled)
+            {
+                viewHolder.ServiceStarted.SetBackgroundResource(Resource.Drawable.CustomSwitchPositiveActive);
+                viewHolder.ServiceStarted.Text = "ON";
+
+                viewHolder.ServiceStopped.SetBackgroundResource(Android.Resource.Color.Transparent);
+                viewHolder.ServiceStopped.Text = "";
+
+            }
+            else
+            {
+                viewHolder.ServiceStarted.SetBackgroundResource(Android.Resource.Color.Transparent);
+                viewHolder.ServiceStarted.Text = "";
+
+                viewHolder.ServiceStopped.SetBackgroundResource(Resource.Drawable.CustomSwitchNegativeActive);
+                viewHolder.ServiceStopped.Text = "OFF";
+
+            }
             viewHolder.ExerciseTitle.Text = $"{thisExercise.Quantity} {thisExercise.CombinedName}";
         }
 
