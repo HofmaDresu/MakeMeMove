@@ -1722,19 +1722,25 @@ namespace MakeMeMove.Droid
 			public const int log_in_with_facebook = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int Mmm_white_icon = 2130837627;
-			
-			// aapt resource value: 0x7f02007f
-			public const int notification_template_icon_bg = 2130837631;
+			public const int MainTabSelected = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int ScheduleSelected = 2130837628;
+			public const int MainTabUnselected = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int ScheduleUnselected = 2130837629;
+			public const int Mmm_white_icon = 2130837629;
+			
+			// aapt resource value: 0x7f020081
+			public const int notification_template_icon_bg = 2130837633;
 			
 			// aapt resource value: 0x7f02007e
-			public const int settings = 2130837630;
+			public const int ScheduleSelected = 2130837630;
+			
+			// aapt resource value: 0x7f02007f
+			public const int ScheduleUnselected = 2130837631;
+			
+			// aapt resource value: 0x7f020080
+			public const int settings = 2130837632;
 			
 			static Drawable()
 			{

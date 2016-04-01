@@ -116,17 +116,21 @@ namespace MakeMeMove.Droid.Activities
             {
                 _scheduleIcon.SetImageResource(Resource.Drawable.ScheduleUnselected);
                 _scheduleText.Typeface = Typeface.Default;
+                _scheduleLayout.SetBackgroundResource(Resource.Drawable.MainTabUnselected);
 
                 _exerciseListIcon.SetImageResource(Resource.Drawable.ExerciseListSelected);
                 _exerciseListText.Typeface = Typeface.DefaultBold;
+                _exerciseListLayout.SetBackgroundResource(Resource.Drawable.MainTabSelected);
             }
             else
             {
                 _scheduleIcon.SetImageResource(Resource.Drawable.ScheduleSelected);
                 _scheduleText.Typeface = Typeface.DefaultBold;
+                _scheduleLayout.SetBackgroundResource(Resource.Drawable.MainTabSelected);
 
                 _exerciseListIcon.SetImageResource(Resource.Drawable.ExerciseListUnselected);
                 _exerciseListText.Typeface = Typeface.Default;
+                _exerciseListLayout.SetBackgroundResource(Resource.Drawable.MainTabUnselected);
             }
         }
 
