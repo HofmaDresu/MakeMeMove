@@ -9,64 +9,68 @@
     android:orientation="horizontal"
     android:elevation="8dp"
     android:background="@color/PrimaryColor">
-    <RelativeLayout
-      android:layout_width="0dp"
-      android:layout_weight="1"
-      android:layout_height="wrap_content"
-      android:paddingTop="10dp"
-      android:paddingBottom="10dp"
+    <FrameLayout
       android:id="@+id/ScheduleLayout"
-      android:background="@drawable/MainTabSelected">
-      <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/ScheduleSelected"
-        android:id="@+id/ScheduleIcon"/>
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/ScheduleIcon"
-        android:text="My Schedule"
-        android:textColor="@color/White"
-        android:textStyle="bold"
-        android:id="@+id/ScheduleText"/>
-    </RelativeLayout>
-    <RelativeLayout
+      android:background="@drawable/MainTabSelected"
       android:layout_width="0dp"
       android:layout_weight="1"
-      android:layout_height="wrap_content"
-      android:paddingTop="10dp"
-      android:paddingBottom="10dp"
+      android:layout_height="wrap_content">
+      <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+        <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:layout_alignParentTop="true"
+          android:src="@drawable/ScheduleSelected"
+          android:id="@+id/ScheduleIcon"/>
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:layout_below="@id/ScheduleIcon"
+          android:text="My Schedule"
+          android:textColor="@color/White"
+          android:textStyle="bold"
+          android:id="@+id/ScheduleText"/>
+      </RelativeLayout>
+    </FrameLayout>
+    <FrameLayout
       android:id="@+id/ExerciseListLayout"
-      android:background="@drawable/MainTabUnselected">
-      <ImageView
-        android:layout_width="wrap_content"
+      android:background="@drawable/MainTabUnselected"
+      android:layout_width="0dp"
+      android:layout_weight="1"
+      android:layout_height="wrap_content">
+      <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/ExerciseListUnselected"
-        android:id="@+id/ExerciseListIcon"/>
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/ExerciseListIcon"
-        android:text="My Exercises"
-        android:textColor="@color/White"
-        android:id="@+id/ExerciseListText"/>
-    </RelativeLayout>
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+        <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:layout_alignParentTop="true"
+          android:src="@drawable/ExerciseListUnselected"
+          android:id="@+id/ExerciseListIcon"/>
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:layout_below="@id/ExerciseListIcon"
+          android:text="My Exercises"
+          android:textColor="@color/White"
+          android:id="@+id/ExerciseListText"/>
+      </RelativeLayout>
+    </FrameLayout>
   </LinearLayout>
   <android.support.v4.view.ViewPager
       android:layout_width="fill_parent"
       android:layout_height="0dp"
       android:layout_weight="1"
       android:id="@+id/ViewPager" >
-    <!--<android.support.v4.view.PagerTabStrip
-		android:layout_width  ="match_parent"
-		android:layout_height ="wrap_content"
-		android:layout_gravity="top"/>-->
   </android.support.v4.view.ViewPager>
 </LinearLayout>
