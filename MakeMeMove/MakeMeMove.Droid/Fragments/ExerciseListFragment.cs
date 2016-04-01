@@ -4,7 +4,6 @@ using Android.Content;
 using Android.OS;
 using Android.Support.V7.Widget;
 using Android.Views;
-using Android.Widget;
 using MakeMeMove.Droid.Activities;
 using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Model;
@@ -16,7 +15,7 @@ namespace MakeMeMove.Droid.Fragments
         private Data _data;
         private List<ExerciseBlock> _exerciseBlocks;
         private RecyclerView _exerciseRecyclerView;
-        private Button _addExerciseButton;
+        private View _addExerciseButton;
 
         public void Initialize(Data data)
         {
@@ -29,7 +28,7 @@ namespace MakeMeMove.Droid.Fragments
             var view = inflater.Inflate(Resource.Layout.Main_ExerciseList, container, false);
 
             _exerciseRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.ExerciseList);
-            _addExerciseButton = view.FindViewById<Button>(Resource.Id.AddExerciseButton);
+            _addExerciseButton = view.FindViewById(Resource.Id.AddExerciseButton);
 
             _addExerciseButton.Click += (sender, args) => StartActivity(new Intent(Activity, typeof(ManageExerciseActivity)));
 

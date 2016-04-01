@@ -4,5 +4,15 @@
     <item name="android:background">@drawable/FreeButtonRipple</item>
     <item name="android:textColor">@color/InteractibleTextColor</item>
   </style>
+
+  <style name="BottomNavigationLink">
+    <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+    <item name="android:textColor">@color/White</item>
+    <item name="android:background">@drawable/ButtonBottomRipple</item>
+    <item name="android:gravity">center</item>
+    <item name="android:paddingTop">10dp</item>
+    <item name="android:paddingBottom">10dp</item>
+    <item name="android:drawSelectorOnTop">true</item>
+  </style>
 </resources>
 
