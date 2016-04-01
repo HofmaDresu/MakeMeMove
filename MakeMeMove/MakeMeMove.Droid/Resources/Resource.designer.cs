@@ -3137,8 +3137,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f0b0136
 			public const int FailingText = 2131427638;
 			
-			// aapt resource value: 0x7f0b013d
-			public const int FreeButton = 2131427645;
+			// aapt resource value: 0x7f0b013e
+			public const int FreeButton = 2131427646;
 			
 			// aapt resource value: 0x7f0b0134
 			public const int FudistSpinner = 2131427636;
@@ -3442,6 +3442,9 @@ namespace MakeMeMove.Droid
 			
 			// aapt resource value: 0x7f0b0135
 			public const int TopMarginedLayoutElement = 2131427637;
+			
+			// aapt resource value: 0x7f0b013d
+			public const int TopSpacedElement = 2131427645;
 			
 			// aapt resource value: 0x7f0b013c
 			public const int TopSpacedRootElement = 2131427644;

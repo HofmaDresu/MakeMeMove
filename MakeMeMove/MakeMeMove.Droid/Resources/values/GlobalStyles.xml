@@ -55,6 +55,9 @@
   <style name="TopSpacedRootElement">
     <item name="android:paddingTop">20dp</item>
   </style>
+  <style name="TopSpacedElement">
+    <item name="android:layout_marginTop">10dp</item>
+  </style>
 
   <style name="FreeButton">
     <item name="android:background">@drawable/FreeButton</item>
