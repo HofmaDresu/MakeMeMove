@@ -1707,55 +1707,64 @@ namespace MakeMeMove.Droid
 			public const int ExerciseListUnselected = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int ic_done_black_24dp = 2130837622;
+			public const int FreeButton = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int ic_done_white_24dp = 2130837623;
+			public const int FreeButtonMaterial = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int ic_plusone_medium_off_client = 2130837624;
+			public const int FreeButtonRipple = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int ic_plusone_small_off_client = 2130837625;
+			public const int ic_done_black_24dp = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int ic_plusone_standard_off_client = 2130837626;
+			public const int ic_done_white_24dp = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int ic_plusone_tall_off_client = 2130837627;
+			public const int ic_plusone_medium_off_client = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int ic_shuffle_black_24dp = 2130837628;
+			public const int ic_plusone_small_off_client = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int ic_shuffle_white_24dp = 2130837629;
+			public const int ic_plusone_standard_off_client = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int icon = 2130837630;
+			public const int ic_plusone_tall_off_client = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int log_in_with_facebook = 2130837631;
+			public const int ic_shuffle_black_24dp = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int MainTabSelected = 2130837632;
+			public const int ic_shuffle_white_24dp = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int MainTabUnselected = 2130837633;
+			public const int icon = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int Mmm_white_icon = 2130837634;
-			
-			// aapt resource value: 0x7f020086
-			public const int notification_template_icon_bg = 2130837638;
+			public const int log_in_with_facebook = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int ScheduleSelected = 2130837635;
+			public const int MainTabSelected = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int ScheduleUnselected = 2130837636;
+			public const int MainTabUnselected = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int settings = 2130837637;
+			public const int Mmm_white_icon = 2130837637;
+			
+			// aapt resource value: 0x7f020089
+			public const int notification_template_icon_bg = 2130837641;
+			
+			// aapt resource value: 0x7f020086
+			public const int ScheduleSelected = 2130837638;
+			
+			// aapt resource value: 0x7f020087
+			public const int ScheduleUnselected = 2130837639;
+			
+			// aapt resource value: 0x7f020088
+			public const int settings = 2130837640;
 			
 			static Drawable()
 			{
@@ -3127,6 +3136,9 @@ namespace MakeMeMove.Droid
 			
 			// aapt resource value: 0x7f0b0136
 			public const int FailingText = 2131427638;
+			
+			// aapt resource value: 0x7f0b013d
+			public const int FreeButton = 2131427645;
 			
 			// aapt resource value: 0x7f0b0134
 			public const int FudistSpinner = 2131427636;

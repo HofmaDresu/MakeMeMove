@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+  <style name="FreeButton">
+    <item name="android:background">@drawable/FreeButtonRipple</item>
+    <item name="android:textColor">@color/InteractibleTextColor</item>
+  </style>
+</resources>
+

@@ -1,71 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:text="Reminder Period"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ReminderSpinner" />
-    <TextView
-        android:text="Start Time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/StartHourSpinner" />
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/StartMinuteSpinner" />
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/StartMeridianSpinner" />
-    </LinearLayout>
-    <TextView
-        android:text="End Time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/EndHourSpinner" />
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/EndMinuteSpinner" />
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/EndMeridianSpinner" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/SaveButton"
-            android:text="Save" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/CancelButton"
-            android:text="Cancel" />
-    </LinearLayout>
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  style="@style/TopAndSideSpacedRootElement">
+  <TextView
+      android:text="Reminder Period"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceLarge" />
+  <Spinner
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/ReminderSpinner"
+      android:textAppearance="?android:attr/textAppearanceLarge" />
+  <TextView
+      android:text="Start Time"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:layout_marginTop="10dp" />
+  <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+      <Spinner
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/StartHourSpinner"
+          android:textAppearance="?android:attr/textAppearanceLarge" />
+      <Spinner
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/StartMinuteSpinner"
+          android:textAppearance="?android:attr/textAppearanceLarge" />
+      <Spinner
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/StartMeridianSpinner"
+          android:textAppearance="?android:attr/textAppearanceLarge" />
+  </LinearLayout>
+  <TextView
+      android:text="End Time"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:layout_marginTop="10dp" />
+  <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+      <Spinner
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/EndHourSpinner"
+          android:textAppearance="?android:attr/textAppearanceLarge" />
+      <Spinner
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/EndMinuteSpinner"
+          android:textAppearance="?android:attr/textAppearanceLarge" />
+      <Spinner
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/EndMeridianSpinner"
+          android:textAppearance="?android:attr/textAppearanceLarge" />
+  </LinearLayout>
+  <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp">
+      <Button
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/SaveButton"
+          android:text="Save"
+          style="@style/FreeButton"/>
+      <Button
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="8dp"
+          android:id="@+id/CancelButton"
+          android:text="Cancel"
+          style="@style/FreeButton" />
+  </LinearLayout>
 </LinearLayout>
