@@ -31,6 +31,8 @@ namespace MakeMeMove.Droid.Activities
 
             SetContentView(Resource.Layout.Main);
 
+            SupportActionBar.Elevation = 2;
+
             _drawer = FindViewById<DrawerLayout>(Resource.Id.DrawerLayout);
             _logInOutText = FindViewById<TextView>(Resource.Id.LogInOutText);
             _userNameSection = FindViewById(Resource.Id.UserNameSection);

@@ -3,14 +3,61 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:elevation="8dp"
+    android:background="@color/PrimaryColor"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+    <RelativeLayout
+      android:layout_width="0dp"
+      android:layout_weight="1"
+      android:layout_height="wrap_content">
+      <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_today_white_36dp"
+        android:id="@+id/ScheduleIcon"/>
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/ScheduleIcon"
+        android:text="My Schedule"
+        android:textColor="@color/White"/>
+    </RelativeLayout>
+    <RelativeLayout
+      android:layout_width="0dp"
+      android:layout_weight="1"
+      android:layout_height="wrap_content">
+      <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_list_white_36dp"
+        android:id="@+id/ListIcon"/>
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/ListIcon"
+        android:text="My Exercises"
+        android:textColor="@color/White"/>
+    </RelativeLayout>
+  </LinearLayout>
   <android.support.v4.view.ViewPager
       android:layout_width="fill_parent"
       android:layout_height="0dp"
       android:layout_weight="1"
       android:id="@+id/ViewPager" >
-    <android.support.v4.view.PagerTabStrip
+    <!--<android.support.v4.view.PagerTabStrip
 		android:layout_width  ="match_parent"
 		android:layout_height ="wrap_content"
-		android:layout_gravity="top"/>
+		android:layout_gravity="top"/>-->
   </android.support.v4.view.ViewPager>
 </LinearLayout>
