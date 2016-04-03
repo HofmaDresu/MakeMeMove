@@ -37,7 +37,7 @@ namespace MakeMeMove.Droid.Fragments
 
 
 
-            stats.Adapter = new ArrayAdapter(Activity, Android.Resource.Layout.SimpleListItem1,
+            stats.Adapter = new ArrayAdapter(Activity, Resource.Layout.ExerciseHistoryListItem,
                 _exerciseHistoryStats
                     .Select(s => $"{s.ExerciseName}: {s.QuantityCompleted} / {s.QuantityNotified}")
                     .ToList());

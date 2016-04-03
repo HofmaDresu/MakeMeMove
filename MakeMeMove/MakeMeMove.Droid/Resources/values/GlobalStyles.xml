@@ -76,8 +76,8 @@
 
   <style name="HistoryTabStrip">
     <item name="android:textAppearance">@style/HistoryTabStripTextAppearance</item>
-    <item name="android:paddingTop">5dp</item>
-    <item name="android:paddingBottom">5dp</item>
+    <item name="android:paddingTop">10dp</item>
+    <item name="android:paddingBottom">10dp</item>
   </style>
 
   <style name="HistoryTabStripTextAppearance">
