@@ -3158,6 +3158,12 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f0b0134
 			public const int FudistSpinner = 2131427636;
 			
+			// aapt resource value: 0x7f0b0140
+			public const int HistoryTabStrip = 2131427648;
+			
+			// aapt resource value: 0x7f0b0141
+			public const int HistoryTabStripTextAppearance = 2131427649;
+			
 			// aapt resource value: 0x7f0b0010
 			public const int Platform_AppCompat = 2131427344;
 			
