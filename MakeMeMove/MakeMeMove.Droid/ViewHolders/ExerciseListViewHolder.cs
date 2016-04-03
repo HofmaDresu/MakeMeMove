@@ -11,6 +11,7 @@ namespace MakeMeMove.Droid.ViewHolders
         public View EnableDisableSwitch { get; }
         public TextView ServiceStopped { get; }
         public TextView ServiceStarted { get; }
+        public View MainView { get; }
         private readonly ImageView _editButton;
         private readonly ImageView _deleteButton;
 
@@ -27,6 +28,7 @@ namespace MakeMeMove.Droid.ViewHolders
             EnableDisableSwitch = EnableDisableSwitch = view.FindViewById(Resource.Id.EnableDisableToggle);
             ServiceStopped = view.FindViewById<TextView>(Resource.Id.ServiceStopped);
             ServiceStarted = view.FindViewById<TextView>(Resource.Id.ServiceStarted);
+            MainView = view;
 
             SetUpEvents();
         }

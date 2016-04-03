@@ -37,6 +37,7 @@ namespace MakeMeMove.Droid.Adapters
                 viewHolder.ServiceStopped.SetBackgroundResource(Android.Resource.Color.Transparent);
                 viewHolder.ServiceStopped.Text = "";
 
+                viewHolder.MainView.Enabled = true;
             }
             else
             {
@@ -46,6 +47,7 @@ namespace MakeMeMove.Droid.Adapters
                 viewHolder.ServiceStopped.SetBackgroundResource(Resource.Drawable.CustomSwitchNegativeActive);
                 viewHolder.ServiceStopped.Text = "OFF";
 
+                viewHolder.MainView.Enabled = false;
             }
             viewHolder.ExerciseTitle.Text = $"{thisExercise.Quantity} {thisExercise.CombinedName}";
         }
