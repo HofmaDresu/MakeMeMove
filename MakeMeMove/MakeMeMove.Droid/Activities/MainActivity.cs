@@ -99,6 +99,7 @@ namespace MakeMeMove.Droid.Activities
                     AuthorizationSingleton.GetInstance().ClearPerson(this);
                     Data.SignUserOut();
                     ShowUserSignedOut();
+                    Toast.MakeText(this, "Signed Out", ToastLength.Short).Show();
                 }
             };
 
