@@ -2569,6 +2569,9 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f05003d
 			public const int cancel = 2131034173;
 			
+			// aapt resource value: 0x7f050047
+			public const int close_app = 2131034183;
+			
 			// aapt resource value: 0x7f050018
 			public const int common_google_play_services_api_unavailable_text = 2131034136;
 			
@@ -2655,6 +2658,9 @@ namespace MakeMeMove.Droid
 			
 			// aapt resource value: 0x7f05001e
 			public const int common_signin_button_text_long = 2131034142;
+			
+			// aapt resource value: 0x7f050046
+			public const int fudist_unavailable = 2131034182;
 			
 			// aapt resource value: 0x7f050033
 			public const int library_name = 2131034163;

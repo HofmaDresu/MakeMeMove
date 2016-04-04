@@ -5,4 +5,6 @@
   <string name="network_error_title">Network Error</string>
   <string name="settings_label">Settings</string>
   <string name="network_settings_label">Network Settings</string>
+  <string name="fudist_unavailable">There was a problem contacting the Fudist server. Please try again later.</string>
+  <string name="close_app">Close Make Me Move</string>
 </resources>

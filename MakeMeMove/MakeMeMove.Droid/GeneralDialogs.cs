@@ -61,6 +61,16 @@ namespace MakeMeMove.Droid
             }
         }
 
+        public static void ShowFudistNotAvailableDialog(Activity activity, Action closeAction)
+        {
+            if (activity.IsFinishing || (Build.VERSION.SdkInt >= BuildVersionCodes.JellyBeanMr1 && activity.IsDestroyed)) return;
+            new AlertDialog.Builder(activity)
+                .SetMessage(Resource.String.fudist_unavailable)
+                .SetNegativeButton(Resource.String.close_app, (s, args) => { closeAction(); })
+                .SetCancelable(false)
+                .SetTitle(Resource.String.network_error_title).Create().Show();
+        }
+
         private static bool IsAirplaneModeOn(Activity activity)
         {
             return Settings.Global.GetInt(activity.ContentResolver, Settings.Global.AirplaneModeOn, 0) != 0;

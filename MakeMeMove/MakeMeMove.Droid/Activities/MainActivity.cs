@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Graphics;
@@ -8,7 +9,9 @@ using MakeMeMove.Droid.DeviceSpecificImplementations;
 using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
+using Android.Util;
 using Android.Views;
+using MacroEatMobile.Core;
 using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Droid.Fragments;
 using MakeMeMove.Droid.Utilities;
@@ -36,7 +39,7 @@ namespace MakeMeMove.Droid.Activities
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            
             SetContentView(Resource.Layout.Main);
 
             SupportActionBar.Elevation = 2;
@@ -86,6 +89,7 @@ namespace MakeMeMove.Droid.Activities
             var logInOutButton = FindViewById(Resource.Id.LogInOutButton);
             logInOutButton.Click += (sender, args) =>
             {
+                _drawer.CloseDrawer(GravityCompat.Start);
                 if (!Data.UserIsSignedIn())
                 {
                     StartActivity(new Intent(this, typeof (LoginActivity)));
@@ -137,6 +141,22 @@ namespace MakeMeMove.Droid.Activities
         protected override async void OnResume()
         {
             base.OnResume();
+
+            if (Data.UserIsSignedIn())
+            {
+                //HACK: MMM should work with the Android 1.2.0 version of our API
+                try
+                {
+                    await fudistConfigAdapter.Configure(/*PackageManager.GetPackageInfo(PackageName, 0).VersionName*/"1.2.0", "Android", UnifiedAnalytics.GetInstance(this));
+                }
+                catch (Exception ex)
+                {
+#if DEBUG
+                    Log.Error("exception", ex.Message);
+#endif
+                }
+            }
+
             
             if (Data.UserPremiumStatusNeedsToBeChecked())
             {

@@ -10,6 +10,7 @@ using Android.Gms.Common;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.App;
+using Android.Util;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
@@ -101,9 +102,23 @@ namespace MakeMeMove.Droid.Activities
             _passwordText.EditorAction -= PasswordTextOnEditorAction;
         }
 
-        protected override void OnResume()
+        protected override async void OnResume()
         {
             base.OnResume();
+
+            //HACK: MMM should work with the Android 1.2.0 version of our API
+            try
+            {
+                await fudistConfigAdapter.Configure(/*PackageManager.GetPackageInfo(PackageName, 0).VersionName*/"1.2.0", "Android", UnifiedAnalytics.GetInstance(this));
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                Log.Error("exception", ex.Message);
+#endif
+                GeneralDialogs.ShowNetworkErrorDialog(this);
+            }
+
             _fudistLoginButton.Click += LoginClick;
             _googleLoginButton.Click += GoogleLoginButtonOnClick;
             _facebookLoginButton.Click += FacebookLoginButtonOnClick;
