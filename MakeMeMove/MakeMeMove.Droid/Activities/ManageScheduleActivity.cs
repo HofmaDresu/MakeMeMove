@@ -60,20 +60,16 @@ namespace MakeMeMove.Droid.Activities
         {
             _reminderPeriodSpinner.SetSelection((int) _exerciseSchedule.Period);
 
-            var civilianModifiedStartHour = (_exerciseSchedule.StartTime.Hour > 11
-                ? _exerciseSchedule.StartTime.Hour - 12
-                : _exerciseSchedule.StartTime.Hour);
+            var civilianModifiedStartHour = TimeUtility.GetCivilianModifiedStartHour(_exerciseSchedule.StartTime);
 
-            _startHourSpinner.SetSelection(civilianModifiedStartHour == 0 ? 12 : civilianModifiedStartHour - 1);
+            _startHourSpinner.SetSelection(civilianModifiedStartHour - 1);
             _startMinuteSpinner.SetSelection(_exerciseSchedule.StartTime.Minute == 0 ? 0 : 1);
             _startMeridianSpinner.SetSelection(_exerciseSchedule.StartTime.Hour < 12 ? 0 : 1);
 
 
-            var civilianModifiedEndHour = (_exerciseSchedule.EndTime.Hour > 11
-                ? _exerciseSchedule.EndTime.Hour - 12
-                : _exerciseSchedule.EndTime.Hour);
+            var civilianModifiedEndHour = TimeUtility.GetCivilianModifiedStartHour(_exerciseSchedule.EndTime);
 
-            _endHourSpinner.SetSelection(civilianModifiedEndHour == 0 ? 12 : civilianModifiedEndHour - 1);
+            _endHourSpinner.SetSelection(civilianModifiedEndHour -1);
             _endMinuteSpinner.SetSelection(_exerciseSchedule.EndTime.Minute == 0 ? 0 : 1);
             _endMeridianSpinner.SetSelection(_exerciseSchedule.EndTime.Hour < 12 ? 0 : 1);
         }
