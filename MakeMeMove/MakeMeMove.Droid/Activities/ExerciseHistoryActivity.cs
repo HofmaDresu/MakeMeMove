@@ -14,6 +14,7 @@ namespace MakeMeMove.Droid.Activities
     public class ExerciseHistoryActivity : BaseActivity
     {
         private bool _showMarkExercisePrompt;
+        private bool _checkForIntentData;
         private int _notifiedExerciseId = -1;
         private Dialog _notificationDialog;
         private Dialog _confirmDeleteDialog;
@@ -25,8 +26,20 @@ namespace MakeMeMove.Droid.Activities
             SetContentView(Resource.Layout.ExerciseHistory);
             ResetPromptData();
 
-            _showMarkExercisePrompt = Intent.GetBooleanExtra(Constants.ShowMarkedExercisePrompt, false);
-            _notifiedExerciseId = Intent.GetIntExtra(Constants.ExerciseId, -1);
+            if (savedInstanceState != null)
+            {
+                _checkForIntentData = savedInstanceState.GetBoolean(Constants.CheckForIntentData, true);
+            }
+            else
+            {
+                _checkForIntentData = true;
+            }
+
+            if (_checkForIntentData)
+            {
+                _showMarkExercisePrompt = Intent.GetBooleanExtra(Constants.ShowMarkedExercisePrompt, false);
+                _notifiedExerciseId = Intent.GetIntExtra(Constants.ExerciseId, -1);
+            }
 
             var adapter = new ExerciseHistoryFragmentAdapter(FragmentManager);
 
@@ -62,6 +75,7 @@ namespace MakeMeMove.Droid.Activities
                     Data.MarkExerciseCompleted(selectedExercise.CombinedName, selectedExercise.Quantity);
                     UpdateData();
                     ResetPromptData();
+                    _checkForIntentData = false;
                 })
                 .SetNegativeButton("Next", (sender, args) =>
                 {
@@ -73,7 +87,11 @@ namespace MakeMeMove.Droid.Activities
                     UpdateData();
                     ShowTimeToMovePrompt(nextExercise);
                 })
-                .SetNeutralButton("Ignore", (sender, args) => ResetPromptData())
+                .SetNeutralButton("Ignore", (sender, args) =>
+                {
+                    ResetPromptData();
+                    _checkForIntentData = false;
+                })
                 .Show();
         }
 
@@ -127,6 +145,12 @@ namespace MakeMeMove.Droid.Activities
             {
                 return base.OnOptionsItemSelected(selectedItem);
             }
+        }
+
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            base.OnSaveInstanceState(outState);
+            outState.PutBoolean(Constants.CheckForIntentData, _checkForIntentData);
         }
     }
 }
