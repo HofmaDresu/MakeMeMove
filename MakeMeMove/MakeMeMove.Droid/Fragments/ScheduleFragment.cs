@@ -1,3 +1,4 @@
+using System.IO;
 using Android.Content;
 using Android.OS;
 using Android.Views;
@@ -5,6 +6,8 @@ using Android.Widget;
 using MakeMeMove.Droid.Activities;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
+using SQLite;
+using Environment = System.Environment;
 
 namespace MakeMeMove.Droid.Fragments
 {
@@ -21,14 +24,14 @@ namespace MakeMeMove.Droid.Fragments
         private TextView _serviceStopped;
         private TextView _serviceStarted;
 
-        public void Initialize(Data data)
+        public void Initialize()
         {
-            _data = data;
             Title = "My Schedule";
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            _data = _data ?? Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
             var view = inflater.Inflate(Resource.Layout.Main_ExerciseSchedule, container, false);
             
             _startTimeText = view.FindViewById<TextView>(Resource.Id.StartTimeText);
@@ -49,6 +52,7 @@ namespace MakeMeMove.Droid.Fragments
         public override void OnResume()
         {
             base.OnResume();
+
 
             _exerciseSchedule = _data.GetExerciseSchedule();
             _startTimeText.Text = _exerciseSchedule.StartTime.ToLongTimeString();

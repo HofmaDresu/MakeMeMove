@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Android.Content;
 using Android.OS;
@@ -7,6 +8,8 @@ using Android.Views;
 using MakeMeMove.Droid.Activities;
 using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Model;
+using SQLite;
+using Environment = System.Environment;
 
 namespace MakeMeMove.Droid.Fragments
 {
@@ -17,14 +20,14 @@ namespace MakeMeMove.Droid.Fragments
         private RecyclerView _exerciseRecyclerView;
         private View _addExerciseButton;
 
-        public void Initialize(Data data)
+        public void Initialize()
         {
-            _data = data;
             Title = "My Exercises";
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            _data = _data ?? Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
             var view = inflater.Inflate(Resource.Layout.Main_ExerciseList, container, false);
 
             _exerciseRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.ExerciseList);

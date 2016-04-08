@@ -16,13 +16,13 @@ namespace MakeMeMove.Droid.Adapters
         {
         }
 
-        public MainFragmentAdapter(FragmentManager fm, Data data) : base(fm)
+        public MainFragmentAdapter(FragmentManager fm) : base(fm)
         {
             _scheduleFragment = new ScheduleFragment();
-            _scheduleFragment.Initialize(data);
+            _scheduleFragment.Initialize();
 
             _exerciseListFragment = new ExerciseListFragment();
-            _exerciseListFragment.Initialize(data);
+            _exerciseListFragment.Initialize();
         }
 
         public override int Count => 2;
