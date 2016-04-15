@@ -74,7 +74,7 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                 .SetContentIntent(clickPendingIntent);
 
 
-            if ((int)Build.VERSION.SdkInt >= 21)
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
             {
                 builder
                     .SetPriority((int)NotificationPriority.High)

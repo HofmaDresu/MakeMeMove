@@ -68,7 +68,7 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
 
             var dtBasis = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                 
-            if ((int)Build.VERSION.SdkInt >= 23)
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
             {
 
                 var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
@@ -88,16 +88,10 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                         recurringReminders);
                 }
             }
-            else if ((int) Build.VERSION.SdkInt >= 19)
+            else
             {
                 alarms.SetExact(AlarmType.RtcWakeup,
                     (long) nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds,
-                    recurringReminders);
-            }
-            else
-            {
-                alarms.Set(AlarmType.RtcWakeup,
-                    (long)nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds, 
                     recurringReminders);
             }
         }

@@ -63,7 +63,7 @@ namespace MakeMeMove.Droid
 
         public static void ShowFudistNotAvailableDialog(Activity activity, Action closeAction)
         {
-            if (activity.IsFinishing || (Build.VERSION.SdkInt >= BuildVersionCodes.JellyBeanMr1 && activity.IsDestroyed)) return;
+            if (activity.IsFinishing || activity.IsDestroyed) return;
             new AlertDialog.Builder(activity)
                 .SetMessage(Resource.String.fudist_unavailable)
                 .SetNegativeButton(Resource.String.close_app, (s, args) => { closeAction(); })

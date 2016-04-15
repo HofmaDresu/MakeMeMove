@@ -17,7 +17,7 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
 
 
 
-            if ((int)Build.VERSION.SdkInt >= 23 && !File.Exists(filePath))
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.M && !File.Exists(filePath))
             {
                 new AlertDialog.Builder(context)
                     .SetMessage(
