@@ -145,12 +145,14 @@
     <Compile Include="Adapters\ExerciseHistoryFragmentAdapter.cs" />
     <Compile Include="Adapters\ExerciseRecyclerAdapter.cs" />
     <Compile Include="Adapters\MainFragmentAdapter.cs" />
+    <Compile Include="CompleteExerciseBroadcastReceiver.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DeviceSpecificImplementations\UserNotification.cs" />
     <Compile Include="ExerciseActions\NextActivity.cs" />
     <Compile Include="ExerciseActions\CompletedActivity.cs" />
     <Compile Include="ExerciseRebootReceiver.cs" />
     <Compile Include="DeviceSpecificImplementations\ExerciseServiceManager.cs" />
+    <Compile Include="ChangeExerciseBroadcastReceiver.cs" />
     <Compile Include="ExerciseTickBroadcastReceiver.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="DeviceSpecificImplementations\PermissionRequester.cs" />
@@ -204,6 +206,9 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Main_ExerciseList.axml">
       <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\NotificationLayout.axml">
+      <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>

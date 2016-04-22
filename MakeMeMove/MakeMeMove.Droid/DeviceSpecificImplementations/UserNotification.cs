@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.OS;
+using Android.Widget;
 using MakeMeMove.Droid.Activities;
 using MakeMeMove.Droid.ExerciseActions;
 using MakeMeMove.Droid.Utilities;
@@ -38,15 +39,15 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             var nextExercise = data.GetNextEnabledExercise();
             if (nextExercise == null) return;
 
-            var completedIntent = new Intent(context, typeof(CompletedActivity));
+            var completedIntent = new Intent(context, typeof(CompleteExerciseBroadcastReceiver));
             completedIntent.PutExtra(Constants.ExerciseName, nextExercise.CombinedName);
             completedIntent.PutExtra(Constants.ExerciseQuantity, nextExercise.Quantity);
-            var completedPendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, completedIntent, PendingIntentFlags.CancelCurrent);
-
-            var nextIntent = new Intent(context, typeof(NextActivity));
+            var completedPendingIntent = PendingIntent.GetBroadcast(context, DateTime.Now.Millisecond, completedIntent, PendingIntentFlags.OneShot);
+            
+            var nextIntent = new Intent(context, typeof(ChangeExerciseBroadcastReceiver));
             nextIntent.PutExtra(Constants.ExerciseName, nextExercise.CombinedName);
             nextIntent.PutExtra(Constants.ExerciseQuantity, nextExercise.Quantity);
-            var nextPendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, nextIntent, PendingIntentFlags.CancelCurrent);
+            var nextPendingIntent = PendingIntent.GetBroadcast(context, DateTime.Now.Millisecond, nextIntent, PendingIntentFlags.CancelCurrent);
 
             PendingIntent clickPendingIntent;
             if (userIsPremium)
@@ -66,18 +67,19 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             }
 
             data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
-
+            
             var builder = new Notification.Builder(context)
                 .SetContentTitle("Time to Move")
                 .SetContentText($"It's time to do {nextExercise.Quantity} {nextExercise.CombinedName}")
                 .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate)
                 .SetContentIntent(clickPendingIntent);
 
+            
 
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
             {
                 builder
-                    .SetPriority((int)NotificationPriority.High)
+                    .SetPriority((int) NotificationPriority.High)
                     .SetVisibility(NotificationVisibility.Public)
                     .SetCategory("reminder")
                     .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
@@ -102,7 +104,8 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             }
             else
             {
-                // Yes, resharper, I know this is deprecated. but this is how you did it in pre-20
+                // Disable obsolete warning 'cause this was how you do it pre-20
+#pragma warning disable 618
                 builder
                     .SetSmallIcon(Resource.Drawable.icon)
                     .AddAction(Resource.Drawable.ic_shuffle_white_24dp, "Change", nextPendingIntent);
@@ -111,6 +114,7 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                     builder
                         .AddAction(Resource.Drawable.ic_done_white_24dp, "Completed", completedPendingIntent);
                 }
+#pragma warning restore 618
             }
 
             var notification = builder.Build();

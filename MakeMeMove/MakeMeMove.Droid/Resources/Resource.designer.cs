@@ -1806,8 +1806,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f09005d
 			public const int DeleteButton = 2131296349;
 			
-			// aapt resource value: 0x7f09009d
-			public const int DeleteHistory = 2131296413;
+			// aapt resource value: 0x7f09009f
+			public const int DeleteHistory = 2131296415;
 			
 			// aapt resource value: 0x7f090070
 			public const int DrawerLayout = 2131296368;
@@ -1859,6 +1859,12 @@ namespace MakeMeMove.Droid
 			
 			// aapt resource value: 0x7f090084
 			public const int ManageScheduleButton = 2131296388;
+			
+			// aapt resource value: 0x7f09009e
+			public const int NotificationContent = 2131296414;
+			
+			// aapt resource value: 0x7f09009d
+			public const int NotificationTitle = 2131296413;
 			
 			// aapt resource value: 0x7f090083
 			public const int ReminderPeriodText = 2131296387;
@@ -2184,8 +2190,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f090058
 			public const int select_dialog_listview = 2131296344;
 			
-			// aapt resource value: 0x7f09009e
-			public const int settings_menu = 2131296414;
+			// aapt resource value: 0x7f0900a0
+			public const int settings_menu = 2131296416;
 			
 			// aapt resource value: 0x7f090043
 			public const int shortcut = 2131296323;
@@ -2448,16 +2454,19 @@ namespace MakeMeMove.Droid
 			public const int notification_template_part_time = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int select_dialog_item_material = 2130903085;
+			public const int NotificationLayout = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int select_dialog_multichoice_material = 2130903086;
+			public const int select_dialog_item_material = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int select_dialog_singlechoice_material = 2130903087;
+			public const int select_dialog_multichoice_material = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int support_simple_spinner_dropdown_item = 2130903088;
+			public const int select_dialog_singlechoice_material = 2130903088;
+			
+			// aapt resource value: 0x7f030031
+			public const int support_simple_spinner_dropdown_item = 2130903089;
 			
 			static Layout()
 			{
