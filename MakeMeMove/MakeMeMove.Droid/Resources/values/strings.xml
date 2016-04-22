@@ -66,4 +66,6 @@
   <string name="Cancel">Cancel</string>
   <string name="DeleteHistory">Delete History</string>
   <string name="Settings">Settings</string>
+  <string name="FudistInStoreMenuText">See Fudist in the Play Store</string>
+  <string name="FudistInstalledMenuText">Open Fudist</string>
 </resources>
