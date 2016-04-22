@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Android.App;
 using Android.Content;
 using MacroEatMobile.Core;
 using MacroEatMobile.iPhone.Utilities;

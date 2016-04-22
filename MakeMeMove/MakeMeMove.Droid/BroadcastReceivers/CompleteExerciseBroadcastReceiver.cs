@@ -4,7 +4,7 @@ using SQLite;
 using Environment = System.Environment;
 using Path = System.IO.Path;
 
-namespace MakeMeMove.Droid
+namespace MakeMeMove.Droid.BroadcastReceivers
 {
     [BroadcastReceiver]
     public class CompleteExerciseBroadcastReceiver : BroadcastReceiver

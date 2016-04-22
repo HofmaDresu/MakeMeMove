@@ -1,12 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using MakeMeMove.Model;
@@ -34,9 +29,7 @@ namespace MakeMeMove.Droid.Fragments
 
             var view = inflater.Inflate(Resource.Layout.ExerciseHistoryFragment, container, false);
             var stats = view.FindViewById<ListView>(Resource.Id.Stats);
-
-
-
+            
             stats.Adapter = new ArrayAdapter(Activity, Resource.Layout.ExerciseHistoryListItem,
                 _exerciseHistoryStats
                     .Select(s => $"{s.ExerciseName}: {s.QuantityCompleted} / {s.QuantityNotified}")
@@ -44,9 +37,7 @@ namespace MakeMeMove.Droid.Fragments
 
             return view;
         }
-
-
-
+        
         public override void OnSaveInstanceState(Bundle outState)
         {
             base.OnSaveInstanceState(outState);

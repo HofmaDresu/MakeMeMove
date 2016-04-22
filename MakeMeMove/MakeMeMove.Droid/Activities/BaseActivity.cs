@@ -1,5 +1,4 @@
 using System.IO;
-using Android.App;
 using Android.Support.V7.App;
 using SQLite;
 using Environment = System.Environment;

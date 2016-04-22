@@ -3,10 +3,8 @@ using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.OS;
-using Android.Widget;
 using MakeMeMove.Droid.Activities;
-using MakeMeMove.Droid.ExerciseActions;
-using MakeMeMove.Droid.Utilities;
+using MakeMeMove.Droid.BroadcastReceivers;
 
 namespace MakeMeMove.Droid.DeviceSpecificImplementations
 {

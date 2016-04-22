@@ -1,4 +1,3 @@
-using System;
 using Android.App;
 using Android.Content;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
@@ -6,7 +5,7 @@ using SQLite;
 using Environment = System.Environment;
 using Path = System.IO.Path;
 
-namespace MakeMeMove.Droid
+namespace MakeMeMove.Droid.BroadcastReceivers
 {
     [BroadcastReceiver]
     public class ChangeExerciseBroadcastReceiver : BroadcastReceiver
