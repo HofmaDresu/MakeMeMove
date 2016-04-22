@@ -1,6 +1,7 @@
 using Android.App;
 using Android.Content;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
+using MakeMeMove.Model;
 using SQLite;
 using Environment = System.Environment;
 using Path = System.IO.Path;
@@ -25,7 +26,14 @@ namespace MakeMeMove.Droid.BroadcastReceivers
                 _data.MarkExerciseNotified(exerciseName, -1 * exerciseQuantity);
             }
 
-            UserNotification.CreateNotification(_data, context);
+            var nextExercise =
+                _data.GetNextDifferentEnabledExercise(new ExerciseBlock
+                {
+                    Name = exerciseName,
+                    Quantity = exerciseQuantity
+                });
+
+            UserNotification.CreateNotification(_data, context, nextExercise);
         }
     }
 }

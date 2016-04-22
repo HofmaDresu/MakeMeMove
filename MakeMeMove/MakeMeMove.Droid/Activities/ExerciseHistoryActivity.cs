@@ -3,7 +3,9 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Support.V4.View;
 using Android.Views;
+using Android.Widget;
 using MakeMeMove.Droid.Adapters;
+using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
 using AlertDialog = Android.App.AlertDialog;
 
@@ -81,7 +83,17 @@ namespace MakeMeMove.Droid.Activities
                 {
                     Data.MarkExerciseNotified(selectedExercise.CombinedName, -1 * selectedExercise.Quantity);
 
-                    var nextExercise = Data.GetNextEnabledExercise();
+                    var nextExercise =
+                        Data.GetNextDifferentEnabledExercise(new ExerciseBlock
+                        {
+                            Name = selectedExercise.CombinedName,
+                            Quantity = selectedExercise.Quantity
+                        });
+                    if (nextExercise == null)
+                    {
+                        Toast.MakeText(this, "No Available Exercises", ToastLength.Long).Show();
+                        return;
+                    }
                     Data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
 
                     UpdateData();

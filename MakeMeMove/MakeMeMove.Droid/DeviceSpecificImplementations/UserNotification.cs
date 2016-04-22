@@ -5,6 +5,7 @@ using Android.Graphics;
 using Android.OS;
 using MakeMeMove.Droid.Activities;
 using MakeMeMove.Droid.BroadcastReceivers;
+using MakeMeMove.Model;
 
 namespace MakeMeMove.Droid.DeviceSpecificImplementations
 {
@@ -33,9 +34,14 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
 
         public static void CreateNotification(Data data, Context context)
         {
-            var userIsPremium = data.UserIsPremium();
             var nextExercise = data.GetNextEnabledExercise();
+            CreateNotification(data, context, nextExercise);
+        }
+
+        public static void CreateNotification(Data data, Context context, ExerciseBlock nextExercise)
+        {
             if (nextExercise == null) return;
+            var userIsPremium = data.UserIsPremium();
 
             var completedIntent = new Intent(context, typeof(CompleteExerciseBroadcastReceiver));
             completedIntent.PutExtra(Constants.ExerciseName, nextExercise.CombinedName);

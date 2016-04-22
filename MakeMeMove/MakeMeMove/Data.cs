@@ -131,7 +131,26 @@ namespace MakeMeMove
 
             var index = new Random().Next(0, enabledExercises.Count);
 
-            return enabledExercises[Min(index, exercises.Count - 1)];
+            return enabledExercises[Min(index, enabledExercises.Count - 1)];
+        }
+
+        public ExerciseBlock GetNextDifferentEnabledExercise(ExerciseBlock currentExercise)
+        {
+            var exercises = GetExerciseBlocks();
+            var enabledExercises = exercises.Where(e => e.Enabled);
+            // Look at name and quantitiy instead of Id since users can create multiple blocks that are the same
+            var differentEnabledExercises = enabledExercises.Where(e =>
+                    !e.CombinedName.Equals(currentExercise.CombinedName, StringComparison.CurrentCultureIgnoreCase)
+                    || (e.CombinedName.Equals(currentExercise.CombinedName, StringComparison.CurrentCultureIgnoreCase)
+                            && e.Quantity != currentExercise.Quantity))
+                .ToList();
+
+            // If there are no different exercises, see if there are any available at all
+            if (differentEnabledExercises.Count == 0) return GetNextEnabledExercise();
+
+            var index = new Random().Next(0, differentEnabledExercises.Count);
+
+            return differentEnabledExercises[Min(index, differentEnabledExercises.Count - 1)];
         }
 #endregion
 
