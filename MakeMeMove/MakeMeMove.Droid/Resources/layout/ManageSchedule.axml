@@ -5,7 +5,7 @@
   android:layout_height="match_parent"
   style="@style/TopAndSideSpacedRootElement">
   <TextView
-      android:text="Reminder Period"
+      android:text="@string/ReminderPeriodLabel"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -15,7 +15,7 @@
       android:id="@+id/ReminderSpinner"
       android:textAppearance="?android:attr/textAppearanceLarge" />
   <TextView
-      android:text="Start Time"
+      android:text="@string/StartTimeLabel"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:textAppearance="?android:attr/textAppearanceLarge"
@@ -41,7 +41,7 @@
           android:textAppearance="?android:attr/textAppearanceLarge" />
   </LinearLayout>
   <TextView
-      android:text="End Time"
+      android:text="@string/EndTimeLabel"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:textAppearance="?android:attr/textAppearanceLarge"
@@ -75,14 +75,14 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:id="@+id/SaveButton"
-          android:text="Save"
+          android:text="@string/Save"
           style="@style/FreeButton"/>
       <Button
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginLeft="8dp"
           android:id="@+id/CancelButton"
-          android:text="Cancel"
+          android:text="@string/Cancel"
           style="@style/FreeButton" />
   </LinearLayout>
 </LinearLayout>

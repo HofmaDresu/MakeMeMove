@@ -32,7 +32,7 @@
           android:layout_height="wrap_content"
           android:layout_centerInParent="true"
           android:layout_below="@id/ScheduleIcon"
-          android:text="My Schedule"
+          android:text="@string/ScheduleFragmentTitle"
           android:textColor="@color/White"
           android:textStyle="bold"
           android:id="@+id/ScheduleText"/>
@@ -61,7 +61,7 @@
           android:layout_height="wrap_content"
           android:layout_centerInParent="true"
           android:layout_below="@id/ExerciseListIcon"
-          android:text="My Exercises"
+          android:text="@string/ExerciseListFragmentTitle"
           android:textColor="@color/White"
           android:id="@+id/ExerciseListText"/>
       </RelativeLayout>

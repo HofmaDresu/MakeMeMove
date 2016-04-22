@@ -51,4 +51,19 @@
   <string name="ScheduleFragmentTitle">My Schedule</string>
   <string name="SwitchStarted">STARTED</string>
   <string name="SwitchStopped">STOPPED</string>
+  <string name="Delete">Delete</string>
+  <string name="Edit">Edit</string>
+  <string name="ViewHistory">View History</string>
+  <string name="AddExerciseButtonText">Add Exercise</string>
+  <string name="ScheduleStatusLabel">Schedule Status:</string>
+  <string name="StartTimeLabel">Start Time:</string>
+  <string name="EndTimeLabel">End Time:</string>
+  <string name="ReminderPeriodLabel">Reminder Period:</string>
+  <string name="ChangeScheduleButtonText">Change Schedule</string>
+  <string name="ExerciseTypeLabel">Exercise Type</string>
+  <string name="RepetitionsLabel">Number of Repetitions</string>
+  <string name="Save">Save</string>
+  <string name="Cancel">Cancel</string>
+  <string name="DeleteHistory">Delete History</string>
+  <string name="Settings">Settings</string>
 </resources>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     style="@style/TopAndSideSpacedRootElement">
     <TextView
-        android:text="Exercise Type"
+        android:text="@string/ExerciseTypeLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -22,7 +22,7 @@
         android:visibility="gone"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     <TextView
-        android:text="Number of Repetitions"
+        android:text="@string/RepetitionsLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -43,14 +43,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/SaveButton"
-        android:text="Save"
+        android:text="@string/Save"
         style="@style/FreeButton"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:id="@+id/CancelButton"
-        android:text="Cancel"
+        android:text="@string/Cancel"
         style="@style/FreeButton" />
   </LinearLayout>
 </LinearLayout>

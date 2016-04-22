@@ -12,6 +12,6 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:id="@+id/AddExerciseButton"
-      android:text="Add Exercise"
+      android:text="@string/AddExerciseButtonText"
       style="@style/BottomNavigationLink" />
 </LinearLayout>

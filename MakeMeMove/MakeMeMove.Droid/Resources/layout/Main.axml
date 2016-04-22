@@ -59,7 +59,7 @@
             android:paddingBottom="20dp"
             android:paddingLeft="10dp">
           <TextView
-              android:text="View History"
+              android:text="@string/ViewHistory"
               android:layout_width="match_parent"
               android:layout_height="wrap_content" />
         </LinearLayout>
@@ -82,7 +82,7 @@
             android:paddingLeft="10dp">
           <TextView
             android:id="@+id/LogInOutText"
-            android:text="Sign In With Fudist"
+            android:text="@string/SignInWithFudist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         </LinearLayout>

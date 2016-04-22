@@ -2519,14 +2519,26 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070054
 			public const int AddExercise = 2131165268;
 			
+			// aapt resource value: 0x7f07006a
+			public const int AddExerciseButtonText = 2131165290;
+			
 			// aapt resource value: 0x7f070062
 			public const int AreYouSureTitle = 2131165282;
+			
+			// aapt resource value: 0x7f070073
+			public const int Cancel = 2131165299;
 			
 			// aapt resource value: 0x7f070044
 			public const int ChangeExerciseButtonText = 2131165252;
 			
+			// aapt resource value: 0x7f07006f
+			public const int ChangeScheduleButtonText = 2131165295;
+			
 			// aapt resource value: 0x7f070043
 			public const int CompletedButtonText = 2131165251;
+			
+			// aapt resource value: 0x7f070067
+			public const int Delete = 2131165287;
 			
 			// aapt resource value: 0x7f070048
 			public const int DeleteExerciseMessage = 2131165256;
@@ -2534,20 +2546,32 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070047
 			public const int DeleteExerciseTitle = 2131165255;
 			
+			// aapt resource value: 0x7f070074
+			public const int DeleteHistory = 2131165300;
+			
 			// aapt resource value: 0x7f07003f
 			public const int DrawerCloseDescription = 2131165247;
 			
 			// aapt resource value: 0x7f07003e
 			public const int DrawerOpenDescription = 2131165246;
 			
+			// aapt resource value: 0x7f070068
+			public const int Edit = 2131165288;
+			
 			// aapt resource value: 0x7f070053
 			public const int EditExercise = 2131165267;
+			
+			// aapt resource value: 0x7f07006d
+			public const int EndTimeLabel = 2131165293;
 			
 			// aapt resource value: 0x7f070063
 			public const int ExerciseListFragmentTitle = 2131165283;
 			
 			// aapt resource value: 0x7f070055
 			public const int ExerciseNameValidation = 2131165269;
+			
+			// aapt resource value: 0x7f070070
+			public const int ExerciseTypeLabel = 2131165296;
 			
 			// aapt resource value: 0x7f070045
 			public const int IgnoreButtonText = 2131165253;
@@ -2579,20 +2603,35 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07004c
 			public const int PremiumNeededTitle = 2131165260;
 			
+			// aapt resource value: 0x7f07006e
+			public const int ReminderPeriodLabel = 2131165294;
+			
 			// aapt resource value: 0x7f070057
 			public const int RepetitionWholeNumberValidation = 2131165271;
+			
+			// aapt resource value: 0x7f070071
+			public const int RepetitionsLabel = 2131165297;
 			
 			// aapt resource value: 0x7f070056
 			public const int RepetitionsMissingValidation = 2131165270;
 			
+			// aapt resource value: 0x7f070072
+			public const int Save = 2131165298;
+			
 			// aapt resource value: 0x7f070064
 			public const int ScheduleFragmentTitle = 2131165284;
+			
+			// aapt resource value: 0x7f07006b
+			public const int ScheduleStatusLabel = 2131165291;
 			
 			// aapt resource value: 0x7f07005d
 			public const int ServiceStarted = 2131165277;
 			
 			// aapt resource value: 0x7f07005e
 			public const int ServiceStopped = 2131165278;
+			
+			// aapt resource value: 0x7f070075
+			public const int Settings = 2131165301;
 			
 			// aapt resource value: 0x7f070052
 			public const int SignInWithFudist = 2131165266;
@@ -2602,6 +2641,9 @@ namespace MakeMeMove.Droid
 			
 			// aapt resource value: 0x7f070050
 			public const int SignOutSuccessful = 2131165264;
+			
+			// aapt resource value: 0x7f07006c
+			public const int StartTimeLabel = 2131165292;
 			
 			// aapt resource value: 0x7f07005c
 			public const int SwitchOff = 2131165276;
@@ -2626,6 +2668,9 @@ namespace MakeMeMove.Droid
 			
 			// aapt resource value: 0x7f070061
 			public const int ValidationTitle = 2131165281;
+			
+			// aapt resource value: 0x7f070069
+			public const int ViewHistory = 2131165289;
 			
 			// aapt resource value: 0x7f070049
 			public const int Yes = 2131165257;
@@ -2699,8 +2744,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07003d
 			public const int cancel = 2131165245;
 			
-			// aapt resource value: 0x7f07006d
-			public const int close_app = 2131165293;
+			// aapt resource value: 0x7f07007c
+			public const int close_app = 2131165308;
 			
 			// aapt resource value: 0x7f070018
 			public const int common_google_play_services_api_unavailable_text = 2131165208;
@@ -2789,8 +2834,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07001e
 			public const int common_signin_button_text_long = 2131165214;
 			
-			// aapt resource value: 0x7f07006c
-			public const int fudist_unavailable = 2131165292;
+			// aapt resource value: 0x7f07007b
+			public const int fudist_unavailable = 2131165307;
 			
 			// aapt resource value: 0x7f070033
 			public const int library_name = 2131165235;
@@ -2810,17 +2855,17 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07003a
 			public const int login_failure = 2131165242;
 			
-			// aapt resource value: 0x7f070067
-			public const int network_error_airplane = 2131165287;
+			// aapt resource value: 0x7f070076
+			public const int network_error_airplane = 2131165302;
 			
-			// aapt resource value: 0x7f070068
-			public const int network_error_connection = 2131165288;
+			// aapt resource value: 0x7f070077
+			public const int network_error_connection = 2131165303;
 			
-			// aapt resource value: 0x7f070069
-			public const int network_error_title = 2131165289;
+			// aapt resource value: 0x7f070078
+			public const int network_error_title = 2131165304;
 			
-			// aapt resource value: 0x7f07006b
-			public const int network_settings_label = 2131165291;
+			// aapt resource value: 0x7f07007a
+			public const int network_settings_label = 2131165306;
 			
 			// aapt resource value: 0x7f07003c
 			public const int no_account_text = 2131165244;
@@ -2828,8 +2873,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070039
 			public const int password = 2131165241;
 			
-			// aapt resource value: 0x7f07006a
-			public const int settings_label = 2131165290;
+			// aapt resource value: 0x7f070079
+			public const int settings_label = 2131165305;
 			
 			// aapt resource value: 0x7f070032
 			public const int status_bar_notification_info_overflow = 2131165234;

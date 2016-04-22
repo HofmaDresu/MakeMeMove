@@ -7,7 +7,7 @@
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Schedule Status:"
+    android:text="@string/ScheduleStatusLabel"
     android:textAppearance="?android:attr/textAppearanceLarge"/>
   <LinearLayout
     android:id="@+id/ServiceToggle"
@@ -36,7 +36,7 @@
   <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Start Time:"
+      android:text="@string/StartTimeLabel"
       android:textAppearance="?android:attr/textAppearanceLarge"
       style="@style/TopSpacedElement" />
   <TextView
@@ -48,7 +48,7 @@
   <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="End Time:"
+      android:text="@string/EndTimeLabel"
       android:textAppearance="?android:attr/textAppearanceLarge"
       style="@style/TopSpacedElement" />
   <TextView
@@ -60,7 +60,7 @@
   <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Reminder Period:"
+      android:text="@string/ReminderPeriodLabel"
       android:textAppearance="?android:attr/textAppearanceLarge"
       style="@style/TopSpacedElement" />
   <TextView
@@ -80,7 +80,7 @@
       android:paddingLeft="20dp"
       android:paddingRight="20dp"
       android:id="@+id/ManageScheduleButton"
-      android:text="Change Schedule"
+      android:text="@string/ChangeScheduleButtonText"
       style="@style/FreeButton"/>
   </RelativeLayout>
 </LinearLayout>
