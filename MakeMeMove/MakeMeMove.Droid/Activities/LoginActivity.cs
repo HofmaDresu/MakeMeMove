@@ -38,7 +38,7 @@ namespace MakeMeMove.Droid.Activities
         {
             if (selectedItem.ItemId == Android.Resource.Id.Home)
             {
-                Finish();
+                OnBackPressed();
             }
             return true;
         }
