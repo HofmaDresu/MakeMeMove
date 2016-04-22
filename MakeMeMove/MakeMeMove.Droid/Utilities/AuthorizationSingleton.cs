@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Android.App;
 using Android.Content;
 using MacroEatMobile.Core;
 using MacroEatMobile.iPhone.Utilities;
@@ -16,7 +17,7 @@ namespace MakeMeMove.Droid.Utilities
         private Person _person;
         private AuthToken _authToken;
 
-        public async Task<Person> GetPerson(Context context, bool forceRefresh = false)
+        public async Task<Person> GetPerson(Activity context, bool forceRefresh = false)
         {
             if (_person != null && (!forceRefresh || _person.IsGuestUser)) return _person;
 
@@ -119,7 +120,7 @@ namespace MakeMeMove.Droid.Utilities
             RemoveSavedToken(context);
         }
 
-        public async Task<bool> CurrentPersonIsUserAdmin(Context context)
+        public async Task<bool> CurrentPersonIsUserAdmin(Activity context)
         {
             var person = await GetPerson(context);
             return person?.Roles != null && person.Roles.Any(r => r.Token == "UserAdmin");
@@ -137,7 +138,7 @@ namespace MakeMeMove.Droid.Utilities
         }
 
 
-        public static ConcreteAuthorization CreateIAuthorization(Context context)
+        public static ConcreteAuthorization CreateIAuthorization(Activity context)
         {
             var authSing = GetInstance();
 

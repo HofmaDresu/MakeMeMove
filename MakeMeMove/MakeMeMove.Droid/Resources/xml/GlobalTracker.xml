@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <integer name="ga_sessionTimeout">300</integer>
+  <string name="ga_trackingId">UA-56251913-4</string>
+
+  <!--
+  makememove.droid.activities = md5e4eb841537efad260618e5d3d47651b5
+  -->
+
+  <screenName name="md5e4eb841537efad260618e5d3d47651b5.MainActivity">
+    Main
+  </screenName>
+
+  <screenName name="md5e4eb841537efad260618e5d3d47651b5.LoginActivity">
+    Login
+  </screenName>
+
+  <screenName name="md5e4eb841537efad260618e5d3d47651b5.ManageExerciseActivity">
+    Manage Exercise
+  </screenName>
+
+  <screenName name="md5e4eb841537efad260618e5d3d47651b5.ManageScheduleActivity">
+    Manage Schedule
+  </screenName>
+
+  <screenName name="md5e4eb841537efad260618e5d3d47651b5.ExerciseHistoryActivity">
+    Exercise History
+  </screenName>
+</resources>

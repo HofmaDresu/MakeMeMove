@@ -1,14 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+using Android.Gms.Analytics;
 using MacroEatMobile.Core.UtilityInterfaces;
 
 namespace MakeMeMove.Droid.Utilities
@@ -18,39 +12,102 @@ namespace MakeMeMove.Droid.Utilities
 
         private UnifiedAnalytics(Context context)
         {
-            //AndroidAnalytics.Instance(context);
+            AndroidAnalytics.Instance(context);
         }
 
         private static UnifiedAnalytics _unifiedAnalytics;
-        public static UnifiedAnalytics GetInstance(Context context)
+        public static UnifiedAnalytics GetInstance(Activity context)
         {
             if (_unifiedAnalytics == null)
             {
                 _unifiedAnalytics = new UnifiedAnalytics(context);
-                /*_unifiedAnalytics.DefaultTracker.EnableAutoActivityTracking(true);
+                _unifiedAnalytics.DefaultTracker.EnableAutoActivityTracking(true);
                 _unifiedAnalytics.DefaultTracker.EnableExceptionReporting(true);
-                _unifiedAnalytics.Analytics.EnableAutoActivityReports(context.Application);*/
+                _unifiedAnalytics.Analytics.EnableAutoActivityReports(context.Application);
             }
             return _unifiedAnalytics;
         }
 
-       /* private Tracker DefaultTracker => AndroidAnalytics.Instance().Tracker;
+        private Tracker DefaultTracker => AndroidAnalytics.Instance().Tracker;
 
-        private GoogleAnalytics Analytics => AndroidAnalytics.Instance().Analytics;*/
+        private GoogleAnalytics Analytics => AndroidAnalytics.Instance().Analytics;
 
         public void SetOnDefaultTracker(string key, string value)
         {
-            //TODO
+            DefaultTracker.Set(key, value);
         }
 
-        public void CreateAndSendEventOnDefaultTracker(string category, string action, string label, long? value)
+        private void SendOnDefaultTracker(IDictionary<string, string> eventToSend)
         {
-            //TODO
+            DefaultTracker.Send(eventToSend);
         }
 
         public void SendScreenHitOnDefaultTracker(string screenName)
         {
-            //TODO
+            DefaultTracker.SetScreenName(screenName);
+            DefaultTracker.Send(new HitBuilders.ScreenViewBuilder().Build());
+
+            DefaultTracker.SetScreenName(null);
         }
+
+        public void CreateAndSendEventOnDefaultTracker(string category, string action, string label, long? value)
+        {
+            SendOnDefaultTracker(CreateEvent(category, action, label, value));
+        }
+
+        private IDictionary<string, string> CreateEvent(string category, string action, string label, long? value)
+        {
+            var eventBuilder = new HitBuilders.EventBuilder()
+                .SetCategory(category)
+                .SetAction(action)
+                .SetLabel(label);
+            if (value.HasValue)
+            {
+                eventBuilder = eventBuilder.SetValue(value.Value);
+            }
+            return eventBuilder.Build();
+        }
+
+    }
+
+    class AndroidAnalytics
+    {
+        private static AndroidAnalytics _instance;
+        private readonly Tracker _tracker;
+
+        private AndroidAnalytics(Context context)
+        {
+            if (_tracker == null)
+            {
+                var analytics = GoogleAnalytics.GetInstance(context);
+                Analytics = analytics;
+                _tracker = analytics.NewTracker(Resource.Xml.GlobalTracker);
+                _tracker.EnableAutoActivityTracking(true);
+                _tracker.EnableExceptionReporting(true);
+                _tracker.EnableAdvertisingIdCollection(true);
+
+#if DEBUG
+                analytics.SetDryRun(true);
+#endif
+            }
+        }
+
+        public static AndroidAnalytics Instance(Context context)
+        {
+            return _instance ?? (_instance = new AndroidAnalytics(context));
+        }
+
+        public static AndroidAnalytics Instance()
+        {
+            if (_instance == null)
+            {
+                throw new InvalidOperationException("Context not set on instance");
+            }
+            return _instance;
+        }
+
+        public Tracker Tracker => _tracker;
+
+        public GoogleAnalytics Analytics { get; }
     }
 }
