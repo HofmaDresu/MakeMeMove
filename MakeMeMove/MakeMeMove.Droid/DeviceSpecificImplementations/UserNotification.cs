@@ -71,10 +71,11 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             }
 
             data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
-            
+
+            var timeToMoveMessage = string.Format(context.Resources.GetString(Resource.String.TimeToMoveMessage), nextExercise.Quantity, nextExercise.CombinedName);
             var builder = new Notification.Builder(context)
                 .SetContentTitle(context.Resources.GetString(Resource.String.TimeToMoveTitle))
-                .SetContentText(string.Format(context.Resources.GetString(Resource.String.TimeToMoveMessage, nextExercise.Quantity, nextExercise.CombinedName)))
+                .SetContentText(timeToMoveMessage)
                 .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate)
                 .SetContentIntent(clickPendingIntent);
 

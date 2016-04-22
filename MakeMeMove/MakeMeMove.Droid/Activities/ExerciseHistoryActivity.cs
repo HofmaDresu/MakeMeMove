@@ -67,9 +67,10 @@ namespace MakeMeMove.Droid.Activities
         private void ShowTimeToMovePrompt(ExerciseBlock selectedExercise)
         {
             _notificationDialog?.Dismiss();
+            var timeToMoveMessage = string.Format(Resources.GetString(Resource.String.TimeToMoveMessage), selectedExercise.Quantity, selectedExercise.CombinedName);
             _notificationDialog = new AlertDialog.Builder(this)
                 .SetTitle(Resource.String.TimeToMoveTitle)
-                .SetMessage(string.Format(Resources.GetString(Resource.String.TimeToMoveMessage, selectedExercise.Quantity, selectedExercise.CombinedName)))
+                .SetMessage(timeToMoveMessage)
                 .SetCancelable(false)
                 .SetPositiveButton(Resource.String.CompletedButtonText, (sender, args) =>
                 {
