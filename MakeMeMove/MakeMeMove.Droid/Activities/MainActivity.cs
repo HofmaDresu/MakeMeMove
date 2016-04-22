@@ -70,18 +70,18 @@ namespace MakeMeMove.Droid.Activities
                 else if(Data.UserIsSignedIn())
                 {
                     new AlertDialog.Builder(this)
-                        .SetTitle("Premium Account Needed")
-                        .SetMessage("Your current account is not subscribed to Fudist Premium. Please double check your subscription status and try again.")
-                        .SetPositiveButton("OK", (o, eventArgs) => { })
+                        .SetTitle(Resource.String.PremiumNeededTitle)
+                        .SetMessage(Resource.String.PremiumNeededMessage)
+                        .SetPositiveButton(Resource.String.Ok, (o, eventArgs) => { })
                         .Show();
                 }
                 else
                 {
                     new AlertDialog.Builder(this)
-                        .SetTitle("Account Needed")
-                        .SetMessage("You must sign in as a Fudist Premium user to access your exercise history. Would you like to sign in?")
-                        .SetPositiveButton("Yes", (o, eventArgs) => { StartActivity(new Intent(this, typeof(LoginActivity))); })
-                        .SetNegativeButton("No", (o, eventArgs) => { })
+                        .SetTitle(Resource.String.AccountNeededTitle)
+                        .SetMessage(Resource.String.AccountNeededMessage)
+                        .SetPositiveButton(Resource.String.Yes, (o, eventArgs) => { StartActivity(new Intent(this, typeof(LoginActivity))); })
+                        .SetNegativeButton(Resource.String.No, (o, eventArgs) => { })
                         .Show();
                 }
             };
@@ -99,14 +99,14 @@ namespace MakeMeMove.Droid.Activities
                     AuthorizationSingleton.GetInstance().ClearPerson(this);
                     Data.SignUserOut();
                     ShowUserSignedOut();
-                    Toast.MakeText(this, "Signed Out", ToastLength.Short).Show();
+                    Toast.MakeText(this, Resource.String.SignOutSuccessful, ToastLength.Short).Show();
                 }
             };
 
             _permissionRequester.RequestPermissions(this);
 
             _viewPager = FindViewById<ViewPager>(Resource.Id.ViewPager);
-            _viewPager.Adapter = new MainFragmentAdapter(FragmentManager);
+            _viewPager.Adapter = new MainFragmentAdapter(FragmentManager, this);
             _viewPager.PageSelected += ViewPager_PageSelected;
 
             _scheduleLayout.Click += (sender, args) => _viewPager.SetCurrentItem(0, true);
@@ -184,7 +184,7 @@ namespace MakeMeMove.Droid.Activities
             }
             else
             {
-                _logInOutText.Text = "Sign Out";
+                _logInOutText.SetText(Resource.String.SignOut);
                 _userNameSection.Visibility = ViewStates.Visible;
                 _userNameText.Text = Data.GetUserName();
             }
@@ -192,7 +192,7 @@ namespace MakeMeMove.Droid.Activities
 
         private void ShowUserSignedOut()
         {
-            _logInOutText.Text = "Sign In With Fudist";
+            _logInOutText.SetText(Resource.String.SignInWithFudist);
             _userNameSection.Visibility = ViewStates.Gone;
         }
 

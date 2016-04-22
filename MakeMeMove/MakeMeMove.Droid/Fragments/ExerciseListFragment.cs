@@ -20,9 +20,9 @@ namespace MakeMeMove.Droid.Fragments
         private RecyclerView _exerciseRecyclerView;
         private View _addExerciseButton;
 
-        public void Initialize()
+        public void Initialize(string title)
         {
-            Title = "My Exercises";
+            Title = title;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

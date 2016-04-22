@@ -47,11 +47,11 @@ namespace MakeMeMove.Droid.Activities
             {
                 _currentExerciseId = editExerciseId;
                 SetCurrentExerciseData();
-                Title = "Edit Exercise";
+                SetTitle(Resource.String.EditExercise);
             }
             else
             {
-                Title = "Add Exercise";
+                SetTitle(Resource.String.AddExercise);
             }
 
             _cancelButton.Click += (s, e) => Finish();
@@ -97,19 +97,19 @@ namespace MakeMeMove.Droid.Activities
             var exerciseType = (PreBuiltExersises)_exerciseTypeSpinner.SelectedItemPosition;
             if (exerciseType == PreBuiltExersises.Custom && string.IsNullOrWhiteSpace(_customExerciseNameText.Text))
             {
-                _userNotification.ShowValidationErrorPopUp(this, "Please enter a name for your exercise.");
+                _userNotification.ShowValidationErrorPopUp(this, Resource.String.ExerciseNameValidation);
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(_repetitionText.Text))
             {
-                _userNotification.ShowValidationErrorPopUp(this, "Please enter how many repetitions you want.");
+                _userNotification.ShowValidationErrorPopUp(this, Resource.String.RepetitionsMissingValidation);
                 return;
             }
             int repetitions;
             if (!int.TryParse(_repetitionText.Text, out repetitions))
             {
-                _userNotification.ShowValidationErrorPopUp(this, "Please enter a whole number of repetitions.");
+                _userNotification.ShowValidationErrorPopUp(this, Resource.String.RepetitionWholeNumberValidation);
                 return;
             }
 

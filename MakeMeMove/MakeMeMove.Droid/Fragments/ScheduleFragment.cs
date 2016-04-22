@@ -24,9 +24,9 @@ namespace MakeMeMove.Droid.Fragments
         private TextView _serviceStopped;
         private TextView _serviceStarted;
 
-        public void Initialize()
+        public void Initialize(string title)
         {
-            Title = "My Schedule";
+            Title = title;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -67,7 +67,7 @@ namespace MakeMeMove.Droid.Fragments
             if (_serviceManager.NotificationServiceIsRunning(Activity))
             {
                 _serviceStarted.SetBackgroundResource(Resource.Drawable.CustomSwitchPositiveActive);
-                _serviceStarted.Text = "STARTED";
+                _serviceStarted.SetText(Resource.String.SwitchStarted);
 
                 _serviceStopped.SetBackgroundResource(Android.Resource.Color.Transparent);
                 _serviceStopped.Text = "";
@@ -78,7 +78,7 @@ namespace MakeMeMove.Droid.Fragments
                 _serviceStarted.Text = "";
 
                 _serviceStopped.SetBackgroundResource(Resource.Drawable.CustomSwitchNegativeActive);
-                _serviceStopped.Text = "STOPPED";
+                _serviceStopped.SetText(Resource.String.SwitchStopped);
             }
         }
 

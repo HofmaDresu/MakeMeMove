@@ -32,7 +32,7 @@ namespace MakeMeMove.Droid.Adapters
             if (thisExercise.Enabled)
             {
                 viewHolder.ServiceStarted.SetBackgroundResource(Resource.Drawable.CustomSwitchPositiveActive);
-                viewHolder.ServiceStarted.Text = "ON";
+                viewHolder.ServiceStarted.SetText(Resource.String.SwitchOn);
 
                 viewHolder.ServiceStopped.SetBackgroundResource(Android.Resource.Color.Transparent);
                 viewHolder.ServiceStopped.Text = "";
@@ -45,7 +45,7 @@ namespace MakeMeMove.Droid.Adapters
                 viewHolder.ServiceStarted.Text = "";
 
                 viewHolder.ServiceStopped.SetBackgroundResource(Resource.Drawable.CustomSwitchNegativeActive);
-                viewHolder.ServiceStopped.Text = "OFF";
+                viewHolder.ServiceStopped.SetText(Resource.String.SwitchOff);
 
                 viewHolder.MainView.Enabled = false;
             }

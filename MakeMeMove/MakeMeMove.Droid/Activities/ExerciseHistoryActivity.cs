@@ -5,7 +5,6 @@ using Android.Support.V4.View;
 using Android.Views;
 using Android.Widget;
 using MakeMeMove.Droid.Adapters;
-using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
 using AlertDialog = Android.App.AlertDialog;
 
@@ -69,17 +68,17 @@ namespace MakeMeMove.Droid.Activities
         {
             _notificationDialog?.Dismiss();
             _notificationDialog = new AlertDialog.Builder(this)
-                .SetTitle("It's time to move")
-                .SetMessage($"It's time to do {selectedExercise.Quantity} {selectedExercise.CombinedName}")
+                .SetTitle(Resource.String.TimeToMoveTitle)
+                .SetMessage(string.Format(Resources.GetString(Resource.String.TimeToMoveMessage, selectedExercise.Quantity, selectedExercise.CombinedName)))
                 .SetCancelable(false)
-                .SetPositiveButton("Completed", (sender, args) =>
+                .SetPositiveButton(Resource.String.CompletedButtonText, (sender, args) =>
                 {
                     Data.MarkExerciseCompleted(selectedExercise.CombinedName, selectedExercise.Quantity);
                     UpdateData();
                     ResetPromptData();
                     _checkForIntentData = false;
                 })
-                .SetNegativeButton("Next", (sender, args) =>
+                .SetNegativeButton(Resource.String.ChangeExerciseButtonText, (sender, args) =>
                 {
                     Data.MarkExerciseNotified(selectedExercise.CombinedName, -1 * selectedExercise.Quantity);
 
@@ -91,7 +90,7 @@ namespace MakeMeMove.Droid.Activities
                         });
                     if (nextExercise == null)
                     {
-                        Toast.MakeText(this, "No Available Exercises", ToastLength.Long).Show();
+                        Toast.MakeText(this, Resource.String.NoAvailableExercises, ToastLength.Long).Show();
                         return;
                     }
                     Data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
@@ -99,7 +98,7 @@ namespace MakeMeMove.Droid.Activities
                     UpdateData();
                     ShowTimeToMovePrompt(nextExercise);
                 })
-                .SetNeutralButton("Ignore", (sender, args) =>
+                .SetNeutralButton(Resource.String.IgnoreButtonText, (sender, args) =>
                 {
                     ResetPromptData();
                     _checkForIntentData = false;
@@ -141,14 +140,14 @@ namespace MakeMeMove.Droid.Activities
             {
                 _confirmDeleteDialog?.Dismiss();
                 _confirmDeleteDialog = new AlertDialog.Builder(this)
-                    .SetTitle("Delete Exercise History")
-                    .SetMessage("This will permanently delete your exercise history. Do you wish to continue?")
-                    .SetPositiveButton("Yes", (sender, args) =>
+                    .SetTitle(Resource.String.DeleteExerciseTitle)
+                    .SetMessage(Resource.String.DeleteExerciseMessage)
+                    .SetPositiveButton(Resource.String.Yes, (sender, args) =>
                     {
                         Data.DeleteAllHistory();
                         UpdateData();
                     })
-                    .SetNegativeButton("No", (sender, args) => { })
+                    .SetNegativeButton(Resource.String.No, (sender, args) => { })
                     .Show();
 
                 return true;

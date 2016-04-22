@@ -20,18 +20,17 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             if (Build.VERSION.SdkInt >= BuildVersionCodes.M && !File.Exists(filePath))
             {
                 new AlertDialog.Builder(context)
-                    .SetMessage(
-                        "Will you allow Make Me Move to create high priority notifications that will wake your device (could affect battery life)? Without these, your reminders may not appear if your phone is sitting on your desk.")
-                    .SetNegativeButton("No", (s, args) =>
+                    .SetMessage(Resource.String.PermissionRequesterMessage)
+                    .SetNegativeButton(Resource.String.No, (s, args) =>
                     {
                         File.WriteAllText(filePath, JsonConvert.SerializeObject(false));
                     })
-                    .SetPositiveButton("Yes", (s, args) =>
+                    .SetPositiveButton(Resource.String.Yes, (s, args) =>
                     {
                         File.WriteAllText(filePath, JsonConvert.SerializeObject(true));
                     })
                     .SetCancelable(false)
-                    .SetTitle("Notification Permissions").Create().Show();
+                    .SetTitle(Resource.String.PermissionRequesterTitle).Create().Show();
             }
         }
     }

@@ -19,7 +19,7 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
 
             SaveServiceStatus(context, true);
 
-            if(showMessage) Toast.MakeText(context, "Service Started", ToastLength.Long).Show();
+            if(showMessage) Toast.MakeText(context, Resource.String.ServiceStarted, ToastLength.Long).Show();
         }
 
         public void StopNotificationService(Context context, ExerciseSchedule schedule, bool showMessage = true)
@@ -32,7 +32,7 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
 
             SaveServiceStatus(context, false);
 
-            if (showMessage) Toast.MakeText(context, "Service Stopped", ToastLength.Long).Show();
+            if (showMessage) Toast.MakeText(context, Resource.String.ServiceStopped, ToastLength.Long).Show();
 
         }
 

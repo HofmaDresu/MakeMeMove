@@ -82,7 +82,7 @@ namespace MakeMeMove.Droid.Activities
 
             var hourChoices = Enumerable.Range(1, 12).ToList();
             var minuteChoices = new List<string> {"00", "30"};
-            var meridianChoices = new List<string> {"AM", "PM"};
+            var meridianChoices = new List<string> {Resources.GetString(Resource.String.AM), Resources.GetString(Resource.String.PM) };
 
 
             _startHourSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, hourChoices);
@@ -105,7 +105,7 @@ namespace MakeMeMove.Droid.Activities
 
             if (startTime >= endTime)
             {
-                _userNotification.ShowValidationErrorPopUp(this, "Please make sure your start time is before your end time");
+                _userNotification.ShowValidationErrorPopUp(this, Resource.String.TimeRangeValidation);
                 return;
             }
 

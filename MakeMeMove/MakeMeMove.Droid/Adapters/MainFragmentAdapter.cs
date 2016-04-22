@@ -1,5 +1,6 @@
 using System;
 using Android.App;
+using Android.Content;
 using Android.Runtime;
 using Android.Support.V13.App;
 using Java.Lang;
@@ -16,13 +17,13 @@ namespace MakeMeMove.Droid.Adapters
         {
         }
 
-        public MainFragmentAdapter(FragmentManager fm) : base(fm)
+        public MainFragmentAdapter(FragmentManager fm, Context context) : base(fm)
         {
             _scheduleFragment = new ScheduleFragment();
-            _scheduleFragment.Initialize();
+            _scheduleFragment.Initialize(context.Resources.GetString(Resource.String.ScheduleFragmentTitle));
 
             _exerciseListFragment = new ExerciseListFragment();
-            _exerciseListFragment.Initialize();
+            _exerciseListFragment.Initialize(context.Resources.GetString(Resource.String.ExerciseListFragmentTitle));
         }
 
         public override int Count => 2;

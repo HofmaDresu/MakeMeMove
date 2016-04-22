@@ -11,24 +11,24 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
 {
     public class UserNotification
     {
-        public void ShowValidationErrorPopUp(Context context, string message, Action onCloseAction = null)
+        public void ShowValidationErrorPopUp(Context context, int messageId, Action onCloseAction = null)
         {
             new AlertDialog.Builder(context)
-                .SetTitle("Invalid Information")
-                .SetMessage(message)
+                .SetTitle(Resource.String.ValidationTitle)
+                .SetMessage(messageId)
                 .SetCancelable(false)
-                .SetPositiveButton("OK", (sender, args) => { onCloseAction?.Invoke();})
+                .SetPositiveButton(Resource.String.Ok, (sender, args) => { onCloseAction?.Invoke();})
                 .Show();
         }
 
         public void ShowAreYouSureDialog(Context context, string message, Action onYesAction = null, Action onNoAction = null)
         {
             new AlertDialog.Builder(context)
-                .SetTitle("Are you sure?")
+                .SetTitle(Resource.String.AreYouSureTitle)
                 .SetMessage(message)
                 .SetCancelable(false)
-                .SetPositiveButton("Yes", (sender, args) => { onYesAction?.Invoke(); })
-                .SetNegativeButton("No", (sender, args) => { onNoAction?.Invoke(); })
+                .SetPositiveButton(Resource.String.Yes, (sender, args) => { onYesAction?.Invoke(); })
+                .SetNegativeButton(Resource.String.No, (sender, args) => { onNoAction?.Invoke(); })
                 .Show();
         }
 
@@ -73,12 +73,14 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
             
             var builder = new Notification.Builder(context)
-                .SetContentTitle("Time to Move")
-                .SetContentText($"It's time to do {nextExercise.Quantity} {nextExercise.CombinedName}")
+                .SetContentTitle(context.Resources.GetString(Resource.String.TimeToMoveTitle))
+                .SetContentText(string.Format(context.Resources.GetString(Resource.String.TimeToMoveMessage, nextExercise.Quantity, nextExercise.CombinedName)))
                 .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate)
                 .SetContentIntent(clickPendingIntent);
 
-            
+
+            var changeExerciseButtonText = context.Resources.GetString(Resource.String.ChangeExerciseButtonText);
+            var completedButtonText = context.Resources.GetString(Resource.String.CompletedButtonText);
 
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
             {
@@ -88,22 +90,22 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                     .SetCategory("reminder")
                     .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
                     .SetColor(Color.Rgb(215, 78, 10))
-                    .AddAction(new Notification.Action(Resource.Drawable.ic_shuffle_black_24dp, "Change", nextPendingIntent));
+                    .AddAction(new Notification.Action(Resource.Drawable.ic_shuffle_black_24dp, changeExerciseButtonText, nextPendingIntent));
                 if (userIsPremium)
                 {
                     builder
-                        .AddAction(new Notification.Action(Resource.Drawable.ic_done_black_24dp, "Completed", completedPendingIntent));
+                        .AddAction(new Notification.Action(Resource.Drawable.ic_done_black_24dp, completedButtonText, completedPendingIntent));
                 }
             }
             else if ((int)Build.VERSION.SdkInt >= 20)
             {
                 builder
                     .SetSmallIcon(Resource.Drawable.icon)
-                    .AddAction(new Notification.Action(Resource.Drawable.ic_shuffle_black_24dp, "Change", nextPendingIntent));
+                    .AddAction(new Notification.Action(Resource.Drawable.ic_shuffle_black_24dp, changeExerciseButtonText, nextPendingIntent));
                 if (userIsPremium)
                 {
                     builder
-                        .AddAction(new Notification.Action(Resource.Drawable.ic_done_black_24dp, "Completed", completedPendingIntent));
+                        .AddAction(new Notification.Action(Resource.Drawable.ic_done_black_24dp, completedButtonText, completedPendingIntent));
                 }
             }
             else
@@ -112,11 +114,11 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
 #pragma warning disable 618
                 builder
                     .SetSmallIcon(Resource.Drawable.icon)
-                    .AddAction(Resource.Drawable.ic_shuffle_white_24dp, "Change", nextPendingIntent);
+                    .AddAction(Resource.Drawable.ic_shuffle_white_24dp, changeExerciseButtonText, nextPendingIntent);
                 if (userIsPremium)
                 {
                     builder
-                        .AddAction(Resource.Drawable.ic_done_white_24dp, "Completed", completedPendingIntent);
+                        .AddAction(Resource.Drawable.ic_done_white_24dp, completedButtonText, completedPendingIntent);
                 }
 #pragma warning restore 618
             }
