@@ -9,9 +9,10 @@ namespace MakeMeMove.Model
         HalfHourly = 0,
         Hourly = 1,
         BiHourly = 2,
+        EveryFifteenMinutes = 3,
 #if DEBUG
         //For Debug use only, this is not well tested and may break under real conditions
-        EveryFiveMinutes = 3
+        EveryFiveMinutes = 4
 #endif
     }
 

@@ -23,7 +23,7 @@ namespace MakeMeMove
             {
 #if DEBUG
                 case SchedulePeriod.EveryFiveMinutes:
-                    return GetNextFiveMinuteRun(schedule, fromDateValue);
+                    return GetNextXMinuteRun(schedule, fromDateValue, 5);
 #endif
                 case SchedulePeriod.HalfHourly:
                     return GetNextHalfHourlyRun(schedule, fromDateValue);
@@ -31,16 +31,18 @@ namespace MakeMeMove
                     return GetNextHourlyRun(schedule, fromDateValue);
                 case SchedulePeriod.BiHourly:
                     return GetNextBiHourlyRun(schedule, fromDateValue);
+                case SchedulePeriod.EveryFifteenMinutes:
+                    return GetNextXMinuteRun(schedule, fromDateValue, 15);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        private static DateTime GetNextFiveMinuteRun(ExerciseSchedule schedule, DateTime fromDateValue)
+        private static DateTime GetNextXMinuteRun(ExerciseSchedule schedule, DateTime fromDateValue, int minuteInterval)
         {
-            var fromDatePrevious5 = (fromDateValue.Minute/5)*5;
-            var fromDatePrevious5Value = ZeroOutMinutesAndLower(fromDateValue).AddMinutes(fromDatePrevious5);
-            return GetStartNextDayIfOverTodaysEnd(schedule, fromDatePrevious5Value.AddMinutes(5));
+            var fromDatePreviousInterval = (fromDateValue.Minute/ minuteInterval) * minuteInterval;
+            var fromDatePreviousIntervalValue = ZeroOutMinutesAndLower(fromDateValue).AddMinutes(fromDatePreviousInterval);
+            return GetStartNextDayIfOverTodaysEnd(schedule, fromDatePreviousIntervalValue.AddMinutes(minuteInterval));
         }
 
         private static DateTime GetNextHalfHourlyRun(ExerciseSchedule schedule, DateTime fromDateValue)

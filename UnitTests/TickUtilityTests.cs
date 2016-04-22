@@ -272,6 +272,261 @@ namespace UnitTests
             }
         }
 
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_Start0End15()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 15, 0, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(15, nextRunTime.Hour);
+            Assert.AreEqual(15, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_Start1End15()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 15, 1, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(15, nextRunTime.Hour);
+            Assert.AreEqual(15, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_Start14End15()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 15, 14, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(15, nextRunTime.Hour);
+            Assert.AreEqual(15, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_Start15End30()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 15, 15, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(15, nextRunTime.Hour);
+            Assert.AreEqual(30, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_Start16End30()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 15, 16, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(15, nextRunTime.Hour);
+            Assert.AreEqual(30, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_Start29End30()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 15, 29, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(15, nextRunTime.Hour);
+            Assert.AreEqual(30, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_Start30End45()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 15, 30, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(15, nextRunTime.Hour);
+            Assert.AreEqual(45, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_Start31End45()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 15, 31, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(15, nextRunTime.Hour);
+            Assert.AreEqual(45, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_Start44End45()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 15, 44, 59);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(15, nextRunTime.Hour);
+            Assert.AreEqual(45, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_Start45End0()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 15, 45, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(16, nextRunTime.Hour);
+            Assert.AreEqual(0, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_Start46End0()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 15, 46, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(16, nextRunTime.Hour);
+            Assert.AreEqual(0, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_Start59End0()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 15, 59, 59);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(16, nextRunTime.Hour);
+            Assert.AreEqual(0, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_HitLastTimeOfDay()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 30, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 22, 15, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(22, nextRunTime.Hour);
+            Assert.AreEqual(30, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_LoopToTomorrow()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 8, 30, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 30, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 22, 30, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(8, nextRunTime.Hour);
+            Assert.AreEqual(30, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestFifteenMinuteSchedule_AdvanceToStart()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                StartTime = new DateTime(1, 1, 1, 8, 30, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 30, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+
+            var thisRunTime = new DateTime(1, 1, 1, 7, 30, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(8, nextRunTime.Hour);
+            Assert.AreEqual(30, nextRunTime.Minute);
+        }
+
         private DateTime GetTomorrowsStartTime(ExerciseSchedule schedule)
         {
             return GetTodaysStartTime(schedule).AddDays(1);
