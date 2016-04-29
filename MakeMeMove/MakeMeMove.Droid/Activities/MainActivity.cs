@@ -119,7 +119,7 @@ namespace MakeMeMove.Droid.Activities
                 else
                 {
                     UnifiedAnalytics.GetInstance(this).CreateAndSendEventOnDefaultTracker("UserAction", "OpenFudist", "Store", null);
-                    StartActivity(new Intent(Intent.ActionView, Android.Net.Uri.Parse("market://details?id=co.fudist.mobile&utm_source=MakeMeMove&utm_medium=MenuLink&utm_campaign=CrossProduct")));
+                    StartActivity(new Intent(Intent.ActionView, Android.Net.Uri.Parse("market://details?id=co.fudist.mobile&utm_source=MakeMeMoveMenuLink&utm_medium=referral&utm_campaign=CrossProduct")));
                 }
             };
 
