@@ -34,6 +34,119 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Schedule Status:" lineBreakMode="tailTruncation" minimumFontSize="10" id="1849" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="72" width="156" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1962" firstItem="1849" firstAttribute="width" constant="156"/>
+                                </constraints>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1852">
+                                <rect key="frame" x="50" y="101" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Time:" lineBreakMode="tailTruncation" minimumFontSize="10" id="1853" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="140" width="156" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1967" firstItem="1853" firstAttribute="width" constant="156"/>
+                                </constraints>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12:00:00 AM" lineBreakMode="tailTruncation" minimumFontSize="10" id="1854" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="50" y="168" width="126" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1970" firstItem="1854" firstAttribute="width" constant="126"/>
+                                </constraints>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Time: " lineBreakMode="tailTruncation" minimumFontSize="10" id="1855" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="198" width="102" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1973" firstItem="1855" firstAttribute="width" constant="102"/>
+                                </constraints>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12:00:00 PM" lineBreakMode="tailTruncation" minimumFontSize="10" id="1856" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="50" y="226" width="119" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1976" firstItem="1856" firstAttribute="width" constant="119"/>
+                                </constraints>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reminder Period:" lineBreakMode="tailTruncation" minimumFontSize="10" id="1857" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="256" width="181" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1979" firstItem="1857" firstAttribute="width" constant="181"/>
+                                </constraints>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" id="1863" translatesAutoresizingMaskIntoConstraints="NO" translucent="NO">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Make Me Move" id="1864"/>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Every fifteen minutes" lineBreakMode="tailTruncation" minimumFontSize="10" id="1867" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="50" y="284" width="176" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1982" firstItem="1867" firstAttribute="width" constant="176"/>
+                                </constraints>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1868" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="228" y="350" width="144" height="30"/>
+                                <state key="normal" title="CHANGE SCHEDULE">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue id="1940" destination="1872" kind="presentation"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint id="1947" firstItem="1863" firstAttribute="trailing" secondItem="32" secondAttribute="trailing"/>
+                            <constraint id="1948" firstItem="1863" firstAttribute="leading" secondItem="32" secondAttribute="leading"/>
+                            <constraint id="1949" firstItem="1863" firstAttribute="top" secondItem="19" secondAttribute="bottom"/>
+                            <constraint id="1960" firstItem="1849" firstAttribute="top" secondItem="1863" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1961" firstItem="1849" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="20"/>
+                            <constraint id="1963" firstItem="1852" firstAttribute="top" secondItem="1849" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1964" firstItem="1852" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="50"/>
+                            <constraint id="1965" firstItem="1853" firstAttribute="top" secondItem="1852" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1966" firstItem="1853" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="20"/>
+                            <constraint id="1968" firstItem="1854" firstAttribute="top" secondItem="1853" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1969" firstItem="1854" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="50"/>
+                            <constraint id="1971" firstItem="1855" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="20"/>
+                            <constraint id="1972" firstItem="1855" firstAttribute="top" secondItem="1854" secondAttribute="bottom" constant="9"/>
+                            <constraint id="1974" firstItem="1856" firstAttribute="top" secondItem="1855" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1975" firstItem="1856" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="50"/>
+                            <constraint id="1977" firstItem="1857" firstAttribute="top" secondItem="1856" secondAttribute="bottom" constant="9"/>
+                            <constraint id="1978" firstItem="1857" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="20"/>
+                            <constraint id="1980" firstItem="1867" firstAttribute="top" secondItem="1857" secondAttribute="centerY" constant="18"/>
+                            <constraint id="1981" firstItem="1867" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="50"/>
+                            <constraint id="1990" firstItem="1868" firstAttribute="centerX" secondItem="32" secondAttribute="centerX"/>
+                            <constraint id="1991" firstItem="1868" firstAttribute="top" secondItem="1867" secondAttribute="bottom" constant="45"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" id="33" title="My Schedule"/>
                 </viewController>
@@ -58,6 +171,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="345" y="761"/>
+        </scene>
+        <scene sceneID="1871">
+            <objects>
+                <viewController id="1872" sceneMemberID="viewController" customClass="ManageScheduleController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1869"/>
+                        <viewControllerLayoutGuide type="bottom" id="1870"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1873">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" id="1876" translatesAutoresizingMaskIntoConstraints="NO" translucent="NO">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Manage Schedule" id="1877"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <constraints>
+                            <constraint id="1985" firstItem="1876" firstAttribute="leading" secondItem="1873" secondAttribute="leading"/>
+                            <constraint id="1986" firstItem="1876" firstAttribute="trailing" secondItem="1873" secondAttribute="trailing"/>
+                            <constraint id="1987" firstItem="1876" firstAttribute="top" secondItem="1873" secondAttribute="top" constant="20"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="NavBar" destination="1876" id="name-outlet-1876"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1874" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1020" y="102"/>
         </scene>
     </scenes>
 </document>
