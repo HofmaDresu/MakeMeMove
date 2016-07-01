@@ -16,10 +16,19 @@ namespace MakeMeMove.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton CancelButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UINavigationBar NavBar { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (CancelButton != null) {
+                CancelButton.Dispose ();
+                CancelButton = null;
+            }
+
             if (NavBar != null) {
                 NavBar.Dispose ();
                 NavBar = null;
