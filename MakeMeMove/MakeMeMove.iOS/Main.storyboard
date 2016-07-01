@@ -159,7 +159,7 @@
         </scene>
         <scene sceneID="35">
             <objects>
-                <viewController id="28" sceneMemberID="viewController">
+                <viewController id="28" sceneMemberID="viewController" customClass="MyExercisesController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="21"/>
                         <viewControllerLayoutGuide type="bottom" id="22"/>
@@ -190,6 +190,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" id="37" title="My Exercises"/>
+                    <connections>
+                        <outlet property="NavBar" destination="2003" id="name-outlet-2003"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

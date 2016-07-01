@@ -123,6 +123,10 @@
       <DependentUpon>MyScheduleController.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseViewController.cs" />
+    <Compile Include="MyExercisesController.cs" />
+    <Compile Include="MyExercisesController.designer.cs">
+      <DependentUpon>MyExercisesController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

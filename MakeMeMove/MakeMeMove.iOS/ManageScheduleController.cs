@@ -4,7 +4,7 @@ using UIKit;
 
 namespace MakeMeMove.iOS
 {
-	public partial class ManageScheduleController : UIViewController, IUINavigationBarDelegate
+	public partial class ManageScheduleController : BaseViewController
     {
         public ManageScheduleController (IntPtr handle) : base (handle)
         {
@@ -13,7 +13,6 @@ namespace MakeMeMove.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			NavBar.Delegate = this;
 		}
 
 		public override void ViewDidAppear(bool animated)
@@ -28,11 +27,7 @@ namespace MakeMeMove.iOS
 			CancelButton.TouchUpInside -= CancelChanges;
 		}
 
-		[Export("positionForBar:")]
-		public UIBarPosition PositionForBar(UIBarPositioning id)
-		{
-			return UIBarPosition.TopAttached;
-		}
+		protected override UINavigationBar GetNavBar() => NavBar;
 
 		private void CancelChanges(object sender, EventArgs e)
 		{
