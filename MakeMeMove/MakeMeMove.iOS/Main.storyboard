@@ -151,6 +151,10 @@
                     <tabBarItem key="tabBarItem" id="33" title="My Schedule"/>
                     <connections>
                         <outlet property="NavBar" destination="1863" id="name-outlet-1863"/>
+                        <outlet property="StatusSwitch" destination="1852" id="name-outlet-1852"/>
+                        <outlet property="StartTime" destination="1854" id="name-outlet-1854"/>
+                        <outlet property="EndTime" destination="1856" id="name-outlet-1856"/>
+                        <outlet property="ReminderPeriod" destination="1867" id="name-outlet-1867"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34" userLabel="First Responder" sceneMemberID="firstResponder"/>
