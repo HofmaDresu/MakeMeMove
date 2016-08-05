@@ -9,9 +9,17 @@ namespace MakeMeMove.iOS
 {
 	public class ExerciseServiceManager
 	{
-		public void StartNotificationService(ExerciseSchedule schedule, List<ExerciseBlock> exercises, bool showMessage = true)
+		private Data _data;
+		public ExerciseServiceManager(Data data)
+		{
+			_data = data;	
+		}
+
+		public void StartNotificationService(bool showMessage = true)
 		{
 			UIApplication.SharedApplication.CancelAllLocalNotifications();
+			var schedule = _data.GetExerciseSchedule();
+			var exercises = _data.GetExerciseBlocks();
 
 			var now = DateTime.Now;
 			var tomorrow = now.AddDays(1);
@@ -38,17 +46,17 @@ namespace MakeMeMove.iOS
 			}
 		}
 
-		public void StopNotificationService(ExerciseSchedule schedule, bool showMessage = true)
+		public void StopNotificationService(bool showMessage = true)
 		{
 			UIApplication.SharedApplication.CancelAllLocalNotifications();
 		}
 
-		public void RestartNotificationServiceIfNeeded(ExerciseSchedule schedule, List<ExerciseBlock> exercises)
+		public void RestartNotificationServiceIfNeeded()
 		{
 			if (NotificationServiceIsRunning())
 			{
-				StopNotificationService(schedule, false);
-				StartNotificationService(schedule, exercises, false);
+				StopNotificationService(false);
+				StartNotificationService(false);
 			}
 		}
 
