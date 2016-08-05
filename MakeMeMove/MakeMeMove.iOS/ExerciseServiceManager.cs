@@ -18,6 +18,8 @@ namespace MakeMeMove.iOS
 		public void StartNotificationService(bool showMessage = true)
 		{
 			UIApplication.SharedApplication.CancelAllLocalNotifications();
+
+
 			var schedule = _data.GetExerciseSchedule();
 			var exercises = _data.GetExerciseBlocks();
 
