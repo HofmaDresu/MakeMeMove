@@ -197,7 +197,7 @@
         <!--Manage Schedule Controller-->
         <scene sceneID="1871">
             <objects>
-                <viewController id="1872" customClass="ManageScheduleController" sceneMemberID="viewController">
+                <viewController id="1872" customClass="ManageScheduleController" sceneMemberID="viewController" title="Manage Schedule">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1869"/>
                         <viewControllerLayoutGuide type="bottom" id="1870"/>
