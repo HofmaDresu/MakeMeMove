@@ -27,8 +27,6 @@ namespace MakeMeMove.iOS
 			CancelButton.TouchUpInside -= CancelChanges;
 		}
 
-		protected override UINavigationBar GetNavBar() => NavBar;
-
 		private void CancelChanges(object sender, EventArgs e)
 		{
 			DismissViewController(true, null);

@@ -10,6 +10,5 @@ namespace MakeMeMove.iOS
         {
         }
 
-		protected override UINavigationBar GetNavBar() => NavBar;
     }
 }

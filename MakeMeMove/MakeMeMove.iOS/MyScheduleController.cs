@@ -21,6 +21,5 @@ namespace MakeMeMove.iOS
 			ReminderPeriod.Text = _exerciseSchedule.PeriodDisplayString;
 		}
 
-		protected override UINavigationBar GetNavBar() => NavBar;
     }
 }

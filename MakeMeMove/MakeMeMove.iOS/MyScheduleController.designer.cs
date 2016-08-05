@@ -20,10 +20,6 @@ namespace MakeMeMove.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UINavigationBar NavBar { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel ReminderPeriod { get; set; }
 
         [Outlet]
@@ -39,11 +35,6 @@ namespace MakeMeMove.iOS
             if (EndTime != null) {
                 EndTime.Dispose ();
                 EndTime = null;
-            }
-
-            if (NavBar != null) {
-                NavBar.Dispose ();
-                NavBar = null;
             }
 
             if (ReminderPeriod != null) {
