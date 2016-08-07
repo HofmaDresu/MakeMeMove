@@ -41,8 +41,10 @@ namespace MakeMeMove.iOS
 					SoundName = UILocalNotification.DefaultSoundName,
 					TimeZone = NSTimeZone.LocalTimeZone,
 					RepeatInterval = NSCalendarUnit.Day,
-					ApplicationIconBadgeNumber = -1
+					ApplicationIconBadgeNumber = -1,
+					Category = Constants.UnregisteredExerciseCategoryId
 				};
+
 
 				UIApplication.SharedApplication.ScheduleLocalNotification(notification);
 			}
