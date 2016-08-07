@@ -1,4 +1,8 @@
-﻿using Foundation;
+﻿using System;
+using System.IO;
+using Foundation;
+using MakeMeMove.Model;
+using SQLite;
 using UIKit;
 
 namespace MakeMeMove.iOS
@@ -8,6 +12,7 @@ namespace MakeMeMove.iOS
 	[Register("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate
 	{
+		private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library", Constants.DatabaseName)));
 
 		public override UIWindow Window
 		{
@@ -54,7 +59,22 @@ namespace MakeMeMove.iOS
 		{
 			if (actionIdentifier == Constants.NextId)
 			{
-				int foo = 1;
+				var exerciseName = localNotification.UserInfo[Constants.ExerciseName].ToString();
+				var exerciseQuantity = int.Parse(localNotification.UserInfo[Constants.ExerciseQuantity].ToString());
+
+				if (!string.IsNullOrEmpty(exerciseName) && exerciseQuantity > 0)
+				{
+					_data.MarkExerciseNotified(exerciseName, -1 * exerciseQuantity);
+				}
+
+				var nextExercise =
+					_data.GetNextDifferentEnabledExercise(new ExerciseBlock
+					{
+						Name = exerciseName,
+						Quantity = exerciseQuantity
+					});
+
+				UserNotification.CreateNotification(DateTime.Now.AddSeconds(3), nextExercise);
 			}
 
 			completionHandler?.Invoke();

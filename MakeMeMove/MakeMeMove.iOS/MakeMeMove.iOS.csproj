@@ -135,6 +135,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="ExerciseServiceManager.cs" />
     <Compile Include="ExtensionMethods\DateTimeExtensions.cs" />
+    <Compile Include="UserNotification.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">

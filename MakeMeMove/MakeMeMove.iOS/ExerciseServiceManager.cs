@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Foundation;
-using MakeMeMove.iOS.ExtensionMethods;
-using MakeMeMove.Model;
 using UIKit;
 
 namespace MakeMeMove.iOS
@@ -32,21 +28,7 @@ namespace MakeMeMove.iOS
 				var index = random.Next(0, exercises.Count);
 				//TODO: figure out how to make this more random. Right now it makes a random schedule, but it's the same every day
 				var nextExercise = exercises[Math.Min(index, exercises.Count - 1)];
-
-				var notification = new UILocalNotification
-				{
-					AlertAction = "Time to Move",
-					AlertBody = $"It's time to do {nextExercise.Quantity} {nextExercise.Name}",
-					FireDate = testDate.ToNSDate(),
-					SoundName = UILocalNotification.DefaultSoundName,
-					TimeZone = NSTimeZone.LocalTimeZone,
-					RepeatInterval = NSCalendarUnit.Day,
-					ApplicationIconBadgeNumber = -1,
-					Category = Constants.UnregisteredExerciseCategoryId
-				};
-
-
-				UIApplication.SharedApplication.ScheduleLocalNotification(notification);
+				UserNotification.CreateNotification(testDate, nextExercise, true);
 			}
 		}
 
