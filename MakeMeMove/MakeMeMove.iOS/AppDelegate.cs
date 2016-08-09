@@ -52,32 +52,45 @@ namespace MakeMeMove.iOS
 
 		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
 		{
-			var foo = 1;
+			UIAlertController okayAlertController = UIAlertController.Create(notification.AlertAction, notification.AlertBody, UIAlertControllerStyle.Alert);
+			okayAlertController.AddAction(UIAlertAction.Create("CHANGE", UIAlertActionStyle.Default, null));
+
+			if (notification.Category == Constants.UnregisteredExerciseCategoryId)
+			{
+				okayAlertController.AddAction(UIAlertAction.Create("DISMISS", UIAlertActionStyle.Cancel, _ => ChangeExercise(notification)));
+			}
+
+			Window.RootViewController.PresentViewController(okayAlertController, true, null);
 		}
 
 		public override void HandleAction(UIApplication application, string actionIdentifier, UILocalNotification localNotification, NSDictionary responseInfo, System.Action completionHandler)
 		{
 			if (actionIdentifier == Constants.NextId)
 			{
-				var exerciseName = localNotification.UserInfo[Constants.ExerciseName].ToString();
-				var exerciseQuantity = int.Parse(localNotification.UserInfo[Constants.ExerciseQuantity].ToString());
-
-				if (!string.IsNullOrEmpty(exerciseName) && exerciseQuantity > 0)
-				{
-					_data.MarkExerciseNotified(exerciseName, -1 * exerciseQuantity);
-				}
-
-				var nextExercise =
-					_data.GetNextDifferentEnabledExercise(new ExerciseBlock
-					{
-						Name = exerciseName,
-						Quantity = exerciseQuantity
-					});
-
-				UserNotification.CreateNotification(DateTime.Now.AddSeconds(3), nextExercise);
+				ChangeExercise(localNotification);
 			}
 
 			completionHandler?.Invoke();
+		}
+
+		void ChangeExercise(UILocalNotification localNotification)
+		{
+			var exerciseName = localNotification.UserInfo[Constants.ExerciseName].ToString();
+			var exerciseQuantity = int.Parse(localNotification.UserInfo[Constants.ExerciseQuantity].ToString());
+
+			if (!string.IsNullOrEmpty(exerciseName) && exerciseQuantity > 0)
+			{
+				_data.MarkExerciseNotified(exerciseName, -1 * exerciseQuantity);
+			}
+
+			var nextExercise =
+				_data.GetNextDifferentEnabledExercise(new ExerciseBlock
+				{
+					Name = exerciseName,
+					Quantity = exerciseQuantity
+				});
+
+			UserNotification.CreateNotification(DateTime.Now.AddSeconds(5), nextExercise);
 		}
 	}
 }

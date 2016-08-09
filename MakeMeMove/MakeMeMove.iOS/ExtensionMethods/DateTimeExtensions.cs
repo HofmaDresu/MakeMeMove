@@ -7,9 +7,13 @@ namespace MakeMeMove.iOS.ExtensionMethods
 	{
 		public static NSDate ToNSDate(this DateTime date)
 		{
-			var reference = new DateTime(2001, 1, 1, 0, 0, 0);
-			return NSDate.FromTimeIntervalSinceReferenceDate(
-				(date - reference).TotalSeconds);
+			var reference = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(2001, 1, 1, 0, 0, 0));
+
+			var dtBasis = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
+
+			return NSDate.FromTimeIntervalSince1970(
+				date.ToUniversalTime().Subtract(dtBasis).TotalSeconds);
 		}
 	}
 }
