@@ -13,6 +13,12 @@ namespace MakeMeMove.iOS
 	public class AppDelegate : UIApplicationDelegate
 	{
 		private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library", Constants.DatabaseName)));
+		private readonly ExerciseServiceManager _serviceManager;
+
+		public AppDelegate()
+		{
+			_serviceManager = new ExerciseServiceManager(_data);
+		}
 
 		public override UIWindow Window
 		{
@@ -53,11 +59,11 @@ namespace MakeMeMove.iOS
 		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
 		{
 			UIAlertController okayAlertController = UIAlertController.Create(notification.AlertAction, notification.AlertBody, UIAlertControllerStyle.Alert);
-			okayAlertController.AddAction(UIAlertAction.Create("CHANGE", UIAlertActionStyle.Default, null));
+			okayAlertController.AddAction(UIAlertAction.Create("CHANGE", UIAlertActionStyle.Default, _ => ChangeExercise(notification)));
 
 			if (notification.Category == Constants.UnregisteredExerciseCategoryId)
 			{
-				okayAlertController.AddAction(UIAlertAction.Create("DISMISS", UIAlertActionStyle.Cancel, _ => ChangeExercise(notification)));
+				okayAlertController.AddAction(UIAlertAction.Create("DISMISS", UIAlertActionStyle.Cancel, null));
 			}
 
 			Window.RootViewController.PresentViewController(okayAlertController, true, null);
@@ -77,20 +83,7 @@ namespace MakeMeMove.iOS
 		{
 			var exerciseName = localNotification.UserInfo[Constants.ExerciseName].ToString();
 			var exerciseQuantity = int.Parse(localNotification.UserInfo[Constants.ExerciseQuantity].ToString());
-
-			if (!string.IsNullOrEmpty(exerciseName) && exerciseQuantity > 0)
-			{
-				_data.MarkExerciseNotified(exerciseName, -1 * exerciseQuantity);
-			}
-
-			var nextExercise =
-				_data.GetNextDifferentEnabledExercise(new ExerciseBlock
-				{
-					Name = exerciseName,
-					Quantity = exerciseQuantity
-				});
-
-			UserNotification.CreateNotification(DateTime.Now.AddSeconds(5), nextExercise);
+			_serviceManager.AddInstantExerciseNotification(exerciseName, exerciseQuantity);
 		}
 	}
 }
