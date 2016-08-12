@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -24,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-425" y="776"/>
         </scene>
-        <!--My Schedule Controller-->
+        <!--Make Me Move-->
         <scene sceneID="31">
             <objects>
                 <viewController id="26" customClass="MyScheduleController" sceneMemberID="viewController">
@@ -36,80 +37,80 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Schedule Status:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1849">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Schedule Status:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1849">
                                 <rect key="frame" x="20" y="72" width="156" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="156" id="1962"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1852">
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1852">
                                 <rect key="frame" x="50" y="101" width="51" height="31"/>
                             </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Start Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1853">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1853">
                                 <rect key="frame" x="20" y="140" width="156" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="156" id="1967"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="12:00:00 AM" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1854">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12:00:00 AM" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1854">
                                 <rect key="frame" x="50" y="168" width="126" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="126" id="1970"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="End Time: " lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1855">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Time: " lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1855">
                                 <rect key="frame" x="20" y="198" width="102" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="102" id="1973"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="12:00:00 PM" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1856">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12:00:00 PM" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1856">
                                 <rect key="frame" x="50" y="226" width="119" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="119" id="1976"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Reminder Period:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1857">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reminder Period:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1857">
                                 <rect key="frame" x="20" y="256" width="181" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="181" id="1979"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Every fifteen minutes" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1867">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Every fifteen minutes" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1867">
                                 <rect key="frame" x="50" y="284" width="176" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="176" id="1982"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1868">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1868">
                                 <rect key="frame" x="228" y="350" width="144" height="30"/>
                                 <state key="normal" title="CHANGE SCHEDULE">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -138,10 +139,10 @@
                             <constraint firstItem="1867" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="50" id="1981"/>
                             <constraint firstItem="1868" firstAttribute="centerX" secondItem="32" secondAttribute="centerX" id="1990"/>
                             <constraint firstItem="1868" firstAttribute="top" secondItem="1867" secondAttribute="bottom" constant="45" id="1991"/>
-                            <constraint id="2036" firstItem="1849" firstAttribute="top" secondItem="19" secondAttribute="bottom" constant="8"/>
+                            <constraint firstItem="1849" firstAttribute="top" secondItem="19" secondAttribute="bottom" constant="8" id="2036"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="WKT-J1-vzb" title="Make Me Move"/>
+                    <navigationItem key="navigationItem" title="Make Me Move" id="WKT-J1-vzb"/>
                     <connections>
                         <outlet property="EndTime" destination="1856" id="name-outlet-1856"/>
                         <outlet property="ReminderPeriod" destination="1867" id="name-outlet-1867"/>
@@ -153,7 +154,7 @@
             </objects>
             <point key="canvasLocation" x="1157" y="108"/>
         </scene>
-        <!--My Exercises Controller-->
+        <!--Make Me Move-->
         <scene sceneID="35">
             <objects>
                 <viewController id="28" customClass="MyExercisesController" sceneMemberID="viewController">
@@ -171,45 +172,45 @@
                                     <navigationItem title="Make Me Move" id="2004"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2019" translatesAutoresizingMaskIntoConstraints="NO">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2019">
                                 <rect key="frame" x="0.0" y="516" width="600" height="36"/>
-                                <color key="backgroundColor" colorSpace="calibratedRGB" red="1" green="0.49803921568627452" blue="0" alpha="1"/>
-                                <state key="normal" title="Add Exercise">
-                                    <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
-                                </state>
+                                <color key="backgroundColor" red="1" green="0.49803921568627452" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint id="2023" firstItem="2019" firstAttribute="height" constant="36"/>
+                                    <constraint firstAttribute="height" constant="36" id="2023"/>
                                 </constraints>
+                                <state key="normal" title="Add Exercise">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <segue id="2130" destination="2058" kind="show" identifier="ManageExerciseSegue"/>
+                                    <segue destination="2058" kind="show" identifier="ManageExerciseSegue" id="2130"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2024" translatesAutoresizingMaskIntoConstraints="NO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2024">
                                 <rect key="frame" x="0.0" y="66" width="600" height="450"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2025" rowHeight="103" reuseIdentifier="ExerciseBlockCell" customClass="ExerciseBlockCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseBlockCell" rowHeight="103" id="2025" customClass="ExerciseBlockCell">
                                         <rect key="frame" x="0.0" y="28" width="600" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2025" id="2026">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="102.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="2039" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2039">
                                                     <rect key="frame" x="20" y="20" width="560" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2040" fixedFrame="YES">
+                                                <switch opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2040">
                                                     <rect key="frame" x="20" y="49" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="ExerciseNameLabel" destination="2039" id="name-outlet-2039"/>
                                             <outlet property="ExerciseIsEnabled" destination="2040" id="name-outlet-2040"/>
+                                            <outlet property="ExerciseNameLabel" destination="2039" id="name-outlet-2039"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -220,29 +221,29 @@
                             <constraint firstItem="2003" firstAttribute="trailing" secondItem="36" secondAttribute="trailing" id="2005"/>
                             <constraint firstItem="2003" firstAttribute="leading" secondItem="36" secondAttribute="leading" id="2006"/>
                             <constraint firstItem="2003" firstAttribute="top" secondItem="36" secondAttribute="top" constant="20" id="2007"/>
-                            <constraint id="2020" firstItem="2019" firstAttribute="bottom" secondItem="22" secondAttribute="top" constant="1"/>
-                            <constraint id="2021" firstItem="2019" firstAttribute="trailing" secondItem="36" secondAttribute="trailing"/>
-                            <constraint id="2022" firstItem="2019" firstAttribute="leading" secondItem="36" secondAttribute="leading"/>
-                            <constraint id="2031" firstItem="2024" firstAttribute="bottom" secondItem="2019" secondAttribute="top"/>
-                            <constraint id="2033" firstItem="2024" firstAttribute="top" secondItem="21" secondAttribute="bottom" constant="2"/>
-                            <constraint id="2034" firstItem="2024" firstAttribute="leading" secondItem="36" secondAttribute="leading"/>
-                            <constraint id="2035" firstItem="2024" firstAttribute="trailing" secondItem="36" secondAttribute="trailing"/>
+                            <constraint firstItem="2019" firstAttribute="bottom" secondItem="22" secondAttribute="top" constant="1" id="2020"/>
+                            <constraint firstItem="2019" firstAttribute="trailing" secondItem="36" secondAttribute="trailing" id="2021"/>
+                            <constraint firstItem="2019" firstAttribute="leading" secondItem="36" secondAttribute="leading" id="2022"/>
+                            <constraint firstItem="2024" firstAttribute="bottom" secondItem="2019" secondAttribute="top" id="2031"/>
+                            <constraint firstItem="2024" firstAttribute="top" secondItem="21" secondAttribute="bottom" constant="2" id="2033"/>
+                            <constraint firstItem="2024" firstAttribute="leading" secondItem="36" secondAttribute="leading" id="2034"/>
+                            <constraint firstItem="2024" firstAttribute="trailing" secondItem="36" secondAttribute="trailing" id="2035"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Npw-yZ-dKr" title="Make Me Move"/>
+                    <navigationItem key="navigationItem" title="Make Me Move" id="Npw-yZ-dKr"/>
                     <connections>
-                        <outlet property="NavBar" destination="2003" id="name-outlet-2003"/>
                         <outlet property="ExerciseList" destination="2024" id="name-outlet-2024"/>
+                        <outlet property="NavBar" destination="2003" id="name-outlet-2003"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1157" y="761"/>
         </scene>
-        <!--Manage Schedule Controller-->
+        <!--Manage Schedule-->
         <scene sceneID="1871">
             <objects>
-                <viewController id="1872" customClass="ManageScheduleController" sceneMemberID="viewController" title="Manage Schedule">
+                <viewController title="Manage Schedule" id="1872" customClass="ManageScheduleController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1869"/>
                         <viewControllerLayoutGuide type="bottom" id="1870"/>
@@ -306,9 +307,10 @@
             </objects>
             <point key="canvasLocation" x="345" y="761"/>
         </scene>
+        <!--Manage Exercise-->
         <scene sceneID="2057">
             <objects>
-                <viewController id="2058" sceneMemberID="viewController" customClass="ManageExerciseViewController" title="Manage Exercise">
+                <viewController title="Manage Exercise" id="2058" customClass="ManageExerciseViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2055"/>
                         <viewControllerLayoutGuide type="bottom" id="2056"/>
@@ -316,54 +318,59 @@
                     <view key="view" contentMode="scaleToFill" id="2059">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Exercise Type" lineBreakMode="tailTruncation" minimumFontSize="10" id="2150" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="72" width="106" height="20.5"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Exercise Type" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2150">
+                                <rect key="frame" x="20" y="72" width="106" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="bezel" minimumFontSize="17" id="2160" translatesAutoresizingMaskIntoConstraints="NO" customClass="PickerUITextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2160" customClass="PickerUITextField">
                                 <rect key="frame" x="20" y="100" width="560" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="2191" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Custom Exercise Name">
-                                <rect key="frame" x="20" y="130.5" width="560" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Custom Exercise Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2191">
+                                <rect key="frame" x="20" y="131" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Repetitions" lineBreakMode="tailTruncation" minimumFontSize="10" id="2204" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="167.5" width="172" height="20.5"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Repetitions" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2204">
+                                <rect key="frame" x="20" y="168" width="172" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="roundedRect" minimumFontSize="17" id="2216" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="196" width="49" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2216">
+                                <rect key="frame" x="20" y="196" width="560" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint id="2186" firstItem="2150" firstAttribute="top" secondItem="2055" secondAttribute="bottom" constant="8"/>
-                            <constraint id="2187" firstItem="2150" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20"/>
-                            <constraint id="2188" firstItem="2160" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20"/>
-                            <constraint id="2189" firstItem="2160" firstAttribute="top" secondItem="2150" secondAttribute="bottom" constant="8"/>
-                            <constraint id="2190" firstItem="2059" firstAttribute="trailing" secondItem="2160" secondAttribute="trailing" constant="20"/>
-                            <constraint id="2201" firstItem="2191" firstAttribute="top" secondItem="2160" secondAttribute="bottom" constant="8"/>
-                            <constraint id="2202" firstItem="2191" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20"/>
-                            <constraint id="2203" firstItem="2059" firstAttribute="trailing" secondItem="2191" secondAttribute="trailing" constant="20"/>
-                            <constraint id="2215" firstItem="2204" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20"/>
-                            <constraint id="2217" firstItem="2204" firstAttribute="top" secondItem="2191" secondAttribute="bottom" constant="7"/>
-                            <constraint id="2218" firstItem="2216" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20"/>
-                            <constraint id="2219" firstItem="2216" firstAttribute="top" secondItem="2204" secondAttribute="bottom" constant="8"/>
-                            <constraint id="2220" firstItem="2059" firstAttribute="trailing" secondItem="2216" secondAttribute="trailing" constant="531"/>
+                            <constraint firstItem="2150" firstAttribute="top" secondItem="2055" secondAttribute="bottom" constant="8" id="2186"/>
+                            <constraint firstItem="2150" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20" id="2187"/>
+                            <constraint firstItem="2160" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20" id="2188"/>
+                            <constraint firstItem="2160" firstAttribute="top" secondItem="2150" secondAttribute="bottom" constant="8" id="2189"/>
+                            <constraint firstAttribute="trailing" secondItem="2160" secondAttribute="trailing" constant="20" id="2190"/>
+                            <constraint firstItem="2191" firstAttribute="top" secondItem="2160" secondAttribute="bottom" constant="8" id="2201"/>
+                            <constraint firstItem="2191" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20" id="2202"/>
+                            <constraint firstAttribute="trailing" secondItem="2191" secondAttribute="trailing" constant="20" id="2203"/>
+                            <constraint firstItem="2204" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20" id="2215"/>
+                            <constraint firstItem="2204" firstAttribute="top" secondItem="2191" secondAttribute="bottom" constant="7" id="2217"/>
+                            <constraint firstItem="2216" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20" id="2218"/>
+                            <constraint firstItem="2216" firstAttribute="top" secondItem="2204" secondAttribute="bottom" constant="8" id="2219"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2216" secondAttribute="trailing" id="BHD-Ho-xF8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="NumberOfRepetitions" destination="2216" id="name-outlet-2216"/>
+                        <outlet property="CustomExerciseName" destination="2191" id="name-outlet-2191"/>
+                        <outlet property="ExerciseType" destination="2160" id="name-outlet-2160"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2060" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

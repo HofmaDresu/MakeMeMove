@@ -40,7 +40,7 @@ namespace MakeMeMove.iOS
 
 		void exerciseTableDelegate_ExerciseEdited(object sender, int exerciseIndex)
 		{
-			SelectedExerciseId = exerciseIndex;
+			SelectedExerciseId = _exercises[exerciseIndex].Id;
 			PerformSegue(ManageExerciseSegueId, this);
 		}
 
