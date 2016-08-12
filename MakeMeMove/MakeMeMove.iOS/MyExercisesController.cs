@@ -14,6 +14,8 @@ namespace MakeMeMove.iOS
 		{
 			base.ViewDidLoad();
 			ExerciseList.Source = new ExerciseListTableSource(Data.GetExerciseBlocks());
+			ExerciseList.Delegate = new ExerciseTableDelegate();
+			//ExerciseList.SetEditing(true, false);
 		}
     }
 }

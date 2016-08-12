@@ -141,6 +141,11 @@
     <Compile Include="ExerciseBlockCell.designer.cs">
       <DependentUpon>ExerciseBlockCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManageExerciseViewController.cs" />
+    <Compile Include="ManageExerciseViewController.designer.cs">
+      <DependentUpon>ManageExerciseViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExerciseTableDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">

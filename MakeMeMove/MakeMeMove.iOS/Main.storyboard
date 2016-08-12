@@ -180,6 +180,9 @@
                                 <constraints>
                                     <constraint id="2023" firstItem="2019" firstAttribute="height" constant="36"/>
                                 </constraints>
+                                <connections>
+                                    <segue id="2130" destination="2058" kind="show"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2024" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="0.0" y="66" width="600" height="450"/>
@@ -302,6 +305,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Su0-I8-DYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="345" y="761"/>
+        </scene>
+        <scene sceneID="2057">
+            <objects>
+                <viewController id="2058" sceneMemberID="viewController" customClass="ManageExerciseViewController" title="Manage Exercise">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2055"/>
+                        <viewControllerLayoutGuide type="bottom" id="2056"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2059">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2060" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1836" y="756"/>
         </scene>
     </scenes>
 </document>

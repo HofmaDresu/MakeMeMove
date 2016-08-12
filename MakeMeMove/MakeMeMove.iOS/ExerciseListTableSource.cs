@@ -35,6 +35,16 @@ namespace MakeMeMove.iOS
 		{
 			return 103;
 		}
+
+		public override bool CanEditRow(UITableView tableView, NSIndexPath indexPath)
+		{
+			return true; 
+		}
+
+		public override void CommitEditingStyle(UITableView tableView, UITableViewCellEditingStyle editingStyle, NSIndexPath indexPath)
+		{
+			base.CommitEditingStyle(tableView, editingStyle, indexPath);
+		}
 	}
 }
 
