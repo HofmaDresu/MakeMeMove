@@ -10,5 +10,10 @@ namespace MakeMeMove.iOS
         {
         }
 
+		public override void ViewDidLoad()
+		{
+			base.ViewDidLoad();
+			ExerciseList.Source = new ExerciseListTableSource(Data.GetExerciseBlocks());
+		}
     }
 }

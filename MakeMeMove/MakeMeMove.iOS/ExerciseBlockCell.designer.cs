@@ -11,8 +11,8 @@ using UIKit;
 
 namespace MakeMeMove.iOS
 {
-    [Register ("ExerciseItemCell")]
-    partial class ExerciseItemCell
+    [Register ("ExerciseBlockCell")]
+    partial class ExerciseBlockCell
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
