@@ -317,6 +317,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Exercise Type" lineBreakMode="tailTruncation" minimumFontSize="10" id="2150" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="72" width="106" height="20.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="bezel" minimumFontSize="17" id="2160" translatesAutoresizingMaskIntoConstraints="NO" customClass="PickerUITextField">
+                                <rect key="frame" x="20" y="100" width="560" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="2191" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Custom Exercise Name">
+                                <rect key="frame" x="20" y="130.5" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Repetitions" lineBreakMode="tailTruncation" minimumFontSize="10" id="2204" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="167.5" width="172" height="20.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="roundedRect" minimumFontSize="17" id="2216" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="196" width="49" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint id="2186" firstItem="2150" firstAttribute="top" secondItem="2055" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2187" firstItem="2150" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20"/>
+                            <constraint id="2188" firstItem="2160" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20"/>
+                            <constraint id="2189" firstItem="2160" firstAttribute="top" secondItem="2150" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2190" firstItem="2059" firstAttribute="trailing" secondItem="2160" secondAttribute="trailing" constant="20"/>
+                            <constraint id="2201" firstItem="2191" firstAttribute="top" secondItem="2160" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2202" firstItem="2191" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20"/>
+                            <constraint id="2203" firstItem="2059" firstAttribute="trailing" secondItem="2191" secondAttribute="trailing" constant="20"/>
+                            <constraint id="2215" firstItem="2204" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20"/>
+                            <constraint id="2217" firstItem="2204" firstAttribute="top" secondItem="2191" secondAttribute="bottom" constant="7"/>
+                            <constraint id="2218" firstItem="2216" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20"/>
+                            <constraint id="2219" firstItem="2216" firstAttribute="top" secondItem="2204" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2220" firstItem="2059" firstAttribute="trailing" secondItem="2216" secondAttribute="trailing" constant="531"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2060" userLabel="First Responder" sceneMemberID="firstResponder"/>
