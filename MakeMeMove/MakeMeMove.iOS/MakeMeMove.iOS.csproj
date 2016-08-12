@@ -136,6 +136,11 @@
     <Compile Include="ExerciseServiceManager.cs" />
     <Compile Include="ExtensionMethods\DateTimeExtensions.cs" />
     <Compile Include="UserNotification.cs" />
+    <Compile Include="ExerciseItemCell.cs" />
+    <Compile Include="ExerciseItemCell.designer.cs">
+      <DependentUpon>ExerciseItemCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExerciseListTableSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">

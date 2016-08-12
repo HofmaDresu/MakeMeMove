@@ -11,27 +11,27 @@ using UIKit;
 
 namespace MakeMeMove.iOS
 {
-    [Register ("MyExercisesController")]
-    partial class MyExercisesController
+    [Register ("ExerciseItemCell")]
+    partial class ExerciseItemCell
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITableView ExerciseList { get; set; }
+        UIKit.UISwitch ExerciseIsEnabled { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UINavigationBar NavBar { get; set; }
+        UIKit.UILabel ExerciseNameLabel { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (ExerciseList != null) {
-                ExerciseList.Dispose ();
-                ExerciseList = null;
+            if (ExerciseIsEnabled != null) {
+                ExerciseIsEnabled.Dispose ();
+                ExerciseIsEnabled = null;
             }
 
-            if (NavBar != null) {
-                NavBar.Dispose ();
-                NavBar = null;
+            if (ExerciseNameLabel != null) {
+                ExerciseNameLabel.Dispose ();
+                ExerciseNameLabel = null;
             }
         }
     }

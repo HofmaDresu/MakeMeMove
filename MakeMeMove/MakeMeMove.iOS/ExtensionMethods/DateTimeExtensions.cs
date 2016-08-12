@@ -9,7 +9,6 @@ namespace MakeMeMove.iOS.ExtensionMethods
 		{
 			var dtBasis = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
-
 			return NSDate.FromTimeIntervalSince1970(
 				date.ToUniversalTime().Subtract(dtBasis).TotalSeconds);
 		}
