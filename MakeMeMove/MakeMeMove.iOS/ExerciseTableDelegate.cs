@@ -6,6 +6,10 @@ namespace MakeMeMove.iOS
 {
 	public class ExerciseTableDelegate : UITableViewDelegate
 	{
+		public EventHandler<int> ExerciseEdited;
+		public EventHandler<int> ExerciseDeleted;
+
+
 		public ExerciseTableDelegate()
 		{
 		}
@@ -22,18 +26,12 @@ namespace MakeMeMove.iOS
 		{
 			UITableViewRowAction editButton = UITableViewRowAction.Create(
 				UITableViewRowActionStyle.Normal,
-				"Edit",
-				delegate
-				{
-					Console.WriteLine("Hello World!");
-				});
+				"Edit", 
+				(arg1, arg2) => ExerciseEdited?.Invoke(this, indexPath.Row));
 			UITableViewRowAction deleteButton = UITableViewRowAction.Create(
 				UITableViewRowActionStyle.Destructive,
 				"Delete",
-				delegate
-				{
-					Console.WriteLine("Hello World!");
-				});
+				(arg1, arg2) => ExerciseDeleted?.Invoke(this, indexPath.Row));
 			return new UITableViewRowAction[] { deleteButton, editButton };
 		}
 

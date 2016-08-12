@@ -181,7 +181,7 @@
                                     <constraint id="2023" firstItem="2019" firstAttribute="height" constant="36"/>
                                 </constraints>
                                 <connections>
-                                    <segue id="2130" destination="2058" kind="show"/>
+                                    <segue id="2130" destination="2058" kind="show" identifier="ManageExerciseSegue"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2024" translatesAutoresizingMaskIntoConstraints="NO">

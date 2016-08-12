@@ -1,21 +1,63 @@
 using Foundation;
 using System;
 using UIKit;
+using System.Collections.Generic;
+using MakeMeMove.Model;
 
 namespace MakeMeMove.iOS
 {
     public partial class MyExercisesController : BaseViewController
     {
+		private ExerciseTableDelegate _exerciseTableDelegate;
+		private List<ExerciseBlock> _exercises;
+		private const string ManageExerciseSegueId = "ManageExerciseSegue";
+		public int? SelectedExerciseId;
+
         public MyExercisesController (IntPtr handle) : base (handle)
         {
         }
 
-		public override void ViewDidLoad()
+		public override void ViewWillAppear(bool animated)
 		{
-			base.ViewDidLoad();
-			ExerciseList.Source = new ExerciseListTableSource(Data.GetExerciseBlocks());
-			ExerciseList.Delegate = new ExerciseTableDelegate();
-			//ExerciseList.SetEditing(true, false);
+			base.ViewDidAppear(animated);
+			SelectedExerciseId = null;
+
+			_exercises = Data.GetExerciseBlocks();
+			_exerciseTableDelegate = new ExerciseTableDelegate();
+			_exerciseTableDelegate.ExerciseEdited += exerciseTableDelegate_ExerciseEdited;
+			_exerciseTableDelegate.ExerciseDeleted += exerciseTableDelegate_ExerciseDeleted;
+
+			ExerciseList.Source = new ExerciseListTableSource(_exercises);
+			ExerciseList.Delegate = _exerciseTableDelegate;
 		}
-    }
+
+		public override void ViewDidDisappear(bool animated)
+		{
+			base.ViewDidDisappear(animated);
+			_exerciseTableDelegate.ExerciseEdited -= exerciseTableDelegate_ExerciseEdited;
+			_exerciseTableDelegate.ExerciseDeleted -= exerciseTableDelegate_ExerciseDeleted;
+		}
+
+		void exerciseTableDelegate_ExerciseEdited(object sender, int e)
+		{
+			SelectedExerciseId = e;
+			PerformSegue(ManageExerciseSegueId, this);
+		}
+
+		void exerciseTableDelegate_ExerciseDeleted(object sender, int e)
+		{
+			//TODO: Implement
+		}
+
+		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+		{
+			base.PrepareForSegue(segue, sender);
+
+			if (segue.Identifier.Equals(ManageExerciseSegueId))
+			{
+				var viewController = (ManageExerciseViewController)segue.DestinationViewController;
+				viewController.SelectedExerciseId = SelectedExerciseId;			
+			}
+		}
+	}
 }
