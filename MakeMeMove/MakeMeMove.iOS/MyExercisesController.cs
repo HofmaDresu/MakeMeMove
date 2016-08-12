@@ -38,15 +38,22 @@ namespace MakeMeMove.iOS
 			_exerciseTableDelegate.ExerciseDeleted -= exerciseTableDelegate_ExerciseDeleted;
 		}
 
-		void exerciseTableDelegate_ExerciseEdited(object sender, int e)
+		void exerciseTableDelegate_ExerciseEdited(object sender, int exerciseIndex)
 		{
-			SelectedExerciseId = e;
+			SelectedExerciseId = exerciseIndex;
 			PerformSegue(ManageExerciseSegueId, this);
 		}
 
-		void exerciseTableDelegate_ExerciseDeleted(object sender, int e)
+		void exerciseTableDelegate_ExerciseDeleted(object sender, int exerciseIndex)
 		{
-			//TODO: Implement
+			Data.DeleteExerciseBlock(_exercises[exerciseIndex].Id);
+			_exercises = Data.GetExerciseBlocks();
+
+			InvokeOnMainThread(() =>
+			{
+				ExerciseList.Source = new ExerciseListTableSource(_exercises);
+				ExerciseList.ReloadData();
+			});
 		}
 
 		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
