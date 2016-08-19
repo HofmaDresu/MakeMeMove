@@ -4,6 +4,7 @@ using UIKit;
 using MakeMeMove.Model;
 using MakeMeMove.iOS.Controls;
 using MakeMeMove.iOS.Models;
+using Humanizer;
 
 namespace MakeMeMove.iOS
 {
@@ -31,16 +32,16 @@ namespace MakeMeMove.iOS
 			{
 				_selectedExercise = Data.GetExerciseById(SelectedExerciseId.Value);
 
-				ExerciseType.Text = _selectedExercise.CombinedName;
+				ExerciseType.Text = _selectedExercise.Type.Humanize();
 				_exerciseTypePicker.Select((int)_selectedExercise.Type, 0, false);
 				NumberOfRepetitions.Text = _selectedExercise.Quantity.ToString();
-				CustomExerciseName.Text = _selectedExercise.Name;
+				CustomExerciseName.Text = _selectedExercise.CombinedName;
 			}
 			else
 			{
 				ExerciseType.Text = PickerListHelper.GetExerciseTypeStrings()[0];
 				_exerciseTypePicker.Select(0, 0, false);
-				NumberOfRepetitions.Text = "10";;
+				NumberOfRepetitions.Text = "10";
 				CustomExerciseName.Text = string.Empty;
 			}
 
@@ -50,6 +51,9 @@ namespace MakeMeMove.iOS
 		public override void ViewDidLayoutSubviews()
 		{
 			base.ViewDidLayoutSubviews();
+
+			_saveButton?.RemoveFromSuperview();
+			_cancelButton?.RemoveFromSuperview();
 
 			var buttonYPosition = NumberOfRepetitions.Frame.Height + NumberOfRepetitions.Frame.Y + 20;
 
@@ -64,7 +68,48 @@ namespace MakeMeMove.iOS
 
 		private void SaveButtonTouchUpInside(object sender, EventArgs e)
 		{
+			var exerciseType = (PreBuiltExersises)(int)_exerciseTypePicker.SelectedRowInComponent(0);
+			if (exerciseType == PreBuiltExersises.Custom && string.IsNullOrWhiteSpace(CustomExerciseName.Text))
+			{
+				//TODO
+				//_userNotification.ShowValidationErrorPopUp(this, Resource.String.ExerciseNameValidation);
+				return;
+			}
 
+			if (string.IsNullOrWhiteSpace(NumberOfRepetitions.Text))
+			{
+				//TODOO
+				//_userNotification.ShowValidationErrorPopUp(this, Resource.String.RepetitionsMissingValidation);
+				return;
+			}
+			int repetitions;
+			if (!int.TryParse(NumberOfRepetitions.Text, out repetitions))
+			{
+				//TODOO
+				//_userNotification.ShowValidationErrorPopUp(this, Resource.String.RepetitionWholeNumberValidation);
+				return;
+			}
+
+			if (_selectedExercise != null)
+			{
+				_selectedExercise.Name = exerciseType == PreBuiltExersises.Custom ? CustomExerciseName.Text : string.Empty;
+				_selectedExercise.Quantity = repetitions;
+				_selectedExercise.Type = exerciseType;
+				Data.UpdateExerciseBlock(_selectedExercise);
+			}
+			else
+			{
+				Data.InsertExerciseBlock(new ExerciseBlock
+				{
+					Name = exerciseType == PreBuiltExersises.Custom ? CustomExerciseName.Text : string.Empty,
+					Quantity = repetitions,
+					Type = exerciseType,
+					Enabled = true
+				});
+
+			}
+
+			NavigationController.PopViewController(true);
 		}
 
 		private void CancelButtonTouchUpInside(object sender, EventArgs e)
@@ -77,7 +122,10 @@ namespace MakeMeMove.iOS
 			var exerciseIsCustom = _exerciseTypePicker.SelectedRowInComponent(0) == (int)PreBuiltExersises.Custom;
 			CustomTextHeightConstraint.Constant = exerciseIsCustom ? 30 : 0;
 			CustomExerciseName.Hidden = !exerciseIsCustom;
-			CustomExerciseName.Text = string.Empty;
+			if (!exerciseIsCustom)
+			{
+				CustomExerciseName.Text = string.Empty;
+			}
 		}
 
 		public override void ViewWillDisappear(bool animated)
