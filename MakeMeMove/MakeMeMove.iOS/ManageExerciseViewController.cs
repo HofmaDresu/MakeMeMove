@@ -12,6 +12,8 @@ namespace MakeMeMove.iOS
 		public int? SelectedExerciseId;
 		private ExerciseBlock _selectedExercise;
 		private UIPickerView _exerciseTypePicker;
+		private FloatingButton _saveButton;
+		private FloatingButton _cancelButton;
 
         public ManageExerciseViewController (IntPtr handle) : base (handle)
         {
@@ -32,7 +34,7 @@ namespace MakeMeMove.iOS
 				ExerciseType.Text = _selectedExercise.CombinedName;
 				_exerciseTypePicker.Select((int)_selectedExercise.Type, 0, false);
 				NumberOfRepetitions.Text = _selectedExercise.Quantity.ToString();
-				CustomExerciseName.Text = _selectedExercise.Name;	
+				CustomExerciseName.Text = _selectedExercise.Name;
 			}
 			else
 			{
@@ -43,6 +45,16 @@ namespace MakeMeMove.iOS
 			}
 
 			ShowHideCustomName();
+		}
+
+		public override void ViewDidLayoutSubviews()
+		{
+			base.ViewDidLayoutSubviews();
+
+			var buttonYPosition = NumberOfRepetitions.Frame.Height + NumberOfRepetitions.Frame.Y + 20;
+
+			_saveButton = new FloatingButton("Save", buttonYPosition, View);
+			View.Add(_saveButton);
 		}
 
 		private void ShowHideCustomName()
