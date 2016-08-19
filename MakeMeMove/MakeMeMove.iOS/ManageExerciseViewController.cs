@@ -53,7 +53,7 @@ namespace MakeMeMove.iOS
 
 			var buttonYPosition = NumberOfRepetitions.Frame.Height + NumberOfRepetitions.Frame.Y + 20;
 
-			_saveButton = new FloatingButton("Save", buttonYPosition, View);
+			_saveButton = new FloatingButton("Save", ExerciseType.Frame.X, buttonYPosition, View);
 			View.Add(_saveButton);
 		}
 

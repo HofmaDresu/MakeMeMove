@@ -8,29 +8,14 @@ namespace MakeMeMove.iOS.Controls
 	public sealed class FloatingButton : UIButton
 	{
 		private UIView _containerView;
-		public FloatingButton(string title, nfloat yPosition, UIView containerView, string subTitle = null)
+		public FloatingButton(string title, nfloat xPosition, nfloat yPosition, UIView containerView, string subTitle = null)
 		{
 			var nsTitle = new NSString(title);
 			var size = nsTitle.GetSizeUsingAttributes(new UIStringAttributes { Font = TitleLabel.Font });
 			var buttonWidth = size.Width + 25;
 
 
-			Initialize(title, yPosition, containerView, buttonWidth, subTitle);
-		}
-
-		public FloatingButton(string title, nfloat yPosition, nfloat width, UIView containerView, string subTitle = null)
-		{
-			Initialize(title, yPosition, containerView, width, subTitle);
-		}
-
-		public FloatingButton(string title, nfloat xPosition, nfloat yPosition, nfloat width, UIView containerView, string subTitle = null)
-		{
-			Initialize(title, xPosition, yPosition, containerView, width, subTitle);
-		}
-
-		private void Initialize(string title, nfloat yPosition, UIView containerView, nfloat buttonWidth, string subTitle = null)
-		{
-			Initialize(title, (containerView.Bounds.Width / 2) - (buttonWidth / 2), yPosition, containerView, buttonWidth, subTitle);
+			Initialize(title, xPosition, yPosition, containerView, buttonWidth, subTitle);
 		}
 
 		private void Initialize(string title, nfloat xPosition, nfloat yPosition, UIView containerView, nfloat buttonWidth, string subTitle = null)
