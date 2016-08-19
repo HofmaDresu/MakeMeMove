@@ -20,6 +20,10 @@ namespace MakeMeMove.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint CustomTextHeightConstraint { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         MakeMeMove.iOS.PickerUITextField ExerciseType { get; set; }
 
         [Outlet]
@@ -31,6 +35,11 @@ namespace MakeMeMove.iOS
             if (CustomExerciseName != null) {
                 CustomExerciseName.Dispose ();
                 CustomExerciseName = null;
+            }
+
+            if (CustomTextHeightConstraint != null) {
+                CustomTextHeightConstraint.Dispose ();
+                CustomTextHeightConstraint = null;
             }
 
             if (ExerciseType != null) {

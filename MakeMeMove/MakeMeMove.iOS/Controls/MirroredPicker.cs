@@ -24,10 +24,7 @@ namespace MakeMeMove.iOS.Controls
 			var doneButton = new UIBarButtonItem("Done", UIBarButtonItemStyle.Done, (s, e) =>
 			{
 				fieldToMirror.ResignFirstResponder();
-				if (doneAction != null)
-				{
-					doneAction();
-				}
+				doneAction?.Invoke();
 			});
 			toolbar.SetItems(new[] { doneButton }, true);
 

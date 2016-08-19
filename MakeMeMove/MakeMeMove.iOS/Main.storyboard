@@ -335,6 +335,9 @@
                                 <rect key="frame" x="20" y="131" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="2229" firstItem="2191" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Repetitions" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2204">
                                 <rect key="frame" x="20" y="168" width="172" height="20"/>
@@ -344,7 +347,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2216">
-                                <rect key="frame" x="20" y="196" width="560" height="22"/>
+                                <rect key="frame" x="20" y="196" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -370,6 +373,7 @@
                         <outlet property="NumberOfRepetitions" destination="2216" id="name-outlet-2216"/>
                         <outlet property="CustomExerciseName" destination="2191" id="name-outlet-2191"/>
                         <outlet property="ExerciseType" destination="2160" id="name-outlet-2160"/>
+                        <outlet property="CustomTextHeightConstraint" destination="2229" id="name-outlet-2229"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2060" userLabel="First Responder" sceneMemberID="firstResponder"/>
