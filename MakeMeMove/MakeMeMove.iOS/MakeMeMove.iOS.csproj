@@ -102,6 +102,8 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="ExtensionMethods\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -146,10 +148,12 @@
       <DependentUpon>ManageExerciseViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ExerciseTableDelegate.cs" />
-    <Compile Include="PickerUITextField.cs" />
-    <Compile Include="PickerUITextField.designer.cs">
+    <Compile Include="Controls\PickerUITextField.cs" />
+    <Compile Include="Controls\PickerUITextField.designer.cs">
       <DependentUpon>PickerUITextField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MirroredPicker.cs" />
+    <Compile Include="Models\PickerModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">

@@ -60,8 +60,8 @@ namespace MakeMeMove.Droid.Activities
 
         private void InitializePickers()
         {
-            var exerciseList = (from PreBuiltExersises suit in Enum.GetValues(typeof(PreBuiltExersises)) select suit.Humanize()).ToList();
-            _exerciseTypeSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, exerciseList);
+            
+			_exerciseTypeSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, PickerListHelper.GetExerciseTypeStrings());
 
             _exerciseTypeSpinner.ItemSelected += (sender, args) => ShowHideCustomText();
         }
