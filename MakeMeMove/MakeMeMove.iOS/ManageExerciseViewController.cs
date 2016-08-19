@@ -54,7 +54,22 @@ namespace MakeMeMove.iOS
 			var buttonYPosition = NumberOfRepetitions.Frame.Height + NumberOfRepetitions.Frame.Y + 20;
 
 			_saveButton = new FloatingButton("Save", ExerciseType.Frame.X, buttonYPosition, View);
+			_saveButton.TouchUpInside += SaveButtonTouchUpInside;
 			View.Add(_saveButton);
+
+			_cancelButton = new FloatingButton("Cancel", (ExerciseType.Frame.X * 2) + _saveButton.Frame.Width, buttonYPosition, View);
+			_cancelButton.TouchUpInside += CancelButtonTouchUpInside;
+			View.Add(_cancelButton);
+		}
+
+		private void SaveButtonTouchUpInside(object sender, EventArgs e)
+		{
+
+		}
+
+		private void CancelButtonTouchUpInside(object sender, EventArgs e)
+		{
+			NavigationController.PopViewController(true);
 		}
 
 		private void ShowHideCustomName()
@@ -63,6 +78,13 @@ namespace MakeMeMove.iOS
 			CustomTextHeightConstraint.Constant = exerciseIsCustom ? 30 : 0;
 			CustomExerciseName.Hidden = !exerciseIsCustom;
 			CustomExerciseName.Text = string.Empty;
+		}
+
+		public override void ViewWillDisappear(bool animated)
+		{
+			base.ViewWillDisappear(animated);
+			_saveButton.TouchUpInside -= SaveButtonTouchUpInside;
+			_cancelButton.TouchUpInside -= CancelButtonTouchUpInside;
 		}
     }
 }
