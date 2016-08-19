@@ -25,6 +25,7 @@ namespace MakeMeMove.iOS
 		{
 			base.ViewDidLoad();
 
+			NumberOfRepetitions.KeyboardType = UIKeyboardType.NumberPad;
 
 			var exercisePickerModel = new PickerModel(PickerListHelper.GetExerciseTypeStrings());
 			_exerciseTypePicker = MirroredPicker.Create(exercisePickerModel, ExerciseType, doneAction: ShowHideCustomName);
