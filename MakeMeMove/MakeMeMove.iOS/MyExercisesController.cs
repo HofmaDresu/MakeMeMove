@@ -53,6 +53,7 @@ namespace MakeMeMove.iOS
 			{
 				ExerciseList.Source = new ExerciseListTableSource(_exercises);
 				ExerciseList.ReloadData();
+				ExerciseList.Delegate = _exerciseTableDelegate;
 			});
 		}
 

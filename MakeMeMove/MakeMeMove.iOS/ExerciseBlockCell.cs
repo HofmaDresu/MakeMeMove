@@ -10,9 +10,9 @@ namespace MakeMeMove.iOS
         {
         }
 
-		public void UpdateCell(string exerciseName, bool isEnabled)
+		public void UpdateCell(string exerciseName, int exerciseQuantity, bool isEnabled)
 		{
-			ExerciseNameLabel.Text = exerciseName;
+			ExerciseNameLabel.Text = $"{exerciseQuantity} {exerciseName}";
 			ExerciseIsEnabled.On = isEnabled;
 		}
     }

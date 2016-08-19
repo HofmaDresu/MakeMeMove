@@ -21,7 +21,7 @@ namespace MakeMeMove.iOS
 			var cell = (ExerciseBlockCell)tableView.DequeueReusableCell(CellIdentifier);
 			var exercise = _exercises[indexPath.Row];
 
-			cell.UpdateCell(exercise.CombinedName, exercise.Enabled);
+			cell.UpdateCell(exercise.CombinedName, exercise.Quantity, exercise.Enabled);
 
 			return cell;
 		}

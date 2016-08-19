@@ -108,6 +108,7 @@ namespace MakeMeMove.iOS
 
 			}
 
+			ServiceManager.RestartNotificationServiceIfNeeded();
 			NavigationController.PopViewController(true);
 		}
 
