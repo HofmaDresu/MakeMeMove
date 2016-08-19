@@ -5,6 +5,7 @@ using MakeMeMove.Model;
 using MakeMeMove.iOS.Controls;
 using MakeMeMove.iOS.Models;
 using Humanizer;
+using MakeMeMove.iOS.Helpers;
 
 namespace MakeMeMove.iOS
 {
@@ -71,22 +72,19 @@ namespace MakeMeMove.iOS
 			var exerciseType = (PreBuiltExersises)(int)_exerciseTypePicker.SelectedRowInComponent(0);
 			if (exerciseType == PreBuiltExersises.Custom && string.IsNullOrWhiteSpace(CustomExerciseName.Text))
 			{
-				//TODO
-				//_userNotification.ShowValidationErrorPopUp(this, Resource.String.ExerciseNameValidation);
+				UserNotifications.ShowValidationErrorPopUp(this, "Please enter a name for your exercise.");
 				return;
 			}
 
 			if (string.IsNullOrWhiteSpace(NumberOfRepetitions.Text))
 			{
-				//TODOO
-				//_userNotification.ShowValidationErrorPopUp(this, Resource.String.RepetitionsMissingValidation);
+				UserNotifications.ShowValidationErrorPopUp(this, "Please enter how many repetitions you want.");
 				return;
 			}
 			int repetitions;
 			if (!int.TryParse(NumberOfRepetitions.Text, out repetitions))
 			{
-				//TODOO
-				//_userNotification.ShowValidationErrorPopUp(this, Resource.String.RepetitionWholeNumberValidation);
+				UserNotifications.ShowValidationErrorPopUp(this, "Please enter a whole number of repetitions.");
 				return;
 			}
 
