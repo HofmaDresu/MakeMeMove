@@ -10,7 +10,6 @@ namespace MakeMeMove.iOS
 		private ExerciseSchedule _exerciseSchedule;
         public MyScheduleController (IntPtr handle) : base (handle)
         {
-			_exerciseSchedule = Data.GetExerciseSchedule();
         }
 
 		public override void ViewDidLoad()
@@ -23,6 +22,7 @@ namespace MakeMeMove.iOS
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
+			_exerciseSchedule = Data.GetExerciseSchedule();
 			StartTime.Text = _exerciseSchedule.StartTime.ToLongTimeString();
 			EndTime.Text = _exerciseSchedule.EndTime.ToLongTimeString();
 			ReminderPeriod.Text = _exerciseSchedule.PeriodDisplayString;

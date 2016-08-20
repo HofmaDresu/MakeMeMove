@@ -110,11 +110,11 @@ namespace MakeMeMove.iOS
 		{
 			_schedule.Period = (SchedulePeriod)(int)_schedulePicker.SelectedRowInComponent(0);
 
-			var startHour = (int)(_startTimePicker.SelectedRowInComponent(0) * (1 + _startTimePicker.SelectedRowInComponent(2)));
+			var startHour = 1 +(int)(_startTimePicker.SelectedRowInComponent(0) + (12 * _startTimePicker.SelectedRowInComponent(2)));
 			var startMinute = (int)_startTimePicker.SelectedRowInComponent(1) * 30;
 			var startTime = new DateTime(1, 1, 1, startHour, startMinute, 0);
 
-			var endHour = (int)(_endTimePicker.SelectedRowInComponent(0) * (1 + _endTimePicker.SelectedRowInComponent(2)));
+			var endHour = 1 + (int)(_endTimePicker.SelectedRowInComponent(0) + (12 * _endTimePicker.SelectedRowInComponent(2)));
 			var endMinute = (int)_endTimePicker.SelectedRowInComponent(1) * 30;
 			var endTime = new DateTime(1, 1, 1, endHour, endMinute, 0);
 
