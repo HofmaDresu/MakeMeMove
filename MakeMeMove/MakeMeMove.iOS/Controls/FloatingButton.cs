@@ -7,7 +7,6 @@ namespace MakeMeMove.iOS.Controls
 {
 	public sealed class FloatingButton : UIButton
 	{
-		private UIView _containerView;
 		public FloatingButton(string title, string subTitle = null)
 		{
 			var nsTitle = new NSString(title);
