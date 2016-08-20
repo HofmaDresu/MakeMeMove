@@ -49,17 +49,25 @@ namespace MakeMeMove.iOS
 		private void PopulateData()
 		{
 			ReminderPeriod.Text = _schedule.PeriodDisplayString;
+			_schedulePicker.Select((int)_schedule.Period, 0, false);
+
 			var startHour = GetCivilianHour(_schedule.StartTime.Hour);
 			var startMinute = _schedule.StartTime.Minute.ToString("D2");
 			var startMeridian = GetMeridian(_schedule.StartTime.Hour);
 
 			StartTime.Text = $"{startHour}:{startMinute} {startMeridian}";
+			_startTimePicker.Select(startHour - 1, 0, false);
+			_startTimePicker.Select(startMinute == "00" ? 0 : 1, 1, false);
+			_startTimePicker.Select(_schedule.StartTime.Hour < 12 ? 0 : 1, 2, false);
 
 			var endHour = GetCivilianHour(_schedule.EndTime.Hour);
 			var endMinute = _schedule.EndTime.Minute.ToString("D2");
 			var endMeridian = GetMeridian(_schedule.EndTime.Hour);
 
 			EndTime.Text = $"{endHour}:{endMinute} {endMeridian}";
+			_endTimePicker.Select(endHour - 1, 0, false);
+			_endTimePicker.Select(endMinute == "00" ? 0 : 1, 1, false);
+			_endTimePicker.Select(_schedule.EndTime.Hour < 12 ? 0 : 1, 2, false);
 		}
 
 		private int GetCivilianHour(int hour)
@@ -69,7 +77,7 @@ namespace MakeMeMove.iOS
 
 		private string GetMeridian(int hour)
 		{
-			return hour > 12 ? "PM" : "AM";
+			return hour >= 12 ? "PM" : "AM";
 		}
 
 		private string HandleTimeSet(IList<string> arg)
