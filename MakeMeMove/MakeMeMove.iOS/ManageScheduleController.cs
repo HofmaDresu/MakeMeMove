@@ -28,13 +28,16 @@ namespace MakeMeMove.iOS
 		{
 			base.ViewDidLoad();
 
+			MirroredPicker.Create(new PickerModel(_availableTimes), StartTime, HandleTimeSet, doneAction: null);
 
-			var timesPickerModel = new PickerModel(_availableTimes);
-			MirroredPicker.Create(timesPickerModel, StartTime, doneAction: null);
-
-			MirroredPicker.Create(timesPickerModel, EndTime, doneAction: null);
+			MirroredPicker.Create(new PickerModel(_availableTimes), EndTime, HandleTimeSet, doneAction: null);
 
 			AddButtons();
+		}
+
+		private string HandleTimeSet(IList<string> arg)
+		{
+			return $"{arg[0]}:{arg[1]} {arg[2]}";
 		}
 
 		private void AddButtons()
