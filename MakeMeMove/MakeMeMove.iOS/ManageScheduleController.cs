@@ -18,13 +18,11 @@ namespace MakeMeMove.iOS
 		public override void ViewDidAppear(bool animated)
 		{
 			base.ViewDidAppear(animated);
-			CancelButton.TouchUpInside += CancelChanges;
 		}
 
 		public override void ViewDidDisappear(bool animated)
 		{
 			base.ViewDidDisappear(animated);
-			CancelButton.TouchUpInside -= CancelChanges;
 		}
 
 		private void CancelChanges(object sender, EventArgs e)

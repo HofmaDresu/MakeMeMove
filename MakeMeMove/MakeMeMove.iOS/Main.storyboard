@@ -252,17 +252,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2000">
-                                <rect key="frame" x="69" y="177" width="70" height="30"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reminder Period:" lineBreakMode="tailTruncation" minimumFontSize="10" id="2239" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="72" width="136" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="2243" firstItem="2239" firstAttribute="width" constant="136"/>
+                                </constraints>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" id="2240" translatesAutoresizingMaskIntoConstraints="NO" customClass="PickerUITextField">
+                                <rect key="frame" x="20" y="101" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="2247" firstItem="2240" firstAttribute="height" constant="30"/>
+                                </constraints>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Time:" lineBreakMode="tailTruncation" minimumFontSize="10" id="2248" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="139" width="149" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="2252" firstItem="2248" firstAttribute="width" constant="149"/>
+                                </constraints>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" id="2249" translatesAutoresizingMaskIntoConstraints="NO" customClass="PickerUITextField">
+                                <rect key="frame" x="20" y="168" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="2256" firstItem="2249" firstAttribute="height" constant="30"/>
+                                </constraints>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Time:" lineBreakMode="tailTruncation" minimumFontSize="10" id="2257" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="205" width="149" height="20.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="2260" firstItem="2257" firstAttribute="width" constant="149"/>
+                                </constraints>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" id="2261" translatesAutoresizingMaskIntoConstraints="NO" customClass="PickerUITextField">
+                                <rect key="frame" x="20" y="234" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="2265" firstItem="2261" firstAttribute="height" constant="30"/>
+                                </constraints>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint id="2241" firstItem="2239" firstAttribute="top" secondItem="1869" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2242" firstItem="2239" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20"/>
+                            <constraint id="2244" firstItem="2240" firstAttribute="top" secondItem="2239" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2245" firstItem="2240" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20"/>
+                            <constraint id="2246" firstItem="1873" firstAttribute="trailing" secondItem="2240" secondAttribute="trailing" constant="20"/>
+                            <constraint id="2250" firstItem="2248" firstAttribute="top" secondItem="2240" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2251" firstItem="2248" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20"/>
+                            <constraint id="2253" firstItem="2249" firstAttribute="top" secondItem="2248" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2254" firstItem="2249" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20"/>
+                            <constraint id="2255" firstItem="1873" firstAttribute="trailing" secondItem="2249" secondAttribute="trailing" constant="20"/>
+                            <constraint id="2258" firstItem="2257" firstAttribute="top" secondItem="2249" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2259" firstItem="2257" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20"/>
+                            <constraint id="2262" firstItem="2261" firstAttribute="top" secondItem="2257" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2263" firstItem="2261" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20"/>
+                            <constraint id="2264" firstItem="1873" firstAttribute="trailing" secondItem="2261" secondAttribute="trailing" constant="20"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="CancelButton" destination="2000" id="name-outlet-2000"/>
+                        <outlet property="StartTime" destination="2249" id="name-outlet-2249"/>
+                        <outlet property="EndTime" destination="2261" id="name-outlet-2261"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1874" userLabel="First Responder" sceneMemberID="firstResponder"/>

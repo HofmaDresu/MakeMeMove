@@ -16,13 +16,22 @@ namespace MakeMeMove.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton CancelButton { get; set; }
+        MakeMeMove.iOS.PickerUITextField EndTime { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        MakeMeMove.iOS.PickerUITextField StartTime { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (CancelButton != null) {
-                CancelButton.Dispose ();
-                CancelButton = null;
+            if (EndTime != null) {
+                EndTime.Dispose ();
+                EndTime = null;
+            }
+
+            if (StartTime != null) {
+                StartTime.Dispose ();
+                StartTime = null;
             }
         }
     }
