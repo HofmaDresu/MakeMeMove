@@ -8,28 +8,27 @@ namespace MakeMeMove.iOS.Controls
 	public sealed class FloatingButton : UIButton
 	{
 		private UIView _containerView;
-		public FloatingButton(string title, nfloat xPosition, nfloat yPosition, UIView containerView, string subTitle = null)
+		public FloatingButton(string title, string subTitle = null)
 		{
 			var nsTitle = new NSString(title);
 			var size = nsTitle.GetSizeUsingAttributes(new UIStringAttributes { Font = TitleLabel.Font });
 			var buttonWidth = size.Width + 25;
 
 
-			Initialize(title, xPosition, yPosition, containerView, buttonWidth, subTitle);
+			Initialize(title, buttonWidth, subTitle);
 		}
 
-		private void Initialize(string title, nfloat xPosition, nfloat yPosition, UIView containerView, nfloat buttonWidth, string subTitle = null)
+		private void Initialize(string title, nfloat buttonWidth, string subTitle = null)
 		{
-			_containerView = containerView;
 			if (string.IsNullOrEmpty(subTitle))
 			{
 				SetTitle(title, UIControlState.Normal);
 				SetTitleColor(FudistColors.InteractableTextColor, UIControlState.Normal);
-				Frame = new CGRect(xPosition, yPosition, buttonWidth, 40);
+				Frame = new CGRect(0, 0, buttonWidth, 40);
 			}
 			else
 			{
-				Frame = new CGRect(xPosition, yPosition, buttonWidth, 60);
+				Frame = new CGRect(0, 0, buttonWidth, 60);
 
 				var titleLabel = new UILabel(new CGRect(0, 13, buttonWidth, 21))
 				{
@@ -67,18 +66,6 @@ namespace MakeMeMove.iOS.Controls
 		private void RemoveTouchBackgroundColor(object sender, EventArgs e)
 		{
 			(sender as UIButton).BackgroundColor = UIColor.White;
-		}
-
-		public void AlignRight(int marginRight = 0)
-		{
-			Frame = new CGRect(_containerView.Bounds.Width - Frame.Width - marginRight,
-				Frame.Y, Frame.Width, Frame.Height);
-		}
-
-		public void AlignLeft(int marginLeft = 0)
-		{
-			Frame = new CGRect(marginLeft,
-				Frame.Y, Frame.Width, Frame.Height);
 		}
 	}
 }

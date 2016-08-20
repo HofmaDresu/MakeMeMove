@@ -48,24 +48,27 @@ namespace MakeMeMove.iOS
 			}
 
 			ShowHideCustomName();
+			AddButtons();
 		}
 
-		public override void ViewDidLayoutSubviews()
+		private void AddButtons()
 		{
-			base.ViewDidLayoutSubviews();
-
-			_saveButton?.RemoveFromSuperview();
-			_cancelButton?.RemoveFromSuperview();
-
-			var buttonYPosition = NumberOfRepetitions.Frame.Height + NumberOfRepetitions.Frame.Y + 20;
-
-			_saveButton = new FloatingButton("Save", ExerciseType.Frame.X, buttonYPosition, View);
-			_saveButton.TouchUpInside += SaveButtonTouchUpInside;
+			_saveButton = new FloatingButton("Save");
+			_saveButton.TranslatesAutoresizingMaskIntoConstraints = false;
 			View.Add(_saveButton);
 
-			_cancelButton = new FloatingButton("Cancel", (ExerciseType.Frame.X * 2) + _saveButton.Frame.Width, buttonYPosition, View);
-			_cancelButton.TouchUpInside += CancelButtonTouchUpInside;
+			_cancelButton = new FloatingButton("Cancel");
+			_cancelButton.TranslatesAutoresizingMaskIntoConstraints = false;
 			View.Add(_cancelButton);
+
+
+			_saveButton.TopAnchor.ConstraintEqualTo(NumberOfRepetitions.BottomAnchor, 20).Active = true;
+			_saveButton.LeftAnchor.ConstraintEqualTo(NumberOfRepetitions.LeftAnchor).Active = true;
+			_saveButton.WidthAnchor.ConstraintEqualTo(_saveButton.Frame.Width).Active = true;
+
+			_cancelButton.TopAnchor.ConstraintEqualTo(NumberOfRepetitions.BottomAnchor, 20).Active = true;
+			_cancelButton.LeftAnchor.ConstraintEqualTo(_saveButton.RightAnchor, 20).Active = true;
+			_cancelButton.WidthAnchor.ConstraintEqualTo(_cancelButton.Frame.Width).Active = true;
 		}
 
 		private void SaveButtonTouchUpInside(object sender, EventArgs e)
@@ -126,6 +129,13 @@ namespace MakeMeMove.iOS
 			{
 				CustomExerciseName.Text = string.Empty;
 			}
+		}
+
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+			_saveButton.TouchUpInside += SaveButtonTouchUpInside;
+			_cancelButton.TouchUpInside += CancelButtonTouchUpInside;
 		}
 
 		public override void ViewWillDisappear(bool animated)
