@@ -14,6 +14,10 @@ namespace MakeMeMove.iOS
 		private FloatingButton _saveButton;
 		private FloatingButton _cancelButton;
 		private List<List<string>> _availableTimes = new List<List<string>>();
+		private ExerciseSchedule _schedule;
+		private UIPickerView _schedulePicker;
+		private UIPickerView _startTimePicker;
+		private UIPickerView _endTimePicker;
 
         public ManageScheduleController (IntPtr handle) : base (handle)
         {
@@ -29,14 +33,43 @@ namespace MakeMeMove.iOS
 		{
 			base.ViewDidLoad();
 
-			MirroredPicker.Create(new PickerModel(PickerListHelper.GetExercisePeriods()), 
-			                      ReminderPeriod,  doneAction: null);
+			_schedule = Data.GetExerciseSchedule();
 
-			MirroredPicker.Create(new PickerModel(_availableTimes), StartTime, HandleTimeSet, doneAction: null);
+			_schedulePicker = MirroredPicker.Create(new PickerModel(PickerListHelper.GetExercisePeriods()), 
+			                      ReminderPeriod, doneAction: null);
 
-			MirroredPicker.Create(new PickerModel(_availableTimes), EndTime, HandleTimeSet, doneAction: null);
+			_startTimePicker = MirroredPicker.Create(new PickerModel(_availableTimes), StartTime, HandleTimeSet, doneAction: null);
+
+			_endTimePicker = MirroredPicker.Create(new PickerModel(_availableTimes), EndTime, HandleTimeSet, doneAction: null);
 
 			AddButtons();
+			PopulateData();
+		}
+
+		private void PopulateData()
+		{
+			ReminderPeriod.Text = _schedule.PeriodDisplayString;
+			var startHour = GetCivilianHour(_schedule.StartTime.Hour);
+			var startMinute = _schedule.StartTime.Minute.ToString("D2");
+			var startMeridian = GetMeridian(_schedule.StartTime.Hour);
+
+			StartTime.Text = $"{startHour}:{startMinute} {startMeridian}";
+
+			var endHour = GetCivilianHour(_schedule.EndTime.Hour);
+			var endMinute = _schedule.EndTime.Minute.ToString("D2");
+			var endMeridian = GetMeridian(_schedule.EndTime.Hour);
+
+			EndTime.Text = $"{endHour}:{endMinute} {endMeridian}";
+		}
+
+		private int GetCivilianHour(int hour)
+		{
+			return hour > 12 ? hour - 12 : hour;
+		}
+
+		private string GetMeridian(int hour)
+		{
+			return hour > 12 ? "PM" : "AM";
 		}
 
 		private string HandleTimeSet(IList<string> arg)
