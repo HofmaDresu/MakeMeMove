@@ -2,6 +2,9 @@ using Foundation;
 using System;
 using UIKit;
 using MakeMeMove.iOS.Controls;
+using MakeMeMove.iOS.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MakeMeMove.iOS
 {
@@ -9,14 +12,27 @@ namespace MakeMeMove.iOS
     {
 		private FloatingButton _saveButton;
 		private FloatingButton _cancelButton;
+		private List<List<string>> _availableTimes = new List<List<string>>();
 
         public ManageScheduleController (IntPtr handle) : base (handle)
         {
+			var hours = Enumerable.Range(1, 12).Select(h => h.ToString()).ToList();
+			var minutes = new List<string> { "00", "30"};
+			var meridian = new List<string> { "AM", "PM" };
+			_availableTimes.Add(hours);
+			_availableTimes.Add(minutes);
+			_availableTimes.Add(meridian);
         }
 
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+
+
+			var timesPickerModel = new PickerModel(_availableTimes);
+			MirroredPicker.Create(timesPickerModel, StartTime, doneAction: null);
+
+			MirroredPicker.Create(timesPickerModel, EndTime, doneAction: null);
 
 			AddButtons();
 		}

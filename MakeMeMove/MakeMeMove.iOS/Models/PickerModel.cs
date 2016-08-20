@@ -23,6 +23,21 @@ namespace MakeMeMove.iOS.Models
 			this.values.Add(convertedStrings);
 		}
 
+		public PickerModel(List<List<string>> values)
+		{
+			this.values = new List<List<object>>();
+			foreach (var vals in values)
+			{
+				var convertedStrings = new List<object>();
+				foreach (var item in vals)
+				{
+					convertedStrings.Add(item);
+				}
+
+				this.values.Add(convertedStrings);
+			}
+		}
+
 		public PickerModel(List<object> values)
 		{
 			this.values = new List<List<object>> { values };
