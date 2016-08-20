@@ -76,7 +76,7 @@ namespace MakeMeMove.Droid.Activities
 
         private void InitializePickers()
         {
-            var periodList = (from SchedulePeriod suit in Enum.GetValues(typeof (SchedulePeriod)) select suit.Humanize()).ToList();
+			var periodList = PickerListHelper.GetExercisePeriods();
 
             _reminderPeriodSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, periodList);
 

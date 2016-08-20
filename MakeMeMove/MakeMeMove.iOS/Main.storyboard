@@ -329,6 +329,7 @@
                     <connections>
                         <outlet property="StartTime" destination="2249" id="name-outlet-2249"/>
                         <outlet property="EndTime" destination="2261" id="name-outlet-2261"/>
+                        <outlet property="ReminderPeriod" destination="2240" id="name-outlet-2240"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1874" userLabel="First Responder" sceneMemberID="firstResponder"/>

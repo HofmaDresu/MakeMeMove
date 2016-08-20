@@ -5,6 +5,7 @@ using MakeMeMove.iOS.Controls;
 using MakeMeMove.iOS.Models;
 using System.Collections.Generic;
 using System.Linq;
+using MakeMeMove.Model;
 
 namespace MakeMeMove.iOS
 {
@@ -27,6 +28,9 @@ namespace MakeMeMove.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+
+			MirroredPicker.Create(new PickerModel(PickerListHelper.GetExercisePeriods()), 
+			                      ReminderPeriod,  doneAction: null);
 
 			MirroredPicker.Create(new PickerModel(_availableTimes), StartTime, HandleTimeSet, doneAction: null);
 

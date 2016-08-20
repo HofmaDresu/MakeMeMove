@@ -20,6 +20,10 @@ namespace MakeMeMove.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        MakeMeMove.iOS.PickerUITextField ReminderPeriod { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         MakeMeMove.iOS.PickerUITextField StartTime { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -27,6 +31,11 @@ namespace MakeMeMove.iOS
             if (EndTime != null) {
                 EndTime.Dispose ();
                 EndTime = null;
+            }
+
+            if (ReminderPeriod != null) {
+                ReminderPeriod.Dispose ();
+                ReminderPeriod = null;
             }
 
             if (StartTime != null) {
