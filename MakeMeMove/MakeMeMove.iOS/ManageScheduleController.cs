@@ -107,6 +107,28 @@ namespace MakeMeMove.iOS
 
 		private void SaveButtonTouchUpInside(object sender, EventArgs e)
 		{
+			_schedule.Period = (SchedulePeriod)(int)_schedulePicker.SelectedRowInComponent(0);
+
+			var startHour = (int)(_startTimePicker.SelectedRowInComponent(0) * (1 + _startTimePicker.SelectedRowInComponent(2)));
+			var startMinute = (int)_startTimePicker.SelectedRowInComponent(1) * 30;
+			var startTime = new DateTime(1, 1, 1, startHour, startMinute, 0);
+
+			var endHour = (int)(_endTimePicker.SelectedRowInComponent(0) * (1 + _endTimePicker.SelectedRowInComponent(2)));
+			var endMinute = (int)_endTimePicker.SelectedRowInComponent(1) * 30;
+			var endTime = new DateTime(1, 1, 1, endHour, endMinute, 0);
+
+			if (startTime >= endTime)
+			{
+				//TODO:
+				//_userNotification.ShowValidationErrorPopUp(this, Resource.String.TimeRangeValidation);
+				return;
+			}
+
+			_schedule.StartTime = startTime;
+			_schedule.EndTime = endTime;
+
+			Data.SaveExerciseSchedule(_schedule);
+			
 			ServiceManager.RestartNotificationServiceIfNeeded();
 			NavigationController.PopViewController(true);
 		}
