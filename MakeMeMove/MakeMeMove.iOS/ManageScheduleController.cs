@@ -6,6 +6,7 @@ using MakeMeMove.iOS.Models;
 using System.Collections.Generic;
 using System.Linq;
 using MakeMeMove.Model;
+using MakeMeMove.iOS.Helpers;
 
 namespace MakeMeMove.iOS
 {
@@ -119,8 +120,7 @@ namespace MakeMeMove.iOS
 
 			if (startTime >= endTime)
 			{
-				//TODO:
-				//_userNotification.ShowValidationErrorPopUp(this, Resource.String.TimeRangeValidation);
+				UserNotifications.ShowValidationErrorPopUp(this, "Please make sure your start time is before your end time.");
 				return;
 			}
 
