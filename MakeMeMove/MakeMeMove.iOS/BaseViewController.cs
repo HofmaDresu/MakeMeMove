@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Foundation;
+using MakeMeMove.iOS.Helpers;
 using SQLite;
 using UIKit;
 
@@ -19,6 +20,13 @@ namespace MakeMeMove.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+			View.BackgroundColor = FudistColors.MainBackgroundColor;
+			NavigationController.NavigationBar.BarTintColor = FudistColors.PrimaryColor;
+			NavigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes
+			{
+				ForegroundColor = UIColor.White
+			};
+
 		}
 
 		public override void ViewWillAppear(bool animated)
