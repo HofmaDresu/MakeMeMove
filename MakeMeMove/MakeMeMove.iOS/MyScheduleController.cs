@@ -1,8 +1,10 @@
 using Foundation;
 using System;
+using System.Linq;
 using UIKit;
 using MakeMeMove.Model;
 using MakeMeMove.iOS.Controls;
+using MakeMeMove.iOS.Helpers;
 
 namespace MakeMeMove.iOS
 {
@@ -18,6 +20,10 @@ namespace MakeMeMove.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+
+			var labels = View.Subviews.OfType<UILabel>();
+			FudistColors.SetTextPrimaryColor(labels.ToArray());
+
 			AddButtons();
 		}
 

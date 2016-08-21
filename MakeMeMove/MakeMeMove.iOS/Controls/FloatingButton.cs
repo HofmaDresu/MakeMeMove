@@ -1,6 +1,7 @@
 ﻿using System;
 using CoreGraphics;
 using Foundation;
+using MakeMeMove.iOS.Helpers;
 using UIKit;
 
 namespace MakeMeMove.iOS.Controls

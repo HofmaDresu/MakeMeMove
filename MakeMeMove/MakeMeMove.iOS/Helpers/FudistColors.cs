@@ -1,7 +1,7 @@
 ﻿using System;
 using UIKit;
 
-namespace MakeMeMove.iOS
+namespace MakeMeMove.iOS.Helpers
 {
 	public static class FudistColors
 	{
@@ -13,6 +13,14 @@ namespace MakeMeMove.iOS
 		public static UIColor WarningColor = UIColor.FromRGB(255, 75, 10);
 		public static UIColor GrayTextColor = UIColor.FromRGB(117, 117, 117);
 		public static UIColor GrayBorderColor = UIColor.FromRGB(186, 186, 186);
+
+		public static void SetTextPrimaryColor(params UILabel[] labels)
+		{
+			foreach (var label in labels)
+			{
+				label.TextColor = PrimaryColor;
+			}
+		}
 	}
 }
 

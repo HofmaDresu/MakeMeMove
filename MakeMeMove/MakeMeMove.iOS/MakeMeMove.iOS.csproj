@@ -159,8 +159,8 @@
     <Compile Include="Controls\MirroredPicker.cs" />
     <Compile Include="Models\PickerModel.cs" />
     <Compile Include="Controls\FloatingButton.cs" />
-    <Compile Include="FudistColors.cs" />
     <Compile Include="Helpers\UserNotifications.cs" />
+    <Compile Include="Helpers\FudistColors.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">
