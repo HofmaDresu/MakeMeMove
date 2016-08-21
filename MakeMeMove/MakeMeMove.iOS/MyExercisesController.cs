@@ -3,6 +3,7 @@ using System;
 using UIKit;
 using System.Collections.Generic;
 using MakeMeMove.Model;
+using MakeMeMove.iOS.Helpers;
 
 namespace MakeMeMove.iOS
 {
@@ -16,6 +17,12 @@ namespace MakeMeMove.iOS
         public MyExercisesController (IntPtr handle) : base (handle)
         {
         }
+
+		public override void ViewDidLoad()
+		{
+			base.ViewDidLoad();
+			ExerciseList.BackgroundColor = FudistColors.MainBackgroundColor;
+		}
 
 		public override void ViewWillAppear(bool animated)
 		{
