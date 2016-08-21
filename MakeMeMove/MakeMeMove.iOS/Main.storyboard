@@ -60,7 +60,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12:00:00 AM" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1854">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="12:00:00 AM" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1854">
                                 <rect key="frame" x="50" y="168" width="126" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -80,7 +80,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12:00:00 PM" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1856">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="12:00:00 PM" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1856">
                                 <rect key="frame" x="50" y="226" width="119" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -110,15 +110,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1868">
-                                <rect key="frame" x="228" y="350" width="144" height="30"/>
-                                <state key="normal" title="CHANGE SCHEDULE">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="1872" kind="show" id="1940"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -137,8 +128,6 @@
                             <constraint firstItem="1857" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="20" id="1978"/>
                             <constraint firstItem="1867" firstAttribute="top" secondItem="1857" secondAttribute="centerY" constant="18" id="1980"/>
                             <constraint firstItem="1867" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="50" id="1981"/>
-                            <constraint firstItem="1868" firstAttribute="centerX" secondItem="32" secondAttribute="centerX" id="1990"/>
-                            <constraint firstItem="1868" firstAttribute="top" secondItem="1867" secondAttribute="bottom" constant="45" id="1991"/>
                             <constraint firstItem="1849" firstAttribute="top" secondItem="19" secondAttribute="bottom" constant="8" id="2036"/>
                         </constraints>
                     </view>
@@ -148,6 +137,7 @@
                         <outlet property="ReminderPeriod" destination="1867" id="name-outlet-1867"/>
                         <outlet property="StartTime" destination="1854" id="name-outlet-1854"/>
                         <outlet property="StatusSwitch" destination="1852" id="name-outlet-1852"/>
+                        <segue destination="1872" kind="show" identifier="ManageScheduleSegue" id="iEa-vF-Tkb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -252,84 +242,84 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reminder Period:" lineBreakMode="tailTruncation" minimumFontSize="10" id="2239" translatesAutoresizingMaskIntoConstraints="NO">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Reminder Period:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2239">
                                 <rect key="frame" x="20" y="72" width="136" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
                                 <constraints>
-                                    <constraint id="2243" firstItem="2239" firstAttribute="width" constant="136"/>
+                                    <constraint firstAttribute="width" constant="136" id="2243"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" id="2240" translatesAutoresizingMaskIntoConstraints="NO" customClass="PickerUITextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2240" customClass="PickerUITextField">
                                 <rect key="frame" x="20" y="101" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2247"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <constraints>
-                                    <constraint id="2247" firstItem="2240" firstAttribute="height" constant="30"/>
-                                </constraints>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Time:" lineBreakMode="tailTruncation" minimumFontSize="10" id="2248" translatesAutoresizingMaskIntoConstraints="NO">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Start Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2248">
                                 <rect key="frame" x="20" y="139" width="149" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
                                 <constraints>
-                                    <constraint id="2252" firstItem="2248" firstAttribute="width" constant="149"/>
+                                    <constraint firstAttribute="width" constant="149" id="2252"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" id="2249" translatesAutoresizingMaskIntoConstraints="NO" customClass="PickerUITextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2249" customClass="PickerUITextField">
                                 <rect key="frame" x="20" y="168" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2256"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <constraints>
-                                    <constraint id="2256" firstItem="2249" firstAttribute="height" constant="30"/>
-                                </constraints>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Time:" lineBreakMode="tailTruncation" minimumFontSize="10" id="2257" translatesAutoresizingMaskIntoConstraints="NO">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="End Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2257">
                                 <rect key="frame" x="20" y="205" width="149" height="20.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
                                 <constraints>
-                                    <constraint id="2260" firstItem="2257" firstAttribute="width" constant="149"/>
+                                    <constraint firstAttribute="width" constant="149" id="2260"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" id="2261" translatesAutoresizingMaskIntoConstraints="NO" customClass="PickerUITextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2261" customClass="PickerUITextField">
                                 <rect key="frame" x="20" y="234" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2265"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <constraints>
-                                    <constraint id="2265" firstItem="2261" firstAttribute="height" constant="30"/>
-                                </constraints>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint id="2241" firstItem="2239" firstAttribute="top" secondItem="1869" secondAttribute="bottom" constant="8"/>
-                            <constraint id="2242" firstItem="2239" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20"/>
-                            <constraint id="2244" firstItem="2240" firstAttribute="top" secondItem="2239" secondAttribute="bottom" constant="8"/>
-                            <constraint id="2245" firstItem="2240" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20"/>
-                            <constraint id="2246" firstItem="1873" firstAttribute="trailing" secondItem="2240" secondAttribute="trailing" constant="20"/>
-                            <constraint id="2250" firstItem="2248" firstAttribute="top" secondItem="2240" secondAttribute="bottom" constant="8"/>
-                            <constraint id="2251" firstItem="2248" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20"/>
-                            <constraint id="2253" firstItem="2249" firstAttribute="top" secondItem="2248" secondAttribute="bottom" constant="8"/>
-                            <constraint id="2254" firstItem="2249" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20"/>
-                            <constraint id="2255" firstItem="1873" firstAttribute="trailing" secondItem="2249" secondAttribute="trailing" constant="20"/>
-                            <constraint id="2258" firstItem="2257" firstAttribute="top" secondItem="2249" secondAttribute="bottom" constant="8"/>
-                            <constraint id="2259" firstItem="2257" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20"/>
-                            <constraint id="2262" firstItem="2261" firstAttribute="top" secondItem="2257" secondAttribute="bottom" constant="8"/>
-                            <constraint id="2263" firstItem="2261" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20"/>
-                            <constraint id="2264" firstItem="1873" firstAttribute="trailing" secondItem="2261" secondAttribute="trailing" constant="20"/>
+                            <constraint firstItem="2239" firstAttribute="top" secondItem="1869" secondAttribute="bottom" constant="8" id="2241"/>
+                            <constraint firstItem="2239" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20" id="2242"/>
+                            <constraint firstItem="2240" firstAttribute="top" secondItem="2239" secondAttribute="bottom" constant="8" id="2244"/>
+                            <constraint firstItem="2240" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20" id="2245"/>
+                            <constraint firstAttribute="trailing" secondItem="2240" secondAttribute="trailing" constant="20" id="2246"/>
+                            <constraint firstItem="2248" firstAttribute="top" secondItem="2240" secondAttribute="bottom" constant="8" id="2250"/>
+                            <constraint firstItem="2248" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20" id="2251"/>
+                            <constraint firstItem="2249" firstAttribute="top" secondItem="2248" secondAttribute="bottom" constant="8" id="2253"/>
+                            <constraint firstItem="2249" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20" id="2254"/>
+                            <constraint firstAttribute="trailing" secondItem="2249" secondAttribute="trailing" constant="20" id="2255"/>
+                            <constraint firstItem="2257" firstAttribute="top" secondItem="2249" secondAttribute="bottom" constant="8" id="2258"/>
+                            <constraint firstItem="2257" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20" id="2259"/>
+                            <constraint firstItem="2261" firstAttribute="top" secondItem="2257" secondAttribute="bottom" constant="8" id="2262"/>
+                            <constraint firstItem="2261" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20" id="2263"/>
+                            <constraint firstAttribute="trailing" secondItem="2261" secondAttribute="trailing" constant="20" id="2264"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="StartTime" destination="2249" id="name-outlet-2249"/>
                         <outlet property="EndTime" destination="2261" id="name-outlet-2261"/>
                         <outlet property="ReminderPeriod" destination="2240" id="name-outlet-2240"/>
+                        <outlet property="StartTime" destination="2249" id="name-outlet-2249"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1874" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -393,18 +383,18 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2160" customClass="PickerUITextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2160" customClass="PickerUITextField">
                                 <rect key="frame" x="20" y="100" width="560" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Custom Exercise Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2191">
                                 <rect key="frame" x="20" y="131" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2229"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <constraints>
-                                    <constraint id="2229" firstItem="2191" firstAttribute="height" constant="30"/>
-                                </constraints>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Repetitions" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2204">
                                 <rect key="frame" x="20" y="168" width="172" height="20"/>
@@ -437,10 +427,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="NumberOfRepetitions" destination="2216" id="name-outlet-2216"/>
                         <outlet property="CustomExerciseName" destination="2191" id="name-outlet-2191"/>
-                        <outlet property="ExerciseType" destination="2160" id="name-outlet-2160"/>
                         <outlet property="CustomTextHeightConstraint" destination="2229" id="name-outlet-2229"/>
+                        <outlet property="ExerciseType" destination="2160" id="name-outlet-2160"/>
+                        <outlet property="NumberOfRepetitions" destination="2216" id="name-outlet-2216"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2060" userLabel="First Responder" sceneMemberID="firstResponder"/>

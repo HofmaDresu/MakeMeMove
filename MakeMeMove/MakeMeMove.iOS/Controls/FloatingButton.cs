@@ -15,6 +15,8 @@ namespace MakeMeMove.iOS.Controls
 
 
 			Initialize(title, buttonWidth, subTitle);
+			this.TranslatesAutoresizingMaskIntoConstraints = false;
+			this.WidthAnchor.ConstraintEqualTo(this.Frame.Width).Active = true;
 		}
 
 		private void Initialize(string title, nfloat buttonWidth, string subTitle = null)

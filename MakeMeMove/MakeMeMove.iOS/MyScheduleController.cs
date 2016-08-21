@@ -2,12 +2,15 @@ using Foundation;
 using System;
 using UIKit;
 using MakeMeMove.Model;
+using MakeMeMove.iOS.Controls;
 
 namespace MakeMeMove.iOS
 {
     public partial class MyScheduleController : BaseViewController
     {
 		private ExerciseSchedule _exerciseSchedule;
+		private FloatingButton _changeScheduleButton;
+
         public MyScheduleController (IntPtr handle) : base (handle)
         {
         }
@@ -15,8 +18,17 @@ namespace MakeMeMove.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+			AddButtons();
+		}
 
-			StatusSwitch.TouchUpInside += StatusSwitch_TouchUpInside;
+		private void AddButtons()
+		{
+			_changeScheduleButton = new FloatingButton("Change Schedule");
+			View.Add(_changeScheduleButton);
+
+			_changeScheduleButton.TopAnchor.ConstraintEqualTo(ReminderPeriod.BottomAnchor, 45).Active = true;
+			_changeScheduleButton.CenterXAnchor.ConstraintEqualTo(View.CenterXAnchor).Active = true;
+
 		}
 
 		public override void ViewWillAppear(bool animated)
@@ -27,6 +39,14 @@ namespace MakeMeMove.iOS
 			EndTime.Text = _exerciseSchedule.EndTime.ToLongTimeString();
 			ReminderPeriod.Text = _exerciseSchedule.PeriodDisplayString;
 			StatusSwitch.On = ServiceManager.NotificationServiceIsRunning();
+
+			StatusSwitch.TouchUpInside += StatusSwitch_TouchUpInside;
+			_changeScheduleButton.TouchUpInside += ChangeScheduleButton_TouchUpInside;
+		}
+
+		void ChangeScheduleButton_TouchUpInside(object sender, EventArgs e)
+		{
+			PerformSegue("ManageScheduleSegue", this);
 		}
 
 		void StatusSwitch_TouchUpInside(object sender, EventArgs e)
@@ -41,10 +61,11 @@ namespace MakeMeMove.iOS
 			}
 		}
 
-		public override void ViewWillUnload()
+		public override void ViewWillDisappear(bool animated)
 		{
-			base.ViewWillUnload();
+			base.ViewWillDisappear(animated);
 			StatusSwitch.TouchUpInside -= StatusSwitch_TouchUpInside;
+			_changeScheduleButton.TouchUpInside -= ChangeScheduleButton_TouchUpInside;
 		}
 	}
 }

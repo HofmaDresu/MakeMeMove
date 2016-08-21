@@ -89,21 +89,17 @@ namespace MakeMeMove.iOS
 		private void AddButtons()
 		{
 			_saveButton = new FloatingButton("Save");
-			_saveButton.TranslatesAutoresizingMaskIntoConstraints = false;
 			View.Add(_saveButton);
 
 			_cancelButton = new FloatingButton("Cancel");
-			_cancelButton.TranslatesAutoresizingMaskIntoConstraints = false;
 			View.Add(_cancelButton);
 
 
 			_saveButton.TopAnchor.ConstraintEqualTo(EndTime.BottomAnchor, 20).Active = true;
 			_saveButton.LeftAnchor.ConstraintEqualTo(EndTime.LeftAnchor).Active = true;
-			_saveButton.WidthAnchor.ConstraintEqualTo(_saveButton.Frame.Width).Active = true;
 
 			_cancelButton.TopAnchor.ConstraintEqualTo(EndTime.BottomAnchor, 20).Active = true;
 			_cancelButton.LeftAnchor.ConstraintEqualTo(_saveButton.RightAnchor, 20).Active = true;
-			_cancelButton.WidthAnchor.ConstraintEqualTo(_cancelButton.Frame.Width).Active = true;
 		}
 
 		private void SaveButtonTouchUpInside(object sender, EventArgs e)
