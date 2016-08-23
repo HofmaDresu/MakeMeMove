@@ -32,7 +32,7 @@ namespace MakeMeMove.iOS
 			var labels = View.Subviews.OfType<UILabel>().ToArray();
 			FudistColors.SetTextPrimaryColor(labels);
 
-			TabBarController.TabBar.TintColor = FudistColors.PrimaryColor;
+			TabBarController.TabBar.TintColor = FudistColors.InteractableTextColor;
 		}
 
 		public override void ViewWillAppear(bool animated)
