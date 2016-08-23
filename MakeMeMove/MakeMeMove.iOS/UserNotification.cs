@@ -12,7 +12,7 @@ namespace MakeMeMove.iOS
 		public static void CreateNotification(DateTime notificationDate, ExerciseBlock nextExercise, bool isRecurring = false)
 		{
 			var notificationDictionary = new NSMutableDictionary();
-			notificationDictionary.Add(new NSString(Constants.ExerciseName), new NSString(nextExercise.Name));
+			notificationDictionary.Add(new NSString(Constants.ExerciseName), new NSString(nextExercise.CombinedName));
 			notificationDictionary.Add(new NSString(Constants.ExerciseQuantity), new NSString(nextExercise.Quantity.ToString()));
 
 			var notification = new UILocalNotification
