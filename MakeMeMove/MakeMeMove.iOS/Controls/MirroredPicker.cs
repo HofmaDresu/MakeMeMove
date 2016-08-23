@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using MakeMeMove.iOS.Models;
 using UIKit;
+using MakeMeMove.iOS.Helpers;
 
 namespace MakeMeMove.iOS.Controls
 {
@@ -12,7 +13,7 @@ namespace MakeMeMove.iOS.Controls
 		{
 			var pickerView = new UIPickerView { Model = model };
 
-			var toolbar = new UIToolbar { BarStyle = UIBarStyle.Black, Translucent = true };
+			var toolbar = new UIToolbar { BarStyle = UIBarStyle.Default, BarTintColor = FudistColors.PrimaryColor, Translucent = true };
 			toolbar.SizeToFit();
 
 			model.PickerChanged += (sender, e) =>
@@ -26,6 +27,10 @@ namespace MakeMeMove.iOS.Controls
 				fieldToMirror.ResignFirstResponder();
 				doneAction?.Invoke();
 			});
+			doneButton.SetTitleTextAttributes(new UITextAttributes
+			{
+				TextColor = UIColor.White
+			}, UIControlState.Normal);
 			toolbar.SetItems(new[] { doneButton }, true);
 
 			fieldToMirror.InputView = pickerView;
