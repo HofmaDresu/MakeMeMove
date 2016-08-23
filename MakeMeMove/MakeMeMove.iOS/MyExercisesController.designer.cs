@@ -16,6 +16,10 @@ namespace MakeMeMove.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton AddExerciseButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView ExerciseList { get; set; }
 
         [Outlet]
@@ -24,6 +28,11 @@ namespace MakeMeMove.iOS
 
         void ReleaseDesignerOutlets ()
         {
+            if (AddExerciseButton != null) {
+                AddExerciseButton.Dispose ();
+                AddExerciseButton = null;
+            }
+
             if (ExerciseList != null) {
                 ExerciseList.Dispose ();
                 ExerciseList = null;

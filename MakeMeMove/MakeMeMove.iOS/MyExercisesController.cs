@@ -22,6 +22,7 @@ namespace MakeMeMove.iOS
 		{
 			base.ViewDidLoad();
 			ExerciseList.BackgroundColor = FudistColors.MainBackgroundColor;
+			AddExerciseButton.BackgroundColor = FudistColors.PrimaryColor;
 		}
 
 		public override void ViewWillAppear(bool animated)
