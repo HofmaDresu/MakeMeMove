@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using Foundation;
 using MakeMeMove.iOS.Helpers;
 using SQLite;
@@ -27,6 +28,9 @@ namespace MakeMeMove.iOS
 				ForegroundColor = UIColor.White
 			};
 
+
+			var labels = View.Subviews.OfType<UILabel>();
+			FudistColors.SetTextPrimaryColor(labels.ToArray());
 		}
 
 		public override void ViewWillAppear(bool animated)

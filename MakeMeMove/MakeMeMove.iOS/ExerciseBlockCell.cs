@@ -15,6 +15,7 @@ namespace MakeMeMove.iOS
 		public void UpdateCell(string exerciseName, int exerciseQuantity, bool isEnabled)
 		{
 			ExerciseNameLabel.Text = $"{exerciseQuantity} {exerciseName}";
+			ExerciseNameLabel.TextColor = FudistColors.PrimaryColor;
 			ExerciseIsEnabled.On = isEnabled;
 		}
     }

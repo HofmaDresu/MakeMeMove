@@ -21,9 +21,6 @@ namespace MakeMeMove.iOS
 		{
 			base.ViewDidLoad();
 
-			var labels = View.Subviews.OfType<UILabel>();
-			FudistColors.SetTextPrimaryColor(labels.ToArray());
-
 			AddButtons();
 		}
 
