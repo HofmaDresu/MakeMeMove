@@ -6,6 +6,7 @@ using MakeMeMove.iOS.Controls;
 using MakeMeMove.iOS.Models;
 using Humanizer;
 using MakeMeMove.iOS.Helpers;
+using System.Linq;
 
 namespace MakeMeMove.iOS
 {
@@ -49,6 +50,11 @@ namespace MakeMeMove.iOS
 
 			ShowHideCustomName();
 			AddButtons();
+
+			var pickerTextFields = View.Subviews.OfType<PickerUITextField>().ToArray();
+			FudistColors.SetTextPrimaryColor(pickerTextFields);
+			NumberOfRepetitions.BackgroundColor = FudistColors.MainBackgroundColor;
+			NumberOfRepetitions.TextColor = FudistColors.PrimaryColor;
 		}
 
 		private void AddButtons()

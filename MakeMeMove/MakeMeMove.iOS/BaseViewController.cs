@@ -29,8 +29,8 @@ namespace MakeMeMove.iOS
 			};
 
 
-			var labels = View.Subviews.OfType<UILabel>();
-			FudistColors.SetTextPrimaryColor(labels.ToArray());
+			var labels = View.Subviews.OfType<UILabel>().ToArray();
+			FudistColors.SetTextPrimaryColor(labels);
 		}
 
 		public override void ViewWillAppear(bool animated)

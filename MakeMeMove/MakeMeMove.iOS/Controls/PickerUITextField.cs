@@ -5,7 +5,7 @@ using ObjCRuntime;
 
 namespace MakeMeMove.iOS
 {
-	partial class PickerUITextField : UITextField
+	public partial class PickerUITextField : UITextField
 	{
 		public PickerUITextField(IntPtr handle) : base(handle)
 		{

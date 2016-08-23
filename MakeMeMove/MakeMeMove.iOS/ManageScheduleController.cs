@@ -45,6 +45,9 @@ namespace MakeMeMove.iOS
 
 			AddButtons();
 			PopulateData();
+
+			var pickerTextFields = View.Subviews.OfType<PickerUITextField>().ToArray();
+			FudistColors.SetTextPrimaryColor(pickerTextFields);
 		}
 
 		private void PopulateData()
