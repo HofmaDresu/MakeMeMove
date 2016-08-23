@@ -18,7 +18,7 @@ namespace MakeMeMove.iOS
 			var notification = new UILocalNotification
 			{
 				AlertAction = "Time to Move",
-				AlertBody = $"It's time to do {nextExercise.Quantity} {nextExercise.Name}",
+				AlertBody = $"It's time to do {nextExercise.Quantity} {nextExercise.CombinedName}",
 				FireDate = notificationDate.ToNSDate(),
 				SoundName = UILocalNotification.DefaultSoundName,
 				TimeZone = NSTimeZone.LocalTimeZone,
