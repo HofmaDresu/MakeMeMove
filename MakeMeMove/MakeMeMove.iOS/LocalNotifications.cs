@@ -6,7 +6,7 @@ using MakeMeMove.iOS.ExtensionMethods;
 
 namespace MakeMeMove.iOS
 {
-	public static class UserNotification
+	public static class LocalNotifications
 	{
 
 		public static void CreateNotification(DateTime notificationDate, ExerciseBlock nextExercise, bool isRecurring = false)

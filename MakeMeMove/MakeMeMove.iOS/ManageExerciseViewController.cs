@@ -78,19 +78,19 @@ namespace MakeMeMove.iOS
 			var exerciseType = (PreBuiltExersises)(int)_exerciseTypePicker.SelectedRowInComponent(0);
 			if (exerciseType == PreBuiltExersises.Custom && string.IsNullOrWhiteSpace(CustomExerciseName.Text))
 			{
-				UserNotifications.ShowValidationErrorPopUp(this, "Please enter a name for your exercise.");
+				GeneralAlertDialogs.ShowValidationErrorPopUp(this, "Please enter a name for your exercise.");
 				return;
 			}
 
 			if (string.IsNullOrWhiteSpace(NumberOfRepetitions.Text))
 			{
-				UserNotifications.ShowValidationErrorPopUp(this, "Please enter how many repetitions you want.");
+				GeneralAlertDialogs.ShowValidationErrorPopUp(this, "Please enter how many repetitions you want.");
 				return;
 			}
 			int repetitions;
 			if (!int.TryParse(NumberOfRepetitions.Text, out repetitions))
 			{
-				UserNotifications.ShowValidationErrorPopUp(this, "Please enter a whole number of repetitions.");
+				GeneralAlertDialogs.ShowValidationErrorPopUp(this, "Please enter a whole number of repetitions.");
 				return;
 			}
 

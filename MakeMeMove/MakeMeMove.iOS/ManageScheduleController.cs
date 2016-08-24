@@ -119,7 +119,7 @@ namespace MakeMeMove.iOS
 
 			if (startTime >= endTime)
 			{
-				UserNotifications.ShowValidationErrorPopUp(this, "Please make sure your start time is before your end time.");
+				GeneralAlertDialogs.ShowValidationErrorPopUp(this, "Please make sure your start time is before your end time.");
 				return;
 			}
 

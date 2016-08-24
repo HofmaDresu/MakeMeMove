@@ -52,7 +52,7 @@ namespace MakeMeMove.iOS
 				});
 
 			UIApplication.SharedApplication.CancelAllLocalNotifications();
-			UserNotification.CreateNotification(DateTime.Now, nextExercise);
+			LocalNotifications.CreateNotification(DateTime.Now, nextExercise);
 			ScheduleNotifications();
 		}
 
@@ -76,7 +76,7 @@ namespace MakeMeMove.iOS
 				//TODO: figure out how to make this more random. Right now it makes a random schedule, but it's the same every day
 
 				var nextExercise = exercises[Math.Min(index, Math.Max(0, exercises.Count - 1))];
-				UserNotification.CreateNotification(testDate, nextExercise, true);
+				LocalNotifications.CreateNotification(testDate, nextExercise, true);
 			}
 		}
 	}

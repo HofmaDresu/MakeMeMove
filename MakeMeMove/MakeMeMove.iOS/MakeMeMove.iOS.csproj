@@ -141,7 +141,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="ExerciseServiceManager.cs" />
     <Compile Include="ExtensionMethods\DateTimeExtensions.cs" />
-    <Compile Include="UserNotification.cs" />
+    <Compile Include="LocalNotifications.cs" />
     <Compile Include="ExerciseListTableSource.cs" />
     <Compile Include="ExerciseBlockCell.cs" />
     <Compile Include="ExerciseBlockCell.designer.cs">
@@ -159,7 +159,7 @@
     <Compile Include="Controls\MirroredPicker.cs" />
     <Compile Include="Models\PickerModel.cs" />
     <Compile Include="Controls\FloatingButton.cs" />
-    <Compile Include="Helpers\UserNotifications.cs" />
+    <Compile Include="Helpers\GeneralAlertDialogs.cs" />
     <Compile Include="Helpers\FudistColors.cs" />
   </ItemGroup>
   <ItemGroup>

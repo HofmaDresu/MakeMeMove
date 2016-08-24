@@ -3,7 +3,7 @@ using UIKit;
 
 namespace MakeMeMove.iOS.Helpers
 {
-	public static class UserNotifications
+	public static class GeneralAlertDialogs
 	{
 		public static void ShowValidationErrorPopUp(UIViewController controller, string validationMessage)
 		{
