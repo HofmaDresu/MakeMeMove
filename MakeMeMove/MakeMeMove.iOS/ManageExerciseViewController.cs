@@ -15,6 +15,7 @@ namespace MakeMeMove.iOS
 		public int? SelectedExerciseId;
 		private ExerciseBlock _selectedExercise;
 		private UIPickerView _exerciseTypePicker;
+		private UIPickerView _repetitionTypePicker;
 		private FloatingButton _saveButton;
 		private FloatingButton _cancelButton;
 
@@ -26,10 +27,11 @@ namespace MakeMeMove.iOS
 		{
 			base.ViewDidLoad();
 
-			NumberOfRepetitions.KeyboardType = UIKeyboardType.NumberPad;
-
 			var exercisePickerModel = new PickerModel(PickerListHelper.GetExerciseTypeStrings());
 			_exerciseTypePicker = MirroredPicker.Create(exercisePickerModel, ExerciseType, doneAction: ShowHideCustomName);
+
+			var repetitionsPickerModel = new PickerModel(Enumerable.Range(1, 100).Select(n => n.ToString()).ToList());
+			_repetitionTypePicker = MirroredPicker.Create(repetitionsPickerModel, NumberOfRepetitions);
 
 			if (SelectedExerciseId.HasValue)
 			{
@@ -38,6 +40,7 @@ namespace MakeMeMove.iOS
 				ExerciseType.Text = _selectedExercise.Type.Humanize();
 				_exerciseTypePicker.Select((int)_selectedExercise.Type, 0, false);
 				NumberOfRepetitions.Text = _selectedExercise.Quantity.ToString();
+				_repetitionTypePicker.Select(_selectedExercise.Quantity - 1, 0 , false);
 				CustomExerciseName.Text = _selectedExercise.CombinedName;
 			}
 			else
@@ -45,16 +48,16 @@ namespace MakeMeMove.iOS
 				ExerciseType.Text = PickerListHelper.GetExerciseTypeStrings()[0];
 				_exerciseTypePicker.Select(0, 0, false);
 				NumberOfRepetitions.Text = "10";
+				_repetitionTypePicker.Select(9, 0, false);
 				CustomExerciseName.Text = string.Empty;
 			}
+
 
 			ShowHideCustomName();
 			AddButtons();
 
 			var pickerTextFields = View.Subviews.OfType<PickerUITextField>().ToArray();
 			FudistColors.SetTextPrimaryColor(pickerTextFields);
-			NumberOfRepetitions.BackgroundColor = FudistColors.MainBackgroundColor;
-			NumberOfRepetitions.TextColor = FudistColors.PrimaryColor;
 		}
 
 		private void AddButtons()
@@ -82,22 +85,10 @@ namespace MakeMeMove.iOS
 				return;
 			}
 
-			if (string.IsNullOrWhiteSpace(NumberOfRepetitions.Text))
-			{
-				GeneralAlertDialogs.ShowValidationErrorPopUp(this, "Please enter how many repetitions you want.");
-				return;
-			}
-			int repetitions;
-			if (!int.TryParse(NumberOfRepetitions.Text, out repetitions))
-			{
-				GeneralAlertDialogs.ShowValidationErrorPopUp(this, "Please enter a whole number of repetitions.");
-				return;
-			}
-
 			if (_selectedExercise != null)
 			{
 				_selectedExercise.Name = exerciseType == PreBuiltExersises.Custom ? CustomExerciseName.Text : string.Empty;
-				_selectedExercise.Quantity = repetitions;
+				_selectedExercise.Quantity = (int)_repetitionTypePicker.SelectedRowInComponent(0) + 1;
 				_selectedExercise.Type = exerciseType;
 				Data.UpdateExerciseBlock(_selectedExercise);
 			}
@@ -106,7 +97,7 @@ namespace MakeMeMove.iOS
 				Data.InsertExerciseBlock(new ExerciseBlock
 				{
 					Name = exerciseType == PreBuiltExersises.Custom ? CustomExerciseName.Text : string.Empty,
-					Quantity = repetitions,
+					Quantity = (int)_repetitionTypePicker.SelectedRowInComponent(0) + 1,
 					Type = exerciseType,
 					Enabled = true
 				});

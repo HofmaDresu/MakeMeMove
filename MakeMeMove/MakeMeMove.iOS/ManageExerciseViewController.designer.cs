@@ -28,7 +28,7 @@ namespace MakeMeMove.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField NumberOfRepetitions { get; set; }
+        MakeMeMove.iOS.PickerUITextField NumberOfRepetitions { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
