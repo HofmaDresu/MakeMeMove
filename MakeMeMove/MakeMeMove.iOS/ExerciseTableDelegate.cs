@@ -1,5 +1,6 @@
 ﻿using System;
 using Foundation;
+using MakeMeMove.iOS.Helpers;
 using UIKit;
 
 namespace MakeMeMove.iOS
@@ -28,6 +29,7 @@ namespace MakeMeMove.iOS
 				UITableViewRowActionStyle.Normal,
 				"Edit", 
 				(arg1, arg2) => ExerciseEdited?.Invoke(this, indexPath.Row));
+			editButton.BackgroundColor = FudistColors.InteractableTextColor;
 			UITableViewRowAction deleteButton = UITableViewRowAction.Create(
 				UITableViewRowActionStyle.Destructive,
 				"Delete",
