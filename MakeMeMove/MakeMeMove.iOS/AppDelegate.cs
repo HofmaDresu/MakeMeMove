@@ -37,12 +37,21 @@ namespace MakeMeMove.iOS
 				AuthenticationRequired = false
 			};
 
-			var unregisteredExerciseCategory = new UIMutableUserNotificationCategory
+			var completeAction = new UIMutableUserNotificationAction
 			{
-				Identifier = Constants.UnregisteredExerciseCategoryId
+				Identifier = Constants.CompleteId,
+				Title = "Done",
+				ActivationMode = UIUserNotificationActivationMode.Background,
+				Destructive = false,
+				AuthenticationRequired = false
 			};
 
-			var nextOnlyActionArray = new UIUserNotificationAction[] { nextAction };
+			var unregisteredExerciseCategory = new UIMutableUserNotificationCategory
+			{
+				Identifier = Constants.ExerciseNotificationCategoryId
+			};
+
+			var nextOnlyActionArray = new UIUserNotificationAction[] { completeAction, nextAction };
 			unregisteredExerciseCategory.SetActions(nextOnlyActionArray, UIUserNotificationActionContext.Default);
 			unregisteredExerciseCategory.SetActions(nextOnlyActionArray, UIUserNotificationActionContext.Minimal);
 
@@ -59,12 +68,10 @@ namespace MakeMeMove.iOS
 		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
 		{
 			UIAlertController okayAlertController = UIAlertController.Create(notification.AlertAction, notification.AlertBody, UIAlertControllerStyle.Alert);
+			okayAlertController.AddAction(UIAlertAction.Create("COMPLETE", UIAlertActionStyle.Default, _ => CompleteExercise(notification)));
 			okayAlertController.AddAction(UIAlertAction.Create("CHANGE", UIAlertActionStyle.Default, _ => ChangeExercise(notification)));
 
-			if (notification.Category == Constants.UnregisteredExerciseCategoryId)
-			{
-				okayAlertController.AddAction(UIAlertAction.Create("DISMISS", UIAlertActionStyle.Cancel, null));
-			}
+			okayAlertController.AddAction(UIAlertAction.Create("DISMISS", UIAlertActionStyle.Cancel, null));
 
 			Window.RootViewController.PresentViewController(okayAlertController, true, null);
 		}
@@ -75,8 +82,20 @@ namespace MakeMeMove.iOS
 			{
 				ChangeExercise(localNotification);
 			}
+			if (actionIdentifier == Constants.CompleteId)
+			{
+				CompleteExercise(localNotification);
+			}
 
 			completionHandler?.Invoke();
+		}
+
+		void CompleteExercise(UILocalNotification localNotification)
+		{
+			var exerciseName = localNotification.UserInfo[Constants.ExerciseName].ToString();
+			var exerciseQuantity = int.Parse(localNotification.UserInfo[Constants.ExerciseQuantity].ToString());
+
+			_data.MarkExerciseCompleted(exerciseName, exerciseQuantity);
 		}
 
 		void ChangeExercise(UILocalNotification localNotification)

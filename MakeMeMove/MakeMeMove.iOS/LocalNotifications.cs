@@ -23,7 +23,7 @@ namespace MakeMeMove.iOS
 				SoundName = UILocalNotification.DefaultSoundName,
 				TimeZone = NSTimeZone.LocalTimeZone,
 				ApplicationIconBadgeNumber = -1,
-				Category = Constants.UnregisteredExerciseCategoryId,
+				Category = Constants.ExerciseNotificationCategoryId,
 				UserInfo = notificationDictionary
 			};
 
