@@ -33,6 +33,7 @@ namespace MakeMeMove.iOS
 			FudistColors.SetTextPrimaryColor(labels);
 
 			TabBarController.TabBar.TintColor = FudistColors.InteractableTextColor;
+			NavigationItem.HidesBackButton = true;
 		}
 
 		public override void ViewWillAppear(bool animated)
