@@ -40,7 +40,7 @@ namespace MakeMeMove.iOS
 			var completeAction = new UIMutableUserNotificationAction
 			{
 				Identifier = Constants.CompleteId,
-				Title = "Done",
+				Title = "Complete",
 				ActivationMode = UIUserNotificationActivationMode.Background,
 				Destructive = false,
 				AuthenticationRequired = false
@@ -67,6 +67,9 @@ namespace MakeMeMove.iOS
 
 		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
 		{
+			application.ApplicationIconBadgeNumber = 1;
+			application.ApplicationIconBadgeNumber = 0;
+
 			UIAlertController okayAlertController = UIAlertController.Create(notification.AlertAction, notification.AlertBody, UIAlertControllerStyle.Alert);
 			okayAlertController.AddAction(UIAlertAction.Create("COMPLETE", UIAlertActionStyle.Default, _ => CompleteExercise(notification)));
 			okayAlertController.AddAction(UIAlertAction.Create("CHANGE", UIAlertActionStyle.Default, _ => ChangeExercise(notification)));
@@ -78,6 +81,9 @@ namespace MakeMeMove.iOS
 
 		public override void HandleAction(UIApplication application, string actionIdentifier, UILocalNotification localNotification, NSDictionary responseInfo, System.Action completionHandler)
 		{
+			application.ApplicationIconBadgeNumber = 1;
+			application.ApplicationIconBadgeNumber = 0;
+
 			if (actionIdentifier == Constants.NextId)
 			{
 				ChangeExercise(localNotification);
