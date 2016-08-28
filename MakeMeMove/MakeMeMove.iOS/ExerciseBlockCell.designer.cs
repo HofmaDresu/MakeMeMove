@@ -16,7 +16,7 @@ namespace MakeMeMove.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UISwitch ExerciseIsEnabled { get; set; }
+        UIKit.UISegmentedControl ExerciseIsEnabled { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

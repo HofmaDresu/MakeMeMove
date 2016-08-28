@@ -10,13 +10,15 @@ namespace MakeMeMove.iOS
         public ExerciseBlockCell (IntPtr handle) : base (handle)
         {
 			BackgroundColor = FudistColors.MainBackgroundColor;
+			//TODO: Add functionality to ExerciseIsEnabled
         }
 
 		public void UpdateCell(string exerciseName, int exerciseQuantity, bool isEnabled)
 		{
+			ExerciseIsEnabled.TintColor = FudistColors.InteractableTextColor;
 			ExerciseNameLabel.Text = $"{exerciseQuantity} {exerciseName}";
 			ExerciseNameLabel.TextColor = FudistColors.PrimaryColor;
-			ExerciseIsEnabled.On = isEnabled;
+			ExerciseIsEnabled.SelectedSegment = isEnabled ? 1 : 0;
 		}
     }
 }
