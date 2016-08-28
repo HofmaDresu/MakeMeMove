@@ -22,6 +22,7 @@ namespace MakeMeMove.iOS
 			base.ViewDidLoad();
 
 			AddButtons();
+			StatusSwitch.TintColor = FudistColors.InteractableTextColor;
 		}
 
 		private void AddButtons()
@@ -41,9 +42,9 @@ namespace MakeMeMove.iOS
 			StartTime.Text = _exerciseSchedule.StartTime.ToLongTimeString();
 			EndTime.Text = _exerciseSchedule.EndTime.ToLongTimeString();
 			ReminderPeriod.Text = _exerciseSchedule.PeriodDisplayString;
-			StatusSwitch.On = ServiceManager.NotificationServiceIsRunning();
+			StatusSwitch.SelectedSegment = ServiceManager.NotificationServiceIsRunning() ? 1 : 0;
 
-			StatusSwitch.TouchUpInside += StatusSwitch_TouchUpInside;
+			StatusSwitch.ValueChanged += StatusSwitch_ValueChanged;
 			_changeScheduleButton.TouchUpInside += ChangeScheduleButton_TouchUpInside;
 		}
 
@@ -52,22 +53,23 @@ namespace MakeMeMove.iOS
 			PerformSegue("ManageScheduleSegue", this);
 		}
 
-		void StatusSwitch_TouchUpInside(object sender, EventArgs e)
+		void StatusSwitch_ValueChanged(object sender, EventArgs e)
 		{
-			if (StatusSwitch.On)
+			if (StatusSwitch.SelectedSegment == 1)
 			{
-				ServiceManager.StartNotificationService(); 
+				ServiceManager.StartNotificationService();
 			}
 			else
 			{
-				ServiceManager.StopNotificationService(); 
+				ServiceManager.StopNotificationService();
 			}
+
 		}
 
 		public override void ViewWillDisappear(bool animated)
 		{
 			base.ViewWillDisappear(animated);
-			StatusSwitch.TouchUpInside -= StatusSwitch_TouchUpInside;
+			StatusSwitch.ValueChanged -= StatusSwitch_ValueChanged;
 			_changeScheduleButton.TouchUpInside -= ChangeScheduleButton_TouchUpInside;
 		}
 	}

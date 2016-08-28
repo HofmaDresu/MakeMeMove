@@ -48,10 +48,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1852">
-                                <rect key="frame" x="50" y="101" width="51" height="31"/>
-                            </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1853">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1853" misplaced="YES">
                                 <rect key="frame" x="20" y="140" width="156" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -71,7 +68,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Time: " lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1855">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Time: " lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1855" misplaced="YES">
                                 <rect key="frame" x="20" y="198" width="102" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -91,7 +88,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reminder Period:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1857">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reminder Period:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1857" misplaced="YES">
                                 <rect key="frame" x="20" y="256" width="181" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -111,13 +108,17 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2277">
+                                <rect key="frame" x="50" y="100.5" width="149" height="29"/>
+                                <segments>
+                                    <segment title="STOPPED"/>
+                                    <segment title="STARTED"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1849" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="20" id="1961"/>
-                            <constraint firstItem="1852" firstAttribute="top" secondItem="1849" secondAttribute="bottom" constant="8" id="1963"/>
-                            <constraint firstItem="1852" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="50" id="1964"/>
-                            <constraint firstItem="1853" firstAttribute="top" secondItem="1852" secondAttribute="bottom" constant="8" id="1965"/>
                             <constraint firstItem="1853" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="20" id="1966"/>
                             <constraint firstItem="1854" firstAttribute="top" secondItem="1853" secondAttribute="bottom" constant="8" id="1968"/>
                             <constraint firstItem="1854" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="50" id="1969"/>
@@ -130,6 +131,9 @@
                             <constraint firstItem="1867" firstAttribute="top" secondItem="1857" secondAttribute="centerY" constant="18" id="1980"/>
                             <constraint firstItem="1867" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="50" id="1981"/>
                             <constraint firstItem="1849" firstAttribute="top" secondItem="19" secondAttribute="bottom" constant="8" id="2036"/>
+                            <constraint id="2280" firstItem="2277" firstAttribute="top" secondItem="1849" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2281" firstItem="2277" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="50"/>
+                            <constraint id="2282" firstItem="1853" firstAttribute="top" secondItem="2277" secondAttribute="bottom" constant="10"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Make Me Move" id="WKT-J1-vzb"/>
@@ -137,8 +141,8 @@
                         <outlet property="EndTime" destination="1856" id="name-outlet-1856"/>
                         <outlet property="ReminderPeriod" destination="1867" id="name-outlet-1867"/>
                         <outlet property="StartTime" destination="1854" id="name-outlet-1854"/>
-                        <outlet property="StatusSwitch" destination="1852" id="name-outlet-1852"/>
                         <segue destination="1872" kind="show" identifier="ManageScheduleSegue" id="iEa-vF-Tkb"/>
+                        <outlet property="StatusSwitch" destination="2277" id="name-outlet-2277"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34" userLabel="First Responder" sceneMemberID="firstResponder"/>

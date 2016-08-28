@@ -28,7 +28,7 @@ namespace MakeMeMove.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UISwitch StatusSwitch { get; set; }
+        UIKit.UISegmentedControl StatusSwitch { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
