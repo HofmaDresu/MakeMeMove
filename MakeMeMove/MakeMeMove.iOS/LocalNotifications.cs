@@ -11,6 +11,7 @@ namespace MakeMeMove.iOS
 
 		public static void CreateNotification(DateTime notificationDate, ExerciseBlock nextExercise, bool isRecurring = false)
 		{
+			if (nextExercise == null) return;
 			var notificationDictionary = new NSMutableDictionary();
 			notificationDictionary.Add(new NSString(Constants.ExerciseName), new NSString(nextExercise.CombinedName));
 			notificationDictionary.Add(new NSString(Constants.ExerciseQuantity), new NSString(nextExercise.Quantity.ToString()));
