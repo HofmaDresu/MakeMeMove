@@ -13,6 +13,7 @@ namespace MakeMeMove.iOS
 		private List<ExerciseBlock> _exercises;
 		private const string ManageExerciseSegueId = "ManageExerciseSegue";
 		public int? SelectedExerciseId;
+		private ExerciseListTableSource _source;
 
         public MyExercisesController (IntPtr handle) : base (handle)
         {
@@ -35,7 +36,9 @@ namespace MakeMeMove.iOS
 			_exerciseTableDelegate.ExerciseEdited += exerciseTableDelegate_ExerciseEdited;
 			_exerciseTableDelegate.ExerciseDeleted += exerciseTableDelegate_ExerciseDeleted;
 
-			ExerciseList.Source = new ExerciseListTableSource(_exercises);
+			_source = new ExerciseListTableSource(_exercises);
+			_source.EnabledDisabledSwitchSelected += EnableDisableExercise;
+			ExerciseList.Source = _source;
 			ExerciseList.Delegate = _exerciseTableDelegate;
 		}
 
@@ -44,6 +47,7 @@ namespace MakeMeMove.iOS
 			base.ViewDidDisappear(animated);
 			_exerciseTableDelegate.ExerciseEdited -= exerciseTableDelegate_ExerciseEdited;
 			_exerciseTableDelegate.ExerciseDeleted -= exerciseTableDelegate_ExerciseDeleted;
+			_source.EnabledDisabledSwitchSelected -= EnableDisableExercise;
 		}
 
 		void exerciseTableDelegate_ExerciseEdited(object sender, int exerciseIndex)
@@ -59,7 +63,10 @@ namespace MakeMeMove.iOS
 
 			InvokeOnMainThread(() =>
 			{
-				ExerciseList.Source = new ExerciseListTableSource(_exercises);
+				_source.EnabledDisabledSwitchSelected -= EnableDisableExercise;
+				_source = new ExerciseListTableSource(_exercises);
+				_source.EnabledDisabledSwitchSelected += EnableDisableExercise;
+				ExerciseList.Source = _source;
 				ExerciseList.ReloadData();
 				ExerciseList.Delegate = _exerciseTableDelegate;
 			});
@@ -74,6 +81,13 @@ namespace MakeMeMove.iOS
 				var viewController = (ManageExerciseViewController)segue.DestinationViewController;
 				viewController.SelectedExerciseId = SelectedExerciseId;			
 			}
+		}
+
+		private void EnableDisableExercise(object sender, ExerciseBlock exercise)
+		{
+			exercise.Enabled = !exercise.Enabled;
+			Data.UpdateExerciseBlock(exercise);
+			ServiceManager.RestartNotificationServiceIfNeeded();
 		}
 	}
 }

@@ -2,23 +2,34 @@ using Foundation;
 using System;
 using UIKit;
 using MakeMeMove.iOS.Helpers;
+using MakeMeMove.Model;
 
 namespace MakeMeMove.iOS
 {
     public partial class ExerciseBlockCell : UITableViewCell
     {
+		public EventHandler<ExerciseBlock> SelectedEnabledSwitch;
+		private ExerciseBlock _block;
+
         public ExerciseBlockCell (IntPtr handle) : base (handle)
         {
 			BackgroundColor = FudistColors.MainBackgroundColor;
-			//TODO: Add functionality to ExerciseIsEnabled
         }
 
-		public void UpdateCell(string exerciseName, int exerciseQuantity, bool isEnabled)
+		public void UpdateCell(ExerciseBlock block)
 		{
+			_block = block;
 			ExerciseIsEnabled.TintColor = FudistColors.InteractableTextColor;
-			ExerciseNameLabel.Text = $"{exerciseQuantity} {exerciseName}";
+			ExerciseNameLabel.Text = $"{block.Quantity} {block.CombinedName}";
 			ExerciseNameLabel.TextColor = FudistColors.PrimaryColor;
-			ExerciseIsEnabled.SelectedSegment = isEnabled ? 1 : 0;
+			ExerciseIsEnabled.SelectedSegment = block.Enabled ? 1 : 0;
+			ExerciseIsEnabled.ValueChanged -= ExerciseSwitch_ValueChanged;
+			ExerciseIsEnabled.ValueChanged += ExerciseSwitch_ValueChanged;
+		}
+
+		void ExerciseSwitch_ValueChanged(object sender, EventArgs e)
+		{
+			SelectedEnabledSwitch?.Invoke(sender, _block);
 		}
     }
 }
