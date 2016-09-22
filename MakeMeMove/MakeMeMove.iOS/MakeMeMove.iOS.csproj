@@ -200,6 +200,10 @@
     <Compile Include="MainTabViewController.designer.cs">
       <DependentUpon>MainTabViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PrimaryBottomBorderView.cs" />
+    <Compile Include="Controls\PrimaryBottomBorderView.designer.cs">
+      <DependentUpon>PrimaryBottomBorderView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">

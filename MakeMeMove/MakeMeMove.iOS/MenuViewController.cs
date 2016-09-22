@@ -15,7 +15,7 @@ namespace MakeMeMove.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            View.BackgroundColor = FudistColors.MainBackgroundColor;
+            View.BackgroundColor = FudistColors.PrimaryColor;
             var labels = View.Subviews.OfType<UILabel>().ToArray();
             FudistColors.SetTextPrimaryColor(labels);
         }
