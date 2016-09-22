@@ -24,7 +24,8 @@ namespace MakeMeMove.iOS
 
             //TODO: Use real value
             UserNameLabel.Text = "Fake UserName";
-            SignInOutButton.Text = "Sign Out";
+            SignInOutLabel.Text = "Sign Out";
+            OpenFudistLabel.Text = "Open Fudist";
         }
     }
 }
