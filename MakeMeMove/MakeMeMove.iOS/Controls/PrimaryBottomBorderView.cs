@@ -6,7 +6,7 @@ using UIKit;
 
 namespace MakeMeMove.iOS
 {
-    public partial class PrimaryBottomBorderView : UIView
+    public partial class PrimaryBottomBorderView : UIControl
     {
         public PrimaryBottomBorderView (IntPtr handle) : base (handle)
         {

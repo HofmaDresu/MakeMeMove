@@ -34,10 +34,9 @@ namespace MakeMeMove.iOS
         {
             base.ViewWillAppear(animated);
 
-            if (!_data.UserIsSignedIn())
+            if (_data.UserIsSignedIn())
             {
-                //TODO: Use real value
-                UserNameLabel.Text = "Fake UserName";
+                UserNameLabel.Text = _data.GetUserName();
                 SignInOutLabel.Text = "Sign Out";
                 UserNameViewHeightConstraint.Constant = 91;
             }
@@ -47,6 +46,27 @@ namespace MakeMeMove.iOS
                 SignInOutLabel.Text = "Sign In";
                 UserNameViewHeightConstraint.Constant = 0;
             }
+
+            OpenFudistView.TouchUpInside += NotImplementedAlert;
+            ViewHistoryView.TouchUpInside += NotImplementedAlert;
+            SignInOutView.TouchUpInside += NotImplementedAlert;
+        }
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            base.ViewWillDisappear(animated);
+
+            OpenFudistView.TouchUpInside -= NotImplementedAlert;
+            ViewHistoryView.TouchUpInside -= NotImplementedAlert;
+            SignInOutView.TouchUpInside -= NotImplementedAlert;
+        }
+
+        private void NotImplementedAlert(object sender, EventArgs e)
+        {
+            var alert = new UIAlertView("Not implemented", "This feature is not yet implemented. Please try again in a future version",
+                       null, "OK", null);
+
+            alert.Show();
         }
     }
 }
