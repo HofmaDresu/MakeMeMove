@@ -16,31 +16,31 @@ namespace MakeMeMove.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView MenuBackgroundView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel UserNameLabel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        MakeMeMove.iOS.PrimaryBottomBorderView UserNameSection { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.NSLayoutConstraint UserNameSectionHeight { get; set; }
+        MakeMeMove.iOS.PrimaryBottomBorderView UserNameView { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (MenuBackgroundView != null) {
+                MenuBackgroundView.Dispose ();
+                MenuBackgroundView = null;
+            }
+
             if (UserNameLabel != null) {
                 UserNameLabel.Dispose ();
                 UserNameLabel = null;
             }
 
-            if (UserNameSection != null) {
-                UserNameSection.Dispose ();
-                UserNameSection = null;
-            }
-
-            if (UserNameSectionHeight != null) {
-                UserNameSectionHeight.Dispose ();
-                UserNameSectionHeight = null;
+            if (UserNameView != null) {
+                UserNameView.Dispose ();
+                UserNameView = null;
             }
         }
     }

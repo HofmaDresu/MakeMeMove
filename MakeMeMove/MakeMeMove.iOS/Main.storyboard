@@ -472,43 +472,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="2639" translatesAutoresizingMaskIntoConstraints="NO" customClass="PrimaryBottomBorderView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="96"/>
+                            <view contentMode="scaleToFill" id="2661" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in as:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2640" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="20" y="20" width="214" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17" weight="semibold"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2641" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="20" y="54" width="560" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" id="2639" translatesAutoresizingMaskIntoConstraints="NO" customClass="PrimaryBottomBorderView">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="91"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in as:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2640" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <rect key="frame" x="20" y="20" width="214" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17" weight="heavy"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2641" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <rect key="frame" x="20" y="49" width="560" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint id="2686" firstItem="2639" firstAttribute="height" constant="91"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint id="2642" firstItem="2639" firstAttribute="height" constant="96"/>
+                                    <constraint id="2667" firstItem="2639" firstAttribute="leading" secondItem="2661" secondAttribute="leading"/>
+                                    <constraint id="2668" firstItem="2639" firstAttribute="top" secondItem="2661" secondAttribute="top"/>
+                                    <constraint id="2669" firstItem="2639" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint id="2643" firstItem="2639" firstAttribute="top" secondItem="2304" secondAttribute="bottom"/>
-                            <constraint id="2644" firstItem="2639" firstAttribute="leading" secondItem="2308" secondAttribute="leading"/>
-                            <constraint id="2645" firstItem="2639" firstAttribute="trailing" secondItem="2308" secondAttribute="trailing"/>
+                            <constraint id="2662" firstItem="2661" firstAttribute="top" secondItem="2304" secondAttribute="bottom"/>
+                            <constraint id="2663" firstItem="2661" firstAttribute="trailing" secondItem="2308" secondAttribute="trailing"/>
+                            <constraint id="2664" firstItem="2661" firstAttribute="bottom" secondItem="2308" secondAttribute="bottom"/>
+                            <constraint id="2665" firstItem="2661" firstAttribute="leading" secondItem="2308" secondAttribute="leading"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="UserNameView" destination="2639" id="name-outlet-2639"/>
+                        <outlet property="MenuBackgroundView" destination="2661" id="name-outlet-2661"/>
                         <outlet property="UserNameLabel" destination="2641" id="name-outlet-2641"/>
-                        <outlet property="UserNameSection" destination="2639" id="name-outlet-2639"/>
-                        <outlet property="UserNameSectionHeight" destination="2642" id="name-outlet-2642"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2309" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-426" y="1437"/>
+            <point key="canvasLocation" x="-401" y="1437"/>
         </scene>
         <scene sceneID="2313">
             <objects>

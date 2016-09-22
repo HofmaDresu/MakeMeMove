@@ -16,8 +16,14 @@ namespace MakeMeMove.iOS
         {
             base.ViewDidLoad();
             View.BackgroundColor = FudistColors.PrimaryColor;
-            var labels = View.Subviews.OfType<UILabel>().ToArray();
-            FudistColors.SetTextPrimaryColor(labels);
+            UserNameView.BackgroundColor = FudistColors.TertiaryColor;
+
+
+            MenuBackgroundView.BackgroundColor = FudistColors.MainBackgroundColor;
+
+
+            //TODO: Use real value
+            UserNameLabel.Text = "Fake UserName";
         }
     }
 }
