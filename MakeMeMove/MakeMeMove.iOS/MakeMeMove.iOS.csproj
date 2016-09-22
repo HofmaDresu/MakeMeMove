@@ -74,7 +74,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution: Fudist, LLC (JHYA4S69DS)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
@@ -89,6 +89,9 @@
     <MtouchTlsProvider>Default</MtouchTlsProvider>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SWRevealViewControllerBinding">
+      <HintPath>..\..\ThirdPartyLibraries\SWRevealViewControllerBinding.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -138,7 +141,9 @@
       <InProject>false</InProject>
     </ImageAsset>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_menu_white.png" />
+  </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
@@ -151,13 +156,13 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="ManageScheduleController.cs" />
     <Compile Include="ManageScheduleController.designer.cs">
       <DependentUpon>ManageScheduleController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuViewController.cs" />
+    <Compile Include="MenuViewController.designer.cs">
+      <DependentUpon>MenuViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="MyScheduleController.cs" />
     <Compile Include="MyScheduleController.designer.cs">
@@ -191,6 +196,14 @@
     <Compile Include="Controls\FloatingButton.cs" />
     <Compile Include="Helpers\GeneralAlertDialogs.cs" />
     <Compile Include="Helpers\FudistColors.cs" />
+    <Compile Include="MainTabViewController.cs" />
+    <Compile Include="MainTabViewController.designer.cs">
+      <DependentUpon>MainTabViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PrimaryBottomBorderView.cs" />
+    <Compile Include="Controls\PrimaryBottomBorderView.designer.cs">
+      <DependentUpon>PrimaryBottomBorderView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">
@@ -210,6 +223,12 @@
     <BundleResource Include="Resources\ic_view_list.png" />
     <BundleResource Include="Resources\ic_view_list%402.png" />
     <BundleResource Include="Resources\ic_view_list%403.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_menu_white_2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_menu_white_3x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets" Condition="Exists('..\..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets')" />

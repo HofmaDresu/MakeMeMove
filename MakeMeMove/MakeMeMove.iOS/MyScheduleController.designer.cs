@@ -1,4 +1,4 @@
-// WARNING
+﻿// WARNING
 //
 // This file has been generated automatically by Xamarin Studio from the outlets and
 // actions declared in your storyboard file.
@@ -20,6 +20,10 @@ namespace MakeMeMove.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem MenuButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel ReminderPeriod { get; set; }
 
         [Outlet]
@@ -35,6 +39,11 @@ namespace MakeMeMove.iOS
             if (EndTime != null) {
                 EndTime.Dispose ();
                 EndTime = null;
+            }
+
+            if (MenuButton != null) {
+                MenuButton.Dispose ();
+                MenuButton = null;
             }
 
             if (ReminderPeriod != null) {

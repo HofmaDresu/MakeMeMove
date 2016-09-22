@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="24">
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2314">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -9,7 +9,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="23">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="24" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="24" sceneMemberID="viewController" customClass="MainTabViewController">
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="29">
                         <rect key="frame" x="0.0" y="551" width="600" height="49"/>
@@ -136,13 +136,16 @@
                             <constraint id="2282" firstItem="1853" firstAttribute="top" secondItem="2277" secondAttribute="bottom" constant="10"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Make Me Move" id="WKT-J1-vzb"/>
+                    <navigationItem key="navigationItem" title="Make Me Move" id="WKT-J1-vzb">
+                        <barButtonItem key="leftBarButtonItem" id="2623" image="ic_menu_white.png"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="EndTime" destination="1856" id="name-outlet-1856"/>
                         <outlet property="ReminderPeriod" destination="1867" id="name-outlet-1867"/>
                         <outlet property="StartTime" destination="1854" id="name-outlet-1854"/>
                         <segue destination="1872" kind="show" identifier="ManageScheduleSegue" id="iEa-vF-Tkb"/>
                         <outlet property="StatusSwitch" destination="2277" id="name-outlet-2277"/>
+                        <outlet property="MenuButton" destination="2623" id="name-outlet-2623"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -168,10 +171,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2019">
-                                <rect key="frame" x="0.0" y="516" width="600" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="2023"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="502" width="600" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17" weight="semibold"/>
                                 <state key="normal" title="Add Exercise">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -179,9 +179,12 @@
                                 <connections>
                                     <segue destination="2058" kind="show" identifier="ManageExerciseSegue" id="2130"/>
                                 </connections>
+                                <constraints>
+                                    <constraint id="2584" firstItem="2019" firstAttribute="height" constant="50"/>
+                                </constraints>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2024" allowsSelection="NO">
-                                <rect key="frame" x="0.0" y="66" width="600" height="450"/>
+                                <rect key="frame" x="0.0" y="66" width="600" height="436"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseBlockCell" rowHeight="103" id="2025" customClass="ExerciseBlockCell">
@@ -223,17 +226,21 @@
                             <constraint firstItem="2019" firstAttribute="bottom" secondItem="22" secondAttribute="top" constant="1" id="2020"/>
                             <constraint firstItem="2019" firstAttribute="trailing" secondItem="36" secondAttribute="trailing" id="2021"/>
                             <constraint firstItem="2019" firstAttribute="leading" secondItem="36" secondAttribute="leading" id="2022"/>
-                            <constraint firstItem="2024" firstAttribute="bottom" secondItem="2019" secondAttribute="top" id="2031"/>
-                            <constraint firstItem="2024" firstAttribute="top" secondItem="21" secondAttribute="bottom" constant="2" id="2033"/>
-                            <constraint firstItem="2024" firstAttribute="leading" secondItem="36" secondAttribute="leading" id="2034"/>
-                            <constraint firstItem="2024" firstAttribute="trailing" secondItem="36" secondAttribute="trailing" id="2035"/>
+                            <constraint id="2585" firstItem="2024" firstAttribute="top" secondItem="21" secondAttribute="bottom" constant="2"/>
+                            <constraint id="2586" firstItem="2024" firstAttribute="bottom" secondItem="2019" secondAttribute="top"/>
+                            <constraint id="2587" firstItem="2024" firstAttribute="trailing" secondItem="36" secondAttribute="trailing"/>
+                            <constraint id="2588" firstItem="2024" firstAttribute="trailing" secondItem="36" secondAttribute="trailing"/>
+                            <constraint id="2589" firstItem="2024" firstAttribute="leading" secondItem="36" secondAttribute="leading"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Make Me Move" id="Npw-yZ-dKr"/>
+                    <navigationItem key="navigationItem" title="Make Me Move" id="Npw-yZ-dKr">
+                        <barButtonItem key="leftBarButtonItem" id="2622" image="ic_menu_white.png"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="ExerciseList" destination="2024" id="name-outlet-2024"/>
                         <outlet property="NavBar" destination="2003" id="name-outlet-2003"/>
                         <outlet property="AddExerciseButton" destination="2019" id="name-outlet-2019"/>
+                        <outlet property="MenuButton" destination="2622" id="name-outlet-2622"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -394,12 +401,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2160" customClass="PickerUITextField">
-                                <rect key="frame" x="20" y="100" width="560" height="22"/>
+                                <rect key="frame" x="20" y="100" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="2605" firstItem="2160" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Custom Exercise Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2191">
-                                <rect key="frame" x="20" y="131" width="560" height="30"/>
+                                <rect key="frame" x="20" y="139" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2229"/>
                                 </constraints>
@@ -407,16 +417,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Repetitions" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2204">
-                                <rect key="frame" x="20" y="168" width="172" height="20"/>
+                                <rect key="frame" x="20" y="175.5" width="172" height="20.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2216" customClass="PickerUITextField">
-                                <rect key="frame" x="20" y="196" width="560" height="21"/>
+                                <rect key="frame" x="20" y="205" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="2606" firstItem="2216" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -447,10 +460,151 @@
             </objects>
             <point key="canvasLocation" x="1836" y="756"/>
         </scene>
+        <scene sceneID="2306">
+            <objects>
+                <viewController id="2307" sceneMemberID="viewController" customClass="MenuViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2304"/>
+                        <viewControllerLayoutGuide type="bottom" id="2305"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2308">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="2661" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="2639" translatesAutoresizingMaskIntoConstraints="NO" customClass="PrimaryBottomBorderView">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="91"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in as:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2640" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <rect key="frame" x="20" y="20" width="214" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17" weight="heavy"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2641" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <rect key="frame" x="20" y="49" width="560" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint id="2686" firstItem="2639" firstAttribute="height" constant="91"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="2687" translatesAutoresizingMaskIntoConstraints="NO" customClass="PrimaryBottomBorderView">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2688" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <rect key="frame" x="20" y="20" width="282" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint id="2696" firstItem="2687" firstAttribute="height" constant="60"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="2697" translatesAutoresizingMaskIntoConstraints="NO" customClass="PrimaryBottomBorderView">
+                                        <rect key="frame" x="0.0" y="152" width="600" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2698" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <rect key="frame" x="20" y="20" width="350" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint id="2702" firstItem="2697" firstAttribute="height" constant="60"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="2699" translatesAutoresizingMaskIntoConstraints="NO" customClass="PrimaryBottomBorderView">
+                                        <rect key="frame" x="0.0" y="212" width="600" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2704" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <rect key="frame" x="20" y="20" width="284" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint id="2708" firstItem="2699" firstAttribute="height" constant="60"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint id="2667" firstItem="2639" firstAttribute="leading" secondItem="2661" secondAttribute="leading"/>
+                                    <constraint id="2668" firstItem="2639" firstAttribute="top" secondItem="2661" secondAttribute="top"/>
+                                    <constraint id="2669" firstItem="2639" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing"/>
+                                    <constraint id="2693" firstItem="2687" firstAttribute="top" secondItem="2639" secondAttribute="bottom" constant="1"/>
+                                    <constraint id="2694" firstItem="2687" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing"/>
+                                    <constraint id="2695" firstItem="2687" firstAttribute="leading" secondItem="2661" secondAttribute="leading"/>
+                                    <constraint id="2700" firstItem="2697" firstAttribute="top" secondItem="2687" secondAttribute="bottom"/>
+                                    <constraint id="2701" firstItem="2697" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing"/>
+                                    <constraint id="2703" firstItem="2697" firstAttribute="leading" secondItem="2661" secondAttribute="leading"/>
+                                    <constraint id="2705" firstItem="2699" firstAttribute="top" secondItem="2697" secondAttribute="bottom"/>
+                                    <constraint id="2706" firstItem="2699" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing"/>
+                                    <constraint id="2707" firstItem="2699" firstAttribute="leading" secondItem="2661" secondAttribute="leading"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint id="2662" firstItem="2661" firstAttribute="top" secondItem="2304" secondAttribute="bottom"/>
+                            <constraint id="2663" firstItem="2661" firstAttribute="trailing" secondItem="2308" secondAttribute="trailing"/>
+                            <constraint id="2664" firstItem="2661" firstAttribute="bottom" secondItem="2308" secondAttribute="bottom"/>
+                            <constraint id="2665" firstItem="2661" firstAttribute="leading" secondItem="2308" secondAttribute="leading"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="UserNameView" destination="2639" id="name-outlet-2639"/>
+                        <outlet property="MenuBackgroundView" destination="2661" id="name-outlet-2661"/>
+                        <outlet property="UserNameLabel" destination="2641" id="name-outlet-2641"/>
+                        <outlet property="ViewHistoryView" destination="2687" id="name-outlet-2687"/>
+                        <outlet property="SignInOutView" destination="2697" id="name-outlet-2697"/>
+                        <outlet property="SignInOutLabel" destination="2698" id="name-outlet-2698"/>
+                        <outlet property="OpenFudistView" destination="2699" id="name-outlet-2699"/>
+                        <outlet property="OpenFudistLabel" destination="2704" id="name-outlet-2704"/>
+                        <outlet property="UserNameViewHeightConstraint" destination="2686" id="name-outlet-2686"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2309" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-401" y="1437"/>
+        </scene>
+        <scene sceneID="2313">
+            <objects>
+                <viewController id="2314" sceneMemberID="viewController" customClass="SWRevealViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2311"/>
+                        <viewControllerLayoutGuide type="bottom" id="2312"/>
+                    </layoutGuides>
+                    <connections>
+                        <segue id="2486" destination="24" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController"/>
+                        <segue id="2568" destination="2307" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2316" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1152" y="1067"/>
+        </scene>
     </scenes>
     <resources>
         <image name="LaunchGraphic.png" width="1024" height="1300"/>
         <image name="ic_today.png" width="24" height="24"/>
         <image name="ic_view_list.png" width="24" height="24"/>
+        <image name="ic_menu_white.png" width="24" height="24"/>
+        <image name="ic_menu_white_2x.png" width="48" height="48"/>
+        <image name="ic_menu_white_3x.png" width="72" height="72"/>
     </resources>
 </document>
