@@ -4,6 +4,7 @@ using UIKit;
 using System.Collections.Generic;
 using MakeMeMove.Model;
 using MakeMeMove.iOS.Helpers;
+using SWRevealViewControllerBinding;
 
 namespace MakeMeMove.iOS
 {
@@ -22,7 +23,13 @@ namespace MakeMeMove.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			ExerciseList.BackgroundColor = FudistColors.MainBackgroundColor;
+
+            if (this.RevealViewController() == null) return;
+
+            MenuButton.Clicked += (sender, e) => this.RevealViewController().RevealToggleAnimated(true);
+            MenuButton.TintColor = UIColor.White;
+
+            ExerciseList.BackgroundColor = FudistColors.MainBackgroundColor;
 			AddExerciseButton.BackgroundColor = FudistColors.PrimaryColor;
 		}
 

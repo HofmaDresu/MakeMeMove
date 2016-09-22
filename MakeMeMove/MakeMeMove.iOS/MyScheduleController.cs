@@ -5,6 +5,7 @@ using UIKit;
 using MakeMeMove.Model;
 using MakeMeMove.iOS.Controls;
 using MakeMeMove.iOS.Helpers;
+using SWRevealViewControllerBinding;
 
 namespace MakeMeMove.iOS
 {
@@ -21,7 +22,12 @@ namespace MakeMeMove.iOS
 		{
 			base.ViewDidLoad();
 
-			AddButtons();
+            if (this.RevealViewController() == null) return;
+
+            MenuButton.Clicked += (sender, e) => this.RevealViewController().RevealToggleAnimated(true);
+		    MenuButton.TintColor = UIColor.White;
+
+            AddButtons();
 			StatusSwitch.TintColor = FudistColors.InteractableTextColor;
 		}
 

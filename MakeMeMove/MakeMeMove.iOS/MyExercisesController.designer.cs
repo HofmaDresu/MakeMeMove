@@ -1,4 +1,4 @@
-// WARNING
+﻿// WARNING
 //
 // This file has been generated automatically by Xamarin Studio from the outlets and
 // actions declared in your storyboard file.
@@ -24,6 +24,10 @@ namespace MakeMeMove.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem MenuButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UINavigationBar NavBar { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -36,6 +40,11 @@ namespace MakeMeMove.iOS
             if (ExerciseList != null) {
                 ExerciseList.Dispose ();
                 ExerciseList = null;
+            }
+
+            if (MenuButton != null) {
+                MenuButton.Dispose ();
+                MenuButton = null;
             }
 
             if (NavBar != null) {

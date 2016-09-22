@@ -14,10 +14,8 @@ namespace MakeMeMove.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			if (this.RevealViewController() == null)
-				return;
-
-			//RevealButtonItem.Clicked += (sender, e) => this.RevealViewController().RevealToggleAnimated(true);
+			if (this.RevealViewController() == null) return;
+            
 			View.AddGestureRecognizer(this.RevealViewController().PanGestureRecognizer);
 		}
     }

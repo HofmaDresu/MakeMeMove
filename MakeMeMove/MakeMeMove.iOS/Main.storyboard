@@ -136,13 +136,16 @@
                             <constraint id="2282" firstItem="1853" firstAttribute="top" secondItem="2277" secondAttribute="bottom" constant="10"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Make Me Move" id="WKT-J1-vzb"/>
+                    <navigationItem key="navigationItem" title="Make Me Move" id="WKT-J1-vzb">
+                        <barButtonItem key="leftBarButtonItem" id="2623" image="ic_menu_white.png"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="EndTime" destination="1856" id="name-outlet-1856"/>
                         <outlet property="ReminderPeriod" destination="1867" id="name-outlet-1867"/>
                         <outlet property="StartTime" destination="1854" id="name-outlet-1854"/>
                         <segue destination="1872" kind="show" identifier="ManageScheduleSegue" id="iEa-vF-Tkb"/>
                         <outlet property="StatusSwitch" destination="2277" id="name-outlet-2277"/>
+                        <outlet property="MenuButton" destination="2623" id="name-outlet-2623"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -230,11 +233,14 @@
                             <constraint id="2589" firstItem="2024" firstAttribute="leading" secondItem="36" secondAttribute="leading"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Make Me Move" id="Npw-yZ-dKr"/>
+                    <navigationItem key="navigationItem" title="Make Me Move" id="Npw-yZ-dKr">
+                        <barButtonItem key="leftBarButtonItem" id="2622" image="ic_menu_white.png"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="ExerciseList" destination="2024" id="name-outlet-2024"/>
                         <outlet property="NavBar" destination="2003" id="name-outlet-2003"/>
                         <outlet property="AddExerciseButton" destination="2019" id="name-outlet-2019"/>
+                        <outlet property="MenuButton" destination="2622" id="name-outlet-2622"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -395,12 +401,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2160" customClass="PickerUITextField">
-                                <rect key="frame" x="20" y="100" width="560" height="22"/>
+                                <rect key="frame" x="20" y="100" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="2605" firstItem="2160" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Custom Exercise Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2191">
-                                <rect key="frame" x="20" y="131" width="560" height="30"/>
+                                <rect key="frame" x="20" y="139" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2229"/>
                                 </constraints>
@@ -408,16 +417,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Repetitions" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2204">
-                                <rect key="frame" x="20" y="168" width="172" height="20"/>
+                                <rect key="frame" x="20" y="175.5" width="172" height="20.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2216" customClass="PickerUITextField">
-                                <rect key="frame" x="20" y="196" width="560" height="21"/>
+                                <rect key="frame" x="20" y="205" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="2606" firstItem="2216" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -486,5 +498,8 @@
         <image name="LaunchGraphic.png" width="1024" height="1300"/>
         <image name="ic_today.png" width="24" height="24"/>
         <image name="ic_view_list.png" width="24" height="24"/>
+        <image name="ic_menu_white.png" width="24" height="24"/>
+        <image name="ic_menu_white_2x.png" width="48" height="48"/>
+        <image name="ic_menu_white_3x.png" width="72" height="72"/>
     </resources>
 </document>
