@@ -154,13 +154,13 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="ManageScheduleController.cs" />
     <Compile Include="ManageScheduleController.designer.cs">
       <DependentUpon>ManageScheduleController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuViewController.cs" />
+    <Compile Include="MenuViewController.designer.cs">
+      <DependentUpon>MenuViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="MyScheduleController.cs" />
     <Compile Include="MyScheduleController.designer.cs">

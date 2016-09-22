@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2314">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -168,10 +168,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2019">
-                                <rect key="frame" x="0.0" y="516" width="600" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="2023"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="502" width="600" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17" weight="semibold"/>
                                 <state key="normal" title="Add Exercise">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -179,9 +176,12 @@
                                 <connections>
                                     <segue destination="2058" kind="show" identifier="ManageExerciseSegue" id="2130"/>
                                 </connections>
+                                <constraints>
+                                    <constraint id="2584" firstItem="2019" firstAttribute="height" constant="50"/>
+                                </constraints>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2024" allowsSelection="NO">
-                                <rect key="frame" x="0.0" y="66" width="600" height="450"/>
+                                <rect key="frame" x="0.0" y="66" width="600" height="436"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseBlockCell" rowHeight="103" id="2025" customClass="ExerciseBlockCell">
@@ -223,10 +223,11 @@
                             <constraint firstItem="2019" firstAttribute="bottom" secondItem="22" secondAttribute="top" constant="1" id="2020"/>
                             <constraint firstItem="2019" firstAttribute="trailing" secondItem="36" secondAttribute="trailing" id="2021"/>
                             <constraint firstItem="2019" firstAttribute="leading" secondItem="36" secondAttribute="leading" id="2022"/>
-                            <constraint firstItem="2024" firstAttribute="bottom" secondItem="2019" secondAttribute="top" id="2031"/>
-                            <constraint firstItem="2024" firstAttribute="top" secondItem="21" secondAttribute="bottom" constant="2" id="2033"/>
-                            <constraint firstItem="2024" firstAttribute="leading" secondItem="36" secondAttribute="leading" id="2034"/>
-                            <constraint firstItem="2024" firstAttribute="trailing" secondItem="36" secondAttribute="trailing" id="2035"/>
+                            <constraint id="2585" firstItem="2024" firstAttribute="top" secondItem="21" secondAttribute="bottom" constant="2"/>
+                            <constraint id="2586" firstItem="2024" firstAttribute="bottom" secondItem="2019" secondAttribute="top"/>
+                            <constraint id="2587" firstItem="2024" firstAttribute="trailing" secondItem="36" secondAttribute="trailing"/>
+                            <constraint id="2588" firstItem="2024" firstAttribute="trailing" secondItem="36" secondAttribute="trailing"/>
+                            <constraint id="2589" firstItem="2024" firstAttribute="leading" secondItem="36" secondAttribute="leading"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Make Me Move" id="Npw-yZ-dKr"/>
@@ -449,7 +450,7 @@
         </scene>
         <scene sceneID="2306">
             <objects>
-                <viewController id="2307" sceneMemberID="viewController">
+                <viewController id="2307" sceneMemberID="viewController" customClass="MenuViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2304"/>
                         <viewControllerLayoutGuide type="bottom" id="2305"/>
