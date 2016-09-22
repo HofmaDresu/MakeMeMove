@@ -89,6 +89,9 @@
     <MtouchTlsProvider>Default</MtouchTlsProvider>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SWRevealViewControllerBinding">
+      <HintPath>..\..\ThirdPartyLibraries\SWRevealViewControllerBinding.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
