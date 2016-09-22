@@ -20,6 +20,14 @@ namespace MakeMeMove.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel SignInOutButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        MakeMeMove.iOS.PrimaryBottomBorderView SignInOutView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel UserNameLabel { get; set; }
 
         [Outlet]
@@ -35,6 +43,16 @@ namespace MakeMeMove.iOS
             if (MenuBackgroundView != null) {
                 MenuBackgroundView.Dispose ();
                 MenuBackgroundView = null;
+            }
+
+            if (SignInOutButton != null) {
+                SignInOutButton.Dispose ();
+                SignInOutButton = null;
+            }
+
+            if (SignInOutView != null) {
+                SignInOutView.Dispose ();
+                SignInOutView = null;
             }
 
             if (UserNameLabel != null) {
