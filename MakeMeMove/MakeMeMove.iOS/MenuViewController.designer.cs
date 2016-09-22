@@ -44,6 +44,10 @@ namespace MakeMeMove.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint UserNameViewHeightConstraint { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         MakeMeMove.iOS.PrimaryBottomBorderView ViewHistoryView { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -81,6 +85,11 @@ namespace MakeMeMove.iOS
             if (UserNameView != null) {
                 UserNameView.Dispose ();
                 UserNameView = null;
+            }
+
+            if (UserNameViewHeightConstraint != null) {
+                UserNameViewHeightConstraint.Dispose ();
+                UserNameViewHeightConstraint = null;
             }
 
             if (ViewHistoryView != null) {

@@ -575,6 +575,7 @@
                         <outlet property="SignInOutLabel" destination="2698" id="name-outlet-2698"/>
                         <outlet property="OpenFudistView" destination="2699" id="name-outlet-2699"/>
                         <outlet property="OpenFudistLabel" destination="2704" id="name-outlet-2704"/>
+                        <outlet property="UserNameViewHeightConstraint" destination="2686" id="name-outlet-2686"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2309" userLabel="First Responder" sceneMemberID="firstResponder"/>
