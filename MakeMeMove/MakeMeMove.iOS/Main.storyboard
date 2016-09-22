@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2314">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2314">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -15,8 +14,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="29">
                         <rect key="frame" x="0.0" y="551" width="600" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="selectedImageTintColor" red="0.078431372549019607" green="0.61960784313725492" blue="0.043137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" colorSpace="calibratedRGB" red="0.0784313725490196" green="0.61960784313725492" blue="0.043137254901960784" alpha="1"/>
                     </tabBar>
                     <connections>
                         <segue destination="1Jj-fY-wC7" kind="relationship" relationship="viewControllers" id="25"/>
@@ -36,84 +35,88 @@
                         <viewControllerLayoutGuide type="bottom" id="20"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="32">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Schedule Status:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1849">
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="72" width="156" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="156" id="1962"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Start Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1853">
-                                <frame key="frameInset" minX="20" minY="140" width="156" height="21"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1853" misplaced="YES">
+                                <rect key="frame" x="20" y="140" width="156" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="156" id="1967"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12:00:00 AM" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1854">
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="50" y="168" width="126" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="126" id="1970"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="End Time: " lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1855">
-                                <frame key="frameInset" minX="20" minY="198" width="102" height="21"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Time: " lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1855" misplaced="YES">
+                                <rect key="frame" x="20" y="198" width="102" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="102" id="1973"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12:00:00 PM" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1856">
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="50" y="226" width="119" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="119" id="1976"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Reminder Period:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1857">
-                                <frame key="frameInset" minX="20" minY="256" width="181" height="21"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reminder Period:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1857" misplaced="YES">
+                                <rect key="frame" x="20" y="256" width="181" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="181" id="1979"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Every fifteen minutes" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1867">
-                                <frame key="frameInset" minX="50" minY="284" width="176" height="20"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Every fifteen minutes" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1867">
+                                <rect key="frame" x="50" y="284" width="176" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="176" id="1982"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2277">
+                                <rect key="frame" x="50" y="100.5" width="149" height="29"/>
                                 <segments>
                                     <segment title="STOPPED"/>
                                     <segment title="STARTED"/>
                                 </segments>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1849" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="20" id="1961"/>
                             <constraint firstItem="1853" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="20" id="1966"/>
@@ -128,9 +131,9 @@
                             <constraint firstItem="1867" firstAttribute="top" secondItem="1857" secondAttribute="centerY" constant="18" id="1980"/>
                             <constraint firstItem="1867" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="50" id="1981"/>
                             <constraint firstItem="1849" firstAttribute="top" secondItem="19" secondAttribute="bottom" constant="8" id="2036"/>
-                            <constraint firstItem="2277" firstAttribute="top" secondItem="1849" secondAttribute="bottom" constant="8" id="2280"/>
-                            <constraint firstItem="2277" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="50" id="2281"/>
-                            <constraint firstItem="1853" firstAttribute="top" secondItem="2277" secondAttribute="bottom" constant="10" id="2282"/>
+                            <constraint id="2280" firstItem="2277" firstAttribute="top" secondItem="1849" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2281" firstItem="2277" firstAttribute="leading" secondItem="32" secondAttribute="leading" constant="50"/>
+                            <constraint id="2282" firstItem="1853" firstAttribute="top" secondItem="2277" secondAttribute="bottom" constant="10"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Make Me Move" id="WKT-J1-vzb"/>
@@ -138,8 +141,8 @@
                         <outlet property="EndTime" destination="1856" id="name-outlet-1856"/>
                         <outlet property="ReminderPeriod" destination="1867" id="name-outlet-1867"/>
                         <outlet property="StartTime" destination="1854" id="name-outlet-1854"/>
-                        <outlet property="StatusSwitch" destination="2277" id="name-outlet-2277"/>
                         <segue destination="1872" kind="show" identifier="ManageScheduleSegue" id="iEa-vF-Tkb"/>
+                        <outlet property="StatusSwitch" destination="2277" id="name-outlet-2277"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -155,50 +158,48 @@
                         <viewControllerLayoutGuide type="bottom" id="22"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="36">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2003">
-                                <frame key="frameInset" minY="20" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2003">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Make Me Move" id="2004"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2019">
-                                <frame key="frameInset" minY="516" width="600" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2019">
+                                <rect key="frame" x="0.0" y="516" width="600" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="2023"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17" weight="semibold"/>
                                 <state key="normal" title="Add Exercise">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="2058" kind="show" identifier="ManageExerciseSegue" id="2130"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2024">
-                                <frame key="frameInset" minY="66" width="600" height="450"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2024" allowsSelection="NO">
+                                <rect key="frame" x="0.0" y="66" width="600" height="450"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseBlockCell" rowHeight="103" id="2025" customClass="ExerciseBlockCell">
                                         <rect key="frame" x="0.0" y="28" width="600" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2025" id="2026">
-                                            <frame key="frameInset" width="600" height="102.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="102.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2039">
-                                                    <frame key="frameInset" minX="20" minY="20" width="560" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2039" fixedFrame="YES">
+                                                    <rect key="frame" x="20" y="20" width="560" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2290">
-                                                    <frame key="frameInset" minX="20" minY="49" width="123" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2290" fixedFrame="YES">
+                                                    <rect key="frame" x="20" y="49" width="123" height="29"/>
                                                     <segments>
                                                         <segment title="OFF"/>
                                                         <segment title="ON"/>
@@ -207,14 +208,14 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="ExerciseIsEnabled" destination="2290" id="name-outlet-2290"/>
                                             <outlet property="ExerciseNameLabel" destination="2039" id="name-outlet-2039"/>
+                                            <outlet property="ExerciseIsEnabled" destination="2290" id="name-outlet-2290"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2003" firstAttribute="trailing" secondItem="36" secondAttribute="trailing" id="2005"/>
                             <constraint firstItem="2003" firstAttribute="leading" secondItem="36" secondAttribute="leading" id="2006"/>
@@ -230,9 +231,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Make Me Move" id="Npw-yZ-dKr"/>
                     <connections>
-                        <outlet property="AddExerciseButton" destination="2019" id="name-outlet-2019"/>
                         <outlet property="ExerciseList" destination="2024" id="name-outlet-2024"/>
                         <outlet property="NavBar" destination="2003" id="name-outlet-2003"/>
+                        <outlet property="AddExerciseButton" destination="2019" id="name-outlet-2019"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -248,20 +249,21 @@
                         <viewControllerLayoutGuide type="bottom" id="1870"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1873">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reminder Period:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2239">
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="72" width="136" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="2243"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2240" customClass="PickerUITextField">
-                                <frame key="frameInset" minX="20" minY="101" width="560" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2240" customClass="PickerUITextField">
+                                <rect key="frame" x="20" y="101" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2247"/>
                                 </constraints>
@@ -269,34 +271,35 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2248">
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="139" width="149" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="149" id="2252"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2249" customClass="PickerUITextField">
-                                <frame key="frameInset" minX="20" minY="168" width="560" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2249" customClass="PickerUITextField">
+                                <rect key="frame" x="20" y="168" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2256"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="End Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2257">
-                                <frame key="frameInset" minX="20" minY="205" width="149" height="20.5"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2257">
+                                <rect key="frame" x="20" y="205" width="149" height="20.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="149" id="2260"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2261" customClass="PickerUITextField">
-                                <frame key="frameInset" minX="20" minY="234" width="560" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2261" customClass="PickerUITextField">
+                                <rect key="frame" x="20" y="234" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2265"/>
                                 </constraints>
@@ -304,7 +307,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2239" firstAttribute="top" secondItem="1869" secondAttribute="bottom" constant="8" id="2241"/>
                             <constraint firstItem="2239" firstAttribute="leading" secondItem="1873" secondAttribute="leading" constant="20" id="2242"/>
@@ -337,7 +340,7 @@
         <scene sceneID="Tqg-4X-rE7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Jj-fY-wC7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Schedule" image="ic_today.png" id="33"/>
+                    <tabBarItem key="tabBarItem" title="My Schedule" id="33" image="ic_today.png"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="okD-LI-0AR">
                         <rect key="frame" x="0.0" y="20" width="600" height="44"/>
@@ -356,7 +359,7 @@
         <scene sceneID="EIs-rn-v1u">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8He-uL-6RC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Exercises" image="ic_view_list.png" id="37"/>
+                    <tabBarItem key="tabBarItem" title="My Exercises" id="37" image="ic_view_list.png"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gKZ-Ic-0Sj">
                         <rect key="frame" x="0.0" y="20" width="600" height="44"/>
@@ -380,22 +383,23 @@
                         <viewControllerLayoutGuide type="bottom" id="2056"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2059">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Exercise Type" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2150">
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="72" width="106" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2160" customClass="PickerUITextField">
-                                <frame key="frameInset" minX="20" minY="100" width="560" height="22"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2160" customClass="PickerUITextField">
+                                <rect key="frame" x="20" y="100" width="560" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Custom Exercise Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2191">
-                                <frame key="frameInset" minX="20" minY="131" width="560" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Custom Exercise Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2191">
+                                <rect key="frame" x="20" y="131" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2229"/>
                                 </constraints>
@@ -403,18 +407,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Repetitions" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2204">
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="168" width="172" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2216" customClass="PickerUITextField">
-                                <frame key="frameInset" minX="20" minY="196" width="560" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2216" customClass="PickerUITextField">
+                                <rect key="frame" x="20" y="196" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2150" firstAttribute="top" secondItem="2055" secondAttribute="bottom" constant="8" id="2186"/>
                             <constraint firstItem="2150" firstAttribute="leading" secondItem="2059" secondAttribute="leading" constant="20" id="2187"/>
@@ -442,7 +447,6 @@
             </objects>
             <point key="canvasLocation" x="1836" y="756"/>
         </scene>
-        <!--View Controller-->
         <scene sceneID="2306">
             <objects>
                 <viewController id="2307" sceneMemberID="viewController">
@@ -451,22 +455,30 @@
                         <viewControllerLayoutGuide type="bottom" id="2305"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2308">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2309" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-426" y="1437"/>
         </scene>
-        <!--Reveal View Controller-->
         <scene sceneID="2313">
             <objects>
-                <viewController id="2314" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController id="2314" sceneMemberID="viewController" customClass="SWRevealViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2311"/>
+                        <viewControllerLayoutGuide type="bottom" id="2312"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2315">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <connections>
-                        <segue destination="24" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="2486"/>
-                        <segue destination="2307" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="2568"/>
+                        <segue id="2486" destination="24" kind="show" customClass="SWRevealViewControllerSegueSetController" identifier="sw_front"/>
+                        <segue id="2568" destination="2307" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2316" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -475,6 +487,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LaunchGraphic.png" width="1024" height="1300"/>
         <image name="ic_today.png" width="24" height="24"/>
         <image name="ic_view_list.png" width="24" height="24"/>
     </resources>
