@@ -26,6 +26,10 @@ namespace MakeMeMove.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         MakeMeMove.iOS.PrimaryBottomBorderView UserNameView { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        MakeMeMove.iOS.PrimaryBottomBorderView ViewHistoryView { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (MenuBackgroundView != null) {
@@ -41,6 +45,11 @@ namespace MakeMeMove.iOS
             if (UserNameView != null) {
                 UserNameView.Dispose ();
                 UserNameView = null;
+            }
+
+            if (ViewHistoryView != null) {
+                ViewHistoryView.Dispose ();
+                ViewHistoryView = null;
             }
         }
     }

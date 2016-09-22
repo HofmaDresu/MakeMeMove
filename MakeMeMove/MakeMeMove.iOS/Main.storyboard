@@ -497,11 +497,29 @@
                                             <constraint id="2686" firstItem="2639" firstAttribute="height" constant="91"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" id="2687" translatesAutoresizingMaskIntoConstraints="NO" customClass="PrimaryBottomBorderView">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2688" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <rect key="frame" x="20" y="20" width="282" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint id="2696" firstItem="2687" firstAttribute="height" constant="60"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint id="2667" firstItem="2639" firstAttribute="leading" secondItem="2661" secondAttribute="leading"/>
                                     <constraint id="2668" firstItem="2639" firstAttribute="top" secondItem="2661" secondAttribute="top"/>
                                     <constraint id="2669" firstItem="2639" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing"/>
+                                    <constraint id="2693" firstItem="2687" firstAttribute="top" secondItem="2639" secondAttribute="bottom" constant="1"/>
+                                    <constraint id="2694" firstItem="2687" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing"/>
+                                    <constraint id="2695" firstItem="2687" firstAttribute="leading" secondItem="2661" secondAttribute="leading"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -516,6 +534,7 @@
                         <outlet property="UserNameView" destination="2639" id="name-outlet-2639"/>
                         <outlet property="MenuBackgroundView" destination="2661" id="name-outlet-2661"/>
                         <outlet property="UserNameLabel" destination="2641" id="name-outlet-2641"/>
+                        <outlet property="ViewHistoryView" destination="2687" id="name-outlet-2687"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2309" userLabel="First Responder" sceneMemberID="firstResponder"/>
