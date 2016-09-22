@@ -9,7 +9,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="23">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="24" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="24" sceneMemberID="viewController" customClass="MainTabViewController">
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="29">
                         <rect key="frame" x="0.0" y="551" width="600" height="49"/>
@@ -471,13 +471,8 @@
                         <viewControllerLayoutGuide type="top" id="2311"/>
                         <viewControllerLayoutGuide type="bottom" id="2312"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2315">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
                     <connections>
-                        <segue id="2486" destination="24" kind="show" customClass="SWRevealViewControllerSegueSetController" identifier="sw_front"/>
+                        <segue id="2486" destination="24" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController"/>
                         <segue id="2568" destination="2307" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController"/>
                     </connections>
                 </viewController>

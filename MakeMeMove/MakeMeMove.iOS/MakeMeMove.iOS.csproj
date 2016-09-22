@@ -194,6 +194,10 @@
     <Compile Include="Controls\FloatingButton.cs" />
     <Compile Include="Helpers\GeneralAlertDialogs.cs" />
     <Compile Include="Helpers\FudistColors.cs" />
+    <Compile Include="MainTabViewController.cs" />
+    <Compile Include="MainTabViewController.designer.cs">
+      <DependentUpon>MainTabViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">
