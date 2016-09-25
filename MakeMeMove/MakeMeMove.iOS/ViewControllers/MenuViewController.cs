@@ -1,13 +1,11 @@
-﻿using Foundation;
-using System;
+﻿using System;
 using System.IO;
-using System.Linq;
 using MakeMeMove.iOS.Helpers;
 using SQLite;
 using SWRevealViewControllerBinding;
 using UIKit;
 
-namespace MakeMeMove.iOS
+namespace MakeMeMove.iOS.ViewControllers
 {
     public partial class MenuViewController : UIViewController
     {

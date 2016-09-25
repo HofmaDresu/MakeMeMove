@@ -1,9 +1,7 @@
-﻿using Foundation;
-using System;
+﻿using System;
 using MakeMeMove.iOS.ViewControllers.Base;
-using UIKit;
 
-namespace MakeMeMove.iOS
+namespace MakeMeMove.iOS.ViewControllers
 {
     public partial class ExerciseHistoryViewController : BaseViewController
     {

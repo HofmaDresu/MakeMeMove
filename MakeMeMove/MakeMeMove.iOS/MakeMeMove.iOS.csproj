@@ -159,28 +159,28 @@
     <Compile Include="ExerciseHistoryCell.designer.cs">
       <DependentUpon>ExerciseHistoryCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExerciseHistoryViewController.cs" />
-    <Compile Include="ExerciseHistoryViewController.designer.cs">
+    <Compile Include="ViewControllers\ExerciseHistoryViewController.cs" />
+    <Compile Include="ViewControllers\ExerciseHistoryViewController.designer.cs">
       <DependentUpon>ExerciseHistoryViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ManageScheduleController.cs" />
-    <Compile Include="ManageScheduleController.designer.cs">
+    <Compile Include="ViewControllers\ManageScheduleController.cs" />
+    <Compile Include="ViewControllers\ManageScheduleController.designer.cs">
       <DependentUpon>ManageScheduleController.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuViewController.cs" />
-    <Compile Include="MenuViewController.designer.cs">
+    <Compile Include="ViewControllers\MenuViewController.cs" />
+    <Compile Include="ViewControllers\MenuViewController.designer.cs">
       <DependentUpon>MenuViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyScheduleController.cs" />
-    <Compile Include="MyScheduleController.designer.cs">
+    <Compile Include="ViewControllers\MyScheduleController.cs" />
+    <Compile Include="ViewControllers\MyScheduleController.designer.cs">
       <DependentUpon>MyScheduleController.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\Base\BaseTabbedViewController.cs" />
     <Compile Include="ViewControllers\Base\BaseViewController.cs" />
-    <Compile Include="MyExercisesController.cs" />
-    <Compile Include="MyExercisesController.designer.cs">
+    <Compile Include="ViewControllers\MyExercisesController.cs" />
+    <Compile Include="ViewControllers\MyExercisesController.designer.cs">
       <DependentUpon>MyExercisesController.cs</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
@@ -192,8 +192,8 @@
     <Compile Include="ExerciseBlockCell.designer.cs">
       <DependentUpon>ExerciseBlockCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManageExerciseViewController.cs" />
-    <Compile Include="ManageExerciseViewController.designer.cs">
+    <Compile Include="ViewControllers\ManageExerciseViewController.cs" />
+    <Compile Include="ViewControllers\ManageExerciseViewController.designer.cs">
       <DependentUpon>ManageExerciseViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ExerciseTableDelegate.cs" />
@@ -206,8 +206,8 @@
     <Compile Include="Controls\FloatingButton.cs" />
     <Compile Include="Helpers\GeneralAlertDialogs.cs" />
     <Compile Include="Helpers\FudistColors.cs" />
-    <Compile Include="MainTabViewController.cs" />
-    <Compile Include="MainTabViewController.designer.cs">
+    <Compile Include="ViewControllers\MainTabViewController.cs" />
+    <Compile Include="ViewControllers\MainTabViewController.designer.cs">
       <DependentUpon>MainTabViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\PrimaryBottomBorderView.cs" />
