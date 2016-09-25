@@ -7,10 +7,11 @@ using MakeMeMove.iOS.Models;
 using Humanizer;
 using MakeMeMove.iOS.Helpers;
 using System.Linq;
+using MakeMeMove.iOS.ViewControllers.Base;
 
 namespace MakeMeMove.iOS
 {
-	public partial class ManageExerciseViewController : BaseViewController
+	public partial class ManageExerciseViewController : BaseTabbedViewController
     {
 		public int? SelectedExerciseId;
 		private ExerciseBlock _selectedExercise;

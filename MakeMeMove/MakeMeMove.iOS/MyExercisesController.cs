@@ -4,11 +4,12 @@ using UIKit;
 using System.Collections.Generic;
 using MakeMeMove.Model;
 using MakeMeMove.iOS.Helpers;
+using MakeMeMove.iOS.ViewControllers.Base;
 using SWRevealViewControllerBinding;
 
 namespace MakeMeMove.iOS
 {
-    public partial class MyExercisesController : BaseViewController
+    public partial class MyExercisesController : BaseTabbedViewController
     {
 		private ExerciseTableDelegate _exerciseTableDelegate;
 		private List<ExerciseBlock> _exercises;

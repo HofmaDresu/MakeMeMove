@@ -7,10 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using MakeMeMove.Model;
 using MakeMeMove.iOS.Helpers;
+using MakeMeMove.iOS.ViewControllers.Base;
 
 namespace MakeMeMove.iOS
 {
-	public partial class ManageScheduleController : BaseViewController
+	public partial class ManageScheduleController : BaseTabbedViewController
     {
 		private FloatingButton _saveButton;
 		private FloatingButton _cancelButton;

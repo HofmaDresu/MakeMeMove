@@ -149,11 +149,20 @@
     <InterfaceDefinition Include="Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
+    <InterfaceDefinition Include="ExerciseHistory.storyboard" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExerciseHistoryCell.cs" />
+    <Compile Include="ExerciseHistoryCell.designer.cs">
+      <DependentUpon>ExerciseHistoryCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExerciseHistoryViewController.cs" />
+    <Compile Include="ExerciseHistoryViewController.designer.cs">
+      <DependentUpon>ExerciseHistoryViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="ManageScheduleController.cs" />
@@ -168,7 +177,8 @@
     <Compile Include="MyScheduleController.designer.cs">
       <DependentUpon>MyScheduleController.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseViewController.cs" />
+    <Compile Include="ViewControllers\Base\BaseTabbedViewController.cs" />
+    <Compile Include="ViewControllers\Base\BaseViewController.cs" />
     <Compile Include="MyExercisesController.cs" />
     <Compile Include="MyExercisesController.designer.cs">
       <DependentUpon>MyExercisesController.cs</DependentUpon>

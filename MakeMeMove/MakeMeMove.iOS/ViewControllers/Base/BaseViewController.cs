@@ -1,12 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using Foundation;
 using MakeMeMove.iOS.Helpers;
 using SQLite;
 using UIKit;
 
-namespace MakeMeMove.iOS
+namespace MakeMeMove.iOS.ViewControllers.Base
 {
 	public abstract class BaseViewController : UIViewController, IUINavigationBarDelegate
 	{
@@ -22,18 +21,10 @@ namespace MakeMeMove.iOS
 		{
 			base.ViewDidLoad();
 			View.BackgroundColor = FudistColors.MainBackgroundColor;
-			NavigationController.NavigationBar.BarTintColor = FudistColors.PrimaryColor;
-			NavigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes
-			{
-				ForegroundColor = UIColor.White
-			};
 
 
 			var labels = View.Subviews.OfType<UILabel>().ToArray();
 			FudistColors.SetTextPrimaryColor(labels);
-
-			TabBarController.TabBar.TintColor = FudistColors.InteractableTextColor;
-			NavigationItem.HidesBackButton = true;
 		}
 
 		public override void ViewWillAppear(bool animated)

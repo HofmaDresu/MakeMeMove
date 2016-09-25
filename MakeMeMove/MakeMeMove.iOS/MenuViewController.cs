@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using MakeMeMove.iOS.Helpers;
 using SQLite;
+using SWRevealViewControllerBinding;
 using UIKit;
 
 namespace MakeMeMove.iOS
@@ -48,7 +49,7 @@ namespace MakeMeMove.iOS
             }
 
             OpenFudistView.TouchUpInside += NotImplementedAlert;
-            ViewHistoryView.TouchUpInside += NotImplementedAlert;
+            ViewHistoryView.TouchUpInside += NavToExerciseHistory;
             SignInOutView.TouchUpInside += NotImplementedAlert;
         }
 
@@ -57,8 +58,18 @@ namespace MakeMeMove.iOS
             base.ViewWillDisappear(animated);
 
             OpenFudistView.TouchUpInside -= NotImplementedAlert;
-            ViewHistoryView.TouchUpInside -= NotImplementedAlert;
+            ViewHistoryView.TouchUpInside -= NavToExerciseHistory;
             SignInOutView.TouchUpInside -= NotImplementedAlert;
+        }
+
+        private void NavToExerciseHistory(object sender, EventArgs e)
+        {
+
+            var regController = AppDelegate.ExerciseHistoryStoryboard.InstantiateInitialViewController();
+
+            this.RevealViewController().RevealToggleAnimated(true);
+
+            PresentViewController(regController, true, () => { });
         }
 
         private void NotImplementedAlert(object sender, EventArgs e)

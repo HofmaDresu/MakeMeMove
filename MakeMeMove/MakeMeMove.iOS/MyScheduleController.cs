@@ -5,11 +5,12 @@ using UIKit;
 using MakeMeMove.Model;
 using MakeMeMove.iOS.Controls;
 using MakeMeMove.iOS.Helpers;
+using MakeMeMove.iOS.ViewControllers.Base;
 using SWRevealViewControllerBinding;
 
 namespace MakeMeMove.iOS
 {
-    public partial class MyScheduleController : BaseViewController
+    public partial class MyScheduleController : BaseTabbedViewController
     {
 		private ExerciseSchedule _exerciseSchedule;
 		private FloatingButton _changeScheduleButton;

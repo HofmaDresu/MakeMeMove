@@ -14,8 +14,9 @@ namespace MakeMeMove.iOS
 	{
 		private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library", Constants.DatabaseName)));
 		private readonly ExerciseServiceManager _serviceManager;
+        public static UIStoryboard ExerciseHistoryStoryboard;
 
-		public AppDelegate()
+        public AppDelegate()
 		{
 			_serviceManager = new ExerciseServiceManager(_data);
 		}
@@ -28,7 +29,9 @@ namespace MakeMeMove.iOS
 
 		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
-			var nextAction = new UIMutableUserNotificationAction
+		    InstantiateStoryboards();
+
+            var nextAction = new UIMutableUserNotificationAction
 			{
 				Identifier = Constants.NextId,
 				Title = "Change",
@@ -64,6 +67,11 @@ namespace MakeMeMove.iOS
 
 			return true;
 		}
+
+	    private void InstantiateStoryboards()
+	    {
+            ExerciseHistoryStoryboard = UIStoryboard.FromName("ExerciseHistory", null);
+        }
 
 		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
 		{
