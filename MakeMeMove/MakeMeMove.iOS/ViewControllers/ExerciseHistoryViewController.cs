@@ -8,5 +8,10 @@ namespace MakeMeMove.iOS.ViewControllers
         public ExerciseHistoryViewController (IntPtr handle) : base (handle)
         {
         }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+        }
     }
 }

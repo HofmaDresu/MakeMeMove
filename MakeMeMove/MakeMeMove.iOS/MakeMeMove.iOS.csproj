@@ -155,10 +155,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExerciseHistoryCell.cs" />
-    <Compile Include="ExerciseHistoryCell.designer.cs">
+    <Compile Include="ViewControllers\ExerciseHistoryContainerViewController.cs" />
+    <Compile Include="ViewControllers\ExerciseHistoryContainerViewController.designer.cs">
+      <DependentUpon>ExerciseHistoryContainerViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TableClasses\ExerciseHistoryCell.cs" />
+    <Compile Include="TableClasses\ExerciseHistoryCell.designer.cs">
       <DependentUpon>ExerciseHistoryCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableClasses\ExerciseHistoryTableSource.cs" />
     <Compile Include="ViewControllers\ExerciseHistoryViewController.cs" />
     <Compile Include="ViewControllers\ExerciseHistoryViewController.designer.cs">
       <DependentUpon>ExerciseHistoryViewController.cs</DependentUpon>
@@ -187,9 +192,9 @@
     <Compile Include="ExerciseServiceManager.cs" />
     <Compile Include="ExtensionMethods\DateTimeExtensions.cs" />
     <Compile Include="LocalNotifications.cs" />
-    <Compile Include="ExerciseListTableSource.cs" />
-    <Compile Include="ExerciseBlockCell.cs" />
-    <Compile Include="ExerciseBlockCell.designer.cs">
+    <Compile Include="TableClasses\ExerciseListTableSource.cs" />
+    <Compile Include="TableClasses\ExerciseBlockCell.cs" />
+    <Compile Include="TableClasses\ExerciseBlockCell.designer.cs">
       <DependentUpon>ExerciseBlockCell.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\ManageExerciseViewController.cs" />

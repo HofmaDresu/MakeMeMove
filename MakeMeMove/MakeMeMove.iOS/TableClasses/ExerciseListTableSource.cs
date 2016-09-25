@@ -4,7 +4,7 @@ using Foundation;
 using MakeMeMove.Model;
 using UIKit;
 
-namespace MakeMeMove.iOS
+namespace MakeMeMove.iOS.TableClasses
 {
 	public class ExerciseListTableSource : UITableViewSource
 	{

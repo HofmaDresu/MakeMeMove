@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" id="9" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                            <navigationBar contentMode="scaleToFill" id="9" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="10"/>
@@ -44,8 +44,14 @@
                             <constraint id="29" firstItem="14" firstAttribute="trailing" secondItem="6" secondAttribute="trailing"/>
                             <constraint id="30" firstItem="14" firstAttribute="leading" secondItem="6" secondAttribute="leading"/>
                             <constraint id="31" firstItem="11" firstAttribute="top" secondItem="2" secondAttribute="bottom" constant="24"/>
+                            <constraint id="46" firstItem="9" firstAttribute="trailing" secondItem="6" secondAttribute="trailing"/>
+                            <constraint id="47" firstItem="9" firstAttribute="leading" secondItem="6" secondAttribute="leading"/>
+                            <constraint id="48" firstItem="9" firstAttribute="top" secondItem="6" secondAttribute="top"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ExerciseHistoryContainer" destination="14" id="name-outlet-14"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -53,7 +59,7 @@
         </scene>
         <scene sceneID="17">
             <objects>
-                <viewController id="16" sceneMemberID="viewController">
+                <viewController id="16" sceneMemberID="viewController" customClass="ExerciseHistoryContainerViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="12"/>
                         <viewControllerLayoutGuide type="bottom" id="13"/>
@@ -104,6 +110,9 @@
                         </subviews>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="ExerciseHistoryTable" destination="32" id="name-outlet-32"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

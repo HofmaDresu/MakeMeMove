@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Foundation;
 using MakeMeMove.iOS.Helpers;
+using MakeMeMove.iOS.TableClasses;
 using MakeMeMove.iOS.ViewControllers.Base;
 using MakeMeMove.Model;
 using SWRevealViewControllerBinding;
