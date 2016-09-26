@@ -1,13 +1,17 @@
 ﻿using System;
+using System.IO;
 using MakeMeMove.iOS.Helpers;
 using MakeMeMove.iOS.TableClasses;
 using MakeMeMove.iOS.ViewControllers.Base;
+using SQLite;
 using UIKit;
 
 namespace MakeMeMove.iOS.ViewControllers
 {
-    public partial class ExerciseHistoryContainerViewController : BaseViewController
+    public partial class ExerciseHistoryContainerViewController : UIViewController
     {
+        private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library", Constants.DatabaseName)));
+
         public ExerciseHistoryContainerViewController (IntPtr handle) : base (handle)
         {
         }
@@ -22,7 +26,7 @@ namespace MakeMeMove.iOS.ViewControllers
         {
             base.ViewWillAppear(animated);
 
-            ExerciseHistoryTable.Source = new ExerciseHistoryTableSource(Data.GetExerciseHistoryForDay(DateTime.Now.Date));
+            ExerciseHistoryTable.Source = new ExerciseHistoryTableSource(_data.GetExerciseHistoryForDay(DateTime.Now.Date));
         }
     }
 }

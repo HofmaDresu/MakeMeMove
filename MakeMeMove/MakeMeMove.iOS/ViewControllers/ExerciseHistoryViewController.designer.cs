@@ -26,6 +26,10 @@ namespace MakeMeMove.iOS.ViewControllers
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UINavigationBar NavBar { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel SelectedDateLabel { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (DateDisplayView != null) {
@@ -41,6 +45,11 @@ namespace MakeMeMove.iOS.ViewControllers
             if (NavBar != null) {
                 NavBar.Dispose ();
                 NavBar = null;
+            }
+
+            if (SelectedDateLabel != null) {
+                SelectedDateLabel.Dispose ();
+                SelectedDateLabel = null;
             }
         }
     }
