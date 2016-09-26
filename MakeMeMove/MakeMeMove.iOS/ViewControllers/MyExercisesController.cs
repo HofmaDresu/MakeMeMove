@@ -69,6 +69,7 @@ namespace MakeMeMove.iOS.ViewControllers
 		{
 			Data.DeleteExerciseBlock(_exercises[exerciseIndex].Id);
 			_exercises = Data.GetExerciseBlocks();
+			ServiceManager.RestartNotificationServiceIfNeeded();
 
 			InvokeOnMainThread(() =>
 			{

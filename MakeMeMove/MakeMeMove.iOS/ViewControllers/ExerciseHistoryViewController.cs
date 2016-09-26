@@ -28,7 +28,7 @@ namespace MakeMeMove.iOS.ViewControllers
 
             SelectedDateLabel.Text = DateTime.Now.Date.ToShortDateString();
             SelectedDateLabel.TextColor = FudistColors.PrimaryColor;
-
+            BackButton.TintColor = UIColor.White;
         }
 
         public override void ViewWillAppear(bool animated)
@@ -45,6 +45,19 @@ namespace MakeMeMove.iOS.ViewControllers
                 BackgroundColor = FudistColors.PrimaryColor
             };
             DateDisplayView.Add(dateViewBottomBorder);
+
+            BackButton.Clicked += BackButton_Clicked;
+        }
+
+        private void BackButton_Clicked(object sender, EventArgs e)
+        {
+            DismissViewController(true, () => { });
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            base.ViewDidDisappear(animated);
+            BackButton.Clicked -= BackButton_Clicked;
         }
     }
 }

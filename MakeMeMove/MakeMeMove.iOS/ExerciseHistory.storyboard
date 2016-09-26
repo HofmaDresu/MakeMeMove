@@ -19,7 +19,9 @@
                             <navigationBar contentMode="scaleToFill" id="9" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
-                                    <navigationItem title="Exercise History" id="10"/>
+                                    <navigationItem title="Exercise History" id="10">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="77"/>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" id="11" translatesAutoresizingMaskIntoConstraints="NO">
@@ -67,6 +69,7 @@
                         <outlet property="DateDisplayView" destination="11" id="name-outlet-11"/>
                         <outlet property="NavBar" destination="9" id="name-outlet-9"/>
                         <outlet property="SelectedDateLabel" destination="64" id="name-outlet-64"/>
+                        <outlet property="BackButton" destination="77" id="name-outlet-77"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7" userLabel="First Responder" sceneMemberID="firstResponder"/>

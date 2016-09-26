@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using MakeMeMove.Model;
 using UIKit;
 
@@ -6,7 +7,7 @@ namespace MakeMeMove.iOS
 {
 	public class ExerciseServiceManager
 	{
-		private Data _data;
+		private readonly Data _data;
 		public ExerciseServiceManager(Data data)
 		{
 			_data = data;	
@@ -14,8 +15,8 @@ namespace MakeMeMove.iOS
 
 		public void StartNotificationService(bool showMessage = true)
 		{
-			UIApplication.SharedApplication.CancelAllLocalNotifications();
-			ScheduleNotifications();
+		    StopNotificationService(false);
+            ScheduleNotifications();
 		}
 
 		public void StopNotificationService(bool showMessage = true)
@@ -27,7 +28,6 @@ namespace MakeMeMove.iOS
 		{
 			if (NotificationServiceIsRunning())
 			{
-				StopNotificationService(false);
 				StartNotificationService(false);
 			}
 		}

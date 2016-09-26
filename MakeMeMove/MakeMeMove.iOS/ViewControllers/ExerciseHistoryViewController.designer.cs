@@ -16,6 +16,10 @@ namespace MakeMeMove.iOS.ViewControllers
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem BackButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView DateDisplayView { get; set; }
 
         [Outlet]
@@ -32,6 +36,11 @@ namespace MakeMeMove.iOS.ViewControllers
 
         void ReleaseDesignerOutlets ()
         {
+            if (BackButton != null) {
+                BackButton.Dispose ();
+                BackButton = null;
+            }
+
             if (DateDisplayView != null) {
                 DateDisplayView.Dispose ();
                 DateDisplayView = null;
