@@ -111,14 +111,15 @@ namespace MakeMeMove.iOS
 
             _data.MarkExerciseNotified(exerciseName, exerciseQuantity);
             _data.MarkExerciseCompleted(exerciseName, exerciseQuantity);
+            _serviceManager.RestartNotificationService();
 		}
 
 		void ChangeExercise(UILocalNotification localNotification)
 		{
 			var exerciseName = localNotification.UserInfo[Constants.ExerciseName].ToString();
 			var exerciseQuantity = int.Parse(localNotification.UserInfo[Constants.ExerciseQuantity].ToString());
-			_serviceManager.AddInstantExerciseNotification(exerciseName, exerciseQuantity);
-		}
+			_serviceManager.AddInstantExerciseNotificationAndRestartService(exerciseName, exerciseQuantity);
+        }
 	}
 }
 

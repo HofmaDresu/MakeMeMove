@@ -28,7 +28,8 @@ namespace MakeMeMove.iOS.ViewControllers
 
             AddButtons();
 			StatusSwitch.TintColor = FudistColors.InteractableTextColor;
-		}
+            StatusSwitch.SelectedSegment = ServiceManager.NotificationServiceIsRunning() ? 1 : 0;
+        }
 
 		private void AddButtons()
 		{
@@ -47,7 +48,6 @@ namespace MakeMeMove.iOS.ViewControllers
 			StartTime.Text = _exerciseSchedule.StartTime.ToLongTimeString();
 			EndTime.Text = _exerciseSchedule.EndTime.ToLongTimeString();
 			ReminderPeriod.Text = _exerciseSchedule.PeriodDisplayString;
-			StatusSwitch.SelectedSegment = ServiceManager.NotificationServiceIsRunning() ? 1 : 0;
 
 			StatusSwitch.ValueChanged += StatusSwitch_ValueChanged;
 			_changeScheduleButton.TouchUpInside += ChangeScheduleButton_TouchUpInside;

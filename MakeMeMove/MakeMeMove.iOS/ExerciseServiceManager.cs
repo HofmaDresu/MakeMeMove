@@ -15,7 +15,6 @@ namespace MakeMeMove.iOS
 
 		public void StartNotificationService(bool showMessage = true)
 		{
-		    StopNotificationService(false);
             ScheduleNotifications();
 		}
 
@@ -28,16 +27,24 @@ namespace MakeMeMove.iOS
 		{
 			if (NotificationServiceIsRunning())
 			{
-				StartNotificationService(false);
+			    RestartNotificationService();
 			}
 		}
 
-		public bool NotificationServiceIsRunning()
+	    public void RestartNotificationService()
+	    {
+	        StopNotificationService(false);
+	        StartNotificationService(false);
+	    }
+
+	    public bool NotificationServiceIsRunning()
 		{
-			return UIApplication.SharedApplication.ScheduledLocalNotifications?.Length > 0;
+		    if (UIApplication.SharedApplication.ScheduledLocalNotifications == null) return false;
+
+			return UIApplication.SharedApplication.ScheduledLocalNotifications.Length > 0;
 		}
 
-		public void AddInstantExerciseNotification(string exerciseName, int exerciseQuantity)
+		public void AddInstantExerciseNotificationAndRestartService(string exerciseName, int exerciseQuantity)
 		{
 			if (!string.IsNullOrEmpty(exerciseName) && exerciseQuantity > 0)
 			{
