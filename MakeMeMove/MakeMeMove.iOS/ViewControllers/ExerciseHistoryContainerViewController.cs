@@ -1,6 +1,8 @@
 ﻿using System;
+using MakeMeMove.iOS.Helpers;
 using MakeMeMove.iOS.TableClasses;
 using MakeMeMove.iOS.ViewControllers.Base;
+using UIKit;
 
 namespace MakeMeMove.iOS.ViewControllers
 {
@@ -8,6 +10,12 @@ namespace MakeMeMove.iOS.ViewControllers
     {
         public ExerciseHistoryContainerViewController (IntPtr handle) : base (handle)
         {
+        }
+
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            ExerciseHistoryTable.BackgroundColor = FudistColors.MainBackgroundColor;
         }
 
         public override void ViewWillAppear(bool animated)

@@ -16,13 +16,31 @@ namespace MakeMeMove.iOS.ViewControllers
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView DateDisplayView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView ExerciseHistoryContainer { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UINavigationBar NavBar { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (DateDisplayView != null) {
+                DateDisplayView.Dispose ();
+                DateDisplayView = null;
+            }
+
             if (ExerciseHistoryContainer != null) {
                 ExerciseHistoryContainer.Dispose ();
                 ExerciseHistoryContainer = null;
+            }
+
+            if (NavBar != null) {
+                NavBar.Dispose ();
+                NavBar = null;
             }
         }
     }

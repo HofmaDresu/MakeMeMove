@@ -15,10 +15,10 @@ namespace MakeMeMove.iOS.TableClasses
 
         public void UpdateCell(ExerciseHistory history)
         {
-            var labels = Subviews.OfType<UILabel>().ToArray();
-            FudistColors.SetTextPrimaryColor(labels);
-            ExerciseName.Text = history.ExerciseName;
+            ExerciseName.Text = history.ExerciseName + ":";
+            ExerciseName.TextColor = FudistColors.PrimaryColor;
             ExerciseCountLabel.Text = $"{history.QuantityCompleted} Completed";
+            ExerciseCountLabel.TextColor = FudistColors.PrimaryColor;
         }
     }
 }

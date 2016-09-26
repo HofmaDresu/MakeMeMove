@@ -49,6 +49,7 @@ namespace MakeMeMove.iOS.TableClasses
 			return true; 
 		}
 
+        //Don't listen to resharper, this is needed
 		public override void CommitEditingStyle(UITableView tableView, UITableViewCellEditingStyle editingStyle, NSIndexPath indexPath)
 		{
 			base.CommitEditingStyle(tableView, editingStyle, indexPath);

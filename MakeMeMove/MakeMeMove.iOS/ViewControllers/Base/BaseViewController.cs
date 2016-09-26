@@ -7,7 +7,7 @@ using UIKit;
 
 namespace MakeMeMove.iOS.ViewControllers.Base
 {
-	public abstract class BaseViewController : UIViewController, IUINavigationBarDelegate
+	public abstract class BaseViewController : UIViewController
 	{
 		protected readonly Data Data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library", Constants.DatabaseName)));
 		protected readonly ExerciseServiceManager ServiceManager;

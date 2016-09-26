@@ -14,9 +14,10 @@ namespace MakeMeMove.iOS.ViewControllers.Base
 		{
 			base.ViewDidLoad();
 
-		    if (NavigationController != null && NavigationController.NavigationBar != null)
+		    if (NavigationController?.NavigationBar != null)
             {
                 NavigationController.NavigationBar.BarTintColor = FudistColors.PrimaryColor;
+                NavigationController.NavigationBar.Translucent = false;
                 NavigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes
                 {
                     ForegroundColor = UIColor.White
@@ -24,7 +25,7 @@ namespace MakeMeMove.iOS.ViewControllers.Base
 			    NavigationItem.HidesBackButton = true;
             }
 
-		    if (TabBarController != null && TabBarController.TabBar != null)
+		    if (TabBarController?.TabBar != null)
             {
                 TabBarController.TabBar.TintColor = FudistColors.InteractableTextColor;
             }
