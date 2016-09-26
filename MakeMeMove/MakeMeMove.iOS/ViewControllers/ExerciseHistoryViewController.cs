@@ -16,6 +16,7 @@ namespace MakeMeMove.iOS.ViewControllers
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            NavBar.Translucent = false;
             NavBar.BarTintColor = FudistColors.PrimaryColor;
             NavBar.TitleTextAttributes = new UIStringAttributes
             {
@@ -30,7 +31,7 @@ namespace MakeMeMove.iOS.ViewControllers
             base.ViewWillAppear(animated);
             var topBorder = new UIView(new CGRect(0, 0, this.View.Frame.Width, 20))
             {
-                TintColor = FudistColors.PrimaryColor
+                BackgroundColor = FudistColors.PrimaryColor
             };
             View.Add(topBorder);
         }
