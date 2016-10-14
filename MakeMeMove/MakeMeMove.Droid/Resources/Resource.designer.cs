@@ -26,7 +26,6 @@ namespace MakeMeMove.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::MacroEatMobile.Core.Android.Resource.String.library_name = global::MakeMeMove.Droid.Resource.String.library_name;
 			global::ModernHttpClient.Resource.String.library_name = global::MakeMeMove.Droid.Resource.String.library_name;
 		}
 		
