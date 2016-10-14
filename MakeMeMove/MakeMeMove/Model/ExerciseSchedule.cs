@@ -38,7 +38,7 @@ namespace MakeMeMove.Model
                 Period = SchedulePeriod.EveryFiveMinutes,
 
 #else
-                Period = SchedulePeriod.HalfHourly,
+                Period = SchedulePeriod.Hourly,
 #endif
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 17, 00, 0)
