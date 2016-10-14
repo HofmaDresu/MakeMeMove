@@ -15,6 +15,7 @@ namespace MakeMeMove
         private TableQuery<ExerciseBlock> ExerciseBlocks => _db.Table<ExerciseBlock>();
         private TableQuery<ExerciseHistory> ExerciseHistories => _db.Table<ExerciseHistory>();
         private TableQuery<FudistUser> FudistUsers => _db.Table<FudistUser>();
+        private TableQuery<SystemStatus> SystemStatus => _db.Table<SystemStatus>();
 
         private static readonly Lazy<Data> LazyData = new Lazy<Data>();
 
@@ -29,6 +30,12 @@ namespace MakeMeMove
         {
             _db = conn;
 
+            _db.CreateTable<SystemStatus>();
+            
+            if (!SystemStatus.Any())
+            {
+                _db.Insert(new SystemStatus());
+            }
             _db.CreateTable<ExerciseSchedule>();
 
             var hasExerciseSchedule = ExerciseSchedules.Any();
@@ -273,6 +280,30 @@ namespace MakeMeMove
         {
             return FudistUsers.FirstOrDefault()?.UserName ?? "";
         }
+        #endregion
+
+#region SystemStatus
+        /// <summary>
+        /// Is the service running on iOS. Should not be used on Android
+        /// </summary>
+        /// <returns></returns>
+        public bool IsIosServiceRunning()
+        {
+            var status = SystemStatus.First();
+            return status.IosServiceIsRunning;
+        }
+
+        /// <summary>
+        /// Set the service status in iOS. Should not be used on Android
+        /// </summary>
+        /// <param name="isRunning"></param>
+        public void SetIosServiceRunningStatus(bool isRunning)
+        {
+            var status = SystemStatus.First();
+            status.IosServiceIsRunning = isRunning;
+            _db.Update(status);
+        }
+
 #endregion
     }
 }
