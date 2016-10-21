@@ -35,42 +35,6 @@
       "size": "60x60",
       "idiom": "iphone",
       "filename": "MakeMeMoveIcon@3x.png"
-    },
-    {
-      "scale": "1x",
-      "size": "29x29",
-      "idiom": "ipad",
-      "filename": "MakeMeMoveIcon_settings.png"
-    },
-    {
-      "scale": "2x",
-      "size": "29x29",
-      "idiom": "ipad",
-      "filename": "MakeMeMoveIcon_settings@2x.png"
-    },
-    {
-      "scale": "1x",
-      "size": "40x40",
-      "idiom": "ipad",
-      "filename": "MakeMeMoveIcon_spotlight.png"
-    },
-    {
-      "scale": "2x",
-      "size": "40x40",
-      "idiom": "ipad",
-      "filename": "MakeMeMoveIcon_spotlight@2x.png"
-    },
-    {
-      "scale": "1x",
-      "size": "76x76",
-      "idiom": "ipad",
-      "filename": "MakeMeMoveIcon_iPad.png"
-    },
-    {
-      "scale": "2x",
-      "size": "76x76",
-      "idiom": "ipad",
-      "filename": "MakeMeMoveIcon_iPad@2x.png"
     }
   ],
   "properties": {

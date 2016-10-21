@@ -37,11 +37,29 @@
                                             <constraint id="71" firstItem="64" firstAttribute="width" constant="94"/>
                                         </constraints>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="82" translatesAutoresizingMaskIntoConstraints="NO" image="NavigateForward">
+                                        <rect key="frame" x="551" y="8" width="29" height="29"/>
+                                        <constraints>
+                                            <constraint id="93" firstItem="82" firstAttribute="width" constant="29"/>
+                                            <constraint id="94" firstItem="82" firstAttribute="height" constant="29"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="83" translatesAutoresizingMaskIntoConstraints="NO" image="NavigateBack">
+                                        <rect key="frame" x="20" y="8" width="29" height="29"/>
+                                        <constraints>
+                                            <constraint id="97" firstItem="83" firstAttribute="height" constant="29"/>
+                                            <constraint id="98" firstItem="83" firstAttribute="width" constant="29"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint id="55" firstItem="11" firstAttribute="height" constant="44"/>
                                     <constraint id="69" firstItem="64" firstAttribute="centerX" secondItem="11" secondAttribute="centerX"/>
                                     <constraint id="70" firstItem="64" firstAttribute="top" secondItem="11" secondAttribute="top" constant="12"/>
+                                    <constraint id="91" firstItem="11" firstAttribute="trailing" secondItem="82" secondAttribute="trailing" constant="20"/>
+                                    <constraint id="92" firstItem="82" firstAttribute="centerY" secondItem="11" secondAttribute="centerY"/>
+                                    <constraint id="95" firstItem="83" firstAttribute="leading" secondItem="11" secondAttribute="leading" constant="20"/>
+                                    <constraint id="96" firstItem="83" firstAttribute="centerY" secondItem="11" secondAttribute="centerY"/>
                                 </constraints>
                             </view>
                             <containerView contentMode="scaleToFill" id="14" translatesAutoresizingMaskIntoConstraints="NO">
@@ -70,6 +88,8 @@
                         <outlet property="NavBar" destination="9" id="name-outlet-9"/>
                         <outlet property="SelectedDateLabel" destination="64" id="name-outlet-64"/>
                         <outlet property="BackButton" destination="77" id="name-outlet-77"/>
+                        <outlet property="NavigateNext" destination="82" id="name-outlet-82"/>
+                        <outlet property="NavigatePrevious" destination="83" id="name-outlet-83"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -145,5 +165,12 @@
         <image name="ic_today.png" width="24" height="24"/>
         <image name="ic_view_list.png" width="24" height="24"/>
         <image name="LaunchGraphic.png" width="1024" height="1300"/>
+        <image name="ic_navigate_before_2x.png" width="48" height="48"/>
+        <image name="ic_navigate_before_3x.png" width="72" height="72"/>
+        <image name="ic_navigate_next.png" width="24" height="24"/>
+        <image name="ic_navigate_next_2x.png" width="48" height="48"/>
+        <image name="ic_navigate_next_3x.png" width="72" height="72"/>
+        <image name="NavigateBack" width="24" height="24"/>
+        <image name="NavigateForward" width="24" height="24"/>
     </resources>
 </document>

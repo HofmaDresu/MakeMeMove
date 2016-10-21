@@ -32,6 +32,14 @@ namespace MakeMeMove.iOS.ViewControllers
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView NavigateNext { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView NavigatePrevious { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel SelectedDateLabel { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -54,6 +62,16 @@ namespace MakeMeMove.iOS.ViewControllers
             if (NavBar != null) {
                 NavBar.Dispose ();
                 NavBar = null;
+            }
+
+            if (NavigateNext != null) {
+                NavigateNext.Dispose ();
+                NavigateNext = null;
+            }
+
+            if (NavigatePrevious != null) {
+                NavigatePrevious.Dispose ();
+                NavigatePrevious = null;
             }
 
             if (SelectedDateLabel != null) {

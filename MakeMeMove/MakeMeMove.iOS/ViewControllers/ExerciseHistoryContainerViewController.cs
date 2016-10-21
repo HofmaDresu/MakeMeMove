@@ -20,13 +20,13 @@ namespace MakeMeMove.iOS.ViewControllers
         {
             base.ViewDidLoad();
             ExerciseHistoryTable.BackgroundColor = FudistColors.MainBackgroundColor;
+            
         }
 
-        public override void ViewWillAppear(bool animated)
+        public void UpdateData(DateTime date)
         {
-            base.ViewWillAppear(animated);
-
-            ExerciseHistoryTable.Source = new ExerciseHistoryTableSource(_data.GetExerciseHistoryForDay(DateTime.Now.Date));
+            ExerciseHistoryTable.Source = new ExerciseHistoryTableSource(_data.GetExerciseHistoryForDay(date.Date));
+            ExerciseHistoryTable.ReloadData();
         }
     }
 }

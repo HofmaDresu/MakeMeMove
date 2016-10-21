@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using CoreGraphics;
 using Foundation;
 using MakeMeMove.iOS.Helpers;
@@ -9,6 +10,8 @@ namespace MakeMeMove.iOS.ViewControllers
 {
     public partial class ExerciseHistoryViewController : UIViewController
     {
+        private DateTime? _historyDate;
+
         public ExerciseHistoryViewController (IntPtr handle) : base (handle)
         {
         }
@@ -16,6 +19,7 @@ namespace MakeMeMove.iOS.ViewControllers
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            _historyDate = _historyDate ?? DateTime.Now.Date;
             View.BackgroundColor = FudistColors.MainBackgroundColor;
             NavBar.Translucent = false;
             NavBar.BarTintColor = FudistColors.PrimaryColor;
@@ -26,14 +30,27 @@ namespace MakeMeMove.iOS.ViewControllers
 
             DateDisplayView.BackgroundColor = FudistColors.MainBackgroundColor;
 
-            SelectedDateLabel.Text = DateTime.Now.Date.ToShortDateString();
             SelectedDateLabel.TextColor = FudistColors.PrimaryColor;
             BackButton.TintColor = UIColor.White;
+            
+
+
+            NavigatePrevious.Image = NavigatePrevious.Image.ApplyTheme(FudistColors.InteractableTextColor);
+            var backGestureRecognizer = new UITapGestureRecognizer(RegressDate);
+            NavigatePrevious.UserInteractionEnabled = true;
+            NavigatePrevious.AddGestureRecognizer(backGestureRecognizer);
+
+            NavigateNext.Image = NavigateNext.Image.ApplyTheme(FudistColors.InteractableTextColor);
+            var nextGestureRecognizer = new UITapGestureRecognizer(AdvanceDate);
+            NavigateNext.UserInteractionEnabled = true;
+            NavigateNext.AddGestureRecognizer(nextGestureRecognizer);
         }
 
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
+            UpdateData();
+
             var statusBarColor = new UIView(new CGRect(0, 0, this.View.Frame.Width, 20))
             {
                 BackgroundColor = FudistColors.PrimaryColor
@@ -58,6 +75,31 @@ namespace MakeMeMove.iOS.ViewControllers
         {
             base.ViewDidDisappear(animated);
             BackButton.Clicked -= BackButton_Clicked;
+        }
+
+        private void AdvanceDate()
+        {
+            if (!_historyDate.HasValue) _historyDate = DateTime.Now.Date;
+            if (!_historyDate.Value.Date.Equals(DateTime.Now.Date)) _historyDate = _historyDate.Value.AddDays(1);
+
+            UpdateData();
+        }
+
+        private void RegressDate()
+        {
+            if (!_historyDate.HasValue) _historyDate = DateTime.Now.Date;
+            _historyDate = _historyDate.Value.AddDays(-1);
+
+            UpdateData();
+        }
+
+        private void UpdateData()
+        {
+            if (!_historyDate.HasValue) return;
+
+            SelectedDateLabel.Text = _historyDate.Value.ToShortDateString();
+            NavigateNext.Hidden = _historyDate.Value.Date.Equals(DateTime.Now.Date);
+            (ChildViewControllers.Last() as ExerciseHistoryContainerViewController)?.UpdateData(_historyDate.Value);
         }
     }
 }

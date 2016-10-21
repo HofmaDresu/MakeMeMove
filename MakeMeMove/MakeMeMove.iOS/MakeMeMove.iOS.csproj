@@ -113,22 +113,10 @@
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\MakeMeMoveIcon@3x.png">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\MakeMeMoveIcon_iPad.png">
-      <InProject>false</InProject>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\MakeMeMoveIcon_iPad@2x.png">
-      <InProject>false</InProject>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\MakeMeMoveIcon_settings.png">
-      <InProject>false</InProject>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\MakeMeMoveIcon_settings@2x.png">
       <InProject>false</InProject>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\MakeMeMoveIcon_settings@3x.png">
-      <InProject>false</InProject>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\MakeMeMoveIcon_spotlight.png">
       <InProject>false</InProject>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\MakeMeMoveIcon_spotlight@2x.png">
@@ -138,6 +126,30 @@
       <InProject>false</InProject>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\NavigateBack.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\NavigateBack.imageset\ic_navigate_before.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\NavigateBack.imageset\ic_navigate_before_2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\NavigateBack.imageset\ic_navigate_before_3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\NavigateForward.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\NavigateForward.imageset\ic_navigate_next.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\NavigateForward.imageset\ic_navigate_next_2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\NavigateForward.imageset\ic_navigate_next_3x.png">
       <InProject>false</InProject>
     </ImageAsset>
   </ItemGroup>
@@ -155,6 +167,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ThemeManager.cs" />
     <Compile Include="ViewControllers\ExerciseHistoryContainerViewController.cs" />
     <Compile Include="ViewControllers\ExerciseHistoryContainerViewController.designer.cs">
       <DependentUpon>ExerciseHistoryContainerViewController.cs</DependentUpon>
