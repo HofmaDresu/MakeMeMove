@@ -9,6 +9,8 @@ namespace MakeMeMove.iOS.ViewControllers
 {
     public partial class ExerciseHistoryViewController : UIViewController
     {
+        private DateTime? _historyDate;
+
         public ExerciseHistoryViewController (IntPtr handle) : base (handle)
         {
         }
@@ -16,6 +18,7 @@ namespace MakeMeMove.iOS.ViewControllers
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            _historyDate = _historyDate ?? DateTime.Now.Date;
             View.BackgroundColor = FudistColors.MainBackgroundColor;
             NavBar.Translucent = false;
             NavBar.BarTintColor = FudistColors.PrimaryColor;
@@ -26,14 +29,22 @@ namespace MakeMeMove.iOS.ViewControllers
 
             DateDisplayView.BackgroundColor = FudistColors.MainBackgroundColor;
 
-            SelectedDateLabel.Text = DateTime.Now.Date.ToShortDateString();
+            SelectedDateLabel.Text = _historyDate.Value.ToShortDateString();
             SelectedDateLabel.TextColor = FudistColors.PrimaryColor;
             BackButton.TintColor = UIColor.White;
+            NavigateNext.Image = NavigateNext.Image.ApplyTheme(FudistColors.InteractableTextColor);
+            NavigatePrevious.Image = NavigatePrevious.Image.ApplyTheme(FudistColors.InteractableTextColor);
         }
 
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
+
+            if (_historyDate.GetValueOrDefault(DateTime.Now.Date) == DateTime.Now.Date)
+            {
+                NavigateNext.Hidden = true;
+            }
+
             var statusBarColor = new UIView(new CGRect(0, 0, this.View.Frame.Width, 20))
             {
                 BackgroundColor = FudistColors.PrimaryColor

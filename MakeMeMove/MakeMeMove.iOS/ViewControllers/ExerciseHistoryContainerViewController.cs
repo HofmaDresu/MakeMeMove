@@ -20,6 +20,7 @@ namespace MakeMeMove.iOS.ViewControllers
         {
             base.ViewDidLoad();
             ExerciseHistoryTable.BackgroundColor = FudistColors.MainBackgroundColor;
+            
         }
 
         public override void ViewWillAppear(bool animated)
