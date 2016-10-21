@@ -29,21 +29,26 @@ namespace MakeMeMove.iOS.ViewControllers
 
             DateDisplayView.BackgroundColor = FudistColors.MainBackgroundColor;
 
-            SelectedDateLabel.Text = _historyDate.Value.ToShortDateString();
             SelectedDateLabel.TextColor = FudistColors.PrimaryColor;
             BackButton.TintColor = UIColor.White;
-            NavigateNext.Image = NavigateNext.Image.ApplyTheme(FudistColors.InteractableTextColor);
+            
+
+
             NavigatePrevious.Image = NavigatePrevious.Image.ApplyTheme(FudistColors.InteractableTextColor);
+            var backGestureRecognizer = new UITapGestureRecognizer(RegressDate);
+            NavigatePrevious.UserInteractionEnabled = true;
+            NavigatePrevious.AddGestureRecognizer(backGestureRecognizer);
+
+            NavigateNext.Image = NavigateNext.Image.ApplyTheme(FudistColors.InteractableTextColor);
+            var nextGestureRecognizer = new UITapGestureRecognizer(AdvanceDate);
+            NavigateNext.UserInteractionEnabled = true;
+            NavigateNext.AddGestureRecognizer(nextGestureRecognizer);
         }
 
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
-
-            if (_historyDate.GetValueOrDefault(DateTime.Now.Date) == DateTime.Now.Date)
-            {
-                NavigateNext.Hidden = true;
-            }
+            UpdateData();
 
             var statusBarColor = new UIView(new CGRect(0, 0, this.View.Frame.Width, 20))
             {
@@ -69,6 +74,30 @@ namespace MakeMeMove.iOS.ViewControllers
         {
             base.ViewDidDisappear(animated);
             BackButton.Clicked -= BackButton_Clicked;
+        }
+
+        private void AdvanceDate()
+        {
+            if (!_historyDate.HasValue) _historyDate = DateTime.Now.Date;
+            if (!_historyDate.Value.Date.Equals(DateTime.Now.Date)) _historyDate = _historyDate.Value.AddDays(1);
+
+            UpdateData();
+        }
+
+        private void RegressDate()
+        {
+            if (!_historyDate.HasValue) _historyDate = DateTime.Now.Date;
+            _historyDate = _historyDate.Value.AddDays(-1);
+
+            UpdateData();
+        }
+
+        private void UpdateData()
+        {
+            if (!_historyDate.HasValue) return;
+
+            SelectedDateLabel.Text = _historyDate.Value.ToShortDateString();
+            NavigateNext.Hidden = _historyDate.Value.Date.Equals(DateTime.Now.Date);
         }
     }
 }
