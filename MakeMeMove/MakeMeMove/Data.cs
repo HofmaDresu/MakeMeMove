@@ -129,19 +129,19 @@ namespace MakeMeMove
             return ExerciseBlocks.SingleOrDefault(e => e.Id == id);
         }
 
-        public ExerciseBlock GetNextEnabledExercise()
+        public ExerciseBlock GetNextEnabledExercise(Random random = null)
         {
             var exercises = GetExerciseBlocks();
             var enabledExercises = exercises.Where(e => e.Enabled).ToList();
 
             if (enabledExercises.Count == 0) return null;
 
-            var index = new Random().Next(0, enabledExercises.Count);
+            var index = (random ?? new Random()).Next(0, enabledExercises.Count);
 
             return enabledExercises[Min(index, enabledExercises.Count - 1)];
         }
 
-        public ExerciseBlock GetNextDifferentEnabledExercise(ExerciseBlock currentExercise)
+        public ExerciseBlock GetNextDifferentEnabledExercise(ExerciseBlock currentExercise, Random random = null)
         {
             var exercises = GetExerciseBlocks();
             var enabledExercises = exercises.Where(e => e.Enabled);
@@ -153,9 +153,9 @@ namespace MakeMeMove
                 .ToList();
 
             // If there are no different exercises, see if there are any available at all
-            if (differentEnabledExercises.Count == 0) return GetNextEnabledExercise();
+            if (differentEnabledExercises.Count == 0) return GetNextEnabledExercise(random);
 
-            var index = new Random().Next(0, differentEnabledExercises.Count);
+            var index = (random ?? new Random()).Next(0, differentEnabledExercises.Count);
 
             return differentEnabledExercises[Min(index, differentEnabledExercises.Count - 1)];
         }

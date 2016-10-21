@@ -69,12 +69,14 @@ namespace MakeMeMove.iOS
 
 			var now = DateTime.Now;
 			var tomorrow = now.AddDays(1);
+		    ExerciseBlock exercise = null;
+		    var random = new Random();
 
 			for (var testDate = TickUtility.GetNextRunTime(schedule, now); testDate < tomorrow; testDate = TickUtility.GetNextRunTime(schedule, testDate.AddMinutes(1)))
 			{
 				//TODO: figure out how to make this more random. Right now it makes a random schedule, but it's the same every day
-				var nextExercise = _data.GetNextEnabledExercise();
-				LocalNotifications.CreateNotification(testDate, nextExercise, true);
+				exercise = exercise == null ? _data.GetNextEnabledExercise(random) : _data.GetNextDifferentEnabledExercise(exercise, random);
+				LocalNotifications.CreateNotification(testDate, exercise, true);
 			}
 		}
 	}
