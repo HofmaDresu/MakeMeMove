@@ -2,7 +2,6 @@
 using System.IO;
 using MakeMeMove.iOS.Helpers;
 using MakeMeMove.iOS.TableClasses;
-using MakeMeMove.iOS.ViewControllers.Base;
 using SQLite;
 using UIKit;
 
@@ -20,7 +19,6 @@ namespace MakeMeMove.iOS.ViewControllers
         {
             base.ViewDidLoad();
             ExerciseHistoryTable.BackgroundColor = FudistColors.MainBackgroundColor;
-            
         }
 
         public void UpdateData(DateTime date)

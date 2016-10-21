@@ -167,7 +167,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ThemeManager.cs" />
     <Compile Include="ViewControllers\ExerciseHistoryContainerViewController.cs" />
     <Compile Include="ViewControllers\ExerciseHistoryContainerViewController.designer.cs">
       <DependentUpon>ExerciseHistoryContainerViewController.cs</DependentUpon>

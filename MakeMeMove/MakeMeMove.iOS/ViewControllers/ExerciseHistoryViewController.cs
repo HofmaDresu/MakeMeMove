@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CoreGraphics;
-using Foundation;
 using MakeMeMove.iOS.Helpers;
-using MakeMeMove.iOS.ViewControllers.Base;
 using UIKit;
 
 namespace MakeMeMove.iOS.ViewControllers
@@ -51,7 +49,7 @@ namespace MakeMeMove.iOS.ViewControllers
             base.ViewWillAppear(animated);
             UpdateData();
 
-            var statusBarColor = new UIView(new CGRect(0, 0, this.View.Frame.Width, 20))
+            var statusBarColor = new UIView(new CGRect(0, 0, View.Frame.Width, 20))
             {
                 BackgroundColor = FudistColors.PrimaryColor
             };
