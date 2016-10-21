@@ -31,7 +31,7 @@ namespace MakeMeMove.iOS.ViewControllers
 			_exerciseTypePicker = MirroredPicker.Create(exercisePickerModel, ExerciseType, doneAction: ShowHideCustomName);
 
 			var repetitionsPickerModel = new PickerModel(Enumerable.Range(1, 100).Select(n => n.ToString()).ToList());
-			_repetitionTypePicker = MirroredPicker.Create(repetitionsPickerModel, NumberOfRepetitions);
+			_repetitionTypePicker = MirroredPicker.Create(repetitionsPickerModel, NumberOfRepetitions, doneAction: ShowHideCustomName);
 
 			if (SelectedExerciseId.HasValue)
 			{
@@ -51,8 +51,7 @@ namespace MakeMeMove.iOS.ViewControllers
 				_repetitionTypePicker.Select(9, 0, false);
 				CustomExerciseName.Text = string.Empty;
 			}
-
-
+            
 			ShowHideCustomName();
 			AddButtons();
 
@@ -80,7 +79,8 @@ namespace MakeMeMove.iOS.ViewControllers
 
 		private void SaveButtonTouchUpInside(object sender, EventArgs e)
 		{
-			var exerciseType = (PreBuiltExersises)(int)_exerciseTypePicker.SelectedRowInComponent(0);
+            ShowHideCustomName();
+            var exerciseType = (PreBuiltExersises)(int)_exerciseTypePicker.SelectedRowInComponent(0);
 			if (exerciseType == PreBuiltExersises.Custom && string.IsNullOrWhiteSpace(CustomExerciseName.Text))
 			{
 				GeneralAlertDialogs.ShowValidationErrorPopUp(this, "Please enter a name for your exercise.");
@@ -117,17 +117,27 @@ namespace MakeMeMove.iOS.ViewControllers
 
 		private void ShowHideCustomName()
 		{
+		    const int expandedCustomTextConstraint = 30;
+		    var customStatusChanged =
+		        new Func<bool, bool>(
+		            isCustom => (CustomTextHeightConstraint.Constant == expandedCustomTextConstraint && !isCustom)
+		                          || (CustomTextHeightConstraint.Constant != expandedCustomTextConstraint && isCustom));
+
 			var exerciseIsCustom = _exerciseTypePicker.SelectedRowInComponent(0) == (int)PreBuiltExersises.Custom;
-			CustomTextHeightConstraint.Constant = exerciseIsCustom ? 30 : 0;
-			CustomExerciseName.Hidden = !exerciseIsCustom;
-			if (!exerciseIsCustom)
-			{
-				CustomExerciseName.Text = string.Empty;
-			}
-			else
-			{
-				CustomExerciseName.BecomeFirstResponder();
-			}
+
+		    if (customStatusChanged(exerciseIsCustom))
+		    {
+                CustomTextHeightConstraint.Constant = exerciseIsCustom ? expandedCustomTextConstraint : 0;
+                CustomExerciseName.Hidden = !exerciseIsCustom;
+                if (!exerciseIsCustom)
+                {
+                    CustomExerciseName.Text = string.Empty;
+                }
+                else
+                {
+                    CustomExerciseName.BecomeFirstResponder();
+                }
+            }
 		}
 
 		public override void ViewWillAppear(bool animated)
