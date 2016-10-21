@@ -34,7 +34,7 @@ namespace MakeMeMove
             
             if (!SystemStatus.Any())
             {
-                _db.Insert(new SystemStatus());
+                _db.Insert(new SystemStatus {IsFirstRun = true});
             }
             _db.CreateTable<ExerciseSchedule>();
 
@@ -301,6 +301,19 @@ namespace MakeMeMove
         {
             var status = SystemStatus.First();
             status.IosServiceIsRunning = isRunning;
+            _db.Update(status);
+        }
+
+        public bool IsFirstRun()
+        {
+            var status = SystemStatus.First();
+            return status.IsFirstRun;
+        }
+
+        public void MarkFirstRun()
+        {
+            var status = SystemStatus.First();
+            status.IsFirstRun = false;
             _db.Update(status);
         }
 

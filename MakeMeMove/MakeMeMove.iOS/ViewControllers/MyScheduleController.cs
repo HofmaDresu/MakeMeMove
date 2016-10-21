@@ -21,6 +21,12 @@ namespace MakeMeMove.iOS.ViewControllers
 		{
 			base.ViewDidLoad();
 
+		    if (Data.IsFirstRun())
+		    {
+		        ServiceManager.StartNotificationService(false);
+                Data.MarkFirstRun();
+		    }
+
             if (this.RevealViewController() == null) return;
 
             MenuButton.Clicked += (sender, e) => this.RevealViewController().RevealToggleAnimated(true);

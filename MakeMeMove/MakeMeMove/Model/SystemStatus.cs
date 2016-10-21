@@ -8,5 +8,6 @@ namespace MakeMeMove.Model
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public bool IosServiceIsRunning { get; set; }
+        public bool IsFirstRun { get; set; }
     }
 }
