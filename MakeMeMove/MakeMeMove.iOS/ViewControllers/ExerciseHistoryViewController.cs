@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using CoreGraphics;
 using Foundation;
 using MakeMeMove.iOS.Helpers;
@@ -98,6 +99,7 @@ namespace MakeMeMove.iOS.ViewControllers
 
             SelectedDateLabel.Text = _historyDate.Value.ToShortDateString();
             NavigateNext.Hidden = _historyDate.Value.Date.Equals(DateTime.Now.Date);
+            (ChildViewControllers.Last() as ExerciseHistoryContainerViewController)?.UpdateData(_historyDate.Value);
         }
     }
 }
