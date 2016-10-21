@@ -6,6 +6,7 @@ using MakeMeMove.iOS.Helpers;
 using MakeMeMove.iOS.Models;
 using MakeMeMove.iOS.ViewControllers.Base;
 using MakeMeMove.Model;
+using SWRevealViewControllerBinding;
 using UIKit;
 
 namespace MakeMeMove.iOS.ViewControllers
@@ -33,8 +34,8 @@ namespace MakeMeMove.iOS.ViewControllers
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-
-			_schedule = Data.GetExerciseSchedule();
+            
+            _schedule = Data.GetExerciseSchedule();
 
 			_schedulePicker = MirroredPicker.Create(new PickerModel(PickerListHelper.GetExercisePeriods()), 
 			                      ReminderPeriod, doneAction: null);
@@ -140,14 +141,22 @@ namespace MakeMeMove.iOS.ViewControllers
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
-			_saveButton.TouchUpInside += SaveButtonTouchUpInside;
+            if (this.RevealViewController() != null)
+            {
+                this.RevealViewController().PanGestureRecognizer.Enabled = false;
+            }
+            _saveButton.TouchUpInside += SaveButtonTouchUpInside;
 			_cancelButton.TouchUpInside += CancelButtonTouchUpInside;
 		}
 
 		public override void ViewWillDisappear(bool animated)
 		{
 			base.ViewWillDisappear(animated);
-			_saveButton.TouchUpInside -= SaveButtonTouchUpInside;
+            if (this.RevealViewController() != null)
+            {
+                this.RevealViewController().PanGestureRecognizer.Enabled = true;
+            }
+            _saveButton.TouchUpInside -= SaveButtonTouchUpInside;
 			_cancelButton.TouchUpInside -= CancelButtonTouchUpInside;
 		}
 

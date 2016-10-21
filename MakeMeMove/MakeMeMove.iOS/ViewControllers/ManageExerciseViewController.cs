@@ -6,6 +6,7 @@ using MakeMeMove.iOS.Helpers;
 using MakeMeMove.iOS.Models;
 using MakeMeMove.iOS.ViewControllers.Base;
 using MakeMeMove.Model;
+using SWRevealViewControllerBinding;
 using UIKit;
 
 namespace MakeMeMove.iOS.ViewControllers
@@ -27,7 +28,7 @@ namespace MakeMeMove.iOS.ViewControllers
 		{
 			base.ViewDidLoad();
 
-			var exercisePickerModel = new PickerModel(PickerListHelper.GetExerciseTypeStrings());
+            var exercisePickerModel = new PickerModel(PickerListHelper.GetExerciseTypeStrings());
 			_exerciseTypePicker = MirroredPicker.Create(exercisePickerModel, ExerciseType, doneAction: ShowHideCustomName);
 
 			var repetitionsPickerModel = new PickerModel(Enumerable.Range(1, 100).Select(n => n.ToString()).ToList());
@@ -141,15 +142,25 @@ namespace MakeMeMove.iOS.ViewControllers
 		}
 
 		public override void ViewWillAppear(bool animated)
-		{
-			base.ViewWillAppear(animated);
+        {
+            if (this.RevealViewController() != null)
+            {
+                this.RevealViewController().PanGestureRecognizer.Enabled = false;
+            }
+
+            base.ViewWillAppear(animated);
 			_saveButton.TouchUpInside += SaveButtonTouchUpInside;
 			_cancelButton.TouchUpInside += CancelButtonTouchUpInside;
 		}
 
 		public override void ViewWillDisappear(bool animated)
-		{
-			base.ViewWillDisappear(animated);
+        {
+            if (this.RevealViewController() != null)
+            {
+                this.RevealViewController().PanGestureRecognizer.Enabled = true;
+            }
+
+            base.ViewWillDisappear(animated);
 			_saveButton.TouchUpInside -= SaveButtonTouchUpInside;
 			_cancelButton.TouchUpInside -= CancelButtonTouchUpInside;
 		}
