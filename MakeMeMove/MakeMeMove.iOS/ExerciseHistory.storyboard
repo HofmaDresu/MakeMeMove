@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
@@ -108,8 +108,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="32" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="512"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="32" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="33" rowHeight="44" customClass="ExerciseHistoryCell" reuseIdentifier="ExerciseHistoryCell">
@@ -147,6 +147,13 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <constraints>
+                            <constraint id="103" firstItem="32" firstAttribute="bottom" secondItem="18" secondAttribute="bottom"/>
+                            <constraint id="104" firstItem="32" firstAttribute="leading" secondItem="18" secondAttribute="leading"/>
+                            <constraint id="105" firstItem="32" firstAttribute="leading" secondItem="18" secondAttribute="leading"/>
+                            <constraint id="106" firstItem="32" firstAttribute="top" secondItem="18" secondAttribute="top"/>
+                            <constraint id="107" firstItem="32" firstAttribute="trailing" secondItem="18" secondAttribute="trailing"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <connections>
@@ -165,7 +172,6 @@
         <image name="ic_today.png" width="24" height="24"/>
         <image name="ic_view_list.png" width="24" height="24"/>
         <image name="LaunchGraphic.png" width="1024" height="1300"/>
-        <image name="ic_navigate_before_2x.png" width="48" height="48"/>
         <image name="ic_navigate_before_3x.png" width="72" height="72"/>
         <image name="ic_navigate_next.png" width="24" height="24"/>
         <image name="ic_navigate_next_2x.png" width="48" height="48"/>
