@@ -17,6 +17,7 @@ namespace MakeMeMove.iOS
 		private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library", Constants.DatabaseName)));
 		private readonly ExerciseServiceManager _serviceManager;
         public static UIStoryboard ExerciseHistoryStoryboard;
+        public static UIStoryboard LoginStoryboard;
         public ITracker Tracker;
         public static readonly string TrackingId = "UA-56251913-4";
 
@@ -102,7 +103,8 @@ namespace MakeMeMove.iOS
 	    private void InstantiateStoryboards()
 	    {
             ExerciseHistoryStoryboard = UIStoryboard.FromName("ExerciseHistory", null);
-        }
+	        LoginStoryboard = UIStoryboard.FromName("LogIn", null);
+	    }
 
 		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
 		{

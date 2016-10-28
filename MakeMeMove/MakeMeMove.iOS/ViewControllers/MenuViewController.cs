@@ -64,7 +64,6 @@ namespace MakeMeMove.iOS.ViewControllers
 
         private void NavToExerciseHistory(object sender, EventArgs e)
         {
-
             var regController = AppDelegate.ExerciseHistoryStoryboard.InstantiateInitialViewController();
 
             this.RevealViewController().RevealToggleAnimated(true);
@@ -83,7 +82,11 @@ namespace MakeMeMove.iOS.ViewControllers
             }
             else
             {
-                
+                var regController = AppDelegate.LoginStoryboard.InstantiateInitialViewController();
+
+                this.RevealViewController().RevealToggleAnimated(true);
+
+                PresentViewController(regController, true, () => { });
             }
         }
 

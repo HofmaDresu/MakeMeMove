@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+    </dependencies>
+    <scenes>
+        <scene sceneID="4">
+            <objects>
+                <viewController id="5" sceneMemberID="viewController" customClass="LoginController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2"/>
+                        <viewControllerLayoutGuide type="bottom" id="3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username / Password combination is not valid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="40" width="560" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="14" firstItem="9" firstAttribute="height" constant="45"/>
+                                </constraints>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="13" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="182" y="105" width="236" height="44"/>
+                                <state key="normal" backgroundImage="facebookLoginLarge.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <constraints>
+                                    <constraint id="17" firstItem="13" firstAttribute="height" constant="44"/>
+                                    <constraint id="18" firstItem="13" firstAttribute="width" constant="236"/>
+                                </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="19" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="177" y="169" width="246" height="54"/>
+                                <state key="normal" backgroundImage="Red-signin-Long-base-44dp.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <constraints>
+                                    <constraint id="22" firstItem="19" firstAttribute="height" constant="54"/>
+                                    <constraint id="23" firstItem="19" firstAttribute="width" constant="246"/>
+                                </constraints>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint id="10" firstItem="9" firstAttribute="top" secondItem="6" secondAttribute="top" constant="40"/>
+                            <constraint id="11" firstItem="6" firstAttribute="trailing" secondItem="9" secondAttribute="trailing" constant="20"/>
+                            <constraint id="12" firstItem="9" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="20"/>
+                            <constraint id="15" firstItem="13" firstAttribute="top" secondItem="9" secondAttribute="bottom" constant="20"/>
+                            <constraint id="16" firstItem="13" firstAttribute="centerX" secondItem="6" secondAttribute="centerX"/>
+                            <constraint id="20" firstItem="19" firstAttribute="centerX" secondItem="6" secondAttribute="centerX"/>
+                            <constraint id="21" firstItem="19" firstAttribute="top" secondItem="13" secondAttribute="bottom" constant="20"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="MessageLabel" destination="9" id="name-outlet-9"/>
+                        <outlet property="FacebookButton" destination="13" id="name-outlet-13"/>
+                        <outlet property="GoogleButton" destination="19" id="name-outlet-19"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-756" y="-387"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_menu_white.png" width="24" height="24"/>
+        <image name="ic_menu_white_2x.png" width="48" height="48"/>
+        <image name="ic_menu_white_3x.png" width="72" height="72"/>
+        <image name="ic_today.png" width="24" height="24"/>
+        <image name="ic_view_list.png" width="24" height="24"/>
+        <image name="LaunchGraphic.png" width="1024" height="1300"/>
+        <image name="NavigateBack" width="24" height="24"/>
+        <image name="NavigateForward" width="24" height="24"/>
+        <image name="facebookLoginLarge.png" width="236" height="44"/>
+        <image name="facebookLoginMedium.png" width="202" height="46"/>
+        <image name="Red-signin-Long-base-44dp.png" width="246" height="54"/>
+    </resources>
+</document>
