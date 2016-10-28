@@ -23,10 +23,10 @@ namespace MakeMeMove.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            
-            NavBar.Translucent = false;
-            NavBar.BarTintColor = FudistColors.PrimaryColor;
-            NavBar.TitleTextAttributes = new UIStringAttributes
+
+            NavigationController.NavigationBar.Translucent = false;
+            NavigationController.NavigationBar.BarTintColor = FudistColors.PrimaryColor;
+            NavigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes
             {
                 ForegroundColor = UIColor.White
             };
@@ -174,12 +174,6 @@ namespace MakeMeMove.iOS
         {
             base.ViewWillAppear(animated);
             BackButton.Clicked += BackButton_Clicked;
-
-            var statusBarColor = new UIView(new CGRect(0, 0, View.Frame.Width, 20))
-            {
-                BackgroundColor = FudistColors.PrimaryColor
-            };
-            View.Add(statusBarColor);
         }
 
         private void BackButton_Clicked(object sender, EventArgs e)

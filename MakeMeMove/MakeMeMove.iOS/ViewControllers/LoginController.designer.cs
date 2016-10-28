@@ -30,10 +30,6 @@ namespace MakeMeMove.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel MessageLabel { get; set; }
 
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UINavigationBar NavBar { get; set; }
-
         [Action ("FacebookButton_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void FacebookButton_TouchUpInside (UIKit.UIButton sender);
@@ -62,11 +58,6 @@ namespace MakeMeMove.iOS
             if (MessageLabel != null) {
                 MessageLabel.Dispose ();
                 MessageLabel = null;
-            }
-
-            if (NavBar != null) {
-                NavBar.Dispose ();
-                NavBar = null;
             }
         }
     }
