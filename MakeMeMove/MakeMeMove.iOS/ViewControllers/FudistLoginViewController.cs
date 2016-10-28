@@ -46,6 +46,24 @@ namespace MakeMeMove.iOS
             };
 
             SetupLoginButton();
+            SetupCancelButton();
+        }
+
+        private void SetupCancelButton()
+        {
+            var cancelButton = new FloatingButton("Cancel");
+            cancelButton.TouchUpInside += (sender, e) => PerformSegue("GoToLoginChoice", this);
+            cancelButton.TranslatesAutoresizingMaskIntoConstraints = false;
+            View.Add(cancelButton);
+
+            View.AddConstraint(NSLayoutConstraint.Create(cancelButton, NSLayoutAttribute.Top, NSLayoutRelation.Equal,
+                Password, NSLayoutAttribute.Bottom, 1, 20));
+            View.AddConstraint(NSLayoutConstraint.Create(cancelButton, NSLayoutAttribute.Left, NSLayoutRelation.Equal,
+                Password, NSLayoutAttribute.Left, 1, 0));
+            View.AddConstraint(NSLayoutConstraint.Create(cancelButton, NSLayoutAttribute.Width, NSLayoutRelation.Equal,
+                null, NSLayoutAttribute.NoAttribute, 1, cancelButton.Frame.Width));
+            View.AddConstraint(NSLayoutConstraint.Create(cancelButton, NSLayoutAttribute.Height, NSLayoutRelation.Equal,
+                null, NSLayoutAttribute.NoAttribute, 1, cancelButton.Frame.Height));
         }
 
         private void SetupLoginButton()
@@ -57,8 +75,8 @@ namespace MakeMeMove.iOS
 
             View.AddConstraint(NSLayoutConstraint.Create(loginButton, NSLayoutAttribute.Top, NSLayoutRelation.Equal,
                 Password, NSLayoutAttribute.Bottom, 1, 20));
-            View.AddConstraint(NSLayoutConstraint.Create(loginButton, NSLayoutAttribute.CenterX, NSLayoutRelation.Equal,
-                Password, NSLayoutAttribute.CenterX, 1, 0));
+            View.AddConstraint(NSLayoutConstraint.Create(loginButton, NSLayoutAttribute.Right, NSLayoutRelation.Equal,
+                Password, NSLayoutAttribute.Right, 1, 0));
             View.AddConstraint(NSLayoutConstraint.Create(loginButton, NSLayoutAttribute.Width, NSLayoutRelation.Equal,
                 null, NSLayoutAttribute.NoAttribute, 1, loginButton.Frame.Width));
             View.AddConstraint(NSLayoutConstraint.Create(loginButton, NSLayoutAttribute.Height, NSLayoutRelation.Equal,

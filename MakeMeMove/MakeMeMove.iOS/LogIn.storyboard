@@ -83,7 +83,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1419" y="-383"/>
+            <point key="canvasLocation" x="-1551" y="-407"/>
         </scene>
         <scene sceneID="192">
             <objects>
@@ -145,11 +145,12 @@
                         <outlet property="UserName" destination="296" id="name-outlet-296"/>
                         <outlet property="Password" destination="297" id="name-outlet-297"/>
                         <outlet property="Message" destination="295" id="name-outlet-295"/>
+                        <segue id="582" destination="5" kind="show" identifier="GoToLoginChoice"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="195" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-53" y="-388"/>
+            <point key="canvasLocation" x="-752" y="327"/>
         </scene>
     </scenes>
     <resources>
