@@ -231,6 +231,7 @@
     <Compile Include="Controls\PrimaryBottomBorderView.designer.cs">
       <DependentUpon>PrimaryBottomBorderView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserNotificationCenterDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">
