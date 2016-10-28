@@ -2,23 +2,24 @@
 using System.Linq;
 using CoreGraphics;
 using MakeMeMove.iOS.Helpers;
+using MakeMeMove.iOS.ViewControllers.Base;
 using UIKit;
 
 namespace MakeMeMove.iOS.ViewControllers
 {
-    public partial class ExerciseHistoryViewController : UIViewController
+    public partial class ExerciseHistoryViewController : BaseViewController
     {
         private DateTime? _historyDate;
 
         public ExerciseHistoryViewController (IntPtr handle) : base (handle)
         {
+            ScreenName = "Exercise History";
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
             _historyDate = _historyDate ?? DateTime.Now.Date;
-            View.BackgroundColor = FudistColors.MainBackgroundColor;
             NavBar.Translucent = false;
             NavBar.BarTintColor = FudistColors.PrimaryColor;
             NavBar.TitleTextAttributes = new UIStringAttributes

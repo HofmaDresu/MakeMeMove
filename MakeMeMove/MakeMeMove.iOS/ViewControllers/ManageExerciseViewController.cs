@@ -22,6 +22,7 @@ namespace MakeMeMove.iOS.ViewControllers
 
         public ManageExerciseViewController (IntPtr handle) : base (handle)
         {
+            ScreenName = "Manage Exercise";
         }
 
 		public override void ViewDidLoad()

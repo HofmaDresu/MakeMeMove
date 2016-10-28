@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using MakeMeMove.iOS.Utilities;
 using SQLite;
 using UserNotifications;
 
@@ -23,11 +24,13 @@ namespace MakeMeMove.iOS
             switch (response?.ActionIdentifier)
             {
                 case Constants.CompleteId:
-					_data.MarkExerciseNotified(exerciseName, exerciseQuantity);
+                    UnifiedAnalytics.GetInstance().CreateAndSendEventOnDefaultTracker(MakeMeMove.Constants.UserActionCategory, MakeMeMove.Constants.NotificationCompletedAction, null, null);
+                    _data.MarkExerciseNotified(exerciseName, exerciseQuantity);
 					_data.MarkExerciseCompleted(exerciseName, exerciseQuantity);
 					_serviceManager.RestartNotificationService();
 					break;
                 case Constants.NextId:
+                    UnifiedAnalytics.GetInstance().CreateAndSendEventOnDefaultTracker(MakeMeMove.Constants.UserActionCategory, MakeMeMove.Constants.NotificationChangeAction, null, null);
                     _serviceManager.AddInstantExerciseNotificationAndRestartService(exerciseName, exerciseQuantity);
 					break;
 			}

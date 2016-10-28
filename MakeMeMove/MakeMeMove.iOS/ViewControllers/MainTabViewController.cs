@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using MakeMeMove.iOS.Utilities;
 using SQLite;
 using SWRevealViewControllerBinding;
 using UIKit;
@@ -22,6 +23,13 @@ namespace MakeMeMove.iOS.ViewControllers
             
 			View.AddGestureRecognizer(this.RevealViewController().PanGestureRecognizer);
             _serviceManager.RestartNotificationServiceIfNeeded();
+        }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+
+            UnifiedAnalytics.GetInstance().SendScreenHitOnDefaultTracker("Main");
         }
     }
 }

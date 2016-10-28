@@ -23,7 +23,9 @@ namespace MakeMeMove.iOS.ViewControllers
 
         public ManageScheduleController (IntPtr handle) : base (handle)
         {
-			var hours = Enumerable.Range(1, 12).Select(h => h.ToString()).ToList();
+            ScreenName = "Manage Schedule";
+
+            var hours = Enumerable.Range(1, 12).Select(h => h.ToString()).ToList();
 			var minutes = new List<string> { "00", "30"};
 			var meridian = new List<string> { "AM", "PM" };
 			_availableTimes.Add(hours);
