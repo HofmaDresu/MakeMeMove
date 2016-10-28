@@ -64,11 +64,36 @@ namespace MakeMeMove.iOS.ViewControllers
 
         private void NavToExerciseHistory(object sender, EventArgs e)
         {
-            var regController = AppDelegate.ExerciseHistoryStoryboard.InstantiateInitialViewController();
 
-            this.RevealViewController().RevealToggleAnimated(true);
+            if (_data.UserIsPremium())
+            {
+                var regController = AppDelegate.ExerciseHistoryStoryboard.InstantiateInitialViewController();
 
-            PresentViewController(regController, true, () => { });
+                this.RevealViewController().RevealToggleAnimated(true);
+
+                PresentViewController(regController, true, () => { });
+            }
+            else if (_data.UserIsSignedIn())
+            {
+                var alert = new UIAlertView("Premium Account Needed", "Your current account is not subscribed to Fudist Premium. Please double check your subscription status and try again.",
+                           null, "OK", null);
+
+                alert.Show();
+            }
+            else
+            {
+                var alert = new UIAlertView("Account Needed", "You must sign in as a Fudist Premium user to access your exercise history. Would you like to sign in?",
+                           null, "No", "Yes");
+                alert.Clicked += (o, args) =>
+                {
+                    if (args.ButtonIndex == 1)
+                    {
+                        OnSignInOut(o, args);
+                    }
+                };
+
+                alert.Show();
+            }
         }
 
         private void OnSignInOut(object sender, EventArgs e)
