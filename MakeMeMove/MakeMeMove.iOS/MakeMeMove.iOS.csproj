@@ -183,6 +183,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewControllers\FudistLoginViewController.cs" />
+    <Compile Include="ViewControllers\FudistLoginViewController.designer.cs">
+      <DependentUpon>FudistLoginViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoadingOverlay.cs" />
     <Compile Include="ViewControllers\LoginController.cs" />
     <Compile Include="ViewControllers\LoginController.designer.cs">

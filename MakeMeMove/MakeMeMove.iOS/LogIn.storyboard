@@ -60,9 +60,10 @@
                         <outlet property="FacebookButton" destination="13" id="name-outlet-13"/>
                         <outlet property="GoogleButton" destination="19" id="name-outlet-19"/>
                         <outlet property="BackButton" destination="185" id="name-outlet-185"/>
+                        <segue id="289" destination="193" kind="show"/>
                     </connections>
                     <navigationItem title="Log In" id="181" key="navigationItem">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="185"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="185"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -83,6 +84,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1419" y="-383"/>
+        </scene>
+        <scene sceneID="192">
+            <objects>
+                <viewController id="193" sceneMemberID="viewController" customClass="FudistLoginViewController" title="Fudist Log In">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="190"/>
+                        <viewControllerLayoutGuide type="bottom" id="191"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="194">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="195" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-53" y="-388"/>
         </scene>
     </scenes>
     <resources>
