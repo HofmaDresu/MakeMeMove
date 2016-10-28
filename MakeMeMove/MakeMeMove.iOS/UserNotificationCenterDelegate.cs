@@ -12,6 +12,7 @@ namespace MakeMeMove.iOS
 
 		public UserNotificationCenterDelegate()
 		{
+            _serviceManager  = new ExerciseServiceManager(_data);
 		}
 
 		public override void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
@@ -19,26 +20,18 @@ namespace MakeMeMove.iOS
 			var exerciseName = response?.Notification?.Request?.Content?.UserInfo[Constants.ExerciseName]?.ToString();
 			var exerciseQuantity = int.Parse(response?.Notification?.Request?.Content?.UserInfo[Constants.ExerciseQuantity]?.ToString() ?? "-1");
 			
-			// Take action based on Action ID
-			switch (response.Notification.Request.Identifier)
-			{
-				case Constants.NextId:
+            switch (response?.ActionIdentifier)
+            {
+                case Constants.CompleteId:
 					_data.MarkExerciseNotified(exerciseName, exerciseQuantity);
 					_data.MarkExerciseCompleted(exerciseName, exerciseQuantity);
 					_serviceManager.RestartNotificationService();
 					break;
-				case Constants.CompleteId:
-					_serviceManager.AddInstantExerciseNotificationAndRestartService(exerciseName, exerciseQuantity);
-					break;
-				default:
-					// Take action based on identifier
-					switch (response.ActionIdentifier)
-					{
-					}
+                case Constants.NextId:
+                    _serviceManager.AddInstantExerciseNotificationAndRestartService(exerciseName, exerciseQuantity);
 					break;
 			}
-
-			// Inform caller it has been handled
+            
 			completionHandler();
 		}
 	}

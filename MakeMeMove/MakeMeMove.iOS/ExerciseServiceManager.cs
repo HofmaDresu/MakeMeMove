@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using MakeMeMove.Model;
 using UIKit;
 
@@ -46,7 +45,7 @@ namespace MakeMeMove.iOS
 
 		public void AddInstantExerciseNotificationAndRestartService(string exerciseName, int exerciseQuantity)
 		{
-			if (!string.IsNullOrEmpty(exerciseName) && exerciseQuantity > 0)
+            if (!string.IsNullOrEmpty(exerciseName) && exerciseQuantity > 0)
 			{
 				_data.MarkExerciseNotified(exerciseName, -1 * exerciseQuantity);
 			}
@@ -59,7 +58,7 @@ namespace MakeMeMove.iOS
 				});
 
 			UIApplication.SharedApplication.CancelAllLocalNotifications();
-			LocalNotifications.CreateNotification(DateTime.Now, nextExercise);
+			LocalNotifications.CreateInstantNotification(nextExercise);
 			ScheduleNotifications();
 		}
 

@@ -36,7 +36,7 @@ namespace MakeMeMove.iOS
 			{
 				UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound, (approved, err) =>
 				{
-					
+					UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
 				});
 
 				var nextAction = UNNotificationAction.FromIdentifier(Constants.NextId, "Change", UNNotificationActionOptions.None);
