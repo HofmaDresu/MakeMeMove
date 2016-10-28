@@ -60,7 +60,7 @@
                         <outlet property="FacebookButton" destination="13" id="name-outlet-13"/>
                         <outlet property="GoogleButton" destination="19" id="name-outlet-19"/>
                         <outlet property="BackButton" destination="185" id="name-outlet-185"/>
-                        <segue id="289" destination="193" kind="show"/>
+                        <segue id="289" destination="193" kind="show" identifier="GoToFudistLogin"/>
                     </connections>
                     <navigationItem title="Log In" id="181" key="navigationItem">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="185"/>
