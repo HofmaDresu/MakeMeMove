@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username / Password combination is not valid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9" translatesAutoresizingMaskIntoConstraints="NO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username / Password combination is not valid" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0.0">
                                 <rect key="frame" x="20" y="40" width="560" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -34,6 +34,9 @@
                                     <constraint id="17" firstItem="13" firstAttribute="height" constant="44"/>
                                     <constraint id="18" firstItem="13" firstAttribute="width" constant="236"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="FacebookButton_TouchUpInside:" destination="5" id="27" eventType="touchUpInside"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="19" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="177" y="169" width="246" height="54"/>
@@ -44,6 +47,9 @@
                                     <constraint id="22" firstItem="19" firstAttribute="height" constant="54"/>
                                     <constraint id="23" firstItem="19" firstAttribute="width" constant="246"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="GoogleButton_TouchUpInside:" destination="5" id="28" eventType="touchUpInside"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>

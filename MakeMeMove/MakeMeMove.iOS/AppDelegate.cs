@@ -4,6 +4,7 @@ using Foundation;
 using Google.Analytics;
 using MakeMeMove.iOS.Utilities;
 using SQLite;
+using SWRevealViewControllerBinding;
 using UIKit;
 using UserNotifications;
 
@@ -16,8 +17,10 @@ namespace MakeMeMove.iOS
 	{
 		private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library", Constants.DatabaseName)));
 		private readonly ExerciseServiceManager _serviceManager;
+        public static UIStoryboard Storyboard;
         public static UIStoryboard ExerciseHistoryStoryboard;
         public static UIStoryboard LoginStoryboard;
+        public static UIViewController InitialViewController;
         public ITracker Tracker;
         public static readonly string TrackingId = "UA-56251913-4";
 
@@ -90,7 +93,7 @@ namespace MakeMeMove.iOS
 				);
 
 				application.RegisterUserNotificationSettings(notificationSettings);
-			}
+            }
 
             Gai.SharedInstance.DispatchInterval = 20;
             
@@ -101,7 +104,9 @@ namespace MakeMeMove.iOS
 		}
 
 	    private void InstantiateStoryboards()
-	    {
+        {
+            Storyboard = UIStoryboard.FromName("Main", null);
+            InitialViewController = Storyboard.InstantiateInitialViewController() as SWRevealViewController;
             ExerciseHistoryStoryboard = UIStoryboard.FromName("ExerciseHistory", null);
 	        LoginStoryboard = UIStoryboard.FromName("LogIn", null);
 	    }

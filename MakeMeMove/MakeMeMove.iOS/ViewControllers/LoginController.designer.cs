@@ -26,6 +26,14 @@ namespace MakeMeMove.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel MessageLabel { get; set; }
 
+        [Action ("FacebookButton_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void FacebookButton_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("GoogleButton_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void GoogleButton_TouchUpInside (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (FacebookButton != null) {
