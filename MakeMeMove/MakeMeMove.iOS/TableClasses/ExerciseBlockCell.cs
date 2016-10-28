@@ -12,7 +12,6 @@ namespace MakeMeMove.iOS.TableClasses
 
         public ExerciseBlockCell (IntPtr handle) : base (handle)
         {
-			BackgroundColor = FudistColors.MainBackgroundColor;
         }
 
 		public void UpdateCell(ExerciseBlock block)
@@ -24,11 +23,13 @@ namespace MakeMeMove.iOS.TableClasses
 			ExerciseIsEnabled.SelectedSegment = block.Enabled ? 1 : 0;
 			ExerciseIsEnabled.ValueChanged -= ExerciseSwitch_ValueChanged;
 			ExerciseIsEnabled.ValueChanged += ExerciseSwitch_ValueChanged;
+		    BackgroundColor = block.Enabled ? FudistColors.MainBackgroundColor : FudistColors.DisabledBackgroundColor;
 		}
 
 		void ExerciseSwitch_ValueChanged(object sender, EventArgs e)
 		{
-			SelectedEnabledSwitch?.Invoke(sender, _block);
+            BackgroundColor = ExerciseIsEnabled.SelectedSegment == 1 ? FudistColors.MainBackgroundColor : FudistColors.DisabledBackgroundColor;
+            SelectedEnabledSwitch?.Invoke(sender, _block);
 		}
     }
 }

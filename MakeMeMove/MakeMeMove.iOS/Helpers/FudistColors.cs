@@ -13,8 +13,9 @@ namespace MakeMeMove.iOS.Helpers
 		public static UIColor WarningColor = UIColor.FromRGB(255, 75, 10);
 		public static UIColor GrayTextColor = UIColor.FromRGB(117, 117, 117);
 		public static UIColor GrayBorderColor = UIColor.FromRGB(186, 186, 186);
+        public static UIColor DisabledBackgroundColor = UIColor.FromRGB(220, 220, 220);
 
-		public static void SetTextPrimaryColor(params UILabel[] labels)
+        public static void SetTextPrimaryColor(params UILabel[] labels)
 		{
 			foreach (var label in labels)
 			{
