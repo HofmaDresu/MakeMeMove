@@ -96,7 +96,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username / Password combination is not valid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="295" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="84" width="560" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="302" firstItem="295" firstAttribute="height" constant="45"/>
+                                </constraints>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="296" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Username">
+                                <rect key="frame" x="20" y="145" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="297" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Password">
+                                <rect key="frame" x="20" y="195" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have a Fudist account? Tap cancel to sign in with Google or Facebook" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="298" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0.0">
+                                <rect key="frame" x="20" y="305" width="560" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="312" firstItem="298" firstAttribute="height" constant="29"/>
+                                </constraints>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint id="299" firstItem="295" firstAttribute="top" secondItem="190" secondAttribute="bottom" constant="20"/>
+                            <constraint id="300" firstItem="295" firstAttribute="leading" secondItem="194" secondAttribute="leading" constant="20"/>
+                            <constraint id="301" firstItem="194" firstAttribute="trailing" secondItem="295" secondAttribute="trailing" constant="20"/>
+                            <constraint id="303" firstItem="296" firstAttribute="top" secondItem="295" secondAttribute="bottom" constant="16"/>
+                            <constraint id="304" firstItem="296" firstAttribute="leading" secondItem="194" secondAttribute="leading" constant="20"/>
+                            <constraint id="305" firstItem="194" firstAttribute="trailing" secondItem="296" secondAttribute="trailing" constant="20"/>
+                            <constraint id="306" firstItem="297" firstAttribute="top" secondItem="296" secondAttribute="bottom" constant="20"/>
+                            <constraint id="307" firstItem="297" firstAttribute="leading" secondItem="194" secondAttribute="leading" constant="20"/>
+                            <constraint id="308" firstItem="194" firstAttribute="trailing" secondItem="297" secondAttribute="trailing" constant="20"/>
+                            <constraint id="309" firstItem="298" firstAttribute="top" secondItem="297" secondAttribute="bottom" constant="80"/>
+                            <constraint id="310" firstItem="298" firstAttribute="leading" secondItem="194" secondAttribute="leading" constant="20"/>
+                            <constraint id="311" firstItem="194" firstAttribute="trailing" secondItem="298" secondAttribute="trailing" constant="20"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="UserName" destination="296" id="name-outlet-296"/>
+                        <outlet property="Password" destination="297" id="name-outlet-297"/>
+                        <outlet property="Message" destination="295" id="name-outlet-295"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="195" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

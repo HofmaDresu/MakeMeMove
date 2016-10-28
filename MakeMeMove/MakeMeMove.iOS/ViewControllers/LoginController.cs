@@ -132,6 +132,7 @@ namespace MakeMeMove.iOS
                 _loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds, "Signing In...");
                 View.Add(_loadingOverlay);
                 person = await FudistPersonAdapter.AuthPersonWithToken(accessToken, socialProvider, UnifiedAnalytics.GetInstance(), AuthorizationSingleton.GetInstance());
+                Data.SignUserIn(person, AuthorizationSingleton.PersonIsProOrHigherUser(person));
             }
             catch
             {
