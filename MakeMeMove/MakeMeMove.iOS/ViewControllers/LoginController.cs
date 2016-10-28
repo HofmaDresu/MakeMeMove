@@ -1,6 +1,4 @@
-﻿using Foundation;
-using System;
-using System.Threading.Tasks;
+﻿using System;
 using CoreGraphics;
 using MacroEatMobile.Core;
 using MakeMeMove.iOS.Controls;
@@ -15,16 +13,25 @@ namespace MakeMeMove.iOS
     public partial class LoginController : BaseViewController
     {
         private FloatingButton _loginWithFudist;
-        //private LoadingOverlay _loadingOverlay;
+        private LoadingOverlay _loadingOverlay;
 
         public LoginController (IntPtr handle) : base (handle)
         {
-            this.ScreenName = "Sign In";
+            ScreenName = "Sign In";
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            
+            NavBar.Translucent = false;
+            NavBar.BarTintColor = FudistColors.PrimaryColor;
+            NavBar.TitleTextAttributes = new UIStringAttributes
+            {
+                ForegroundColor = UIColor.White
+            };
+            BackButton.TintColor = UIColor.White;
+
             ClearMessageText();
 
             SetupLoginButton();
@@ -122,8 +129,8 @@ namespace MakeMeMove.iOS
             Person person;
             try
             {
-                //_loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds, "Signing In...");
-                //View.Add(_loadingOverlay);
+                _loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds, "Signing In...");
+                View.Add(_loadingOverlay);
                 person = await FudistPersonAdapter.AuthPersonWithToken(accessToken, socialProvider, UnifiedAnalytics.GetInstance(), AuthorizationSingleton.GetInstance());
             }
             catch
@@ -131,7 +138,7 @@ namespace MakeMeMove.iOS
                 DismissViewController(true, () =>
                 {
                     SetMessageText("Sign in failure. Please check that you have a Fudist subscription");
-                    //_loadingOverlay.Hide();
+                    _loadingOverlay.Hide();
                 });
                 return;
             }
@@ -161,6 +168,29 @@ namespace MakeMeMove.iOS
                 MessageLabel.Layer.Frame.Width,
                 0);
             MessageLabel.Text = string.Empty;
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+            BackButton.Clicked += BackButton_Clicked;
+
+            var statusBarColor = new UIView(new CGRect(0, 0, View.Frame.Width, 20))
+            {
+                BackgroundColor = FudistColors.PrimaryColor
+            };
+            View.Add(statusBarColor);
+        }
+
+        private void BackButton_Clicked(object sender, EventArgs e)
+        {
+            DismissViewController(true, () => { });
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            base.ViewDidDisappear(animated);
+            BackButton.Clicked -= BackButton_Clicked;
         }
     }
 }

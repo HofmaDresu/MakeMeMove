@@ -16,6 +16,10 @@ namespace MakeMeMove.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem BackButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton FacebookButton { get; set; }
 
         [Outlet]
@@ -25,6 +29,10 @@ namespace MakeMeMove.iOS
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel MessageLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UINavigationBar NavBar { get; set; }
 
         [Action ("FacebookButton_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -36,6 +44,11 @@ namespace MakeMeMove.iOS
 
         void ReleaseDesignerOutlets ()
         {
+            if (BackButton != null) {
+                BackButton.Dispose ();
+                BackButton = null;
+            }
+
             if (FacebookButton != null) {
                 FacebookButton.Dispose ();
                 FacebookButton = null;
@@ -49,6 +62,11 @@ namespace MakeMeMove.iOS
             if (MessageLabel != null) {
                 MessageLabel.Dispose ();
                 MessageLabel = null;
+            }
+
+            if (NavBar != null) {
+                NavBar.Dispose ();
+                NavBar = null;
             }
         }
     }
