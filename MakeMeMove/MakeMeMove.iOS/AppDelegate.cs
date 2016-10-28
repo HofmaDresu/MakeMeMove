@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using Foundation;
-using MakeMeMove.Model;
 using SQLite;
 using UIKit;
 using UserNotifications;
@@ -41,14 +40,13 @@ namespace MakeMeMove.iOS
 
 				var nextAction = UNNotificationAction.FromIdentifier(Constants.NextId, "Change", UNNotificationActionOptions.None);
 				var completeAction = UNNotificationAction.FromIdentifier(Constants.CompleteId, "Complete", UNNotificationActionOptions.None);
-
-				var categoryID = Constants.ExerciseNotificationCategoryId;
-				var actions = new UNNotificationAction[] { nextAction, completeAction };
+                
+				var actions = new[] { nextAction, completeAction };
 				var intentIDs = new string[] { };
 
-				var category = UNNotificationCategory.FromIdentifier(categoryID, actions, intentIDs, UNNotificationCategoryOptions.CustomDismissAction);
+				var category = UNNotificationCategory.FromIdentifier(Constants.ExerciseNotificationCategoryId, actions, intentIDs, UNNotificationCategoryOptions.CustomDismissAction);
 
-				var categories = new UNNotificationCategory[] { category };
+				var categories = new[] { category };
 				UNUserNotificationCenter.Current.SetNotificationCategories(new NSSet<UNNotificationCategory>(categories));
 
 			}
@@ -101,7 +99,7 @@ namespace MakeMeMove.iOS
 			application.ApplicationIconBadgeNumber = 1;
 			application.ApplicationIconBadgeNumber = 0;
 
-			UIAlertController okayAlertController = UIAlertController.Create(notification.AlertAction, notification.AlertBody, UIAlertControllerStyle.Alert);
+			var okayAlertController = UIAlertController.Create(notification.AlertAction, notification.AlertBody, UIAlertControllerStyle.Alert);
 			okayAlertController.AddAction(UIAlertAction.Create("COMPLETE", UIAlertActionStyle.Default, _ => CompleteExercise(notification)));
 			okayAlertController.AddAction(UIAlertAction.Create("CHANGE", UIAlertActionStyle.Default, _ => ChangeExercise(notification)));
 
@@ -110,7 +108,7 @@ namespace MakeMeMove.iOS
 			Window.RootViewController.PresentViewController(okayAlertController, true, null);
 		}
 
-		public override void HandleAction(UIApplication application, string actionIdentifier, UILocalNotification localNotification, NSDictionary responseInfo, System.Action completionHandler)
+		public override void HandleAction(UIApplication application, string actionIdentifier, UILocalNotification localNotification, NSDictionary responseInfo, Action completionHandler)
 		{
 			application.ApplicationIconBadgeNumber = 1;
 			application.ApplicationIconBadgeNumber = 0;

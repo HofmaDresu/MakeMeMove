@@ -45,10 +45,11 @@ namespace MakeMeMove.iOS
 
 		public void AddInstantExerciseNotificationAndRestartService(string exerciseName, int exerciseQuantity)
 		{
-            if (!string.IsNullOrEmpty(exerciseName) && exerciseQuantity > 0)
-			{
-				_data.MarkExerciseNotified(exerciseName, -1 * exerciseQuantity);
-			}
+            //TODO: Re-activate if we ever figure out notified thing on iOS
+            //if (!string.IsNullOrEmpty(exerciseName) && exerciseQuantity > 0)
+			//{
+			//	_data.MarkExerciseNotified(exerciseName, -1 * exerciseQuantity);
+			//}
 
 			var nextExercise =
 				_data.GetNextDifferentEnabledExercise(new ExerciseBlock
