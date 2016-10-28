@@ -9,8 +9,10 @@ namespace MakeMeMove.iOS.ViewControllers
 {
     public partial class MenuViewController : UIViewController
     {
-
         private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library", Constants.DatabaseName)));
+        private const int UserNameViewFullHeight = 91;
+        private const string SignIn = "Sign In";
+        private const string SignOut = "Sign Out";
 
         public MenuViewController (IntPtr handle) : base (handle)
         {
@@ -36,19 +38,19 @@ namespace MakeMeMove.iOS.ViewControllers
             if (_data.UserIsSignedIn())
             {
                 UserNameLabel.Text = _data.GetUserName();
-                SignInOutLabel.Text = "Sign Out";
-                UserNameViewHeightConstraint.Constant = 91;
+                SignInOutLabel.Text = SignOut;
+                UserNameViewHeightConstraint.Constant = UserNameViewFullHeight;
             }
             else
             {
                 UserNameLabel.Text = string.Empty;
-                SignInOutLabel.Text = "Sign In";
+                SignInOutLabel.Text = SignIn;
                 UserNameViewHeightConstraint.Constant = 0;
             }
 
             OpenFudistView.TouchUpInside += NotImplementedAlert;
             ViewHistoryView.TouchUpInside += NavToExerciseHistory;
-            SignInOutView.TouchUpInside += NotImplementedAlert;
+            SignInOutView.TouchUpInside += OnSignInOut;
         }
 
         public override void ViewWillDisappear(bool animated)
@@ -57,7 +59,7 @@ namespace MakeMeMove.iOS.ViewControllers
 
             OpenFudistView.TouchUpInside -= NotImplementedAlert;
             ViewHistoryView.TouchUpInside -= NavToExerciseHistory;
-            SignInOutView.TouchUpInside -= NotImplementedAlert;
+            SignInOutView.TouchUpInside -= OnSignInOut;
         }
 
         private void NavToExerciseHistory(object sender, EventArgs e)
@@ -68,6 +70,21 @@ namespace MakeMeMove.iOS.ViewControllers
             this.RevealViewController().RevealToggleAnimated(true);
 
             PresentViewController(regController, true, () => { });
+        }
+
+        private void OnSignInOut(object sender, EventArgs e)
+        {
+            if (_data.UserIsSignedIn())
+            {
+                _data.SignUserOut();
+                UserNameLabel.Text = string.Empty;
+                SignInOutLabel.Text = SignIn;
+                UserNameViewHeightConstraint.Constant = 0;
+            }
+            else
+            {
+                
+            }
         }
 
         private void NotImplementedAlert(object sender, EventArgs e)
