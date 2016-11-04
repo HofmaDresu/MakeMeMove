@@ -3,9 +3,11 @@ using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.OS;
+using Android.Support.V4.App;
 using MakeMeMove.Droid.Activities;
 using MakeMeMove.Droid.BroadcastReceivers;
 using MakeMeMove.Model;
+using TaskStackBuilder = Android.App.TaskStackBuilder;
 
 namespace MakeMeMove.Droid.DeviceSpecificImplementations
 {
@@ -73,10 +75,10 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
 
             var timeToMoveMessage = string.Format(context.Resources.GetString(Resource.String.TimeToMoveMessage), nextExercise.Quantity, nextExercise.CombinedName);
-            var builder = new Notification.Builder(context)
+            var builder = new NotificationCompat.Builder(context)
                 .SetContentTitle(context.Resources.GetString(Resource.String.TimeToMoveTitle))
                 .SetContentText(timeToMoveMessage)
-                .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate)
+                .SetDefaults(NotificationCompat.DefaultSound | NotificationCompat.DefaultVibrate)
                 .SetContentIntent(clickPendingIntent);
 
 
@@ -87,26 +89,26 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             {
                 builder
                     .SetPriority((int) NotificationPriority.High)
-                    .SetVisibility(NotificationVisibility.Public)
+                    .SetVisibility(NotificationCompat.VisibilityPublic)
                     .SetCategory("reminder")
                     .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
                     .SetColor(Color.Rgb(215, 78, 10))
-                    .AddAction(new Notification.Action(Resource.Drawable.ic_shuffle_black_24dp, changeExerciseButtonText, nextPendingIntent));
+                    .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_shuffle_black_24dp, changeExerciseButtonText, nextPendingIntent));
                 if (userIsPremium)
                 {
                     builder
-                        .AddAction(new Notification.Action(Resource.Drawable.ic_done_black_24dp, completedButtonText, completedPendingIntent));
+                        .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_done_black_24dp, completedButtonText, completedPendingIntent));
                 }
             }
             else if ((int)Build.VERSION.SdkInt >= 20)
             {
                 builder
                     .SetSmallIcon(Resource.Drawable.icon)
-                    .AddAction(new Notification.Action(Resource.Drawable.ic_shuffle_black_24dp, changeExerciseButtonText, nextPendingIntent));
+                    .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_shuffle_black_24dp, changeExerciseButtonText, nextPendingIntent));
                 if (userIsPremium)
                 {
                     builder
-                        .AddAction(new Notification.Action(Resource.Drawable.ic_done_black_24dp, completedButtonText, completedPendingIntent));
+                        .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_done_black_24dp, completedButtonText, completedPendingIntent));
                 }
             }
             else
@@ -128,7 +130,7 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
 
             notification.Flags |= NotificationFlags.AutoCancel;
 
-            var notificationManager = context.GetSystemService(Context.NotificationService) as NotificationManager;
+            var notificationManager = NotificationManagerCompat.From(context);
             notificationManager?.Notify(Constants.NotificationId, notification);
         }
     }
