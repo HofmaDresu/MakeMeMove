@@ -13,6 +13,7 @@ namespace MakeMeMove
         private SQLiteConnection _db;
         private TableQuery<ExerciseSchedule> ExerciseSchedules => _db.Table<ExerciseSchedule>();
         private TableQuery<ExerciseBlock> ExerciseBlocks => _db.Table<ExerciseBlock>();
+        private TableQuery<MostRecentExercise> MostRecentExercises => _db.Table<MostRecentExercise>();
         private TableQuery<ExerciseHistory> ExerciseHistories => _db.Table<ExerciseHistory>();
         private TableQuery<FudistUser> FudistUsers => _db.Table<FudistUser>();
         private TableQuery<SystemStatus> SystemStatus => _db.Table<SystemStatus>();
@@ -46,6 +47,7 @@ namespace MakeMeMove
             }
             
             _db.CreateTable<ExerciseBlock>();
+            _db.CreateTable<MostRecentExercise>();
 
             if (!hasExerciseSchedule && !ExerciseBlocks.Any())
             {
@@ -131,25 +133,37 @@ namespace MakeMeMove
 
         public ExerciseBlock GetNextEnabledExercise(Random random = null)
         {
-            var exercises = GetExerciseBlocks();
-            var enabledExercises = exercises.Where(e => e.Enabled).ToList();
+            ExerciseBlock nextExercise;
 
-            if (enabledExercises.Count == 0) return null;
+            if (MostRecentExercises.Any())
+            {
+                nextExercise = GetNextDifferentEnabledExercise(MostRecentExercises.First(), random);
+            }
+            else
+            {
+                var exercises = GetExerciseBlocks();
+                var enabledExercises = exercises.Where(e => e.Enabled).ToList();
 
-            var index = (random ?? new Random()).Next(0, enabledExercises.Count);
+                if (enabledExercises.Count == 0) return null;
 
-            return enabledExercises[Min(index, enabledExercises.Count - 1)];
+                var index = (random ?? new Random()).Next(0, enabledExercises.Count);
+
+                nextExercise = enabledExercises[Min(index, enabledExercises.Count - 1)];
+            }
+            MostRecentExercises.Delete(_ => true);
+            _db.Insert(MostRecentExercise.FromBlock(nextExercise));
+            return nextExercise;
         }
 
-        public ExerciseBlock GetNextDifferentEnabledExercise(ExerciseBlock currentExercise, Random random = null)
+        private ExerciseBlock GetNextDifferentEnabledExercise(MostRecentExercise mostRecentExercise, Random random = null)
         {
             var exercises = GetExerciseBlocks();
             var enabledExercises = exercises.Where(e => e.Enabled);
             // Look at name and quantitiy instead of Id since users can create multiple blocks that are the same
             var differentEnabledExercises = enabledExercises.Where(e =>
-                    !e.CombinedName.Equals(currentExercise.CombinedName, StringComparison.CurrentCultureIgnoreCase)
-                    || (e.CombinedName.Equals(currentExercise.CombinedName, StringComparison.CurrentCultureIgnoreCase)
-                            && e.Quantity != currentExercise.Quantity))
+                    !e.CombinedName.Equals(mostRecentExercise.CombinedName, StringComparison.CurrentCultureIgnoreCase)
+                    || (e.CombinedName.Equals(mostRecentExercise.CombinedName, StringComparison.CurrentCultureIgnoreCase)
+                            && e.Quantity != mostRecentExercise.Quantity))
                 .ToList();
 
             // If there are no different exercises, see if there are any available at all

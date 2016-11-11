@@ -64,6 +64,29 @@ namespace MakeMeMove.Model
                     Enabled = true
                 }
             };
-        } 
+        }
+    }
+
+    [Table("MostRecentExercise")]
+    public class MostRecentExercise
+    {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+        [Ignore]
+        public string CombinedName => string.IsNullOrWhiteSpace(Name) ? Type.Humanize() : Name;
+        public PreBuiltExersises Type { get; set; }
+        public int Quantity { get; set; }
+
+        public static MostRecentExercise FromBlock(ExerciseBlock block)
+        {
+            return new MostRecentExercise
+            {
+                Name = block.Name,
+                Type = block.Type,
+                Quantity = block.Quantity
+            };
+        }
     }
 }
