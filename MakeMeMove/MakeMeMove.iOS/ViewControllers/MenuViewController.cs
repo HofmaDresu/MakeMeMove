@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Foundation;
 using MakeMeMove.iOS.Helpers;
 using SQLite;
 using SWRevealViewControllerBinding;
@@ -26,7 +27,7 @@ namespace MakeMeMove.iOS.ViewControllers
             MenuBackgroundView.BackgroundColor = FudistColors.MainBackgroundColor;
 
 
-            OpenFudistLabel.Text = "Open Fudist";
+            OpenFudistLabel.Text = "See Fudist in the App Store";
         }
 
         public override void ViewWillAppear(bool animated)
@@ -46,7 +47,7 @@ namespace MakeMeMove.iOS.ViewControllers
                 UserNameViewHeightConstraint.Constant = 0;
             }
 
-            OpenFudistView.TouchUpInside += NotImplementedAlert;
+            OpenFudistView.TouchUpInside += OpenFudistClicked;
             ViewHistoryView.TouchUpInside += NavToExerciseHistory;
             SignInOutView.TouchUpInside += NotImplementedAlert;
         }
@@ -55,7 +56,7 @@ namespace MakeMeMove.iOS.ViewControllers
         {
             base.ViewWillDisappear(animated);
 
-            OpenFudistView.TouchUpInside -= NotImplementedAlert;
+            OpenFudistView.TouchUpInside -= OpenFudistClicked;
             ViewHistoryView.TouchUpInside -= NavToExerciseHistory;
             SignInOutView.TouchUpInside -= NotImplementedAlert;
         }
@@ -68,6 +69,12 @@ namespace MakeMeMove.iOS.ViewControllers
             this.RevealViewController().RevealToggleAnimated(true);
 
             PresentViewController(regController, true, () => { });
+        }
+
+        private void OpenFudistClicked(object sender, EventArgs e)
+        {
+            var iTunesLink = "https://itunes.apple.com/us/app/fudist/id885638462?mt8";
+            UIApplication.SharedApplication.OpenUrl(NSUrl.FromString(iTunesLink));
         }
 
         private void NotImplementedAlert(object sender, EventArgs e)
