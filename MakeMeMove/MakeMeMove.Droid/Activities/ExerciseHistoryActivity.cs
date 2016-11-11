@@ -83,12 +83,7 @@ namespace MakeMeMove.Droid.Activities
                 {
                     Data.MarkExerciseNotified(selectedExercise.CombinedName, -1 * selectedExercise.Quantity);
 
-                    var nextExercise =
-                        Data.GetNextDifferentEnabledExercise(new ExerciseBlock
-                        {
-                            Name = selectedExercise.CombinedName,
-                            Quantity = selectedExercise.Quantity
-                        });
+                    var nextExercise = Data.GetNextEnabledExercise();
                     if (nextExercise == null)
                     {
                         Toast.MakeText(this, Resource.String.NoAvailableExercises, ToastLength.Long).Show();
