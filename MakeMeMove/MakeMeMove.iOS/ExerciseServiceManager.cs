@@ -52,11 +52,7 @@ namespace MakeMeMove.iOS
 			//}
 
 			var nextExercise =
-				_data.GetNextDifferentEnabledExercise(new ExerciseBlock
-				{
-					Name = exerciseName,
-					Quantity = exerciseQuantity
-				});
+				_data.GetNextEnabledExercise();
 
 			UIApplication.SharedApplication.CancelAllLocalNotifications();
 			LocalNotifications.CreateInstantNotification(nextExercise);
@@ -69,14 +65,13 @@ namespace MakeMeMove.iOS
 
 			var now = DateTime.Now;
 			var tomorrow = now.AddDays(1);
-		    ExerciseBlock exercise = null;
 		    var random = new Random();
 
 			for (var testDate = TickUtility.GetNextRunTime(schedule, now); testDate < tomorrow; testDate = TickUtility.GetNextRunTime(schedule, testDate.AddMinutes(1)))
 			{
-				//TODO: figure out how to make this more random. Right now it makes a random schedule, but it's the same every day
-				exercise = exercise == null ? _data.GetNextEnabledExercise(random) : _data.GetNextDifferentEnabledExercise(exercise, random);
-				LocalNotifications.CreateNotification(testDate, exercise, true);
+			    //TODO: figure out how to make this more random. Right now it makes a random schedule, but it's the same every day
+			    var exercise = _data.GetNextEnabledExercise(random);
+			    LocalNotifications.CreateNotification(testDate, exercise, true);
 			}
 		}
 	}
