@@ -126,7 +126,7 @@ namespace MakeMeMove.iOS
             }
             string accessToken;
             e.Account.Properties.TryGetValue("access_token", out accessToken);
-            Person person;
+            Person person = null;
             try
             {
                 _loadingOverlay = new LoadingOverlay(UIScreen.MainScreen.Bounds, "Signing In...");
@@ -134,13 +134,16 @@ namespace MakeMeMove.iOS
                 person = await FudistPersonAdapter.AuthPersonWithToken(accessToken, socialProvider, UnifiedAnalytics.GetInstance(), AuthorizationSingleton.GetInstance());
                 Data.SignUserIn(person, AuthorizationSingleton.PersonIsProOrHigherUser(person));
             }
-            catch
+            catch(Exception ex)
             {
-                DismissViewController(true, () =>
+                if (person == null)
                 {
-                    SetMessageText("Sign in failure. Please check that you have a Fudist subscription");
-                    _loadingOverlay.Hide();
-                });
+                    DismissViewController(true, () =>
+                    {
+                        SetMessageText("Sign in failure. Please check that you have a Fudist subscription");
+                        _loadingOverlay.Hide();
+                    });
+                }
                 return;
             }
             var authorizationSingleton = AuthorizationSingleton.GetInstance(UnifiedAnalytics.GetInstance());
@@ -171,10 +174,20 @@ namespace MakeMeMove.iOS
             MessageLabel.Text = string.Empty;
         }
 
-        public override void ViewWillAppear(bool animated)
+        public override async void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
             BackButton.Clicked += BackButton_Clicked;
+
+            //HACK: MMM should work with the iOS 1.2.0 version of our API
+            try
+            {
+                await fudistConfigAdapter.Configure(/*PackageManager.GetPackageInfo(PackageName, 0).VersionName*/"1.2.0", "iOS", UnifiedAnalytics.GetInstance());
+            }
+            catch (Exception)
+            {
+                GeneralAlertDialogs.ShowNetworkErrorDialog(this, _ => DismissViewController(true, () => { }));
+            }
         }
 
         private void BackButton_Clicked(object sender, EventArgs e)
