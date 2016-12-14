@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="54">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+    </dependencies>
+    <scenes>
+        <scene sceneID="4">
+            <objects>
+                <viewController id="5" sceneMemberID="viewController" customClass="LoginController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2"/>
+                        <viewControllerLayoutGuide type="bottom" id="3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username / Password combination is not valid" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0.0">
+                                <rect key="frame" x="20" y="84" width="560" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="39" firstItem="9" firstAttribute="height" constant="45"/>
+                                </constraints>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="13" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="182" y="149" width="236" height="44"/>
+                                <state key="normal" backgroundImage="facebookLoginLarge.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="FacebookButton_TouchUpInside:" destination="5" id="27" eventType="touchUpInside"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="19" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="177" y="213" width="246" height="54"/>
+                                <state key="normal" backgroundImage="Red-signin-Long-base-44dp.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="GoogleButton_TouchUpInside:" destination="5" id="28" eventType="touchUpInside"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint id="35" firstItem="9" firstAttribute="centerX" secondItem="6" secondAttribute="centerX"/>
+                            <constraint id="36" firstItem="6" firstAttribute="trailing" secondItem="9" secondAttribute="trailing" constant="20"/>
+                            <constraint id="37" firstItem="9" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="20"/>
+                            <constraint id="40" firstItem="13" firstAttribute="centerX" secondItem="6" secondAttribute="centerX"/>
+                            <constraint id="41" firstItem="13" firstAttribute="top" secondItem="9" secondAttribute="bottom" constant="20"/>
+                            <constraint id="42" firstItem="19" firstAttribute="centerX" secondItem="6" secondAttribute="centerX"/>
+                            <constraint id="43" firstItem="19" firstAttribute="top" secondItem="13" secondAttribute="bottom" constant="20"/>
+                            <constraint id="184" firstItem="9" firstAttribute="top" secondItem="2" secondAttribute="bottom" constant="20"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="MessageLabel" destination="9" id="name-outlet-9"/>
+                        <outlet property="FacebookButton" destination="13" id="name-outlet-13"/>
+                        <outlet property="GoogleButton" destination="19" id="name-outlet-19"/>
+                        <outlet property="BackButton" destination="185" id="name-outlet-185"/>
+                        <segue id="289" destination="193" kind="show" identifier="GoToFudistLogin"/>
+                    </connections>
+                    <navigationItem title="Log In" id="181" key="navigationItem">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="185"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-756" y="-387"/>
+        </scene>
+        <scene sceneID="53">
+            <objects>
+                <navigationController id="54" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="56">
+                        <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue id="182" destination="5" kind="relationship" relationship="rootViewController"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="57" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1551" y="-407"/>
+        </scene>
+        <scene sceneID="192">
+            <objects>
+                <viewController id="193" sceneMemberID="viewController" customClass="FudistLoginViewController" title="Fudist Log In">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="190"/>
+                        <viewControllerLayoutGuide type="bottom" id="191"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="194">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username / Password combination is not valid" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="295" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0.0">
+                                <rect key="frame" x="20" y="84" width="560" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="302" firstItem="295" firstAttribute="height" constant="45"/>
+                                </constraints>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="296" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Username">
+                                <rect key="frame" x="20" y="145" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="297" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Password">
+                                <rect key="frame" x="20" y="195" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have a Fudist account? Tap cancel to sign in with Google or Facebook" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="298" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0.0">
+                                <rect key="frame" x="20" y="305" width="560" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="312" firstItem="298" firstAttribute="height" constant="29"/>
+                                </constraints>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint id="299" firstItem="295" firstAttribute="top" secondItem="190" secondAttribute="bottom" constant="20"/>
+                            <constraint id="300" firstItem="295" firstAttribute="leading" secondItem="194" secondAttribute="leading" constant="20"/>
+                            <constraint id="301" firstItem="194" firstAttribute="trailing" secondItem="295" secondAttribute="trailing" constant="20"/>
+                            <constraint id="303" firstItem="296" firstAttribute="top" secondItem="295" secondAttribute="bottom" constant="16"/>
+                            <constraint id="304" firstItem="296" firstAttribute="leading" secondItem="194" secondAttribute="leading" constant="20"/>
+                            <constraint id="305" firstItem="194" firstAttribute="trailing" secondItem="296" secondAttribute="trailing" constant="20"/>
+                            <constraint id="306" firstItem="297" firstAttribute="top" secondItem="296" secondAttribute="bottom" constant="20"/>
+                            <constraint id="307" firstItem="297" firstAttribute="leading" secondItem="194" secondAttribute="leading" constant="20"/>
+                            <constraint id="308" firstItem="194" firstAttribute="trailing" secondItem="297" secondAttribute="trailing" constant="20"/>
+                            <constraint id="309" firstItem="298" firstAttribute="top" secondItem="297" secondAttribute="bottom" constant="80"/>
+                            <constraint id="310" firstItem="298" firstAttribute="leading" secondItem="194" secondAttribute="leading" constant="20"/>
+                            <constraint id="311" firstItem="194" firstAttribute="trailing" secondItem="298" secondAttribute="trailing" constant="20"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="UserName" destination="296" id="name-outlet-296"/>
+                        <outlet property="Password" destination="297" id="name-outlet-297"/>
+                        <outlet property="Message" destination="295" id="name-outlet-295"/>
+                        <segue id="582" destination="5" kind="show" identifier="GoToLoginChoice"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="195" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-752" y="327"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_menu_white.png" width="24" height="24"/>
+        <image name="ic_menu_white_2x.png" width="48" height="48"/>
+        <image name="ic_menu_white_3x.png" width="72" height="72"/>
+        <image name="ic_today.png" width="24" height="24"/>
+        <image name="ic_view_list.png" width="24" height="24"/>
+        <image name="LaunchGraphic.png" width="1024" height="1300"/>
+        <image name="NavigateBack" width="24" height="24"/>
+        <image name="NavigateForward" width="24" height="24"/>
+        <image name="facebookLoginLarge.png" width="236" height="44"/>
+        <image name="facebookLoginMedium.png" width="202" height="46"/>
+        <image name="Red-signin-Long-base-44dp.png" width="246" height="54"/>
+    </resources>
+</document>

@@ -120,10 +120,11 @@ namespace MacroEatMobile.Core
 			content.Headers.Add(provider + "Token", accessToken);
 
 			var response = await client.PostAsync (Configuration.FudistRestDirectory + provider + "Token", content);
-           	//IRestResponse response = client.Execute(request1);
+            //IRestResponse response = client.Execute(request1);
 
-			var locHeader = response.Headers.First (hd => hd.Key == "Location").Value.First();
-			response = await client.GetAsync(locHeader );
+            //HACK: This diverges from the Fudist code to take care of some really weird behavior on iOS that doesn't happen in Fudist.
+            var locHeader = response.Headers?.Location?.OriginalString ?? response.Headers.First(hd => hd.Key == "Location").Value.First();
+            response = await client.GetAsync(Configuration.FudistRestServer + locHeader);
 
 			var tokenUrl = new Uri(response.Headers.First(hd => hd.Key == "Location").Value.First());
 			//var token = tokenUrl.Fragment.Split ('=','&') [1];
