@@ -199,6 +199,7 @@ namespace MakeMeMove.iOS
         {
             base.ViewDidDisappear(animated);
             BackButton.Clicked -= BackButton_Clicked;
+            _loginWithFudist.TouchUpInside -= LoginWithFudistOnTouchUpInside;
         }
     }
 }

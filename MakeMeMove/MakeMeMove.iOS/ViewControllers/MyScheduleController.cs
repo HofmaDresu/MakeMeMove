@@ -29,15 +29,19 @@ namespace MakeMeMove.iOS.ViewControllers
 
             if (this.RevealViewController() == null) return;
 
-            MenuButton.Clicked += (sender, e) => this.RevealViewController().RevealToggleAnimated(true);
-		    MenuButton.TintColor = UIColor.White;
+            MenuButton.TintColor = UIColor.White;
 
             AddButtons();
 			StatusSwitch.TintColor = FudistColors.InteractableTextColor;
             StatusSwitch.SelectedSegment = ServiceManager.NotificationServiceIsRunning() ? 1 : 0;
         }
 
-		private void AddButtons()
+        private void MenuButton_Clicked(object sender, EventArgs e)
+        {
+            this.RevealViewController().RevealToggleAnimated(true);
+        }
+
+        private void AddButtons()
 		{
 			_changeScheduleButton = new FloatingButton("Change Schedule");
 			View.Add(_changeScheduleButton);
@@ -50,7 +54,8 @@ namespace MakeMeMove.iOS.ViewControllers
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
-			_exerciseSchedule = Data.GetExerciseSchedule();
+            MenuButton.Clicked += MenuButton_Clicked;
+            _exerciseSchedule = Data.GetExerciseSchedule();
 			StartTime.Text = _exerciseSchedule.StartTime.ToLongTimeString();
 			EndTime.Text = _exerciseSchedule.EndTime.ToLongTimeString();
 			ReminderPeriod.Text = _exerciseSchedule.PeriodDisplayString;
@@ -82,6 +87,7 @@ namespace MakeMeMove.iOS.ViewControllers
 			base.ViewWillDisappear(animated);
 			StatusSwitch.ValueChanged -= StatusSwitch_ValueChanged;
 			_changeScheduleButton.TouchUpInside -= ChangeScheduleButton_TouchUpInside;
-		}
+            MenuButton.Clicked -= MenuButton_Clicked;
+        }
 	}
 }

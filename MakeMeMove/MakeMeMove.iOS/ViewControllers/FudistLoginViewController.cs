@@ -14,6 +14,8 @@ namespace MakeMeMove.iOS
     public partial class FudistLoginViewController : BaseViewController
     {
         LoadingOverlay _loadingOverlay;
+        private FloatingButton _loginButton;
+        private FloatingButton _cancelButton;
 
         public FudistLoginViewController (IntPtr handle) : base (handle)
         {
@@ -51,36 +53,41 @@ namespace MakeMeMove.iOS
 
         private void SetupCancelButton()
         {
-            var cancelButton = new FloatingButton("Cancel");
-            cancelButton.TouchUpInside += (sender, e) => PerformSegue("GoToLoginChoice", this);
-            cancelButton.TranslatesAutoresizingMaskIntoConstraints = false;
-            View.Add(cancelButton);
+            _cancelButton = new FloatingButton("Cancel");
+            _cancelButton.TouchUpInside += CancelFudistLogin;
+            _cancelButton.TranslatesAutoresizingMaskIntoConstraints = false;
+            View.Add(_cancelButton);
 
-            View.AddConstraint(NSLayoutConstraint.Create(cancelButton, NSLayoutAttribute.Top, NSLayoutRelation.Equal,
+            View.AddConstraint(NSLayoutConstraint.Create(_cancelButton, NSLayoutAttribute.Top, NSLayoutRelation.Equal,
                 Password, NSLayoutAttribute.Bottom, 1, 20));
-            View.AddConstraint(NSLayoutConstraint.Create(cancelButton, NSLayoutAttribute.Left, NSLayoutRelation.Equal,
+            View.AddConstraint(NSLayoutConstraint.Create(_cancelButton, NSLayoutAttribute.Left, NSLayoutRelation.Equal,
                 Password, NSLayoutAttribute.Left, 1, 0));
-            View.AddConstraint(NSLayoutConstraint.Create(cancelButton, NSLayoutAttribute.Width, NSLayoutRelation.Equal,
-                null, NSLayoutAttribute.NoAttribute, 1, cancelButton.Frame.Width));
-            View.AddConstraint(NSLayoutConstraint.Create(cancelButton, NSLayoutAttribute.Height, NSLayoutRelation.Equal,
-                null, NSLayoutAttribute.NoAttribute, 1, cancelButton.Frame.Height));
+            View.AddConstraint(NSLayoutConstraint.Create(_cancelButton, NSLayoutAttribute.Width, NSLayoutRelation.Equal,
+                null, NSLayoutAttribute.NoAttribute, 1, _cancelButton.Frame.Width));
+            View.AddConstraint(NSLayoutConstraint.Create(_cancelButton, NSLayoutAttribute.Height, NSLayoutRelation.Equal,
+                null, NSLayoutAttribute.NoAttribute, 1, _cancelButton.Frame.Height));
+        }
+
+        private void CancelFudistLogin(object sender, EventArgs e)
+        {
+            PerformSegue("GoToLoginChoice", this);
         }
 
         private void SetupLoginButton()
         {
-            var loginButton = new FloatingButton("Sign In");
-            loginButton.TouchUpInside += LoginButtonTouchUpInside;
-            loginButton.TranslatesAutoresizingMaskIntoConstraints = false;
-            View.Add(loginButton);
+            _loginButton = new FloatingButton("Sign In");
+            _loginButton.TouchUpInside += LoginButtonTouchUpInside;
+            _loginButton.TranslatesAutoresizingMaskIntoConstraints = false;
+            View.Add(_loginButton);
 
-            View.AddConstraint(NSLayoutConstraint.Create(loginButton, NSLayoutAttribute.Top, NSLayoutRelation.Equal,
+            View.AddConstraint(NSLayoutConstraint.Create(_loginButton, NSLayoutAttribute.Top, NSLayoutRelation.Equal,
                 Password, NSLayoutAttribute.Bottom, 1, 20));
-            View.AddConstraint(NSLayoutConstraint.Create(loginButton, NSLayoutAttribute.Right, NSLayoutRelation.Equal,
+            View.AddConstraint(NSLayoutConstraint.Create(_loginButton, NSLayoutAttribute.Right, NSLayoutRelation.Equal,
                 Password, NSLayoutAttribute.Right, 1, 0));
-            View.AddConstraint(NSLayoutConstraint.Create(loginButton, NSLayoutAttribute.Width, NSLayoutRelation.Equal,
-                null, NSLayoutAttribute.NoAttribute, 1, loginButton.Frame.Width));
-            View.AddConstraint(NSLayoutConstraint.Create(loginButton, NSLayoutAttribute.Height, NSLayoutRelation.Equal,
-                null, NSLayoutAttribute.NoAttribute, 1, loginButton.Frame.Height));
+            View.AddConstraint(NSLayoutConstraint.Create(_loginButton, NSLayoutAttribute.Width, NSLayoutRelation.Equal,
+                null, NSLayoutAttribute.NoAttribute, 1, _loginButton.Frame.Width));
+            View.AddConstraint(NSLayoutConstraint.Create(_loginButton, NSLayoutAttribute.Height, NSLayoutRelation.Equal,
+                null, NSLayoutAttribute.NoAttribute, 1, _loginButton.Frame.Height));
         }
 
         public override void ViewDidAppear(bool animated)
@@ -92,6 +99,13 @@ namespace MakeMeMove.iOS
                 Message.Frame.Y,
                 Message.Frame.Width,
                 0);
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            base.ViewDidDisappear(animated);
+            _loginButton.TouchUpInside -= LoginButtonTouchUpInside;
+            _cancelButton.TouchUpInside -= CancelFudistLogin;
         }
 
         void LoginButtonTouchUpInside(object sender, EventArgs e)

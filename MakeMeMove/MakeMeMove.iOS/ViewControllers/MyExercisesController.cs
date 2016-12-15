@@ -28,19 +28,24 @@ namespace MakeMeMove.iOS.ViewControllers
 
             if (this.RevealViewController() == null) return;
 
-            MenuButton.Clicked += (sender, e) => this.RevealViewController().RevealToggleAnimated(true);
             MenuButton.TintColor = UIColor.White;
 
             ExerciseList.BackgroundColor = FudistColors.MainBackgroundColor;
 			AddExerciseButton.BackgroundColor = FudistColors.PrimaryColor;
 		}
 
-		public override void ViewWillAppear(bool animated)
-		{
-			base.ViewDidAppear(animated);
-			SelectedExerciseId = null;
+        private void MenuButton_Clicked(object sender, EventArgs e)
+        {
+            this.RevealViewController().RevealToggleAnimated(true);
+        }
 
-			_exercises = Data.GetExerciseBlocks();
+        public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+			SelectedExerciseId = null;
+            MenuButton.Clicked += MenuButton_Clicked;
+
+            _exercises = Data.GetExerciseBlocks();
 			_exerciseTableDelegate = new ExerciseTableDelegate();
 			_exerciseTableDelegate.ExerciseEdited += exerciseTableDelegate_ExerciseEdited;
 			_exerciseTableDelegate.ExerciseDeleted += exerciseTableDelegate_ExerciseDeleted;
@@ -57,7 +62,8 @@ namespace MakeMeMove.iOS.ViewControllers
 			_exerciseTableDelegate.ExerciseEdited -= exerciseTableDelegate_ExerciseEdited;
 			_exerciseTableDelegate.ExerciseDeleted -= exerciseTableDelegate_ExerciseDeleted;
 			_source.EnabledDisabledSwitchSelected -= EnableDisableExercise;
-		}
+            MenuButton.Clicked -= MenuButton_Clicked;
+        }
 
 		void exerciseTableDelegate_ExerciseEdited(object sender, int exerciseIndex)
 		{
