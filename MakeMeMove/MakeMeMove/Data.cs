@@ -102,6 +102,15 @@ namespace MakeMeMove
         
         public void SaveExerciseSchedule(ExerciseSchedule exerciseSchedule)
         {
+            if (exerciseSchedule.Type == ScheduleType.Custom)
+            {
+                exerciseSchedule.CustomDays = string.Join(Constants.DatabaseListSeparator.ToString(), exerciseSchedule.ScheduledDays);
+            }
+            else
+            {
+                exerciseSchedule.CustomDays = string.Empty;
+            }
+
             _db.Update(exerciseSchedule);
         }
 
