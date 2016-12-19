@@ -119,6 +119,7 @@ namespace MakeMeMove.Droid.Activities
             _exerciseSchedule.EndTime = endTime;
 
             Data.SaveExerciseSchedule(_exerciseSchedule);
+            _exerciseSchedule = Data.GetExerciseSchedule();
             _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
 
             Finish();
