@@ -19,7 +19,8 @@ namespace MakeMeMove.Model
 
         public static List<string> GetScheduleTypes()
         {
-            return (from ScheduleType suit in Enum.GetValues(typeof(ScheduleType)) select suit.Humanize()).ToList();
+            // Remove 'except' when we're ready for custom
+            return (from ScheduleType suit in Enum.GetValues(typeof(ScheduleType)).Cast<ScheduleType>().Except(new List<ScheduleType> { ScheduleType.Custom}) select suit.Humanize()).ToList();
         }
     }
 }

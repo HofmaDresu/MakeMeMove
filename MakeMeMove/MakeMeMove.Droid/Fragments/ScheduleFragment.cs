@@ -18,6 +18,7 @@ namespace MakeMeMove.Droid.Fragments
         private ExerciseSchedule _exerciseSchedule;
         private TextView _startTimeText;
         private TextView _endTimeText;
+        private TextView _scheduleTypeText;
         private TextView _reminderPeriodText;
         private Button _manageScheduleButton;
         private View _serviceToggle;
@@ -36,6 +37,7 @@ namespace MakeMeMove.Droid.Fragments
             
             _startTimeText = view.FindViewById<TextView>(Resource.Id.StartTimeText);
             _endTimeText = view.FindViewById<TextView>(Resource.Id.EndTimeText);
+            _scheduleTypeText = view.FindViewById<TextView>(Resource.Id.ScheduleTypeText);
             _reminderPeriodText = view.FindViewById<TextView>(Resource.Id.ReminderPeriodText);
             _manageScheduleButton = view.FindViewById<Button>(Resource.Id.ManageScheduleButton);
 
@@ -57,6 +59,7 @@ namespace MakeMeMove.Droid.Fragments
             _exerciseSchedule = _data.GetExerciseSchedule();
             _startTimeText.Text = _exerciseSchedule.StartTime.ToLongTimeString();
             _endTimeText.Text = _exerciseSchedule.EndTime.ToLongTimeString();
+            _scheduleTypeText.Text = _exerciseSchedule.TypeDisplayString;
             _reminderPeriodText.Text = _exerciseSchedule.PeriodDisplayString;
 
             EnableDisableServiceButtons();

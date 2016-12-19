@@ -1,86 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  style="@style/TopAndSideSpacedRootElement">
-  <TextView
-    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="@string/ScheduleStatusLabel"
-    android:textAppearance="?android:attr/textAppearanceLarge"/>
-  <LinearLayout
-    android:id="@+id/ServiceToggle"
-    android:orientation="horizontal"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="2dp"
-    android:background="@drawable/CustomSwitchBackground"
-    android:layout_marginLeft="30dp">
+    style="@style/TopAndSideSpacedRootElement">
     <TextView
-      android:id="@+id/ServiceStopped"
-      android:layout_width="100dp"
-      android:layout_height="wrap_content"
-      android:padding="5dp"
-      android:textStyle="bold"
-      android:gravity="center"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ScheduleStatusLabel"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <LinearLayout
+        android:id="@+id/ServiceToggle"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:background="@drawable/CustomSwitchBackground"
+        android:layout_marginLeft="30dp">
+        <TextView
+            android:id="@+id/ServiceStopped"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/ServiceStarted"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/White" />
+    </LinearLayout>
     <TextView
-      android:id="@+id/ServiceStarted"
-      android:layout_width="100dp"
-      android:layout_height="wrap_content"
-      android:padding="5dp"
-      android:textStyle="bold"
-      android:gravity="center"
-      android:textColor="@color/White"/>
-  </LinearLayout>
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="@string/StartTimeLabel"
-      android:textAppearance="?android:attr/textAppearanceLarge"
-      style="@style/TopSpacedElement" />
-  <TextView
-      android:id="@+id/StartTimeText"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="30dp"
-      android:textAppearance="?android:attr/textAppearanceLarge" />
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="@string/EndTimeLabel"
-      android:textAppearance="?android:attr/textAppearanceLarge"
-      style="@style/TopSpacedElement" />
-  <TextView
-      android:id="@+id/EndTimeText"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="30dp"
-      android:textAppearance="?android:attr/textAppearanceLarge" />
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="@string/ReminderPeriodLabel"
-      android:textAppearance="?android:attr/textAppearanceLarge"
-      style="@style/TopSpacedElement" />
-  <TextView
-      android:id="@+id/ReminderPeriodText"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="30dp"
-      android:textAppearance="?android:attr/textAppearanceLarge" />
-  <RelativeLayout
-      android:layout_marginTop="20dp"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content">
-    <Button
-      android:layout_centerInParent="true"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:paddingLeft="20dp"
-      android:paddingRight="20dp"
-      android:id="@+id/ManageScheduleButton"
-      android:text="@string/ChangeScheduleButtonText"
-      style="@style/FreeButton"/>
-  </RelativeLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/StartTimeLabel"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        style="@style/TopSpacedElement" />
+    <TextView
+        android:id="@+id/StartTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/EndTimeLabel"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        style="@style/TopSpacedElement" />
+    <TextView
+        android:id="@+id/EndTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ScheduleTypeLabel"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        style="@style/TopSpacedElement" />
+    <TextView
+        android:id="@+id/ScheduleTypeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ReminderPeriodLabel"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        style="@style/TopSpacedElement" />
+    <TextView
+        android:id="@+id/ReminderPeriodText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:id="@+id/ManageScheduleButton"
+            android:text="@string/ChangeScheduleButtonText"
+            style="@style/FreeButton" />
+    </RelativeLayout>
 </LinearLayout>

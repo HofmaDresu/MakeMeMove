@@ -39,7 +39,8 @@ namespace MakeMeMove.Model
 
         [Ignore]
         public List<DayOfWeek> ScheduledDays { get; set; }
-
+        [Ignore]
+        public string TypeDisplayString => Type.Humanize();
         [Ignore]
         public string PeriodDisplayString => Period.Humanize();
 
