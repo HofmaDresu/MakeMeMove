@@ -38,45 +38,7 @@ namespace MakeMeMove.Model
         public string CustomDays { get; set; }
 
         [Ignore]
-        public List<DayOfWeek> ScheduledDays
-        {
-            get
-            {
-                switch (Type)
-                {
-                    case ScheduleType.EveryDay:
-                        return Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
-                    case ScheduleType.WeekendsOnly:
-                        return new List<DayOfWeek> {DayOfWeek.Saturday, DayOfWeek.Sunday};
-                    case ScheduleType.WeekdaysOnly:
-                        return Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().Except(new List<DayOfWeek> { DayOfWeek.Saturday, DayOfWeek.Sunday }).ToList();
-                    case ScheduleType.Custom:
-                        return string.IsNullOrWhiteSpace(CustomDays)
-                            ? new List<DayOfWeek>()
-                            : CustomDays.Split(Constants.DatabaseListSeparator).Select(GetDayOfWeekFromString)
-                                        .Where(d => d.HasValue).Select(d => d.Value).ToList();
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            }
-        }
-
-        private DayOfWeek? GetDayOfWeekFromString(string d)
-        {
-            int day;
-            if (int.TryParse(d, out day))
-            {
-                try
-                {
-                    return (DayOfWeek?) day;
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-            }
-            return null;
-        }
+        public List<DayOfWeek> ScheduledDays { get; set; }
 
         [Ignore]
         public string PeriodDisplayString => Period.Humanize();
