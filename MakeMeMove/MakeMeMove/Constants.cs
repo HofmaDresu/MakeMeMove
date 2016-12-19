@@ -14,5 +14,6 @@ namespace MakeMeMove
         public const string OpenFudistStoreLabel = "Store";
         public const string NotificationCompletedAction = "ExerciseCompleted";
         public const string NotificationChangeAction = "ChangeExercise";
+        public const char DatabaseListSeparator = '~';
     }
 }

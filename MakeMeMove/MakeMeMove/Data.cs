@@ -96,16 +96,67 @@ namespace MakeMeMove
         public ExerciseSchedule GetExerciseSchedule()
         {
             var schedule = ExerciseSchedules.First();
+            schedule.ScheduledDays = GetScheduleDays(schedule);
             return schedule;
         }
         
         public void SaveExerciseSchedule(ExerciseSchedule exerciseSchedule)
         {
+            if (exerciseSchedule.Type == ScheduleType.Custom)
+            {
+                exerciseSchedule.CustomDays = string.Join(Constants.DatabaseListSeparator.ToString(), exerciseSchedule.ScheduledDays);
+            }
+            else
+            {
+                exerciseSchedule.CustomDays = string.Empty;
+            }
+
             _db.Update(exerciseSchedule);
         }
-#endregion
 
-#region ExerciseBlocks
+        private List<DayOfWeek> GetScheduleDays(ExerciseSchedule schedule)
+        {
+            switch (schedule.Type)
+            {
+                case ScheduleType.EveryDay:
+                    return Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
+                case ScheduleType.WeekendsOnly:
+                    return new List<DayOfWeek> { DayOfWeek.Saturday, DayOfWeek.Sunday };
+                case ScheduleType.WeekdaysOnly:
+                    return
+                        Enum.GetValues(typeof(DayOfWeek))
+                            .Cast<DayOfWeek>()
+                            .Except(new List<DayOfWeek> { DayOfWeek.Saturday, DayOfWeek.Sunday })
+                            .ToList();
+                case ScheduleType.Custom:
+                    return string.IsNullOrWhiteSpace(schedule.CustomDays)
+                        ? new List<DayOfWeek>()
+                        : schedule.CustomDays.Split(Constants.DatabaseListSeparator).Select(GetDayOfWeekFromString)
+                            .Where(d => d.HasValue).Select(d => d.Value).ToList();
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private DayOfWeek? GetDayOfWeekFromString(string d)
+        {
+            int day;
+            if (int.TryParse(d, out day))
+            {
+                try
+                {
+                    return (DayOfWeek?)day;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+            return null;
+        }
+        #endregion
+
+        #region ExerciseBlocks
         public List<ExerciseBlock> GetExerciseBlocks()
         {
             return ExerciseBlocks.ToList();

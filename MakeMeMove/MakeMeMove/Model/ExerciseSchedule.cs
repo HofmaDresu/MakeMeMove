@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 using Humanizer;
 using SQLite;
 
@@ -16,6 +18,14 @@ namespace MakeMeMove.Model
 #endif
     }
 
+    public enum ScheduleType
+    {
+        EveryDay = 0,
+        WeekendsOnly = 1,
+        WeekdaysOnly = 2,
+        Custom = 3
+    }
+
     [Table("ExerciseSchedules")]
     public class ExerciseSchedule
     {
@@ -24,8 +34,16 @@ namespace MakeMeMove.Model
         public int Id { get; set; }
         
         public SchedulePeriod Period { get; set; }
+        public ScheduleType Type { get; set; }
+        public string CustomDays { get; set; }
+
+        [Ignore]
+        public List<DayOfWeek> ScheduledDays { get; set; }
+        [Ignore]
+        public string TypeDisplayString => Type.Humanize();
         [Ignore]
         public string PeriodDisplayString => Period.Humanize();
+
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
 
@@ -36,14 +54,11 @@ namespace MakeMeMove.Model
             {
 #if DEBUG
                 Period = SchedulePeriod.EveryFiveMinutes,
-
 #else
                 Period = SchedulePeriod.Hourly,
 #endif
-                StartTime = new DateTime(1, 1, 1, 8, 0, 0),
-                EndTime = new DateTime(1, 1, 1, 17, 00, 0)
+                StartTime = new DateTime(1, 1, 1, 8, 0, 0), EndTime = new DateTime(1, 1, 1, 17, 00, 0)
             };
         }
-
     }
 }

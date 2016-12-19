@@ -9,7 +9,7 @@ namespace MakeMeMove
         public static DateTime GetNextRunTime(ExerciseSchedule schedule, DateTime? fromDate = null)
         {
             var fromDateValue = fromDate.GetValueOrDefault(DateTime.Now);
-            if (fromDateValue.TimeOfDay > schedule.EndTime.TimeOfDay)
+            if (!schedule.ScheduledDays.Contains(fromDateValue.DayOfWeek) || fromDateValue.TimeOfDay > schedule.EndTime.TimeOfDay)
             {
                 return GetStartOfNextDay(schedule, fromDateValue);
             }
@@ -79,7 +79,12 @@ namespace MakeMeMove
 
         private static DateTime GetStartOfNextDay(ExerciseSchedule schedule, DateTime fromDateValue)
         {
-            return GetStartOfToday(schedule, fromDateValue).AddDays(1);
+            var targetDay = GetStartOfToday(schedule, fromDateValue).AddDays(1);
+            while (!schedule.ScheduledDays.Contains(targetDay.DayOfWeek))
+            {
+                targetDay = targetDay.AddDays(1);
+            }
+            return targetDay;
         }
 
         private static DateTime GetStartOfToday(ExerciseSchedule schedule, DateTime fromDateValue)

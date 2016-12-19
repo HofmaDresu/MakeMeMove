@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using MakeMeMove;
 using MakeMeMove.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -16,6 +18,8 @@ namespace UnitTests
         {
             var  schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 17, 30, 0),
                 Period = SchedulePeriod.HalfHourly
@@ -29,6 +33,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 23, 30, 0),
                 Period = SchedulePeriod.HalfHourly
@@ -42,6 +48,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 17, 30, 0),
                 Period = SchedulePeriod.HalfHourly
@@ -55,6 +63,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 23, 30, 0),
                 Period = SchedulePeriod.HalfHourly
@@ -101,6 +111,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 17, 30, 0),
                 Period = SchedulePeriod.Hourly
@@ -113,6 +125,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 23, 30, 0),
                 Period = SchedulePeriod.Hourly
@@ -125,6 +139,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 17, 30, 0),
                 Period = SchedulePeriod.Hourly
@@ -137,6 +153,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 23, 30, 0),
                 Period = SchedulePeriod.Hourly
@@ -197,6 +215,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 17, 30, 0),
                 Period = SchedulePeriod.BiHourly
@@ -209,6 +229,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.BiHourly
@@ -221,6 +243,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 17, 30, 0),
                 Period = SchedulePeriod.BiHourly
@@ -233,6 +257,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.BiHourly
@@ -277,6 +303,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -294,6 +322,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -311,6 +341,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -328,6 +360,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -345,6 +379,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -362,6 +398,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -379,6 +417,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -396,6 +436,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -413,6 +455,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -430,6 +474,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -447,6 +493,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -464,6 +512,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -481,6 +531,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 30, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -498,6 +550,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 30, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 30, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -515,6 +569,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 30, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 30, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -525,6 +581,142 @@ namespace UnitTests
 
             Assert.AreEqual(8, nextRunTime.Hour);
             Assert.AreEqual(30, nextRunTime.Minute);
+        }
+
+        [TestMethod]
+        public void TestWeekdayOnlySchedule_RunOnMonday()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                Type = ScheduleType.WeekdaysOnly,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().Except(new List<DayOfWeek> {DayOfWeek.Saturday, DayOfWeek.Sunday}).ToList(),
+                StartTime = new DateTime(1, 1, 1, 8, 30, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 30, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+            var thisRunTime = new DateTime(1, 1, 1, 9, 30, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(thisRunTime.AddMinutes(15), nextRunTime);
+        }
+
+        [TestMethod]
+        public void TestWeekdayOnlySchedule_RunOnSaturday_AdvanceToMonday()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                Type = ScheduleType.WeekdaysOnly,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().Except(new List<DayOfWeek> { DayOfWeek.Saturday, DayOfWeek.Sunday }).ToList(),
+                StartTime = new DateTime(1, 1, 1, 8, 30, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 30, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+            var thisRunTime = new DateTime(1, 1, 6, 9, 30, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(schedule.StartTime.AddDays(7), nextRunTime);
+        }
+
+        [TestMethod]
+        public void TestWeekdayOnlySchedule_RunOnSunday_AdvanceToMonday()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                Type = ScheduleType.WeekdaysOnly,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().Except(new List<DayOfWeek> { DayOfWeek.Saturday, DayOfWeek.Sunday }).ToList(),
+                StartTime = new DateTime(1, 1, 1, 8, 30, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 30, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+            var thisRunTime = new DateTime(1, 1, 7, 9, 30, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(schedule.StartTime.AddDays(7), nextRunTime);
+        }
+
+        [TestMethod]
+        public void TestWeekdayOnlySchedule_LastOnFriday_AdvanceToMonday()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                Type = ScheduleType.WeekdaysOnly,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().Except(new List<DayOfWeek> { DayOfWeek.Saturday, DayOfWeek.Sunday }).ToList(),
+                StartTime = new DateTime(1, 1, 1, 8, 30, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 30, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+            var thisRunTime = new DateTime(1, 1, 5, 22, 30, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(schedule.StartTime.AddDays(7), nextRunTime);
+        }
+
+        [TestMethod]
+        public void TestWeekdayOnlySchedule_RunOnSaturday()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                Type = ScheduleType.WeekendsOnly,
+                ScheduledDays = new List<DayOfWeek> { DayOfWeek.Saturday, DayOfWeek.Sunday },
+                StartTime = new DateTime(1, 1, 1, 8, 30, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 30, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+            var thisRunTime = new DateTime(1, 1, 6, 9, 30, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(thisRunTime.AddMinutes(15), nextRunTime);
+        }
+
+        [TestMethod]
+        public void TestWeekdayOnlySchedule_RunOnSunday()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                Type = ScheduleType.WeekendsOnly,
+                ScheduledDays = new List<DayOfWeek> { DayOfWeek.Saturday, DayOfWeek.Sunday },
+                StartTime = new DateTime(1, 1, 1, 8, 30, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 30, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+            var thisRunTime = new DateTime(1, 1, 7, 9, 30, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(thisRunTime.AddMinutes(15), nextRunTime);
+        }
+
+        [TestMethod]
+        public void TestWeekdayOnlySchedule_RunOnMonday_AdvanceToSaturday()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                Type = ScheduleType.WeekendsOnly,
+                ScheduledDays = new List<DayOfWeek> { DayOfWeek.Saturday, DayOfWeek.Sunday },
+                StartTime = new DateTime(1, 1, 1, 8, 30, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 30, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+            var thisRunTime = new DateTime(1, 1, 1, 9, 30, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(schedule.StartTime.AddDays(5), nextRunTime);
+        }
+
+        [TestMethod]
+        public void TestWeekdayOnlySchedule_LastOnSunday_AdvanceToSaturday()
+        {
+            var schedule = new ExerciseSchedule
+            {
+                Type = ScheduleType.WeekendsOnly,
+                ScheduledDays = new List<DayOfWeek> { DayOfWeek.Saturday, DayOfWeek.Sunday },
+                StartTime = new DateTime(1, 1, 1, 8, 30, 0),
+                EndTime = new DateTime(1, 1, 1, 22, 30, 0),
+                Period = SchedulePeriod.EveryFifteenMinutes
+            };
+            var thisRunTime = new DateTime(1, 1, 7, 22, 30, 0);
+            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+
+            Assert.AreEqual(schedule.StartTime.AddDays(12), nextRunTime);
         }
 
         private DateTime GetTomorrowsStartTime(ExerciseSchedule schedule)
