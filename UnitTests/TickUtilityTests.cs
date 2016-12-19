@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using MakeMeMove;
 using MakeMeMove.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -16,6 +17,8 @@ namespace UnitTests
         {
             var  schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 17, 30, 0),
                 Period = SchedulePeriod.HalfHourly
@@ -29,6 +32,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 23, 30, 0),
                 Period = SchedulePeriod.HalfHourly
@@ -42,6 +47,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 17, 30, 0),
                 Period = SchedulePeriod.HalfHourly
@@ -55,6 +62,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 23, 30, 0),
                 Period = SchedulePeriod.HalfHourly
@@ -101,6 +110,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 17, 30, 0),
                 Period = SchedulePeriod.Hourly
@@ -113,6 +124,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 23, 30, 0),
                 Period = SchedulePeriod.Hourly
@@ -125,6 +138,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 17, 30, 0),
                 Period = SchedulePeriod.Hourly
@@ -137,6 +152,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 23, 30, 0),
                 Period = SchedulePeriod.Hourly
@@ -197,6 +214,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 17, 30, 0),
                 Period = SchedulePeriod.BiHourly
@@ -209,6 +228,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.BiHourly
@@ -221,6 +242,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 17, 30, 0),
                 Period = SchedulePeriod.BiHourly
@@ -233,6 +256,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.BiHourly
@@ -277,6 +302,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -294,6 +321,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -311,6 +340,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -328,6 +359,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -345,6 +378,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -362,6 +397,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -379,6 +416,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -396,6 +435,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -413,6 +454,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -430,6 +473,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -447,6 +492,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -464,6 +511,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 0, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -481,6 +530,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 0, 0, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 30, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -498,6 +549,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 30, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 30, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
@@ -515,6 +568,8 @@ namespace UnitTests
         {
             var schedule = new ExerciseSchedule
             {
+                Type = ScheduleType.EveryDay,
+                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
                 StartTime = new DateTime(1, 1, 1, 8, 30, 0),
                 EndTime = new DateTime(1, 1, 1, 22, 30, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
