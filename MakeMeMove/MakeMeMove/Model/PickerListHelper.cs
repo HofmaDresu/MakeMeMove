@@ -15,7 +15,12 @@ namespace MakeMeMove.Model
 		public static List<string> GetExercisePeriods()
 		{
 			return (from SchedulePeriod suit in Enum.GetValues(typeof(SchedulePeriod)) select suit.Humanize()).ToList();
-		}
-	}
+        }
+
+        public static List<string> GetScheduleTypes()
+        {
+            return (from ScheduleType suit in Enum.GetValues(typeof(ScheduleType)) select suit.Humanize()).ToList();
+        }
+    }
 }
 

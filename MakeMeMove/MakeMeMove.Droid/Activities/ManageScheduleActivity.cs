@@ -14,6 +14,7 @@ namespace MakeMeMove.Droid.Activities
     [Activity(Label = "Manage Schedule", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
     public class ManageScheduleActivity : BaseActivity
     {
+        private Spinner _scheduleTypeSpinner;
         private Spinner _reminderPeriodSpinner;
         private Spinner _startHourSpinner;
         private Spinner _startMinuteSpinner;
@@ -37,6 +38,7 @@ namespace MakeMeMove.Droid.Activities
 
 
             SetContentView(Resource.Layout.ManageSchedule);
+            _scheduleTypeSpinner = FindViewById<Spinner>(Resource.Id.ScheduleTypeSpinner);
             _reminderPeriodSpinner = FindViewById<Spinner>(Resource.Id.ReminderSpinner);
             _startHourSpinner = FindViewById<Spinner>(Resource.Id.StartHourSpinner);
             _startMinuteSpinner = FindViewById<Spinner>(Resource.Id.StartMinuteSpinner);
@@ -59,6 +61,7 @@ namespace MakeMeMove.Droid.Activities
         private void SetPickerData()
         {
             _reminderPeriodSpinner.SetSelection((int) _exerciseSchedule.Period);
+            _scheduleTypeSpinner.SetSelection((int)_exerciseSchedule.Type);
 
             var civilianModifiedStartHour = TimeUtility.GetCivilianModifiedStartHour(_exerciseSchedule.StartTime);
 
@@ -77,8 +80,10 @@ namespace MakeMeMove.Droid.Activities
         private void InitializePickers()
         {
 			var periodList = PickerListHelper.GetExercisePeriods();
+            var scheduleTypeList = PickerListHelper.GetScheduleTypes();
 
             _reminderPeriodSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, periodList);
+            _scheduleTypeSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, scheduleTypeList);
 
             var hourChoices = Enumerable.Range(1, 12).ToList();
             var minuteChoices = new List<string> {"00", "30"};
@@ -96,6 +101,7 @@ namespace MakeMeMove.Droid.Activities
         private void SaveData()
         {
             _exerciseSchedule.Period = (SchedulePeriod)_reminderPeriodSpinner.SelectedItemPosition;
+            _exerciseSchedule.Type = (ScheduleType)_scheduleTypeSpinner.SelectedItemPosition;
 
             var startHour = _startHourSpinner.SelectedItemPosition == 11 ? 0 : _startHourSpinner.SelectedItemPosition + 1;
             var startTime = new DateTime(1, 1, 1, startHour + (12 * _startMeridianSpinner.SelectedItemPosition), _startMinuteSpinner.SelectedItemPosition * 30, 0);
