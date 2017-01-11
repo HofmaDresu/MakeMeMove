@@ -7,6 +7,9 @@ using SQLite;
 using SWRevealViewControllerBinding;
 using UIKit;
 using UserNotifications;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
 
 namespace MakeMeMove.iOS
 {
@@ -38,8 +41,9 @@ namespace MakeMeMove.iOS
 		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
 		    InstantiateStoryboards();
+            MobileCenter.Start("49c0caaf-6e72-4762-95e2-d7e2bb6d825b", typeof(Analytics), typeof(Crashes));
 
-			if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
+            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
 			{
 				UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound, (approved, err) =>
 				{
