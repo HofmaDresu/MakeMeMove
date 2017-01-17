@@ -62,6 +62,7 @@ namespace MakeMeMove.iOS.ViewControllers.Base
             }
             catch (Exception)
             {
+                Data.ResetRatingCycle();
                 return;
             }
 

@@ -33,6 +33,7 @@ namespace MakeMeMove.Droid.Activities
                         catch (System.Exception)
                         {
                             Toast.MakeText(this, Resource.String.MarketFailure, ToastLength.Long);
+                            Data.ResetRatingCycle();
                             return;
                         }
                         Data.PreventRatingCheck();
