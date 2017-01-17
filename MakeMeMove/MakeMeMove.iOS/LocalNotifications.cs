@@ -12,7 +12,7 @@ namespace MakeMeMove.iOS
 
 	    public static void CreateInstantNotification(ExerciseBlock nextExercise)
 	    {
-	        CreateNotification(DateTime.Now.AddSeconds(1), nextExercise, false, true);
+	        CreateNotification(DateTime.Now.AddSeconds(3), nextExercise, false, true);
 	    }
 
 		public static void CreateNotification(DateTime notificationDate, ExerciseBlock nextExercise, bool isRecurring = false, bool isInstant = false)
@@ -46,7 +46,7 @@ namespace MakeMeMove.iOS
 
 				    if (isInstant)
                     {
-                        trigger = UNTimeIntervalNotificationTrigger.CreateTrigger(1, false);
+                        trigger = UNTimeIntervalNotificationTrigger.CreateTrigger(3, false);
                         requestId = "exerciseNotification_Instant";
                     }
 				    else
