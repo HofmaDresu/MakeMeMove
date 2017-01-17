@@ -42,6 +42,7 @@ namespace MakeMeMove.iOS
 		{
 		    InstantiateStoryboards();
             MobileCenter.Start("49c0caaf-6e72-4762-95e2-d7e2bb6d825b", typeof(Analytics), typeof(Crashes));
+            _data.IncrementRatingCycle();
 
             if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
 			{

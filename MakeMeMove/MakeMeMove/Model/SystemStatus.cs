@@ -9,5 +9,7 @@ namespace MakeMeMove.Model
         public int Id { get; set; }
         public bool IosServiceIsRunning { get; set; }
         public bool IsFirstRun { get; set; }
+        public bool? AskForRating_DB_ONLY { get; set; }
+        public int RatingCheckTimesOpened { get; set; }
     }
 }

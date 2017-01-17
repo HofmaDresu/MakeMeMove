@@ -7,4 +7,9 @@
   <string name="network_settings_label">Network Settings</string>
   <string name="fudist_unavailable">There was a problem contacting the Fudist server. Please try again later.</string>
   <string name="close_app">Close Make Me Move</string>
+  <string name="rate_title">Enjoying Make Me Move?</string>
+  <string name="rate_message">Would you like to let us know what you think by rating us in the Play Store?</string>
+  <string name="sure">Sure</string>
+  <string name="not_now">Not Now</string>
+  <string name="never">Never</string>
 </resources>

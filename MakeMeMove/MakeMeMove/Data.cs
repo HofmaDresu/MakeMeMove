@@ -10,6 +10,8 @@ namespace MakeMeMove
 {
     public class Data
     {
+        private const int RatingCycleSize = 10;
+
         private SQLiteConnection _db;
         private TableQuery<ExerciseSchedule> ExerciseSchedules => _db.Table<ExerciseSchedule>();
         private TableQuery<ExerciseBlock> ExerciseBlocks => _db.Table<ExerciseBlock>();
@@ -17,6 +19,8 @@ namespace MakeMeMove
         private TableQuery<ExerciseHistory> ExerciseHistories => _db.Table<ExerciseHistory>();
         private TableQuery<FudistUser> FudistUsers => _db.Table<FudistUser>();
         private TableQuery<SystemStatus> SystemStatus => _db.Table<SystemStatus>();
+
+        public int RatingCheckTimesOpened { get; private set; }
 
         private static readonly Lazy<Data> LazyData = new Lazy<Data>();
 
@@ -382,6 +386,33 @@ namespace MakeMeMove
             _db.Update(status);
         }
 
-#endregion
+        public bool ShouldAskForRating()
+        {
+            var status = SystemStatus.First();
+            return status.AskForRating_DB_ONLY.GetValueOrDefault(true) && status.RatingCheckTimesOpened >= RatingCycleSize;
+        }
+
+        public void IncrementRatingCycle()
+        {
+            var status = SystemStatus.First();
+            status.RatingCheckTimesOpened = Min(RatingCycleSize, status.RatingCheckTimesOpened + 1);
+            _db.Update(status);
+        }
+
+        public void ResetRatingCycle()
+        {
+            var status = SystemStatus.First();
+            status.RatingCheckTimesOpened = 0;
+            _db.Update(status);
+        }
+
+        public void PreventRatingCheck()
+        {
+            var status = SystemStatus.First();
+            status.AskForRating_DB_ONLY = false;
+            _db.Update(status);
+        }
+
+        #endregion
     }
 }

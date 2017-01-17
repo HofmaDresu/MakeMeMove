@@ -2596,6 +2596,9 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070040
 			public const int LoggedInAsText = 2131165248;
 			
+			// aapt resource value: 0x7f070079
+			public const int MarketFailure = 2131165305;
+			
 			// aapt resource value: 0x7f07004a
 			public const int No = 2131165258;
 			
@@ -2764,8 +2767,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07003d
 			public const int cancel = 2131165245;
 			
-			// aapt resource value: 0x7f07007f
-			public const int close_app = 2131165311;
+			// aapt resource value: 0x7f070080
+			public const int close_app = 2131165312;
 			
 			// aapt resource value: 0x7f070018
 			public const int common_google_play_services_api_unavailable_text = 2131165208;
@@ -2854,8 +2857,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07001e
 			public const int common_signin_button_text_long = 2131165214;
 			
-			// aapt resource value: 0x7f07007e
-			public const int fudist_unavailable = 2131165310;
+			// aapt resource value: 0x7f07007f
+			public const int fudist_unavailable = 2131165311;
 			
 			// aapt resource value: 0x7f070033
 			public const int library_name = 2131165235;
@@ -2875,29 +2878,44 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07003a
 			public const int login_failure = 2131165242;
 			
-			// aapt resource value: 0x7f070079
-			public const int network_error_airplane = 2131165305;
-			
 			// aapt resource value: 0x7f07007a
-			public const int network_error_connection = 2131165306;
+			public const int network_error_airplane = 2131165306;
 			
 			// aapt resource value: 0x7f07007b
-			public const int network_error_title = 2131165307;
+			public const int network_error_connection = 2131165307;
 			
-			// aapt resource value: 0x7f07007d
-			public const int network_settings_label = 2131165309;
+			// aapt resource value: 0x7f07007c
+			public const int network_error_title = 2131165308;
+			
+			// aapt resource value: 0x7f07007e
+			public const int network_settings_label = 2131165310;
+			
+			// aapt resource value: 0x7f070085
+			public const int never = 2131165317;
 			
 			// aapt resource value: 0x7f07003c
 			public const int no_account_text = 2131165244;
 			
+			// aapt resource value: 0x7f070084
+			public const int not_now = 2131165316;
+			
 			// aapt resource value: 0x7f070039
 			public const int password = 2131165241;
 			
-			// aapt resource value: 0x7f07007c
-			public const int settings_label = 2131165308;
+			// aapt resource value: 0x7f070082
+			public const int rate_message = 2131165314;
+			
+			// aapt resource value: 0x7f070081
+			public const int rate_title = 2131165313;
+			
+			// aapt resource value: 0x7f07007d
+			public const int settings_label = 2131165309;
 			
 			// aapt resource value: 0x7f070032
 			public const int status_bar_notification_info_overflow = 2131165234;
+			
+			// aapt resource value: 0x7f070083
+			public const int sure = 2131165315;
 			
 			// aapt resource value: 0x7f070038
 			public const int username = 2131165240;

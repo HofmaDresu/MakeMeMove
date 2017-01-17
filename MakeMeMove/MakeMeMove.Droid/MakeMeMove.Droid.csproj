@@ -188,6 +188,7 @@
     <Compile Include="Adapters\MainFragmentAdapter.cs" />
     <Compile Include="BroadcastReceivers\CompleteExerciseBroadcastReceiver.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="CustomApplication.cs" />
     <Compile Include="DeviceSpecificImplementations\UserNotification.cs" />
     <Compile Include="BroadcastReceivers\ExerciseRebootReceiver.cs" />
     <Compile Include="DeviceSpecificImplementations\ExerciseServiceManager.cs" />
