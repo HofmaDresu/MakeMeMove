@@ -69,4 +69,5 @@
   <string name="FudistInStoreMenuText">See Fudist in the Play Store</string>
   <string name="FudistInstalledMenuText">Open Fudist</string>
   <string name="ScheduleTypeLabel">Active Days:</string>
+  <string name="MarketFailure">Error launching the Play Store.</string>
 </resources>
