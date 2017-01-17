@@ -182,11 +182,11 @@ namespace MakeMeMove
             return ExerciseBlocks.SingleOrDefault(e => e.Id == id);
         }
 
-        public ExerciseBlock GetNextEnabledExercise(Random random = null)
+        public ExerciseBlock GetNextEnabledExercise(Random random = null, bool overrideDifferent = false)
         {
             ExerciseBlock nextExercise;
 
-            if (MostRecentExercises.Any())
+            if (MostRecentExercises.Any() && !overrideDifferent)
             {
                 nextExercise = GetNextDifferentEnabledExercise(MostRecentExercises.First(), random);
             }
@@ -202,7 +202,7 @@ namespace MakeMeMove
                 nextExercise = enabledExercises[Min(index, enabledExercises.Count - 1)];
             }
             MostRecentExercises.Delete(_ => true);
-            _db.Insert(MostRecentExercise.FromBlock(nextExercise));
+            if(nextExercise != null) _db.Insert(MostRecentExercise.FromBlock(nextExercise));
             return nextExercise;
         }
 
@@ -218,7 +218,7 @@ namespace MakeMeMove
                 .ToList();
 
             // If there are no different exercises, see if there are any available at all
-            if (differentEnabledExercises.Count == 0) return GetNextEnabledExercise(random);
+            if (differentEnabledExercises.Count == 0) return GetNextEnabledExercise(random, true);
 
             var index = (random ?? new Random()).Next(0, differentEnabledExercises.Count);
 
