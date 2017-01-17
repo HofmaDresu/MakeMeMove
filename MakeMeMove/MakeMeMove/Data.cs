@@ -18,6 +18,8 @@ namespace MakeMeMove
         private TableQuery<FudistUser> FudistUsers => _db.Table<FudistUser>();
         private TableQuery<SystemStatus> SystemStatus => _db.Table<SystemStatus>();
 
+        public int RatingCheckTimesOpened { get; private set; }
+
         private static readonly Lazy<Data> LazyData = new Lazy<Data>();
 
         public static Data GetInstance(SQLiteConnection conn)
@@ -382,6 +384,33 @@ namespace MakeMeMove
             _db.Update(status);
         }
 
-#endregion
+        public bool ShouldAskForRating()
+        {
+            var status = SystemStatus.First();
+            return status.AskForRating_DB_ONLY.GetValueOrDefault(true) && status.RatingCheckTimesOpened >= 10;
+        }
+
+        public void IncrementRatingCycle()
+        {
+            var status = SystemStatus.First();
+            status.RatingCheckTimesOpened++;
+            _db.Update(status);
+        }
+
+        public void ResetRatingCycle()
+        {
+            var status = SystemStatus.First();
+            status.RatingCheckTimesOpened = 0;
+            _db.Update(status);
+        }
+
+        public void PreventRatingCheck()
+        {
+            var status = SystemStatus.First();
+            status.AskForRating_DB_ONLY = false;
+            _db.Update(status);
+        }
+
+        #endregion
     }
 }
