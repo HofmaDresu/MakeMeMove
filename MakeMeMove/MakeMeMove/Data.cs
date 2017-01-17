@@ -10,6 +10,8 @@ namespace MakeMeMove
 {
     public class Data
     {
+        private const int RatingCycleSize = 10;
+
         private SQLiteConnection _db;
         private TableQuery<ExerciseSchedule> ExerciseSchedules => _db.Table<ExerciseSchedule>();
         private TableQuery<ExerciseBlock> ExerciseBlocks => _db.Table<ExerciseBlock>();
@@ -387,13 +389,13 @@ namespace MakeMeMove
         public bool ShouldAskForRating()
         {
             var status = SystemStatus.First();
-            return status.AskForRating_DB_ONLY.GetValueOrDefault(true) && status.RatingCheckTimesOpened >= 10;
+            return status.AskForRating_DB_ONLY.GetValueOrDefault(true) && status.RatingCheckTimesOpened >= RatingCycleSize;
         }
 
         public void IncrementRatingCycle()
         {
             var status = SystemStatus.First();
-            status.RatingCheckTimesOpened++;
+            status.RatingCheckTimesOpened = Min(RatingCycleSize, status.RatingCheckTimesOpened + 1);
             _db.Update(status);
         }
 
