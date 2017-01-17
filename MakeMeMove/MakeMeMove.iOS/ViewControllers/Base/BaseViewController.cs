@@ -5,6 +5,7 @@ using MakeMeMove.iOS.Helpers;
 using MakeMeMove.iOS.Utilities;
 using SQLite;
 using UIKit;
+using Foundation;
 
 namespace MakeMeMove.iOS.ViewControllers.Base
 {
@@ -37,6 +38,44 @@ namespace MakeMeMove.iOS.ViewControllers.Base
             {
                 UnifiedAnalytics.GetInstance().SendScreenHitOnDefaultTracker(ScreenName);
             }
+
+
+
+            if (Data.ShouldAskForRating())
+            {
+                var okayAlertController = UIAlertController.Create("Enjoying Make Me Move?", "Would you like to let us know what you think by rating us in the App Store?", UIAlertControllerStyle.Alert);
+                okayAlertController.AddAction(UIAlertAction.Create("Sure", UIAlertActionStyle.Default, _ => RateApp()));
+                okayAlertController.AddAction(UIAlertAction.Create("Not Now", UIAlertActionStyle.Default, _ => RateAppLater()));
+
+                okayAlertController.AddAction(UIAlertAction.Create("Never", UIAlertActionStyle.Cancel, _ => NeverRateApp()));
+
+                PresentViewController(okayAlertController, true, null);
+            }
+        }
+
+        private void RateApp()
+        {
+            try
+            {
+                var iTunesLink = "https://itunes.apple.com/app/viewContentsUserReviews?id=1148192869";
+                UIApplication.SharedApplication.OpenUrl(NSUrl.FromString(iTunesLink));
+            }
+            catch (Exception)
+            {
+                return;
+            }
+
+            Data.PreventRatingCheck();
+        }
+
+        private void RateAppLater()
+        {
+            Data.ResetRatingCycle();
+        }
+
+        private void NeverRateApp()
+        {
+            Data.PreventRatingCheck();
         }
     }
 }
