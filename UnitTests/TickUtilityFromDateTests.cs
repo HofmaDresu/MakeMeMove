@@ -75,7 +75,7 @@ namespace UnitTests
 
         private void RunHalfHourlyTestLoop(ExerciseSchedule schedule)
         {
-            for (var testTime = _startTime; testTime <= _startTime.AddDays(1).AddMinutes(-1); testTime = testTime.AddMinutes(1))
+            for (var testTime = _startTime; testTime <= _startTime.AddDays(1).AddMinutes(-1); testTime = testTime.AddMinutes(30))
             {
                 var nextRunTime = TickUtility.GetNextRunTime(schedule, testTime);
 
@@ -166,7 +166,7 @@ namespace UnitTests
         {
             DateTime? previousRunTime = null;
 
-            for (var testTime = _startTime; testTime <= _startTime.AddDays(1).AddMinutes(-1); testTime = testTime.AddMinutes(1))
+            for (var testTime = _startTime; testTime <= _startTime.AddDays(1).AddMinutes(-1); testTime = testTime.AddMinutes(60))
             {
                 var nextRunTime = TickUtility.GetNextRunTime(schedule, testTime);
 

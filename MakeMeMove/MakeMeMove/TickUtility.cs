@@ -42,11 +42,11 @@ namespace MakeMeMove
                     return GetNextXMinuteRun(schedule, fromDate, 5);
 #endif
                 case SchedulePeriod.HalfHourly:
-                    return GetNextHalfHourlyRun(schedule, fromDate);
+                    return GetNextXMinuteRun(schedule, fromDate, 30);
                 case SchedulePeriod.Hourly:
-                    return GetNextHourlyRun(schedule, fromDate);
+                    return GetNextXMinuteRun(schedule, fromDate, 60);
                 case SchedulePeriod.BiHourly:
-                    return GetNextBiHourlyRun(schedule, fromDate);
+                    return GetNextXMinuteRun(schedule, fromDate, 120);
                 case SchedulePeriod.EveryFifteenMinutes:
                     return GetNextXMinuteRun(schedule, fromDate, 15);
                 default:
@@ -55,8 +55,7 @@ namespace MakeMeMove
         }
 
         private static DateTime GetNextXMinuteRun(ExerciseSchedule schedule, DateTime fromDateValue, int minuteInterval)
-        {
-                
+        {                
             return GetStartNextDayIfOverTodaysEnd(schedule, fromDateValue.AddMinutes(minuteInterval));
         }
 
