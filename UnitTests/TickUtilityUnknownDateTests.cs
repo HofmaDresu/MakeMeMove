@@ -311,7 +311,7 @@ namespace UnitTests
             };
 
             var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 0, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(15, nextRunTime.Hour);
             Assert.AreEqual(15, nextRunTime.Minute);
@@ -330,7 +330,7 @@ namespace UnitTests
             };
 
             var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 15, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(15, nextRunTime.Hour);
             Assert.AreEqual(30, nextRunTime.Minute);
@@ -349,7 +349,7 @@ namespace UnitTests
             };
 
             var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 30, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(15, nextRunTime.Hour);
             Assert.AreEqual(45, nextRunTime.Minute);
@@ -368,7 +368,7 @@ namespace UnitTests
             };
 
             var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 45, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(16, nextRunTime.Hour);
             Assert.AreEqual(0, nextRunTime.Minute);
@@ -387,7 +387,7 @@ namespace UnitTests
             };
 
             var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 22, 15, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(22, nextRunTime.Hour);
             Assert.AreEqual(30, nextRunTime.Minute);
@@ -406,7 +406,7 @@ namespace UnitTests
             };
 
             var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 22, 30, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(8, nextRunTime.Hour);
             Assert.AreEqual(30, nextRunTime.Minute);
@@ -425,7 +425,7 @@ namespace UnitTests
             };
 
             var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 7, 30, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(8, nextRunTime.Hour);
             Assert.AreEqual(30, nextRunTime.Minute);
@@ -443,7 +443,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
             var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 9, 30, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(thisRunTime.AddMinutes(15), nextRunTime);
         }
@@ -460,7 +460,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
             var thisRunTime = new DateTime(1, 1, 6, 9, 30, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(schedule.StartTime.AddDays(7), nextRunTime);
         }
@@ -477,7 +477,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
             var thisRunTime = new DateTime(1, 1, 7, 9, 30, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(schedule.StartTime.AddDays(7), nextRunTime);
         }
@@ -494,7 +494,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
             var thisRunTime = new DateTime(1, 1, 5, 22, 30, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(schedule.StartTime.AddDays(7), nextRunTime);
         }
@@ -511,7 +511,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
             var thisRunTime = new DateTime(1, 1, 6, 9, 30, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(thisRunTime.AddMinutes(15), nextRunTime);
         }
@@ -528,7 +528,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
             var thisRunTime = new DateTime(1, 1, 7, 9, 30, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(thisRunTime.AddMinutes(15), nextRunTime);
         }
@@ -545,7 +545,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
             var thisRunTime = new DateTime(1, 1, 1, 9, 30, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(schedule.StartTime.AddDays(5), nextRunTime);
         }
@@ -562,7 +562,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
             var thisRunTime = new DateTime(1, 1, 7, 22, 30, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
+            var nextRunTime = TickUtility.MockNow_GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(schedule.StartTime.AddDays(12), nextRunTime);
         }
