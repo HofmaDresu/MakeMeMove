@@ -318,44 +318,6 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestFifteenMinuteSchedule_Start1End15()
-        {
-            var schedule = new ExerciseSchedule
-            {
-                Type = ScheduleType.EveryDay,
-                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
-                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
-                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
-                Period = SchedulePeriod.EveryFifteenMinutes
-            };
-
-            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 1, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
-
-            Assert.AreEqual(15, nextRunTime.Hour);
-            Assert.AreEqual(15, nextRunTime.Minute);
-        }
-
-        [TestMethod]
-        public void TestFifteenMinuteSchedule_Start14End15()
-        {
-            var schedule = new ExerciseSchedule
-            {
-                Type = ScheduleType.EveryDay,
-                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
-                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
-                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
-                Period = SchedulePeriod.EveryFifteenMinutes
-            };
-
-            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 14, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
-
-            Assert.AreEqual(15, nextRunTime.Hour);
-            Assert.AreEqual(15, nextRunTime.Minute);
-        }
-
-        [TestMethod]
         public void TestFifteenMinuteSchedule_Start15End30()
         {
             var schedule = new ExerciseSchedule
@@ -368,44 +330,6 @@ namespace UnitTests
             };
 
             var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 15, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
-
-            Assert.AreEqual(15, nextRunTime.Hour);
-            Assert.AreEqual(30, nextRunTime.Minute);
-        }
-
-        [TestMethod]
-        public void TestFifteenMinuteSchedule_Start16End30()
-        {
-            var schedule = new ExerciseSchedule
-            {
-                Type = ScheduleType.EveryDay,
-                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
-                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
-                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
-                Period = SchedulePeriod.EveryFifteenMinutes
-            };
-
-            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 16, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
-
-            Assert.AreEqual(15, nextRunTime.Hour);
-            Assert.AreEqual(30, nextRunTime.Minute);
-        }
-
-        [TestMethod]
-        public void TestFifteenMinuteSchedule_Start29End30()
-        {
-            var schedule = new ExerciseSchedule
-            {
-                Type = ScheduleType.EveryDay,
-                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
-                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
-                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
-                Period = SchedulePeriod.EveryFifteenMinutes
-            };
-
-            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 29, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(15, nextRunTime.Hour);
@@ -432,44 +356,6 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestFifteenMinuteSchedule_Start31End45()
-        {
-            var schedule = new ExerciseSchedule
-            {
-                Type = ScheduleType.EveryDay,
-                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
-                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
-                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
-                Period = SchedulePeriod.EveryFifteenMinutes
-            };
-
-            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 31, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
-
-            Assert.AreEqual(15, nextRunTime.Hour);
-            Assert.AreEqual(45, nextRunTime.Minute);
-        }
-
-        [TestMethod]
-        public void TestFifteenMinuteSchedule_Start44End45()
-        {
-            var schedule = new ExerciseSchedule
-            {
-                Type = ScheduleType.EveryDay,
-                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
-                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
-                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
-                Period = SchedulePeriod.EveryFifteenMinutes
-            };
-
-            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 44, 59);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
-
-            Assert.AreEqual(15, nextRunTime.Hour);
-            Assert.AreEqual(45, nextRunTime.Minute);
-        }
-
-        [TestMethod]
         public void TestFifteenMinuteSchedule_Start45End0()
         {
             var schedule = new ExerciseSchedule
@@ -482,44 +368,6 @@ namespace UnitTests
             };
 
             var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 45, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
-
-            Assert.AreEqual(16, nextRunTime.Hour);
-            Assert.AreEqual(0, nextRunTime.Minute);
-        }
-
-        [TestMethod]
-        public void TestFifteenMinuteSchedule_Start46End0()
-        {
-            var schedule = new ExerciseSchedule
-            {
-                Type = ScheduleType.EveryDay,
-                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
-                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
-                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
-                Period = SchedulePeriod.EveryFifteenMinutes
-            };
-
-            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 46, 0);
-            var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
-
-            Assert.AreEqual(16, nextRunTime.Hour);
-            Assert.AreEqual(0, nextRunTime.Minute);
-        }
-
-        [TestMethod]
-        public void TestFifteenMinuteSchedule_Start59End0()
-        {
-            var schedule = new ExerciseSchedule
-            {
-                Type = ScheduleType.EveryDay,
-                ScheduledDays = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList(),
-                StartTime = new DateTime(1, 1, 1, 0, 0, 0),
-                EndTime = new DateTime(1, 1, 1, 22, 0, 0),
-                Period = SchedulePeriod.EveryFifteenMinutes
-            };
-
-            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 59, 59);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(16, nextRunTime.Hour);
