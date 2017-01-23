@@ -10,7 +10,7 @@ namespace MakeMeMove
         {
             var nowValue = DateTime.Now;
             var todaysStartTime = new DateTime(nowValue.Year, nowValue.Month, nowValue.Day, schedule.StartTime.Hour, schedule.StartTime.Minute, 0);
-            while (todaysStartTime < nowValue)
+            while (todaysStartTime <= nowValue)
             {
                 todaysStartTime = GetNextRunTime(schedule, todaysStartTime);
             }
@@ -27,7 +27,7 @@ namespace MakeMeMove
         public static DateTime MockNow_GetNextRunTime(ExerciseSchedule schedule, DateTime nowValue)
         {
             var todaysStartTime = new DateTime(nowValue.Year, nowValue.Month, nowValue.Day, schedule.StartTime.Hour, schedule.StartTime.Minute, 0);
-            while (todaysStartTime < nowValue)
+            while (todaysStartTime <= nowValue)
             {
                 todaysStartTime = GetNextRunTime(schedule, todaysStartTime);
             }
