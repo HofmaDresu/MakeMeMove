@@ -8,13 +8,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTests
 {
     [TestClass]
-    public class TickUtilityTests
+    public class TickUtilityFromDateTests
     {
         //DO NOT CHANGE, LOGIC DEPENDS ON THIS BEING AT THE VERY BEGINNING OF THE DAY (plus this tests both year and month rollover)
         private readonly DateTime _startTime = new DateTime(2015, 12, 31, 0, 0, 0);
 
         [TestMethod]
-        public void TestHalfHourlySchedule()
+        public void FromDate_TestHalfHourlySchedule()
         {
             var  schedule = new ExerciseSchedule
             {
@@ -29,7 +29,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestHalfHourlySchedule_EndOfDay()
+        public void FromDate_TestHalfHourlySchedule_EndOfDay()
         {
             var schedule = new ExerciseSchedule
             {
@@ -44,7 +44,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestHalfHourlySchedule_BeginningOfDay()
+        public void FromDate_TestHalfHourlySchedule_BeginningOfDay()
         {
             var schedule = new ExerciseSchedule
             {
@@ -59,7 +59,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestHalfHourlySchedule_BeginningAndEndOfDay()
+        public void FromDate_TestHalfHourlySchedule_BeginningAndEndOfDay()
         {
             var schedule = new ExerciseSchedule
             {
@@ -107,7 +107,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestHourlySchedule()
+        public void FromDate_TestHourlySchedule()
         {
             var schedule = new ExerciseSchedule
             {
@@ -121,7 +121,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestHourlySchedule_EndOfDay()
+        public void FromDate_TestHourlySchedule_EndOfDay()
         {
             var schedule = new ExerciseSchedule
             {
@@ -135,7 +135,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestHourlySchedule_BeginningOfDay()
+        public void FromDate_TestHourlySchedule_BeginningOfDay()
         {
             var schedule = new ExerciseSchedule
             {
@@ -149,7 +149,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestHourlySchedule_BeginningAndEndOfDay()
+        public void FromDate_TestHourlySchedule_BeginningAndEndOfDay()
         {
             var schedule = new ExerciseSchedule
             {
@@ -211,7 +211,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestBiHourlySchedule()
+        public void FromDate_TestBiHourlySchedule()
         {
             var schedule = new ExerciseSchedule
             {
@@ -225,7 +225,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestBiHourlySchedule_EndOfDay()
+        public void FromDate_TestBiHourlySchedule_EndOfDay()
         {
             var schedule = new ExerciseSchedule
             {
@@ -239,7 +239,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestBiHourlySchedule_BeginningOfDay()
+        public void FromDate_TestBiHourlySchedule_BeginningOfDay()
         {
             var schedule = new ExerciseSchedule
             {
@@ -253,7 +253,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestBiHourlySchedule_BeginningAndEndOfDay()
+        public void FromDate_TestBiHourlySchedule_BeginningAndEndOfDay()
         {
             var schedule = new ExerciseSchedule
             {
@@ -299,7 +299,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestFifteenMinuteSchedule_Start0End15()
+        public void FromDate_TestFifteenMinuteSchedule_Start0End15()
         {
             var schedule = new ExerciseSchedule
             {
@@ -318,7 +318,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestFifteenMinuteSchedule_Start15End30()
+        public void FromDate_TestFifteenMinuteSchedule_Start15End30()
         {
             var schedule = new ExerciseSchedule
             {
@@ -337,7 +337,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestFifteenMinuteSchedule_Start30End45()
+        public void FromDate_TestFifteenMinuteSchedule_Start30End45()
         {
             var schedule = new ExerciseSchedule
             {
@@ -356,7 +356,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestFifteenMinuteSchedule_Start45End0()
+        public void FromDate_TestFifteenMinuteSchedule_Start45End0()
         {
             var schedule = new ExerciseSchedule
             {
@@ -375,7 +375,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestFifteenMinuteSchedule_HitLastTimeOfDay()
+        public void FromDate_TestFifteenMinuteSchedule_HitLastTimeOfDay()
         {
             var schedule = new ExerciseSchedule
             {
@@ -394,7 +394,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestFifteenMinuteSchedule_LoopToTomorrow()
+        public void FromDate_TestFifteenMinuteSchedule_LoopToTomorrow()
         {
             var schedule = new ExerciseSchedule
             {
@@ -413,7 +413,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestFifteenMinuteSchedule_AdvanceToStart()
+        public void FromDate_TestFifteenMinuteSchedule_AdvanceToStart()
         {
             var schedule = new ExerciseSchedule
             {
@@ -432,7 +432,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestWeekdayOnlySchedule_RunOnMonday()
+        public void FromDate_TestWeekdayOnlySchedule_RunOnMonday()
         {
             var schedule = new ExerciseSchedule
             {
@@ -449,7 +449,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestWeekdayOnlySchedule_RunOnSaturday_AdvanceToMonday()
+        public void FromDate_TestWeekdayOnlySchedule_RunOnSaturday_AdvanceToMonday()
         {
             var schedule = new ExerciseSchedule
             {
@@ -466,7 +466,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestWeekdayOnlySchedule_RunOnSunday_AdvanceToMonday()
+        public void FromDate_TestWeekdayOnlySchedule_RunOnSunday_AdvanceToMonday()
         {
             var schedule = new ExerciseSchedule
             {
@@ -483,7 +483,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestWeekdayOnlySchedule_LastOnFriday_AdvanceToMonday()
+        public void FromDate_TestWeekdayOnlySchedule_LastOnFriday_AdvanceToMonday()
         {
             var schedule = new ExerciseSchedule
             {
@@ -500,7 +500,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestWeekdayOnlySchedule_RunOnSaturday()
+        public void FromDate_TestWeekdayOnlySchedule_RunOnSaturday()
         {
             var schedule = new ExerciseSchedule
             {
@@ -517,7 +517,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestWeekdayOnlySchedule_RunOnSunday()
+        public void FromDate_TestWeekdayOnlySchedule_RunOnSunday()
         {
             var schedule = new ExerciseSchedule
             {
@@ -534,7 +534,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestWeekdayOnlySchedule_RunOnMonday_AdvanceToSaturday()
+        public void FromDate_TestWeekdayOnlySchedule_RunOnMonday_AdvanceToSaturday()
         {
             var schedule = new ExerciseSchedule
             {
@@ -551,7 +551,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestWeekdayOnlySchedule_LastOnSunday_AdvanceToSaturday()
+        public void FromDate_TestWeekdayOnlySchedule_LastOnSunday_AdvanceToSaturday()
         {
             var schedule = new ExerciseSchedule
             {
