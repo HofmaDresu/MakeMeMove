@@ -5,9 +5,21 @@ namespace MakeMeMove
 {
     public static class TickUtility
     {
-        public static DateTime GetNextRunTime(ExerciseSchedule schedule)
+        /// <summary>
+        /// Used when previous run time is not known. "now" param should only be used for testing
+        /// </summary>
+        /// <param name="schedule"></param>
+        /// <param name="now">only use this for testing purposes</param>
+        /// <returns></returns>
+        public static DateTime GetNextRunTime(ExerciseSchedule schedule, DateTime? now = null)
         {
-            throw new NotImplementedException();
+            var nowValue = now ?? DateTime.Now;
+            var todaysStartTime = new DateTime(nowValue.Year, nowValue.Month, nowValue.Day, schedule.StartTime.Hour, schedule.StartTime.Minute, 0);
+            while (todaysStartTime < nowValue)
+            {
+                todaysStartTime = GetNextRunTime(schedule, todaysStartTime);
+            }
+            return todaysStartTime;
         }
 
 
@@ -40,15 +52,6 @@ namespace MakeMeMove
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-        }
-
-        private static DateTime GetCalculationDate(ExerciseSchedule schedule, DateTime? fromDate = null)
-        {
-            var now = DateTime.Now;
-            if (fromDate.HasValue) return new DateTime(fromDate.Value.Year, fromDate.Value.Month, fromDate.Value.Day, fromDate.Value.Hour, fromDate.Value.Minute, 0);
-
-            var calcDate = new DateTime(now.Year, now.Month, now.Day, schedule.StartTime.Hour, schedule.StartTime.Minute, 0);
-            return calcDate;
         }
 
         private static DateTime GetNextXMinuteRun(ExerciseSchedule schedule, DateTime fromDateValue, int minuteInterval)
