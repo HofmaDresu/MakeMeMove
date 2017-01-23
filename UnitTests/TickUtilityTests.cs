@@ -310,7 +310,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 15, 0, 0);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 0, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(15, nextRunTime.Hour);
@@ -329,7 +329,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 15, 1, 0);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 1, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(15, nextRunTime.Hour);
@@ -348,7 +348,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 15, 14, 0);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 14, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(15, nextRunTime.Hour);
@@ -367,7 +367,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 15, 15, 0);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 15, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(15, nextRunTime.Hour);
@@ -386,7 +386,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 15, 16, 0);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 16, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(15, nextRunTime.Hour);
@@ -405,7 +405,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 15, 29, 0);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 29, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(15, nextRunTime.Hour);
@@ -424,7 +424,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 15, 30, 0);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 30, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(15, nextRunTime.Hour);
@@ -443,7 +443,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 15, 31, 0);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 31, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(15, nextRunTime.Hour);
@@ -462,7 +462,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 15, 44, 59);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 44, 59);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(15, nextRunTime.Hour);
@@ -481,7 +481,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 15, 45, 0);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 45, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(16, nextRunTime.Hour);
@@ -500,7 +500,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 15, 46, 0);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 46, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(16, nextRunTime.Hour);
@@ -519,7 +519,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 15, 59, 59);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 15, 59, 59);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(16, nextRunTime.Hour);
@@ -538,7 +538,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 22, 15, 0);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 22, 15, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(22, nextRunTime.Hour);
@@ -557,7 +557,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 22, 30, 0);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 22, 30, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(8, nextRunTime.Hour);
@@ -576,7 +576,7 @@ namespace UnitTests
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
 
-            var thisRunTime = new DateTime(1, 1, 1, 7, 30, 0);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 7, 30, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(8, nextRunTime.Hour);
@@ -594,7 +594,7 @@ namespace UnitTests
                 EndTime = new DateTime(1, 1, 1, 22, 30, 0),
                 Period = SchedulePeriod.EveryFifteenMinutes
             };
-            var thisRunTime = new DateTime(1, 1, 1, 9, 30, 0);
+            var thisRunTime = new DateTime(_startTime.Year, _startTime.Month, _startTime.Day, 9, 30, 0);
             var nextRunTime = TickUtility.GetNextRunTime(schedule, thisRunTime);
 
             Assert.AreEqual(thisRunTime.AddMinutes(15), nextRunTime);

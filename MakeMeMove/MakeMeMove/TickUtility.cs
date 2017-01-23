@@ -5,44 +5,56 @@ namespace MakeMeMove
 {
     public static class TickUtility
     {
-
-        public static DateTime GetNextRunTime(ExerciseSchedule schedule, DateTime? fromDate = null)
+        public static DateTime GetNextRunTime(ExerciseSchedule schedule)
         {
-            var fromDateValue = fromDate.GetValueOrDefault(DateTime.Now);
-            if (!schedule.ScheduledDays.Contains(fromDateValue.DayOfWeek) || fromDateValue.TimeOfDay > schedule.EndTime.TimeOfDay)
+            throw new NotImplementedException();
+        }
+
+
+        public static DateTime GetNextRunTime(ExerciseSchedule schedule, DateTime fromDate)
+        {
+            if (!schedule.ScheduledDays.Contains(fromDate.DayOfWeek) || fromDate.TimeOfDay > schedule.EndTime.TimeOfDay)
             {
-                return GetStartOfNextDay(schedule, fromDateValue);
+                return GetStartOfNextDay(schedule, fromDate);
             }
 
-            if (fromDateValue.TimeOfDay < schedule.StartTime.TimeOfDay)
+            if (fromDate.TimeOfDay < schedule.StartTime.TimeOfDay)
             {
-                return GetStartOfToday(schedule, fromDateValue);
+                return GetStartOfToday(schedule, fromDate);
             }
 
             switch (schedule.Period)
             {
 #if DEBUG
                 case SchedulePeriod.EveryFiveMinutes:
-                    return GetNextXMinuteRun(schedule, fromDateValue, 5);
+                    return GetNextXMinuteRun(schedule, fromDate, 5);
 #endif
                 case SchedulePeriod.HalfHourly:
-                    return GetNextHalfHourlyRun(schedule, fromDateValue);
+                    return GetNextHalfHourlyRun(schedule, fromDate);
                 case SchedulePeriod.Hourly:
-                    return GetNextHourlyRun(schedule, fromDateValue);
+                    return GetNextHourlyRun(schedule, fromDate);
                 case SchedulePeriod.BiHourly:
-                    return GetNextBiHourlyRun(schedule, fromDateValue);
+                    return GetNextBiHourlyRun(schedule, fromDate);
                 case SchedulePeriod.EveryFifteenMinutes:
-                    return GetNextXMinuteRun(schedule, fromDateValue, 15);
+                    return GetNextXMinuteRun(schedule, fromDate, 15);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
+        private static DateTime GetCalculationDate(ExerciseSchedule schedule, DateTime? fromDate = null)
+        {
+            var now = DateTime.Now;
+            if (fromDate.HasValue) return new DateTime(fromDate.Value.Year, fromDate.Value.Month, fromDate.Value.Day, fromDate.Value.Hour, fromDate.Value.Minute, 0);
+
+            var calcDate = new DateTime(now.Year, now.Month, now.Day, schedule.StartTime.Hour, schedule.StartTime.Minute, 0);
+            return calcDate;
+        }
+
         private static DateTime GetNextXMinuteRun(ExerciseSchedule schedule, DateTime fromDateValue, int minuteInterval)
         {
-            var fromDatePreviousInterval = (fromDateValue.Minute/ minuteInterval) * minuteInterval;
-            var fromDatePreviousIntervalValue = ZeroOutMinutesAndLower(fromDateValue).AddMinutes(fromDatePreviousInterval);
-            return GetStartNextDayIfOverTodaysEnd(schedule, fromDatePreviousIntervalValue.AddMinutes(minuteInterval));
+                
+            return GetStartNextDayIfOverTodaysEnd(schedule, fromDateValue.AddMinutes(minuteInterval));
         }
 
         private static DateTime GetNextHalfHourlyRun(ExerciseSchedule schedule, DateTime fromDateValue)
@@ -94,7 +106,12 @@ namespace MakeMeMove
 
         private static DateTime ZeroOutMinutesAndLower(DateTime dateTime)
         {
-            return dateTime.AddMinutes(-1 * dateTime.Minute).AddSeconds(-1 * dateTime.Second).AddMilliseconds(-1 * dateTime.Millisecond);
+            return ZeroOutSecondsAndLower(dateTime).AddMinutes(-1 * dateTime.Minute);
+        }
+
+        private static DateTime ZeroOutSecondsAndLower(DateTime dateTime)
+        {
+            return dateTime.AddSeconds(-1 * dateTime.Second).AddMilliseconds(-1 * dateTime.Millisecond);
         }
     }
 }
