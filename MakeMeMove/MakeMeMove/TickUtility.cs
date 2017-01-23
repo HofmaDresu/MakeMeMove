@@ -5,15 +5,27 @@ namespace MakeMeMove
 {
     public static class TickUtility
     {
+
+        public static DateTime GetNextRunTime(ExerciseSchedule schedule)
+        {
+            var nowValue = DateTime.Now;
+            var todaysStartTime = new DateTime(nowValue.Year, nowValue.Month, nowValue.Day, schedule.StartTime.Hour, schedule.StartTime.Minute, 0);
+            while (todaysStartTime < nowValue)
+            {
+                todaysStartTime = GetNextRunTime(schedule, todaysStartTime);
+            }
+            return todaysStartTime;
+
+        }
+
         /// <summary>
-        /// Used when previous run time is not known. "now" param should only be used for testing
+        /// Test method. This is used to allow unit tests to mock 'now'
         /// </summary>
         /// <param name="schedule"></param>
-        /// <param name="now">only use this for testing purposes</param>
+        /// <param name="nowValue"></param>
         /// <returns></returns>
-        public static DateTime GetNextRunTime(ExerciseSchedule schedule, DateTime? now = null)
+        public static DateTime MockNow_GetNextRunTime(ExerciseSchedule schedule, DateTime nowValue)
         {
-            var nowValue = now ?? DateTime.Now;
             var todaysStartTime = new DateTime(nowValue.Year, nowValue.Month, nowValue.Day, schedule.StartTime.Hour, schedule.StartTime.Minute, 0);
             while (todaysStartTime < nowValue)
             {
