@@ -26,7 +26,7 @@ namespace MakeMeMove.iOS.ViewControllers
             ScreenName = "Manage Schedule";
 
             var hours = Enumerable.Range(1, 12).Select(h => h.ToString()).ToList();
-			var minutes = new List<string> { "00", "30"};
+			var minutes = new List<string> { "00", "15", "30", "45"};
 			var meridian = new List<string> { "AM", "PM" };
 			_availableTimes.Add(hours);
 			_availableTimes.Add(minutes);
@@ -64,7 +64,7 @@ namespace MakeMeMove.iOS.ViewControllers
 
 			StartTime.Text = $"{startHour}:{startMinute} {startMeridian}";
 			_startTimePicker.Select(startHour - 1, 0, false);
-			_startTimePicker.Select(startMinute == "00" ? 0 : 1, 1, false);
+			_startTimePicker.Select(int.Parse(startMinute) / 15, 1, false);
 			_startTimePicker.Select(_schedule.StartTime.Hour < 12 ? 0 : 1, 2, false);
 
 			var endHour = GetCivilianHour(_schedule.EndTime.Hour);
@@ -73,7 +73,7 @@ namespace MakeMeMove.iOS.ViewControllers
 
 			EndTime.Text = $"{endHour}:{endMinute} {endMeridian}";
 			_endTimePicker.Select(endHour - 1, 0, false);
-			_endTimePicker.Select(endMinute == "00" ? 0 : 1, 1, false);
+			_endTimePicker.Select(int.Parse(endMinute) / 15, 1, false);
 			_endTimePicker.Select(_schedule.EndTime.Hour < 12 ? 0 : 1, 2, false);
 		}
 
@@ -111,13 +111,14 @@ namespace MakeMeMove.iOS.ViewControllers
 		private void SaveButtonTouchUpInside(object sender, EventArgs e)
 		{
 			_schedule.Period = (SchedulePeriod)(int)_schedulePicker.SelectedRowInComponent(0);
-
-			var startHour = 1 +(int)(_startTimePicker.SelectedRowInComponent(0) + (12 * _startTimePicker.SelectedRowInComponent(2)));
-			var startMinute = (int)_startTimePicker.SelectedRowInComponent(1) * 30;
+            var startHourTranslatedIndex = _startTimePicker.SelectedRowInComponent(0) == 11 ? 0 : _startTimePicker.SelectedRowInComponent(0) + 1;
+            var startHour = (int)(startHourTranslatedIndex + (12 * _startTimePicker.SelectedRowInComponent(2)));
+			var startMinute = (int)_startTimePicker.SelectedRowInComponent(1) * 15;
 			var startTime = new DateTime(1, 1, 1, startHour, startMinute, 0);
 
-			var endHour = 1 + (int)(_endTimePicker.SelectedRowInComponent(0) + (12 * _endTimePicker.SelectedRowInComponent(2)));
-			var endMinute = (int)_endTimePicker.SelectedRowInComponent(1) * 30;
+            var endHourTranslatedIndex = _endTimePicker.SelectedRowInComponent(0) == 11 ? 0 : _endTimePicker.SelectedRowInComponent(0) + 1;
+            var endHour = (int)(endHourTranslatedIndex + (12 * _endTimePicker.SelectedRowInComponent(2)));
+			var endMinute = (int)_endTimePicker.SelectedRowInComponent(1) * 15;
 			var endTime = new DateTime(1, 1, 1, endHour, endMinute, 0);
 
 			if (startTime >= endTime)

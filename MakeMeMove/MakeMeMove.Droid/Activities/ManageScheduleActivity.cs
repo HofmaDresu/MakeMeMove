@@ -66,14 +66,14 @@ namespace MakeMeMove.Droid.Activities
             var civilianModifiedStartHour = TimeUtility.GetCivilianModifiedStartHour(_exerciseSchedule.StartTime);
 
             _startHourSpinner.SetSelection(civilianModifiedStartHour - 1);
-            _startMinuteSpinner.SetSelection(_exerciseSchedule.StartTime.Minute == 0 ? 0 : 1);
+            _startMinuteSpinner.SetSelection(_exerciseSchedule.StartTime.Minute / 15);
             _startMeridianSpinner.SetSelection(_exerciseSchedule.StartTime.Hour < 12 ? 0 : 1);
 
 
             var civilianModifiedEndHour = TimeUtility.GetCivilianModifiedStartHour(_exerciseSchedule.EndTime);
 
             _endHourSpinner.SetSelection(civilianModifiedEndHour -1);
-            _endMinuteSpinner.SetSelection(_exerciseSchedule.EndTime.Minute == 0 ? 0 : 1);
+            _endMinuteSpinner.SetSelection(_exerciseSchedule.EndTime.Minute / 15);
             _endMeridianSpinner.SetSelection(_exerciseSchedule.EndTime.Hour < 12 ? 0 : 1);
         }
 
@@ -86,7 +86,7 @@ namespace MakeMeMove.Droid.Activities
             _scheduleTypeSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, scheduleTypeList);
 
             var hourChoices = Enumerable.Range(1, 12).ToList();
-            var minuteChoices = new List<string> {"00", "30"};
+            var minuteChoices = new List<string> {"00", "15", "30", "45"};
             var meridianChoices = new List<string> {Resources.GetString(Resource.String.AM), Resources.GetString(Resource.String.PM) };
 
 
@@ -104,10 +104,10 @@ namespace MakeMeMove.Droid.Activities
             _exerciseSchedule.Type = (ScheduleType)_scheduleTypeSpinner.SelectedItemPosition;
 
             var startHour = _startHourSpinner.SelectedItemPosition == 11 ? 0 : _startHourSpinner.SelectedItemPosition + 1;
-            var startTime = new DateTime(1, 1, 1, startHour + (12 * _startMeridianSpinner.SelectedItemPosition), _startMinuteSpinner.SelectedItemPosition * 30, 0);
+            var startTime = new DateTime(1, 1, 1, startHour + (12 * _startMeridianSpinner.SelectedItemPosition), _startMinuteSpinner.SelectedItemPosition * 15, 0);
 
             var endHour = _endHourSpinner.SelectedItemPosition == 11 ? 0 : _endHourSpinner.SelectedItemPosition + 1;
-            var endTime = new DateTime(1, 1, 1, endHour + (12 * _endMeridianSpinner.SelectedItemPosition), _endMinuteSpinner.SelectedItemPosition * 30, 0);
+            var endTime = new DateTime(1, 1, 1, endHour + (12 * _endMeridianSpinner.SelectedItemPosition), _endMinuteSpinner.SelectedItemPosition * 15, 0);
 
             if (startTime >= endTime)
             {
