@@ -4,12 +4,20 @@ using SQLite;
 using Environment = System.Environment;
 using Android.Content;
 using Android.Widget;
+using Android.OS;
+using Android.Preferences;
 
 namespace MakeMeMove.Droid.Activities
 {
     public class BaseActivity : AppCompatActivity
     {
         protected readonly Data Data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
+
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            PreferenceManager.SetDefaultValues(this, Resource.Xml.preferences, false);
+        }
 
         protected override void OnResume()
         {

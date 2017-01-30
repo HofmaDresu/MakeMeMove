@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/Notifications"
+        android:key="@string/NotificationsKey">
+        <CheckBoxPreference
+            android:key="@string/CheckHistoryReminderKey"
+            android:summary="@string/CheckHistoryReminderSettingSummary"
+            android:title="@string/CheckHistoryReminderSettingTitle"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+</PreferenceScreen>

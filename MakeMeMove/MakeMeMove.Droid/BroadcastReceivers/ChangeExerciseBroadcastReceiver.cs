@@ -28,7 +28,7 @@ namespace MakeMeMove.Droid.BroadcastReceivers
 
             var nextExercise = _data.GetNextEnabledExercise();
 
-            UserNotification.CreateNotification(_data, context, nextExercise);
+            UserNotification.CreateExerciseNotification(_data, context, nextExercise);
         }
     }
 }

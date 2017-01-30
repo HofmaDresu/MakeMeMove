@@ -3,116 +3,138 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/DrawerLayout">
-  <include
-      layout="@layout/Main_ContentArea" />
-  <RelativeLayout
-      android:id="@+id/drawer"
-      android:orientation="vertical"
-      android:layout_width="200dp"
-      android:layout_height="match_parent"
-      android:scrollbars="vertical"
-      android:layout_gravity="start"
-      android:background="@color/White"
-      android:clickable="true"
-      android:importantForAccessibility="no">
-    <LinearLayout
+    <include
+        layout="@layout/Main_ContentArea" />
+    <RelativeLayout
+        android:id="@+id/drawer"
         android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-      <LinearLayout
-          android:orientation="vertical"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/UserNameSection"
-          android:visibility="gone">
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:layout_gravity="start"
+        android:background="@color/White"
+        android:clickable="true"
+        android:importantForAccessibility="no">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            style="@style/SettingsHeader">
-          <TextView
-              android:text="@string/LoggedInAsText"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              style="@style/SettingsHeaderMainText" />
-          <TextView
-              android:id="@+id/UserNameText"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              style="@style/SettingsHeaderDetailsText" />
+            android:layout_height="fill_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/UserNameSection"
+                android:visibility="gone">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/SettingsHeader">
+                    <TextView
+                        android:text="@string/LoggedInAsText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/SettingsHeaderMainText" />
+                    <TextView
+                        android:id="@+id/UserNameText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/SettingsHeaderDetailsText" />
+                </LinearLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/PrimaryColor" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ViewHistoryButton">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:paddingLeft="10dp">
+                    <TextView
+                        android:text="@string/ViewHistory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/PrimaryColor" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LogInOutButton">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:paddingLeft="10dp">
+                    <TextView
+                        android:id="@+id/LogInOutText"
+                        android:text="@string/SignInWithFudist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/PrimaryColor" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/OpenFudistButton">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:paddingLeft="10dp">
+                    <TextView
+                        android:id="@+id/OpenFudistText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/PrimaryColor" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/SettingsButton">
+              <LinearLayout
+                  android:orientation="vertical"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:paddingTop="20dp"
+                  android:paddingBottom="20dp"
+                  android:paddingLeft="10dp">
+                <TextView
+                    android:text="@string/Settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+              </LinearLayout>
+              <View
+                  android:layout_width="fill_parent"
+                  android:layout_height="1dp"
+                  android:background="@color/PrimaryColor" />
+            </LinearLayout>
         </LinearLayout>
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="@color/PrimaryColor" />
-      </LinearLayout>
-      <LinearLayout
-          android:orientation="vertical"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/ViewHistoryButton">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:paddingLeft="10dp">
-          <TextView
-              android:text="@string/ViewHistory"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content" />
-        </LinearLayout>
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="@color/PrimaryColor" />
-      </LinearLayout>
-      <LinearLayout
-          android:orientation="vertical"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/LogInOutButton">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:paddingLeft="10dp">
-          <TextView
-            android:id="@+id/LogInOutText"
-            android:text="@string/SignInWithFudist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        </LinearLayout>
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="@color/PrimaryColor" />
-      </LinearLayout>
-      <LinearLayout
-          android:orientation="vertical"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/OpenFudistButton">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:paddingLeft="10dp">
-          <TextView
-            android:id="@+id/OpenFudistText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        </LinearLayout>
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="@color/PrimaryColor" />
-      </LinearLayout>
-    </LinearLayout>
-  </RelativeLayout>
+    </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>

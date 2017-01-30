@@ -70,4 +70,9 @@
   <string name="FudistInstalledMenuText">Open Fudist</string>
   <string name="ScheduleTypeLabel">Active Days:</string>
   <string name="MarketFailure">Error launching the Play Store.</string>
+  <string name="Notifications">Notifications</string>
+  <string name="CheckHistoryReminderSettingTitle">Check History Notification</string>
+  <string name="CheckHistoryReminderSettingSummary">Get reminded to view your exercise history every day (requires Premium account)</string>
+  <string name="CheckHistoryNotificationTitle">Check Today\'s Progress</string>
+  <string name="CheckHistoryNotificationMessage">Tap to see how you did today</string>
 </resources>
