@@ -23,6 +23,17 @@ namespace MakeMeMove.Droid.Activities
             base.OnCreate(savedInstanceState);
 
             FragmentManager.BeginTransaction().Replace(Android.Resource.Id.Content, new SettingsFragment()).Commit();
+
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem selectedItem)
+        {
+            if (selectedItem.ItemId == Android.Resource.Id.Home)
+            {
+                OnBackPressed();
+            }
+            return true;
         }
     }
 }

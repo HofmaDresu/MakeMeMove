@@ -64,6 +64,7 @@ namespace MakeMeMove.Droid.Activities
 
             FindViewById(Resource.Id.SettingsButton).Click += (sender, args) =>
             {
+                _drawer.CloseDrawer(GravityCompat.Start);
                 StartActivity(new Intent(this, typeof(SettingsActivity)));
             };
 
