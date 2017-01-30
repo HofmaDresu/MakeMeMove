@@ -62,6 +62,11 @@ namespace MakeMeMove.Droid.Activities
             _drawer.SetDrawerListener(_toggle);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
+            FindViewById(Resource.Id.SettingsButton).Click += (sender, args) =>
+            {
+                StartActivity(new Intent(this, typeof(SettingsActivity)));
+            };
+
             FindViewById(Resource.Id.ViewHistoryButton).Click += (sender, args) =>
             {
                 _drawer.CloseDrawer(GravityCompat.Start);
