@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
-        android:title="Test Title"
-        android:key="test_key">
+        android:title="@string/Notifications"
+        android:key="notification_preferences_key">
         <CheckBoxPreference
-            android:key="test_key_2"
-            android:summary="Test Summary"
-            android:title="Test Pref Title"
+            android:key="check_history_reminder_key"
+            android:summary="@string/CheckHistoryReminderSettingSummary"
+            android:title="@string/CheckHistoryReminderSettingTitle"
             android:defaultValue="true" />
     </PreferenceCategory>
 </PreferenceScreen>
