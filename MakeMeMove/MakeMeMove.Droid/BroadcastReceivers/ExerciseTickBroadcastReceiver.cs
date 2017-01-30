@@ -4,6 +4,7 @@ using MakeMeMove.Droid.DeviceSpecificImplementations;
 using SQLite;
 using Environment = System.Environment;
 using Path = System.IO.Path;
+using Android.Preferences;
 
 namespace MakeMeMove.Droid.BroadcastReceivers
 {
@@ -21,10 +22,14 @@ namespace MakeMeMove.Droid.BroadcastReceivers
             var now = DateTime.Now.TimeOfDay;
             if (now > exerciseSchedule.StartTime.TimeOfDay && now < exerciseSchedule.EndTime.TimeOfDay)
             {
-                UserNotification.CreateNotification(_data, context);
+                UserNotification.CreateExerciseNotification(_data, context);
             }
 
-            ExerciseServiceManager.SetNextAlarm(context, exerciseSchedule);
+            var nextAlarmTime = ExerciseServiceManager.SetNextAlarm(context, exerciseSchedule);
+            if (nextAlarmTime.Date > DateTime.Now.Date && _data.UserIsPremium() && PreferenceManager.GetDefaultSharedPreferences(context).GetBoolean(context.Resources.GetString(Resource.String.CheckHistoryReminderKey), true))
+            {
+                UserNotification.CreateHistoryReminderNotification(context);
+            }
         }
     }
 }

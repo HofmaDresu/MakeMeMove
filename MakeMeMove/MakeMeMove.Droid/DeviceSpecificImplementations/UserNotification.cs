@@ -34,13 +34,13 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                 .Show();
         }
 
-        public static void CreateNotification(Data data, Context context)
+        public static void CreateExerciseNotification(Data data, Context context)
         {
             var nextExercise = data.GetNextEnabledExercise();
-            CreateNotification(data, context, nextExercise);
+            CreateExerciseNotification(data, context, nextExercise);
         }
 
-        public static void CreateNotification(Data data, Context context, ExerciseBlock nextExercise)
+        public static void CreateExerciseNotification(Data data, Context context, ExerciseBlock nextExercise)
         {
             if (nextExercise == null) return;
             var userIsPremium = data.UserIsPremium();
@@ -131,7 +131,46 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             notification.Flags |= NotificationFlags.AutoCancel;
 
             var notificationManager = NotificationManagerCompat.From(context);
-            notificationManager?.Notify(Constants.NotificationId, notification);
+            notificationManager?.Notify(Constants.ExerciseNotificationId, notification);
+        }
+
+        public static void CreateHistoryReminderNotification(Context context)
+        {
+            var clickIntent = new Intent(context, typeof(ExerciseHistoryActivity));
+            clickIntent.PutExtra(Constants.ShowMarkedExercisePrompt, false);
+            var stackBuilder = TaskStackBuilder.Create(context);
+            stackBuilder.AddParentStack(Java.Lang.Class.FromType(typeof(ExerciseHistoryActivity)));
+            stackBuilder.AddNextIntent(clickIntent);
+            var clickPendingIntent = stackBuilder.GetPendingIntent(0, PendingIntentFlags.CancelCurrent);
+
+
+            var builder = new NotificationCompat.Builder(context)
+                .SetContentTitle(context.Resources.GetString(Resource.String.CheckHistoryNotificationTitle))
+                .SetContentText(context.Resources.GetString(Resource.String.CheckHistoryNotificationMessage))
+                .SetDefaults(NotificationCompat.DefaultSound | NotificationCompat.DefaultVibrate)
+                .SetContentIntent(clickPendingIntent);
+
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
+            {
+                builder
+                    .SetPriority((int)NotificationPriority.High)
+                    .SetVisibility(NotificationCompat.VisibilityPublic)
+                    .SetCategory("reminder")
+                    .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
+                    .SetColor(Color.Rgb(215, 78, 10));
+            }
+            else
+            {
+                builder
+                    .SetSmallIcon(Resource.Drawable.icon);
+            }
+
+            var notification = builder.Build();
+
+            notification.Flags |= NotificationFlags.AutoCancel;
+
+            var notificationManager = NotificationManagerCompat.From(context);
+            notificationManager?.Notify(Constants.HistoryReminderNotificationId, notification);
         }
     }
 }

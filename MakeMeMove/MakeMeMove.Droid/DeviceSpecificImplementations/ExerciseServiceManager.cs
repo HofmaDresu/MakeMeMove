@@ -58,7 +58,7 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             editor.Commit();
         }
 
-        public static void SetNextAlarm(Context context, ExerciseSchedule exerciseSchedule)
+        public static DateTime SetNextAlarm(Context context, ExerciseSchedule exerciseSchedule)
         {
             var reminder = new Intent(context, typeof(ExerciseTickBroadcastReceiver));
 
@@ -95,6 +95,8 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                     (long) nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds,
                     recurringReminders);
             }
+
+            return nextRunTime;
         }
     }
 }
