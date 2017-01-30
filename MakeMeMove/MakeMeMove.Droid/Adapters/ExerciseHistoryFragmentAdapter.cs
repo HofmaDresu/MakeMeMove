@@ -17,6 +17,7 @@ namespace MakeMeMove.Droid.Adapters
     {
         private readonly Data _data = Data.GetInstance(new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), Constants.DatabaseName)));
         private DateTime _minimumHistoryDate;
+        private int? _prevCount;
 
         public ExerciseHistoryFragmentAdapter(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
@@ -28,7 +29,20 @@ namespace MakeMeMove.Droid.Adapters
             _minimumHistoryDate = _data.GetMinimumExerciseHistoryDate();
         }
 
-        public override int Count => (int)(DateTime.Now.Date - _minimumHistoryDate.Date).TotalDays + 1;
+        public override int Count
+        {
+            get
+            {
+                var count = (int)(DateTime.Now.Date - _minimumHistoryDate.Date).TotalDays + 1;
+                if (_prevCount.GetValueOrDefault(-1) != count)
+                {
+                    _prevCount = count;
+                    NotifyDataSetChanged();
+                }
+                return count;
+            }
+        }
+
         public override Fragment GetItem(int position)
         {
             var exerciseHistoryForDay = GetExerciseHistoryForPosition(position);
