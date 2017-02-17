@@ -8,5 +8,11 @@
             android:summary="@string/CheckHistoryReminderSettingSummary"
             android:title="@string/CheckHistoryReminderSettingTitle"
             android:defaultValue="true" />
+        <RingtonePreference 
+            android:showDefault="true"
+            android:key="@string/NotificationSoundKey" 
+            android:title="@string/NotificationSoundSettingTitle"
+            android:defaultValue="content://settings/system/notification_sound"
+            android:ringtoneType="notification" />
     </PreferenceCategory>
 </PreferenceScreen>
