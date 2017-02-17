@@ -8,6 +8,8 @@ using MakeMeMove.Droid.Activities;
 using MakeMeMove.Droid.BroadcastReceivers;
 using MakeMeMove.Model;
 using TaskStackBuilder = Android.App.TaskStackBuilder;
+using Android.Preferences;
+using Android.Media;
 
 namespace MakeMeMove.Droid.DeviceSpecificImplementations
 {
@@ -78,8 +80,9 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             var builder = new NotificationCompat.Builder(context)
                 .SetContentTitle(context.Resources.GetString(Resource.String.TimeToMoveTitle))
                 .SetContentText(timeToMoveMessage)
-                .SetDefaults(NotificationCompat.DefaultSound | NotificationCompat.DefaultVibrate)
-                .SetContentIntent(clickPendingIntent);
+                .SetDefaults(NotificationCompat.DefaultVibrate)
+                .SetContentIntent(clickPendingIntent)
+                .SetSound(Android.Net.Uri.Parse(PreferenceManager.GetDefaultSharedPreferences(context).GetString(context.Resources.GetString(Resource.String.NotificationSoundKey), RingtoneManager.GetDefaultUri(RingtoneType.Notification).ToString())));
 
 
             var changeExerciseButtonText = context.Resources.GetString(Resource.String.ChangeExerciseButtonText);
