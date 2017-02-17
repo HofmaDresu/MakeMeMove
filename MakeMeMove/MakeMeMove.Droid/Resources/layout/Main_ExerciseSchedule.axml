@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    style="@style/TopAndSideSpacedRootElement">
+    android:layout_height="wrap_content">
+  <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      style="@style/TopAndSideSpacedRootElement"
+      android:paddingBottom="20dp">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,21 +21,21 @@
         android:padding="2dp"
         android:background="@drawable/CustomSwitchBackground"
         android:layout_marginLeft="30dp">
-        <TextView
-            android:id="@+id/ServiceStopped"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textStyle="bold"
-            android:gravity="center" />
-        <TextView
-            android:id="@+id/ServiceStarted"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textColor="@color/White" />
+      <TextView
+          android:id="@+id/ServiceStopped"
+          android:layout_width="100dp"
+          android:layout_height="wrap_content"
+          android:padding="5dp"
+          android:textStyle="bold"
+          android:gravity="center" />
+      <TextView
+          android:id="@+id/ServiceStarted"
+          android:layout_width="100dp"
+          android:layout_height="wrap_content"
+          android:padding="5dp"
+          android:textStyle="bold"
+          android:gravity="center"
+          android:textColor="@color/White" />
     </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
@@ -85,14 +89,15 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <Button
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:id="@+id/ManageScheduleButton"
-            android:text="@string/ChangeScheduleButtonText"
-            style="@style/FreeButton" />
+      <Button
+          android:layout_centerInParent="true"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:paddingLeft="20dp"
+          android:paddingRight="20dp"
+          android:id="@+id/ManageScheduleButton"
+          android:text="@string/ChangeScheduleButtonText"
+          style="@style/FreeButton" />
     </RelativeLayout>
-</LinearLayout>
+  </LinearLayout>
+</ScrollView>
