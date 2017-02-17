@@ -2,4 +2,5 @@
 <resources>
   <string name="NotificationsKey">notification_preferences_key</string>
   <string name="CheckHistoryReminderKey">check_history_reminder_key</string>
+  <string name="NotificationSoundKey">notification_sound_key</string>
 </resources>
