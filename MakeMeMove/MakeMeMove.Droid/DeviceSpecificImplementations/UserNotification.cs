@@ -150,8 +150,9 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             var builder = new NotificationCompat.Builder(context)
                 .SetContentTitle(context.Resources.GetString(Resource.String.CheckHistoryNotificationTitle))
                 .SetContentText(context.Resources.GetString(Resource.String.CheckHistoryNotificationMessage))
-                .SetDefaults(NotificationCompat.DefaultSound | NotificationCompat.DefaultVibrate)
-                .SetContentIntent(clickPendingIntent);
+                .SetDefaults(NotificationCompat.DefaultVibrate)
+                .SetContentIntent(clickPendingIntent)
+                .SetSound(Android.Net.Uri.Parse(PreferenceManager.GetDefaultSharedPreferences(context).GetString(context.Resources.GetString(Resource.String.NotificationSoundKey), RingtoneManager.GetDefaultUri(RingtoneType.Notification).ToString())));
 
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
             {
