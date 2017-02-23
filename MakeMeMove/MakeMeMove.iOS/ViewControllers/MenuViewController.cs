@@ -52,6 +52,7 @@ namespace MakeMeMove.iOS.ViewControllers
             OpenFudistView.TouchUpInside += OpenFudistClicked;
             ViewHistoryView.TouchUpInside += NavToExerciseHistory;
             SignInOutView.TouchUpInside += OnSignInOut;
+            SettingsView.TouchUpInside += NavToSettings;
         }
 
         public override void ViewWillDisappear(bool animated)
@@ -61,6 +62,7 @@ namespace MakeMeMove.iOS.ViewControllers
             OpenFudistView.TouchUpInside -= OpenFudistClicked;
             ViewHistoryView.TouchUpInside -= NavToExerciseHistory;
             SignInOutView.TouchUpInside -= OnSignInOut;
+            SettingsView.TouchUpInside -= NavToSettings;
         }
 
         private void NavToExerciseHistory(object sender, EventArgs e)
@@ -122,12 +124,13 @@ namespace MakeMeMove.iOS.ViewControllers
             UIApplication.SharedApplication.OpenUrl(NSUrl.FromString(iTunesLink));
         }
 
-        private void NotImplementedAlert(object sender, EventArgs e)
+        private void NavToSettings(object sender, EventArgs e)
         {
-            var alert = new UIAlertView("Not implemented", "This feature is not yet implemented. Please try again in a future version",
-                       null, "OK", null);
+            var regController = AppDelegate.SettingsStoryboard.InstantiateInitialViewController();
 
-            alert.Show();
+            this.RevealViewController().RevealToggleAnimated(true);
+
+            PresentViewController(regController, true, () => { });
         }
     }
 }

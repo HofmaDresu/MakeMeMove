@@ -250,6 +250,7 @@
     <BundleResource Include="Resources\sms_alert_synth.caf" />
     <BundleResource Include="Resources\Telegraph.caf" />
     <BundleResource Include="Resources\Tiptoes.caf" />
+    <InterfaceDefinition Include="Settings.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoadingOverlay.cs" />

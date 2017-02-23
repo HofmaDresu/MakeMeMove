@@ -28,6 +28,10 @@ namespace MakeMeMove.iOS.ViewControllers
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        MakeMeMove.iOS.PrimaryBottomBorderView SettingsView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel SignInOutLabel { get; set; }
 
         [Outlet]
@@ -65,6 +69,11 @@ namespace MakeMeMove.iOS.ViewControllers
             if (OpenFudistView != null) {
                 OpenFudistView.Dispose ();
                 OpenFudistView = null;
+            }
+
+            if (SettingsView != null) {
+                SettingsView.Dispose ();
+                SettingsView = null;
             }
 
             if (SignInOutLabel != null) {
