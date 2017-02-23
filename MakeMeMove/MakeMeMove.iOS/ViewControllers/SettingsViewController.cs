@@ -1,14 +1,20 @@
 ﻿using CoreGraphics;
 using Foundation;
+using Humanizer;
+using MakeMeMove.iOS.Controls;
 using MakeMeMove.iOS.Helpers;
+using MakeMeMove.iOS.Models;
 using MakeMeMove.iOS.ViewControllers.Base;
 using System;
+using System.Linq;
 using UIKit;
 
 namespace MakeMeMove.iOS
 {
     public partial class SettingsViewController : BaseViewController
     {
+        private UIPickerView _notificationSoundPicker;
+
         public SettingsViewController (IntPtr handle) : base (handle)
         {
             ScreenName = "Settings";
@@ -39,6 +45,9 @@ namespace MakeMeMove.iOS
         {
             base.ViewDidLoad();
             BackButton.TintColor = UIColor.White;
+
+            var soundsList = (from Constants.NotificationSounds suit in Enum.GetValues(typeof(Constants.NotificationSounds)) select suit.Humanize(LetterCasing.Title)).ToList();
+            _notificationSoundPicker = MirroredPicker.Create(new PickerModel(soundsList), NotificationSoundPicker, doneAction: null);
         }
 
         public override void ViewDidDisappear(bool animated)

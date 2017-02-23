@@ -13,22 +13,23 @@ namespace MakeMeMove.iOS
 
         public enum NotificationSounds
         {
+            SystemDefault,
+            Aurora,
+            Bamboo,
             Bloom,
             Calypso,
             ChooChoo,
-            Fanfare,
-            Ladder,
-            Noir,
-            SherwoodForest,
-            Aurora,
-            Bamboo,
             Circles,
             Complete, 
+            Fanfare,
             Hello,
             Input,
             Keys,
+            Ladder,
+            Noir,
             Note,
             Popcorn,
+            SherwoodForest,
             Synth,
             Telegraph,
             Tiptoes
@@ -36,6 +37,7 @@ namespace MakeMeMove.iOS
 
         public static readonly Dictionary<NotificationSounds, string> NotificaitonSoundsMap = new Dictionary<NotificationSounds, string>
         {
+            { NotificationSounds.SystemDefault, "" },
             { NotificationSounds.Bloom, "Bloom.caf" },
             { NotificationSounds.Calypso, "Calypso.caf" },
             { NotificationSounds.ChooChoo, "Choo_Choo.caf" },
