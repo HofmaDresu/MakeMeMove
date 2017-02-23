@@ -1,4 +1,5 @@
-﻿using CoreGraphics;
+﻿using AudioToolbox;
+using CoreGraphics;
 using Foundation;
 using Humanizer;
 using MakeMeMove.iOS.Controls;
@@ -47,7 +48,20 @@ namespace MakeMeMove.iOS
             BackButton.TintColor = UIColor.White;
 
             var soundsList = (from Constants.NotificationSounds suit in Enum.GetValues(typeof(Constants.NotificationSounds)) select suit.Humanize(LetterCasing.Title)).ToList();
-            _notificationSoundPicker = MirroredPicker.Create(new PickerModel(soundsList), NotificationSoundPicker, doneAction: null);
+            _notificationSoundPicker = MirroredPicker.Create(new PickerModel(soundsList), NotificationSoundPicker, doneAction: null, changeAction: NotificationSoundPicker_ValueChanged);
+
+        }
+
+        private void NotificationSoundPicker_ValueChanged()
+        {
+            var sound = NotificationSoundPicker.Text.DehumanizeTo<Constants.NotificationSounds>();
+
+            if (sound == Constants.NotificationSounds.SystemDefault) return;
+
+            var soundFile = Constants.NotificaitonSoundsMap[sound];
+            var soundFileUrl = NSUrl.FromFilename(soundFile);
+            var systemSound = new SystemSound(soundFileUrl);
+            systemSound.PlaySystemSound();
         }
 
         public override void ViewDidDisappear(bool animated)
