@@ -7,7 +7,7 @@
     <scenes>
         <scene sceneID="4">
             <objects>
-                <viewController id="5" sceneMemberID="viewController">
+                <viewController id="5" sceneMemberID="viewController" customClass="SettingsViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2"/>
                         <viewControllerLayoutGuide type="bottom" id="3"/>
@@ -32,6 +32,10 @@
                             <constraint id="13" firstItem="9" firstAttribute="top" secondItem="2" secondAttribute="bottom"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="BackButton" destination="16" id="name-outlet-16"/>
+                        <outlet property="NavBar" destination="9" id="name-outlet-9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
