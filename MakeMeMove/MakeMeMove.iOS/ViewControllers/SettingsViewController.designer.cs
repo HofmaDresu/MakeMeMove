@@ -22,6 +22,14 @@ namespace MakeMeMove.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UINavigationBar NavBar { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        MakeMeMove.iOS.PickerUITextField NotificationSoundPicker { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel NotificationsSectionHeader { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (BackButton != null) {
@@ -32,6 +40,16 @@ namespace MakeMeMove.iOS
             if (NavBar != null) {
                 NavBar.Dispose ();
                 NavBar = null;
+            }
+
+            if (NotificationSoundPicker != null) {
+                NotificationSoundPicker.Dispose ();
+                NotificationSoundPicker = null;
+            }
+
+            if (NotificationsSectionHeader != null) {
+                NotificationsSectionHeader.Dispose ();
+                NotificationsSectionHeader = null;
             }
         }
     }

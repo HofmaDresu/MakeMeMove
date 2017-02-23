@@ -30,6 +30,8 @@ namespace MakeMeMove.iOS
             };
             View.Add(statusBarColor);
 
+            FudistColors.SetTextInteractableColor(NotificationsSectionHeader);
+
             BackButton.Clicked += BackButton_Clicked;
         }
 
