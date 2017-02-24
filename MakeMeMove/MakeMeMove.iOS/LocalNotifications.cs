@@ -91,7 +91,8 @@ namespace MakeMeMove.iOS
 					TimeZone = NSTimeZone.LocalTimeZone,
 					ApplicationIconBadgeNumber = -1,
 					Category = Constants.ExerciseNotificationCategoryId,
-					UserInfo = notificationDictionary
+					UserInfo = notificationDictionary,
+					AlertTitle = "Time to Move"
 				};
 
 				if (isRecurring)
