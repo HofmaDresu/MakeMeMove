@@ -78,18 +78,24 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <DeviceSpecificBuild>true</DeviceSpecificBuild>
-    <MtouchDebug>true</MtouchDebug>
-    <MtouchFastDev>true</MtouchFastDev>
-    <MtouchProfiling>true</MtouchProfiling>
-    <MtouchUseSGen>true</MtouchUseSGen>
-    <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchFloat32>true</MtouchFloat32>
+    <DeviceSpecificBuild>False</DeviceSpecificBuild>
+    <MtouchDebug>True</MtouchDebug>
+    <MtouchFastDev>False</MtouchFastDev>
+    <MtouchProfiling>False</MtouchProfiling>
+    <MtouchUseSGen>True</MtouchUseSGen>
+    <MtouchUseRefCounting>True</MtouchUseRefCounting>
+    <MtouchFloat32>True</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <MtouchSdkVersion>10.2</MtouchSdkVersion>
+    <MtouchNoSymbolStrip>False</MtouchNoSymbolStrip>
+    <MtouchUseLlvm>False</MtouchUseLlvm>
+    <MtouchUseThumb>False</MtouchUseThumb>
+    <MtouchEnableBitcode>False</MtouchEnableBitcode>
+    <OptimizePNGs>True</OptimizePNGs>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Google.Analytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -231,9 +237,33 @@
     <None Include="Entitlements.plist" />
     <InterfaceDefinition Include="LogIn.storyboard" />
     <None Include="packages.config" />
+    <BundleResource Include="Resources\Bloom.caf" />
+    <BundleResource Include="Resources\Calypso.caf" />
+    <BundleResource Include="Resources\Choo_Choo.caf" />
+    <BundleResource Include="Resources\Fanfare.caf" />
+    <BundleResource Include="Resources\Ladder.caf" />
+    <BundleResource Include="Resources\Noir.caf" />
+    <BundleResource Include="Resources\Sherwood_Forest.caf" />
+    <BundleResource Include="Resources\sms_alert_aurora.caf" />
+    <BundleResource Include="Resources\sms_alert_bamboo.caf" />
+    <BundleResource Include="Resources\sms_alert_circles.caf" />
+    <BundleResource Include="Resources\sms_alert_complete.caf" />
+    <BundleResource Include="Resources\sms_alert_hello.caf" />
+    <BundleResource Include="Resources\sms_alert_input.caf" />
+    <BundleResource Include="Resources\sms_alert_keys.caf" />
+    <BundleResource Include="Resources\sms_alert_note.caf" />
+    <BundleResource Include="Resources\sms_alert_popcorn.caf" />
+    <BundleResource Include="Resources\sms_alert_synth.caf" />
+    <BundleResource Include="Resources\Telegraph.caf" />
+    <BundleResource Include="Resources\Tiptoes.caf" />
+    <InterfaceDefinition Include="Settings.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoadingOverlay.cs" />
+    <Compile Include="ViewControllers\SettingsViewController.cs" />
+    <Compile Include="ViewControllers\SettingsViewController.designer.cs">
+      <DependentUpon>SettingsViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\AuthorizationSingleton.cs" />
     <Compile Include="Utilities\UnifiedAnalytics.cs" />
     <Compile Include="ViewControllers\ExerciseHistoryContainerViewController.cs" />

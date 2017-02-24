@@ -9,7 +9,7 @@ namespace MakeMeMove.iOS.Controls
 {
 	public static class MirroredPicker
 	{
-		public static UIPickerView Create(PickerModel model, UITextField fieldToMirror, Func<IList<string>, string> transformFunction = null, Action doneAction = null)
+		public static UIPickerView Create(PickerModel model, UITextField fieldToMirror, Func<IList<string>, string> transformFunction = null, Action doneAction = null, Action changeAction = null)
 		{
 			var pickerView = new UIPickerView { Model = model };
 
@@ -20,7 +20,8 @@ namespace MakeMeMove.iOS.Controls
 			{
 				var fieldVal = transformFunction == null ? e.SelectedValues[0].ToString() : transformFunction(e.SelectedValues.Select(o => o.ToString()).ToList());
 				fieldToMirror.Text = fieldVal;
-			};
+                changeAction?.Invoke();
+            };
 
 			var doneButton = new UIBarButtonItem("Done", UIBarButtonItemStyle.Done, (s, e) =>
 			{

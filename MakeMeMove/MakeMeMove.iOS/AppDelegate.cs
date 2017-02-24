@@ -10,6 +10,7 @@ using UserNotifications;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
 using Microsoft.Azure.Mobile.Crashes;
+using Humanizer;
 
 namespace MakeMeMove.iOS
 {
@@ -22,6 +23,7 @@ namespace MakeMeMove.iOS
 		private readonly ExerciseServiceManager _serviceManager;
         public static UIStoryboard Storyboard;
         public static UIStoryboard ExerciseHistoryStoryboard;
+        public static UIStoryboard SettingsStoryboard;
         public static UIStoryboard LoginStoryboard;
         public static UIViewController InitialViewController;
         public ITracker Tracker;
@@ -42,6 +44,7 @@ namespace MakeMeMove.iOS
 		{
 		    InstantiateStoryboards();
             MobileCenter.Start("49c0caaf-6e72-4762-95e2-d7e2bb6d825b", typeof(Analytics), typeof(Crashes));
+            InstantiateUserDefaults();
             _data.IncrementRatingCycle();
 
             if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
@@ -108,12 +111,24 @@ namespace MakeMeMove.iOS
             return true;
 		}
 
+        private void InstantiateUserDefaults()
+        {
+            var plist = NSUserDefaults.StandardUserDefaults;
+            var sound = plist.StringForKey(Constants.UserDefaultsNotificationSoundsKey);
+            if (string.IsNullOrWhiteSpace(sound))
+            {
+                plist.SetString(Constants.NotificationSounds.SystemDefault.Humanize(LetterCasing.Title), Constants.UserDefaultsNotificationSoundsKey);
+                plist.Synchronize();
+            }
+        }
+
 	    private void InstantiateStoryboards()
         {
             Storyboard = UIStoryboard.FromName("Main", null);
             InitialViewController = Storyboard.InstantiateInitialViewController() as SWRevealViewController;
             ExerciseHistoryStoryboard = UIStoryboard.FromName("ExerciseHistory", null);
-	        LoginStoryboard = UIStoryboard.FromName("LogIn", null);
+            SettingsStoryboard = UIStoryboard.FromName("Settings", null);
+            LoginStoryboard = UIStoryboard.FromName("LogIn", null);
 	    }
 
 		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)

@@ -21,9 +21,17 @@ namespace MakeMeMove.iOS.Helpers
 			{
 				label.TextColor = PrimaryColor;
 			}
-		}
+        }
 
-		public static void SetTextPrimaryColor(params PickerUITextField[] textViews)
+        public static void SetTextInteractableColor(params UILabel[] labels)
+        {
+            foreach (var label in labels)
+            {
+                label.TextColor = InteractableTextColor;
+            }
+        }
+
+        public static void SetTextPrimaryColor(params PickerUITextField[] textViews)
 		{
 			foreach (var textView in textViews)
 			{
