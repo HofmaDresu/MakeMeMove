@@ -26,17 +26,16 @@ namespace MakeMeMove.iOS
 		        {new NSString(Constants.ExerciseQuantity), new NSString(nextExercise.Quantity.ToString())}
 		    };
 
-		    if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
-			{
-				UNUserNotificationCenter.Current.GetNotificationSettings(settings =>
+            var defaults = NSUserDefaults.StandardUserDefaults;
+            var soundString = defaults.StringForKey(Constants.UserDefaultsNotificationSoundsKey);
+            var soundEnum = soundString.DehumanizeTo<Constants.NotificationSounds>();
+
+            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
+            {
+                UNUserNotificationCenter.Current.GetNotificationSettings(settings =>
 				{
 					var alertsAllowed = (settings.AlertSetting == UNNotificationSetting.Enabled);
 					if (!alertsAllowed) return;
-
-
-                    var defaults = NSUserDefaults.StandardUserDefaults;
-                    var soundString = defaults.StringForKey(Constants.UserDefaultsNotificationSoundsKey);
-                    var soundEnum = soundString.DehumanizeTo<Constants.NotificationSounds>();
 
                     var content = new UNMutableNotificationContent
                     {
@@ -88,7 +87,7 @@ namespace MakeMeMove.iOS
 					AlertAction = "Time to Move",
 					AlertBody = $"It's time to do {nextExercise.Quantity} {nextExercise.CombinedName}",
 					FireDate = notificationDate.ToNSDate(),
-					SoundName = UILocalNotification.DefaultSoundName,
+					SoundName = soundEnum == Constants.NotificationSounds.SystemDefault ? UILocalNotification.DefaultSoundName : soundString,
 					TimeZone = NSTimeZone.LocalTimeZone,
 					ApplicationIconBadgeNumber = -1,
 					Category = Constants.ExerciseNotificationCategoryId,
