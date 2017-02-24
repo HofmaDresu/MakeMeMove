@@ -10,6 +10,7 @@ namespace MakeMeMove.iOS
 		public const string CompleteId = "COMPLETE_ACTION";
 		public const string ExerciseName = "ExerciseName";
 		public const string ExerciseQuantity = "ExerciseQuantity";
+        public const string UserDefaultsNotificationSoundsKey = "USER_DEFAULTS_NOTIFICATION_SOUND";
 
         public enum NotificationSounds
         {

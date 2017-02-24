@@ -10,6 +10,7 @@ using UserNotifications;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
 using Microsoft.Azure.Mobile.Crashes;
+using Humanizer;
 
 namespace MakeMeMove.iOS
 {
@@ -43,6 +44,7 @@ namespace MakeMeMove.iOS
 		{
 		    InstantiateStoryboards();
             MobileCenter.Start("49c0caaf-6e72-4762-95e2-d7e2bb6d825b", typeof(Analytics), typeof(Crashes));
+            InstantiateUserDefaults();
             _data.IncrementRatingCycle();
 
             if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
@@ -108,6 +110,17 @@ namespace MakeMeMove.iOS
             Tracker = Gai.SharedInstance.GetTracker(TrackingId);
             return true;
 		}
+
+        private void InstantiateUserDefaults()
+        {
+            var plist = NSUserDefaults.StandardUserDefaults;
+            var sound = plist.StringForKey(Constants.UserDefaultsNotificationSoundsKey);
+            if (string.IsNullOrWhiteSpace(sound))
+            {
+                plist.SetString(Constants.NotificationSounds.SystemDefault.Humanize(LetterCasing.Title), Constants.UserDefaultsNotificationSoundsKey);
+                plist.Synchronize();
+            }
+        }
 
 	    private void InstantiateStoryboards()
         {

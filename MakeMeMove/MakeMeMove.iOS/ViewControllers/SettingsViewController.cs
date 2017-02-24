@@ -15,6 +15,7 @@ namespace MakeMeMove.iOS
     public partial class SettingsViewController : BaseViewController
     {
         private UIPickerView _notificationSoundPicker;
+        private NSUserDefaults _defaults;
 
         public SettingsViewController (IntPtr handle) : base (handle)
         {
@@ -24,6 +25,7 @@ namespace MakeMeMove.iOS
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
+            _defaults = NSUserDefaults.StandardUserDefaults;
             NavBar.Translucent = false;
             NavBar.BarTintColor = FudistColors.PrimaryColor;
             NavBar.TitleTextAttributes = new UIStringAttributes
@@ -40,6 +42,7 @@ namespace MakeMeMove.iOS
             FudistColors.SetTextInteractableColor(NotificationsSectionHeader);
 
             BackButton.Clicked += BackButton_Clicked;
+            PopulateData();
         }
 
         public override void ViewDidLoad()
@@ -48,8 +51,21 @@ namespace MakeMeMove.iOS
             BackButton.TintColor = UIColor.White;
 
             var soundsList = (from Constants.NotificationSounds suit in Enum.GetValues(typeof(Constants.NotificationSounds)) select suit.Humanize(LetterCasing.Title)).ToList();
-            _notificationSoundPicker = MirroredPicker.Create(new PickerModel(soundsList), NotificationSoundPicker, doneAction: null, changeAction: NotificationSoundPicker_ValueChanged);
+            _notificationSoundPicker = MirroredPicker.Create(new PickerModel(soundsList), NotificationSoundPicker, doneAction: NotificationSoundPicker_SaveData, changeAction: NotificationSoundPicker_ValueChanged);
 
+        }
+
+        private void PopulateData()
+        {
+            var soundString = _defaults.StringForKey(Constants.UserDefaultsNotificationSoundsKey);
+            NotificationSoundPicker.Text = soundString;
+            _notificationSoundPicker.Select((int)soundString.DehumanizeTo<Constants.NotificationSounds>(), 0, false);
+        }
+
+        private void NotificationSoundPicker_SaveData()
+        {
+            _defaults.SetString(NotificationSoundPicker.Text, Constants.UserDefaultsNotificationSoundsKey);
+            _defaults.Synchronize();
         }
 
         private void NotificationSoundPicker_ValueChanged()
