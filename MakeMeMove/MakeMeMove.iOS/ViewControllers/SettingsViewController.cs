@@ -66,6 +66,7 @@ namespace MakeMeMove.iOS
         {
             _defaults.SetString(NotificationSoundPicker.Text, Constants.UserDefaultsNotificationSoundsKey);
             _defaults.Synchronize();
+            ServiceManager.RestartNotificationServiceIfNeeded();
         }
 
         private void NotificationSoundPicker_ValueChanged()

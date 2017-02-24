@@ -4,6 +4,7 @@ using MakeMeMove.Model;
 using UIKit;
 using MakeMeMove.iOS.ExtensionMethods;
 using UserNotifications;
+using Humanizer;
 
 namespace MakeMeMove.iOS
 {
@@ -32,14 +33,20 @@ namespace MakeMeMove.iOS
 					var alertsAllowed = (settings.AlertSetting == UNNotificationSetting.Enabled);
 					if (!alertsAllowed) return;
 
-				    var content = new UNMutableNotificationContent
-				    {
-				        Title = "Time to Move",
-				        Body = $"It's time to do {nextExercise.Quantity} {nextExercise.CombinedName}",
-				        Badge = -1,
-				        CategoryIdentifier = Constants.ExerciseNotificationCategoryId,
-				        UserInfo = notificationDictionary
-				    };
+
+                    var defaults = NSUserDefaults.StandardUserDefaults;
+                    var soundString = defaults.StringForKey(Constants.UserDefaultsNotificationSoundsKey);
+                    var soundEnum = soundString.DehumanizeTo<Constants.NotificationSounds>();
+
+                    var content = new UNMutableNotificationContent
+                    {
+                        Title = "Time to Move",
+                        Body = $"It's time to do {nextExercise.Quantity} {nextExercise.CombinedName}",
+                        Badge = -1,
+                        CategoryIdentifier = Constants.ExerciseNotificationCategoryId,
+                        UserInfo = notificationDictionary,
+                        Sound = UNNotificationSound.GetSound(Constants.NotificaitonSoundsMap[soundEnum])
+                    };
 
 				    UNNotificationTrigger trigger;
 				    string requestId;
