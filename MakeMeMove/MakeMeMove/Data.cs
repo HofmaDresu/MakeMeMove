@@ -327,7 +327,7 @@ namespace MakeMeMove
                 return t;
             });
 
-            return totals.Select(t => new ExerciseTotal { ExerciseName = t.Key, QuantityCompleted = t.Value }).ToList();
+            return totals.Select(t => new ExerciseTotal { ExerciseName = t.Key, QuantityCompleted = t.Value }).Where(t => t.QuantityCompleted > 0).ToList();
         }
 
         #endregion
