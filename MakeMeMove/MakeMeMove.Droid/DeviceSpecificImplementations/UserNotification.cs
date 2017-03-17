@@ -96,23 +96,15 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                     .SetCategory("reminder")
                     .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
                     .SetColor(Color.Rgb(215, 78, 10))
-                    .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_shuffle_black_24dp, changeExerciseButtonText, nextPendingIntent));
-                if (userIsPremium)
-                {
-                    builder
-                        .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_done_black_24dp, completedButtonText, completedPendingIntent));
-                }
+                    .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_shuffle_black_24dp, changeExerciseButtonText, nextPendingIntent))
+                    .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_done_black_24dp, completedButtonText, completedPendingIntent));
             }
             else if ((int)Build.VERSION.SdkInt >= 20)
             {
                 builder
                     .SetSmallIcon(Resource.Drawable.icon)
-                    .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_shuffle_black_24dp, changeExerciseButtonText, nextPendingIntent));
-                if (userIsPremium)
-                {
-                    builder
-                        .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_done_black_24dp, completedButtonText, completedPendingIntent));
-                }
+                    .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_shuffle_black_24dp, changeExerciseButtonText, nextPendingIntent))
+                    .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_done_black_24dp, completedButtonText, completedPendingIntent));
             }
             else
             {
@@ -120,12 +112,8 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
 #pragma warning disable 618
                 builder
                     .SetSmallIcon(Resource.Drawable.icon)
-                    .AddAction(Resource.Drawable.ic_shuffle_white_24dp, changeExerciseButtonText, nextPendingIntent);
-                if (userIsPremium)
-                {
-                    builder
+                    .AddAction(Resource.Drawable.ic_shuffle_white_24dp, changeExerciseButtonText, nextPendingIntent)
                         .AddAction(Resource.Drawable.ic_done_white_24dp, completedButtonText, completedPendingIntent);
-                }
 #pragma warning restore 618
             }
 
