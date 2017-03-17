@@ -68,6 +68,12 @@ namespace MakeMeMove.Droid.Activities
                 StartActivity(new Intent(this, typeof(SettingsActivity)));
             };
 
+            FindViewById(Resource.Id.ViewTotalsButton).Click += (sender, args) =>
+            {
+                _drawer.CloseDrawer(GravityCompat.Start);
+                StartActivity(new Intent(this, typeof(ExerciseTotalsActivity)));
+            };
+
             FindViewById(Resource.Id.ViewHistoryButton).Click += (sender, args) =>
             {
                 _drawer.CloseDrawer(GravityCompat.Start);

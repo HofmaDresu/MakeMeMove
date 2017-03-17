@@ -54,6 +54,7 @@
   <string name="Delete">Delete</string>
   <string name="Edit">Edit</string>
   <string name="ViewHistory">View History</string>
+  <string name="ViewTotals">View Exercise Totals</string>
   <string name="AddExerciseButtonText">Add Exercise</string>
   <string name="ScheduleStatusLabel">Schedule Status:</string>
   <string name="StartTimeLabel">Start Time:</string>

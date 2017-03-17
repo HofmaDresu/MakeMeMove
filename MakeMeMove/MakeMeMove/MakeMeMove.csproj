@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Data.cs" />
+    <Compile Include="Model\ExerciseTotal.cs" />
     <Compile Include="Model\ExerciseHistory.cs" />
     <Compile Include="Model\ExerciseBlock.cs" />
     <Compile Include="Model\ExerciseSchedule.cs" />

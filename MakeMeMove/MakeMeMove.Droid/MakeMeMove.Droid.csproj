@@ -180,6 +180,7 @@
   <ItemGroup>
     <Compile Include="Activities\BaseActivity.cs" />
     <Compile Include="Activities\ExerciseHistoryActivity.cs" />
+    <Compile Include="Activities\ExerciseTotalsActivity.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
     <Compile Include="Activities\ManageExerciseActivity.cs" />
     <Compile Include="Activities\ManageScheduleActivity.cs" />
@@ -251,6 +252,9 @@
     </AndroidResource>
     <AndroidResource Include="Resources\xml\preferences.xml">
       <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ExerciseTotals.axml">
+      <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
