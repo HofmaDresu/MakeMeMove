@@ -309,6 +309,27 @@ namespace MakeMeMove
             _db.DeleteAll<ExerciseHistory>();
         }
 
+        public List<ExerciseTotal> GetExerciseTotals()
+        {
+            var totals = new Dictionary<string, int>();
+            ExerciseHistories.Aggregate(totals, (t, h) =>
+            {
+                var name = h.ExerciseName;
+                var quantity = h.QuantityCompleted;
+                if (t.ContainsKey(name))
+                {
+                    t[name] += quantity;
+                }
+                else
+                {
+                    t.Add(name, quantity);
+                }
+                return t;
+            });
+
+            return totals.Select(t => new ExerciseTotal { ExerciseName = t.Key, QuantityCompleted = t.Value }).ToList();
+        }
+
         #endregion
 
 #region FudistUser
