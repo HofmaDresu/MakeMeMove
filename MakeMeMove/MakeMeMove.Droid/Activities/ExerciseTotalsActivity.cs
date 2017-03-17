@@ -8,7 +8,7 @@ namespace MakeMeMove.Droid.Activities
 {
     [Activity(Label = "Exercise Totals", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize,
         ParentActivity = typeof(MainActivity))]
-    public class ExercisTotalsActivity : BaseActivity
+    public class ExerciseTotalsActivity : BaseActivity
     {
         private ListView _stats;
 
