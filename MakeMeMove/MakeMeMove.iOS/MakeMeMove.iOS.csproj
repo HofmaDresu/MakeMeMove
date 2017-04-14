@@ -96,6 +96,7 @@
     <MtouchUseThumb>False</MtouchUseThumb>
     <MtouchEnableBitcode>False</MtouchEnableBitcode>
     <OptimizePNGs>True</OptimizePNGs>
+    <CodesignProvision>90f45380-83d6-48ff-b4e7-6661489bc71c</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Google.Analytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
