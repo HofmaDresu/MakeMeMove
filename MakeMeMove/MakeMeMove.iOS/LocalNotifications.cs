@@ -87,7 +87,7 @@ namespace MakeMeMove.iOS
 					AlertAction = "Time to Move",
 					AlertBody = $"It's time to do {nextExercise.Quantity} {nextExercise.CombinedName}",
 					FireDate = notificationDate.ToNSDate(),
-					SoundName = soundEnum == Constants.NotificationSounds.SystemDefault ? UILocalNotification.DefaultSoundName : soundString,
+					SoundName = soundEnum == Constants.NotificationSounds.SystemDefault ? UILocalNotification.DefaultSoundName : Constants.NotificaitonSoundsMap[soundEnum],
 					TimeZone = NSTimeZone.LocalTimeZone,
 					ApplicationIconBadgeNumber = -1,
 					Category = Constants.ExerciseNotificationCategoryId,
