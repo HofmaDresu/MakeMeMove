@@ -330,9 +330,37 @@ namespace MakeMeMove
             return totals.Select(t => new ExerciseTotal { ExerciseName = t.Key, QuantityCompleted = t.Value }).Where(t => t.QuantityCompleted > 0).ToList();
         }
 
+        public void SaveManualExercise(string exerciseName, int quantity)
+        {
+            var exerciseHistory = ExerciseHistories.SingleOrDefault(eh =>
+            {
+                var todaysDate = DateTime.Today.Date;
+                return eh.RecordedDate == todaysDate && eh.ExerciseName == exerciseName;
+            });
+
+            if (exerciseHistory == null)
+            {
+                exerciseHistory = new ExerciseHistory
+                {
+                    ExerciseName = exerciseName,
+                    QuantityCompleted = quantity,
+                    QuantityNotified = quantity,
+                    RecordedDate = DateTime.Today
+                };
+
+                _db.Insert(exerciseHistory);
+            }
+            else
+            {
+                exerciseHistory.QuantityCompleted += quantity;
+                exerciseHistory.QuantityNotified += quantity;
+                _db.Update(exerciseHistory);
+            }
+        }
+
         #endregion
 
-#region FudistUser
+        #region FudistUser
         public void SignUserIn(Person person, bool userIsPremium)
         {
             //Make sure we only have one user at a time
