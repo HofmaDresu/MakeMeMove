@@ -26,7 +26,7 @@ namespace MakeMeMove.Droid.BroadcastReceivers
             }
 
             var nextAlarmTime = ExerciseServiceManager.SetNextAlarm(context, exerciseSchedule);
-            if (nextAlarmTime.Date > DateTime.Now.Date && _data.UserIsPremium() && PreferenceManager.GetDefaultSharedPreferences(context).GetBoolean(context.Resources.GetString(Resource.String.CheckHistoryReminderKey), true))
+            if (nextAlarmTime.Date > DateTime.Now.Date && PreferenceManager.GetDefaultSharedPreferences(context).GetBoolean(context.Resources.GetString(Resource.String.CheckHistoryReminderKey), true))
             {
                 UserNotification.CreateHistoryReminderNotification(context);
             }
