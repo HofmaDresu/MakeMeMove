@@ -494,24 +494,8 @@
                                             <constraint firstAttribute="height" constant="60" id="2696"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2697" customClass="PrimaryBottomBorderView">
-                                        <rect key="frame" x="0.0" y="60" width="600" height="60"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2698">
-                                                <rect key="frame" x="20" y="20" width="350" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="2702"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2699" customClass="PrimaryBottomBorderView">
-                                        <rect key="frame" x="0.0" y="120" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="60" width="600" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2704">
                                                 <rect key="frame" x="20" y="20" width="284" height="21"/>
@@ -527,7 +511,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" id="2726" translatesAutoresizingMaskIntoConstraints="NO" customClass="PrimaryBottomBorderView">
-                                        <rect key="frame" x="0.0" y="180" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="120" width="600" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2731" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
@@ -547,16 +531,13 @@
                                 <constraints>
                                     <constraint firstItem="2687" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing" id="2694"/>
                                     <constraint firstItem="2687" firstAttribute="leading" secondItem="2661" secondAttribute="leading" id="2695"/>
-                                    <constraint firstItem="2697" firstAttribute="top" secondItem="2687" secondAttribute="bottom" id="2700"/>
-                                    <constraint firstItem="2697" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing" id="2701"/>
-                                    <constraint firstItem="2697" firstAttribute="leading" secondItem="2661" secondAttribute="leading" id="2703"/>
-                                    <constraint firstItem="2699" firstAttribute="top" secondItem="2697" secondAttribute="bottom" id="2705"/>
                                     <constraint firstItem="2699" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing" id="2706"/>
                                     <constraint firstItem="2699" firstAttribute="leading" secondItem="2661" secondAttribute="leading" id="2707"/>
                                     <constraint id="2728" firstItem="2726" firstAttribute="top" secondItem="2699" secondAttribute="bottom"/>
                                     <constraint id="2729" firstItem="2726" firstAttribute="leading" secondItem="2661" secondAttribute="leading"/>
                                     <constraint id="2730" firstItem="2726" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing"/>
                                     <constraint id="2747" firstItem="2687" firstAttribute="top" secondItem="2661" secondAttribute="top"/>
+                                    <constraint id="2763" firstItem="2699" firstAttribute="top" secondItem="2687" secondAttribute="bottom"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -572,8 +553,6 @@
                         <outlet property="MenuBackgroundView" destination="2661" id="name-outlet-2661"/>
                         <outlet property="OpenFudistLabel" destination="2704" id="name-outlet-2704"/>
                         <outlet property="OpenFudistView" destination="2699" id="name-outlet-2699"/>
-                        <outlet property="SignInOutLabel" destination="2698" id="name-outlet-2698"/>
-                        <outlet property="SignInOutView" destination="2697" id="name-outlet-2697"/>
                         <outlet property="ViewHistoryView" destination="2687" id="name-outlet-2687"/>
                         <outlet property="SettingsView" destination="2726" id="name-outlet-2726"/>
                     </connections>
