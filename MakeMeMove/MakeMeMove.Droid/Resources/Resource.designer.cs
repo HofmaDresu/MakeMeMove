@@ -26,7 +26,6 @@ namespace MakeMeMove.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::ModernHttpClient.Resource.String.library_name = global::MakeMeMove.Droid.Resource.String.library_name;
 		}
 		
 		public partial class Animation
@@ -1724,55 +1723,43 @@ namespace MakeMeMove.Droid
 			public const int ic_done_white_24dp = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int ic_plusone_medium_off_client = 2130837628;
+			public const int ic_shuffle_black_24dp = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int ic_plusone_small_off_client = 2130837629;
+			public const int ic_shuffle_white_24dp = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int ic_plusone_standard_off_client = 2130837630;
+			public const int icon = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int ic_plusone_tall_off_client = 2130837631;
+			public const int MainTabSelected = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int ic_shuffle_black_24dp = 2130837632;
+			public const int MainTabUnselected = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int ic_shuffle_white_24dp = 2130837633;
-			
-			// aapt resource value: 0x7f020082
-			public const int icon = 2130837634;
-			
-			// aapt resource value: 0x7f020083
-			public const int MainTabSelected = 2130837635;
-			
-			// aapt resource value: 0x7f020084
-			public const int MainTabUnselected = 2130837636;
-			
-			// aapt resource value: 0x7f020085
-			public const int Mmm_white_icon = 2130837637;
-			
-			// aapt resource value: 0x7f02008c
-			public const int notification_template_icon_bg = 2130837644;
-			
-			// aapt resource value: 0x7f020086
-			public const int PrimaryColorButton = 2130837638;
-			
-			// aapt resource value: 0x7f020087
-			public const int PrimaryColorButtonMaterial = 2130837639;
+			public const int Mmm_white_icon = 2130837633;
 			
 			// aapt resource value: 0x7f020088
-			public const int PrimaryColorButtonRipple = 2130837640;
+			public const int notification_template_icon_bg = 2130837640;
 			
-			// aapt resource value: 0x7f020089
-			public const int ScheduleSelected = 2130837641;
+			// aapt resource value: 0x7f020082
+			public const int PrimaryColorButton = 2130837634;
 			
-			// aapt resource value: 0x7f02008a
-			public const int ScheduleUnselected = 2130837642;
+			// aapt resource value: 0x7f020083
+			public const int PrimaryColorButtonMaterial = 2130837635;
 			
-			// aapt resource value: 0x7f02008b
-			public const int settings = 2130837643;
+			// aapt resource value: 0x7f020084
+			public const int PrimaryColorButtonRipple = 2130837636;
+			
+			// aapt resource value: 0x7f020085
+			public const int ScheduleSelected = 2130837637;
+			
+			// aapt resource value: 0x7f020086
+			public const int ScheduleUnselected = 2130837638;
+			
+			// aapt resource value: 0x7f020087
+			public const int settings = 2130837639;
 			
 			static Drawable()
 			{
@@ -2467,194 +2454,194 @@ namespace MakeMeMove.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f070051
-			public const int AM = 2131165265;
-			
-			// aapt resource value: 0x7f07004d
-			public const int AddExercise = 2131165261;
-			
-			// aapt resource value: 0x7f070064
-			public const int AddExerciseButtonText = 2131165284;
-			
-			// aapt resource value: 0x7f07005b
-			public const int AreYouSureTitle = 2131165275;
-			
-			// aapt resource value: 0x7f07006d
-			public const int Cancel = 2131165293;
-			
-			// aapt resource value: 0x7f070044
-			public const int ChangeExerciseButtonText = 2131165252;
-			
-			// aapt resource value: 0x7f070069
-			public const int ChangeScheduleButtonText = 2131165289;
-			
-			// aapt resource value: 0x7f070078
-			public const int CheckHistoryNotificationMessage = 2131165304;
-			
-			// aapt resource value: 0x7f070077
-			public const int CheckHistoryNotificationTitle = 2131165303;
-			
-			// aapt resource value: 0x7f070035
-			public const int CheckHistoryReminderKey = 2131165237;
-			
-			// aapt resource value: 0x7f070076
-			public const int CheckHistoryReminderSettingSummary = 2131165302;
-			
-			// aapt resource value: 0x7f070075
-			public const int CheckHistoryReminderSettingTitle = 2131165301;
-			
-			// aapt resource value: 0x7f070043
-			public const int CompletedButtonText = 2131165251;
-			
-			// aapt resource value: 0x7f070060
-			public const int Delete = 2131165280;
-			
-			// aapt resource value: 0x7f070048
-			public const int DeleteExerciseMessage = 2131165256;
-			
-			// aapt resource value: 0x7f070047
-			public const int DeleteExerciseTitle = 2131165255;
-			
-			// aapt resource value: 0x7f07006e
-			public const int DeleteHistory = 2131165294;
-			
-			// aapt resource value: 0x7f07003f
-			public const int DrawerCloseDescription = 2131165247;
-			
-			// aapt resource value: 0x7f07003e
-			public const int DrawerOpenDescription = 2131165246;
-			
-			// aapt resource value: 0x7f070061
-			public const int Edit = 2131165281;
+			// aapt resource value: 0x7f070050
+			public const int AM = 2131165264;
 			
 			// aapt resource value: 0x7f07004c
-			public const int EditExercise = 2131165260;
-			
-			// aapt resource value: 0x7f070067
-			public const int EndTimeLabel = 2131165287;
-			
-			// aapt resource value: 0x7f07005c
-			public const int ExerciseListFragmentTitle = 2131165276;
-			
-			// aapt resource value: 0x7f07004e
-			public const int ExerciseNameValidation = 2131165262;
-			
-			// aapt resource value: 0x7f07006a
-			public const int ExerciseTypeLabel = 2131165290;
-			
-			// aapt resource value: 0x7f070070
-			public const int FudistInStoreMenuText = 2131165296;
-			
-			// aapt resource value: 0x7f070071
-			public const int FudistInstalledMenuText = 2131165297;
-			
-			// aapt resource value: 0x7f070045
-			public const int IgnoreButtonText = 2131165253;
-			
-			// aapt resource value: 0x7f070040
-			public const int LoggedInAsText = 2131165248;
-			
-			// aapt resource value: 0x7f070073
-			public const int MarketFailure = 2131165299;
-			
-			// aapt resource value: 0x7f07004a
-			public const int No = 2131165258;
-			
-			// aapt resource value: 0x7f070046
-			public const int NoAvailableExercises = 2131165254;
-			
-			// aapt resource value: 0x7f070036
-			public const int NotificationSoundKey = 2131165238;
-			
-			// aapt resource value: 0x7f070079
-			public const int NotificationSoundSettingTitle = 2131165305;
-			
-			// aapt resource value: 0x7f070074
-			public const int Notifications = 2131165300;
-			
-			// aapt resource value: 0x7f070034
-			public const int NotificationsKey = 2131165236;
-			
-			// aapt resource value: 0x7f07004b
-			public const int Ok = 2131165259;
-			
-			// aapt resource value: 0x7f070052
-			public const int PM = 2131165266;
-			
-			// aapt resource value: 0x7f070059
-			public const int PermissionRequesterMessage = 2131165273;
-			
-			// aapt resource value: 0x7f070058
-			public const int PermissionRequesterTitle = 2131165272;
-			
-			// aapt resource value: 0x7f070068
-			public const int ReminderPeriodLabel = 2131165288;
-			
-			// aapt resource value: 0x7f070050
-			public const int RepetitionWholeNumberValidation = 2131165264;
-			
-			// aapt resource value: 0x7f07006b
-			public const int RepetitionsLabel = 2131165291;
-			
-			// aapt resource value: 0x7f07004f
-			public const int RepetitionsMissingValidation = 2131165263;
-			
-			// aapt resource value: 0x7f07006c
-			public const int Save = 2131165292;
-			
-			// aapt resource value: 0x7f07005d
-			public const int ScheduleFragmentTitle = 2131165277;
-			
-			// aapt resource value: 0x7f070065
-			public const int ScheduleStatusLabel = 2131165285;
-			
-			// aapt resource value: 0x7f070072
-			public const int ScheduleTypeLabel = 2131165298;
-			
-			// aapt resource value: 0x7f070056
-			public const int ServiceStarted = 2131165270;
-			
-			// aapt resource value: 0x7f070057
-			public const int ServiceStopped = 2131165271;
-			
-			// aapt resource value: 0x7f07006f
-			public const int Settings = 2131165295;
-			
-			// aapt resource value: 0x7f070066
-			public const int StartTimeLabel = 2131165286;
-			
-			// aapt resource value: 0x7f070055
-			public const int SwitchOff = 2131165269;
-			
-			// aapt resource value: 0x7f070054
-			public const int SwitchOn = 2131165268;
-			
-			// aapt resource value: 0x7f07005e
-			public const int SwitchStarted = 2131165278;
-			
-			// aapt resource value: 0x7f07005f
-			public const int SwitchStopped = 2131165279;
-			
-			// aapt resource value: 0x7f070053
-			public const int TimeRangeValidation = 2131165267;
-			
-			// aapt resource value: 0x7f070042
-			public const int TimeToMoveMessage = 2131165250;
-			
-			// aapt resource value: 0x7f070041
-			public const int TimeToMoveTitle = 2131165249;
-			
-			// aapt resource value: 0x7f07005a
-			public const int ValidationTitle = 2131165274;
-			
-			// aapt resource value: 0x7f070062
-			public const int ViewHistory = 2131165282;
+			public const int AddExercise = 2131165260;
 			
 			// aapt resource value: 0x7f070063
-			public const int ViewTotals = 2131165283;
+			public const int AddExerciseButtonText = 2131165283;
+			
+			// aapt resource value: 0x7f07005a
+			public const int AreYouSureTitle = 2131165274;
+			
+			// aapt resource value: 0x7f07006c
+			public const int Cancel = 2131165292;
+			
+			// aapt resource value: 0x7f070043
+			public const int ChangeExerciseButtonText = 2131165251;
+			
+			// aapt resource value: 0x7f070068
+			public const int ChangeScheduleButtonText = 2131165288;
+			
+			// aapt resource value: 0x7f070077
+			public const int CheckHistoryNotificationMessage = 2131165303;
+			
+			// aapt resource value: 0x7f070076
+			public const int CheckHistoryNotificationTitle = 2131165302;
+			
+			// aapt resource value: 0x7f070034
+			public const int CheckHistoryReminderKey = 2131165236;
+			
+			// aapt resource value: 0x7f070075
+			public const int CheckHistoryReminderSettingSummary = 2131165301;
+			
+			// aapt resource value: 0x7f070074
+			public const int CheckHistoryReminderSettingTitle = 2131165300;
+			
+			// aapt resource value: 0x7f070042
+			public const int CompletedButtonText = 2131165250;
+			
+			// aapt resource value: 0x7f07005f
+			public const int Delete = 2131165279;
+			
+			// aapt resource value: 0x7f070047
+			public const int DeleteExerciseMessage = 2131165255;
+			
+			// aapt resource value: 0x7f070046
+			public const int DeleteExerciseTitle = 2131165254;
+			
+			// aapt resource value: 0x7f07006d
+			public const int DeleteHistory = 2131165293;
+			
+			// aapt resource value: 0x7f07003e
+			public const int DrawerCloseDescription = 2131165246;
+			
+			// aapt resource value: 0x7f07003d
+			public const int DrawerOpenDescription = 2131165245;
+			
+			// aapt resource value: 0x7f070060
+			public const int Edit = 2131165280;
+			
+			// aapt resource value: 0x7f07004b
+			public const int EditExercise = 2131165259;
+			
+			// aapt resource value: 0x7f070066
+			public const int EndTimeLabel = 2131165286;
+			
+			// aapt resource value: 0x7f07005b
+			public const int ExerciseListFragmentTitle = 2131165275;
+			
+			// aapt resource value: 0x7f07004d
+			public const int ExerciseNameValidation = 2131165261;
+			
+			// aapt resource value: 0x7f070069
+			public const int ExerciseTypeLabel = 2131165289;
+			
+			// aapt resource value: 0x7f07006f
+			public const int FudistInStoreMenuText = 2131165295;
+			
+			// aapt resource value: 0x7f070070
+			public const int FudistInstalledMenuText = 2131165296;
+			
+			// aapt resource value: 0x7f070044
+			public const int IgnoreButtonText = 2131165252;
+			
+			// aapt resource value: 0x7f07003f
+			public const int LoggedInAsText = 2131165247;
+			
+			// aapt resource value: 0x7f070072
+			public const int MarketFailure = 2131165298;
 			
 			// aapt resource value: 0x7f070049
-			public const int Yes = 2131165257;
+			public const int No = 2131165257;
+			
+			// aapt resource value: 0x7f070045
+			public const int NoAvailableExercises = 2131165253;
+			
+			// aapt resource value: 0x7f070035
+			public const int NotificationSoundKey = 2131165237;
+			
+			// aapt resource value: 0x7f070078
+			public const int NotificationSoundSettingTitle = 2131165304;
+			
+			// aapt resource value: 0x7f070073
+			public const int Notifications = 2131165299;
+			
+			// aapt resource value: 0x7f070033
+			public const int NotificationsKey = 2131165235;
+			
+			// aapt resource value: 0x7f07004a
+			public const int Ok = 2131165258;
+			
+			// aapt resource value: 0x7f070051
+			public const int PM = 2131165265;
+			
+			// aapt resource value: 0x7f070058
+			public const int PermissionRequesterMessage = 2131165272;
+			
+			// aapt resource value: 0x7f070057
+			public const int PermissionRequesterTitle = 2131165271;
+			
+			// aapt resource value: 0x7f070067
+			public const int ReminderPeriodLabel = 2131165287;
+			
+			// aapt resource value: 0x7f07004f
+			public const int RepetitionWholeNumberValidation = 2131165263;
+			
+			// aapt resource value: 0x7f07006a
+			public const int RepetitionsLabel = 2131165290;
+			
+			// aapt resource value: 0x7f07004e
+			public const int RepetitionsMissingValidation = 2131165262;
+			
+			// aapt resource value: 0x7f07006b
+			public const int Save = 2131165291;
+			
+			// aapt resource value: 0x7f07005c
+			public const int ScheduleFragmentTitle = 2131165276;
+			
+			// aapt resource value: 0x7f070064
+			public const int ScheduleStatusLabel = 2131165284;
+			
+			// aapt resource value: 0x7f070071
+			public const int ScheduleTypeLabel = 2131165297;
+			
+			// aapt resource value: 0x7f070055
+			public const int ServiceStarted = 2131165269;
+			
+			// aapt resource value: 0x7f070056
+			public const int ServiceStopped = 2131165270;
+			
+			// aapt resource value: 0x7f07006e
+			public const int Settings = 2131165294;
+			
+			// aapt resource value: 0x7f070065
+			public const int StartTimeLabel = 2131165285;
+			
+			// aapt resource value: 0x7f070054
+			public const int SwitchOff = 2131165268;
+			
+			// aapt resource value: 0x7f070053
+			public const int SwitchOn = 2131165267;
+			
+			// aapt resource value: 0x7f07005d
+			public const int SwitchStarted = 2131165277;
+			
+			// aapt resource value: 0x7f07005e
+			public const int SwitchStopped = 2131165278;
+			
+			// aapt resource value: 0x7f070052
+			public const int TimeRangeValidation = 2131165266;
+			
+			// aapt resource value: 0x7f070041
+			public const int TimeToMoveMessage = 2131165249;
+			
+			// aapt resource value: 0x7f070040
+			public const int TimeToMoveTitle = 2131165248;
+			
+			// aapt resource value: 0x7f070059
+			public const int ValidationTitle = 2131165273;
+			
+			// aapt resource value: 0x7f070061
+			public const int ViewHistory = 2131165281;
+			
+			// aapt resource value: 0x7f070062
+			public const int ViewTotals = 2131165282;
+			
+			// aapt resource value: 0x7f070048
+			public const int Yes = 2131165256;
 			
 			// aapt resource value: 0x7f07001f
 			public const int abc_action_bar_home_description = 2131165215;
@@ -2713,8 +2700,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070031
 			public const int abc_toolbar_collapse_description = 2131165233;
 			
-			// aapt resource value: 0x7f070037
-			public const int app_name = 2131165239;
+			// aapt resource value: 0x7f070036
+			public const int app_name = 2131165238;
 			
 			// aapt resource value: 0x7f070001
 			public const int auth_google_play_services_client_facebook_display_name = 2131165185;
@@ -2722,11 +2709,11 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070000
 			public const int auth_google_play_services_client_google_display_name = 2131165184;
 			
-			// aapt resource value: 0x7f07003d
-			public const int cancel = 2131165245;
+			// aapt resource value: 0x7f07003c
+			public const int cancel = 2131165244;
 			
-			// aapt resource value: 0x7f07007b
-			public const int close_app = 2131165307;
+			// aapt resource value: 0x7f07007a
+			public const int close_app = 2131165306;
 			
 			// aapt resource value: 0x7f070018
 			public const int common_google_play_services_api_unavailable_text = 2131165208;
@@ -2815,44 +2802,41 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07001e
 			public const int common_signin_button_text_long = 2131165214;
 			
-			// aapt resource value: 0x7f070033
-			public const int library_name = 2131165235;
-			
-			// aapt resource value: 0x7f070039
-			public const int log_in = 2131165241;
-			
 			// aapt resource value: 0x7f070038
-			public const int log_in_title = 2131165240;
+			public const int log_in = 2131165240;
 			
-			// aapt resource value: 0x7f07003c
-			public const int log_out = 2131165244;
-			
-			// aapt resource value: 0x7f070080
-			public const int never = 2131165312;
-			
-			// aapt resource value: 0x7f07007f
-			public const int not_now = 2131165311;
+			// aapt resource value: 0x7f070037
+			public const int log_in_title = 2131165239;
 			
 			// aapt resource value: 0x7f07003b
-			public const int password = 2131165243;
+			public const int log_out = 2131165243;
 			
-			// aapt resource value: 0x7f07007d
-			public const int rate_message = 2131165309;
+			// aapt resource value: 0x7f07007f
+			public const int never = 2131165311;
+			
+			// aapt resource value: 0x7f07007e
+			public const int not_now = 2131165310;
+			
+			// aapt resource value: 0x7f07003a
+			public const int password = 2131165242;
 			
 			// aapt resource value: 0x7f07007c
-			public const int rate_title = 2131165308;
+			public const int rate_message = 2131165308;
 			
-			// aapt resource value: 0x7f07007a
-			public const int settings_label = 2131165306;
+			// aapt resource value: 0x7f07007b
+			public const int rate_title = 2131165307;
+			
+			// aapt resource value: 0x7f070079
+			public const int settings_label = 2131165305;
 			
 			// aapt resource value: 0x7f070032
 			public const int status_bar_notification_info_overflow = 2131165234;
 			
-			// aapt resource value: 0x7f07007e
-			public const int sure = 2131165310;
+			// aapt resource value: 0x7f07007d
+			public const int sure = 2131165309;
 			
-			// aapt resource value: 0x7f07003a
-			public const int username = 2131165242;
+			// aapt resource value: 0x7f070039
+			public const int username = 2131165241;
 			
 			static String()
 			{
