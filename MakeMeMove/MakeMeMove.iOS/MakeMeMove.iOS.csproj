@@ -261,12 +261,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoadingOverlay.cs" />
+    <Compile Include="Utilities\UnifiedAnalytics.cs" />
     <Compile Include="ViewControllers\SettingsViewController.cs" />
     <Compile Include="ViewControllers\SettingsViewController.designer.cs">
       <DependentUpon>SettingsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\AuthorizationSingleton.cs" />
-    <Compile Include="Utilities\UnifiedAnalytics.cs" />
     <Compile Include="ViewControllers\ExerciseHistoryContainerViewController.cs" />
     <Compile Include="ViewControllers\ExerciseHistoryContainerViewController.designer.cs">
       <DependentUpon>ExerciseHistoryContainerViewController.cs</DependentUpon>
