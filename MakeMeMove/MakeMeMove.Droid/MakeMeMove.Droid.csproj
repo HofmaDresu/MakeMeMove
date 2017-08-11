@@ -202,7 +202,6 @@
     <Compile Include="Fragments\ExerciseListFragment.cs" />
     <Compile Include="Fragments\ScheduleFragment.cs" />
     <Compile Include="Fragments\SettingsFragment.cs" />
-    <Compile Include="GeneralDialogs.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\UnifiedAnalytics.cs" />
