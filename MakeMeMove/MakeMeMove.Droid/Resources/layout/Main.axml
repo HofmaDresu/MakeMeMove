@@ -7,7 +7,6 @@
         layout="@layout/Main_ContentArea" />
     <RelativeLayout
         android:id="@+id/drawer"
-        android:orientation="vertical"
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:scrollbars="vertical"

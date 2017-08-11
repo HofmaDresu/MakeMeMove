@@ -21,9 +21,6 @@ namespace MakeMeMove.Droid.Activities
         private readonly PermissionRequester _permissionRequester = new PermissionRequester();
         private DrawerLayout _drawer;
         private ActionBarDrawerToggle _toggle;
-        private TextView _logInOutText;
-        private View _userNameSection;
-        private TextView _userNameText;
         private View _scheduleLayout;
         private View _exerciseListLayout;
         private ViewPager _viewPager;
@@ -127,7 +124,7 @@ namespace MakeMeMove.Droid.Activities
             }
         }
 
-        protected override async void OnResume()
+        protected override void OnResume()
         {
             var launchIntent = PackageManager.GetLaunchIntentForPackage("co.fudist.mobile");
             _openFudistText.SetText(launchIntent != null
