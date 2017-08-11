@@ -357,18 +357,6 @@
     <BundleResource Include="Resources\ic_menu_white_3x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\facebookLoginMedium.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\facebookLoginLarge.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Red-signin-Long-base-44dp%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Red-signin-Long-base-44dp.png" />
-  </ItemGroup>
-  <ItemGroup>
     <XamarinComponentReference Include="xamarin.auth">
       <Visible>False</Visible>
       <Version>1.2.3.1</Version>
