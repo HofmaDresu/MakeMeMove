@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.Gms.Analytics;
-using MacroEatMobile.Core.UtilityInterfaces;
 
 namespace MakeMeMove.Droid.Utilities
 {
-    public class UnifiedAnalytics : IUnifiedAnalytics
+    public class UnifiedAnalytics
     {
 
         private UnifiedAnalytics(Context context)
