@@ -205,7 +205,6 @@
     <Compile Include="GeneralDialogs.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\AuthorizationSingleton.cs" />
     <Compile Include="Utilities\UnifiedAnalytics.cs" />
     <Compile Include="ViewHolders\ExerciseListViewHolder.cs" />
   </ItemGroup>
