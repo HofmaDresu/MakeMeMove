@@ -33,9 +33,9 @@
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<string>false</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2.1</string>
+	<string>1.3</string>
 	<key>CFBundleVersion</key>
-	<string>1.2.1</string>
+	<string>1.3</string>
 	<key>CFBundleDisplayName</key>
 	<string>Make Me Move</string>
 </dict>
