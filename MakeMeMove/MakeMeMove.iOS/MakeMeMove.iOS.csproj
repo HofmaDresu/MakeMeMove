@@ -236,7 +236,6 @@
     <None Include="app.config" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
-    <InterfaceDefinition Include="LogIn.storyboard" />
     <None Include="packages.config" />
     <BundleResource Include="Resources\Bloom.caf" />
     <BundleResource Include="Resources\Calypso.caf" />
@@ -281,14 +280,6 @@
     </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewControllers\FudistLoginViewController.cs" />
-    <Compile Include="ViewControllers\FudistLoginViewController.designer.cs">
-      <DependentUpon>FudistLoginViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\LoginController.cs" />
-    <Compile Include="ViewControllers\LoginController.designer.cs">
-      <DependentUpon>LoginController.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewControllers\ManageScheduleController.cs" />
     <Compile Include="ViewControllers\ManageScheduleController.designer.cs">
       <DependentUpon>ManageScheduleController.cs</DependentUpon>
