@@ -59,7 +59,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12:00:00 AM" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1854">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12:00:00 AM" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1854" misplaced="YES">
                                 <rect key="frame" x="50" y="168" width="126" height="20"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -69,7 +69,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="End Time: " lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1855">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Time: " lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1855">
                                 <rect key="frame" x="20" y="198" width="102" height="21"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -79,7 +79,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12:00:00 PM" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1856">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12:00:00 PM" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1856" misplaced="YES">
                                 <rect key="frame" x="50" y="226" width="119" height="20"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -99,7 +99,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Every fifteen minutes" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1867">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Every fifteen minutes" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1867" misplaced="YES">
                                 <rect key="frame" x="50" y="284" width="176" height="20"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -110,7 +110,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2277">
-                                <rect key="frame" x="50" y="100.5" width="149" height="29"/>
+                                <rect key="frame" x="50" y="101" width="149" height="29"/>
                                 <segments>
                                     <segment title="STOPPED"/>
                                     <segment title="STARTED"/>
@@ -192,7 +192,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2025" id="2026">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="102.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="102"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2039">
@@ -298,8 +298,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2257">
-                                <rect key="frame" x="20" y="205" width="149" height="20.5"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Time:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2257" misplaced="YES">
+                                <rect key="frame" x="20" y="205" width="149" height="21"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="149" id="2260"/>
@@ -308,7 +308,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2261" customClass="PickerUITextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2261" customClass="PickerUITextField" misplaced="YES">
                                 <rect key="frame" x="20" y="234" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2265"/>
@@ -403,7 +403,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2160" customClass="PickerUITextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2160" customClass="PickerUITextField" misplaced="YES">
                                 <rect key="frame" x="20" y="100" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2605"/>
@@ -419,8 +419,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Repetitions" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2204">
-                                <rect key="frame" x="20" y="175.5" width="172" height="20.5"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Repetitions" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2204" misplaced="YES">
+                                <rect key="frame" x="20" y="176" width="172" height="20"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -478,31 +478,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2661">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2639" customClass="PrimaryBottomBorderView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="91"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logged in as:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2640">
-                                                <rect key="frame" x="20" y="20" width="214" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2641">
-                                                <rect key="frame" x="20" y="49" width="560" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="91" id="2686"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2687" customClass="PrimaryBottomBorderView">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="View History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2688">
                                                 <rect key="frame" x="20" y="20" width="282" height="21"/>
@@ -518,7 +495,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2697" customClass="PrimaryBottomBorderView">
-                                        <rect key="frame" x="0.0" y="152" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="60" width="600" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2698">
                                                 <rect key="frame" x="20" y="20" width="350" height="21"/>
@@ -534,7 +511,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2699" customClass="PrimaryBottomBorderView">
-                                        <rect key="frame" x="0.0" y="212" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="120" width="600" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2704">
                                                 <rect key="frame" x="20" y="20" width="284" height="21"/>
@@ -550,7 +527,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" id="2726" translatesAutoresizingMaskIntoConstraints="NO" customClass="PrimaryBottomBorderView">
-                                        <rect key="frame" x="0.0" y="272" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="180" width="600" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2731" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
@@ -568,10 +545,6 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="2639" firstAttribute="leading" secondItem="2661" secondAttribute="leading" id="2667"/>
-                                    <constraint firstItem="2639" firstAttribute="top" secondItem="2661" secondAttribute="top" id="2668"/>
-                                    <constraint firstItem="2639" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing" id="2669"/>
-                                    <constraint firstItem="2687" firstAttribute="top" secondItem="2639" secondAttribute="bottom" constant="1" id="2693"/>
                                     <constraint firstItem="2687" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing" id="2694"/>
                                     <constraint firstItem="2687" firstAttribute="leading" secondItem="2661" secondAttribute="leading" id="2695"/>
                                     <constraint firstItem="2697" firstAttribute="top" secondItem="2687" secondAttribute="bottom" id="2700"/>
@@ -583,6 +556,7 @@
                                     <constraint id="2728" firstItem="2726" firstAttribute="top" secondItem="2699" secondAttribute="bottom"/>
                                     <constraint id="2729" firstItem="2726" firstAttribute="leading" secondItem="2661" secondAttribute="leading"/>
                                     <constraint id="2730" firstItem="2726" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing"/>
+                                    <constraint id="2747" firstItem="2687" firstAttribute="top" secondItem="2661" secondAttribute="top"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -600,9 +574,6 @@
                         <outlet property="OpenFudistView" destination="2699" id="name-outlet-2699"/>
                         <outlet property="SignInOutLabel" destination="2698" id="name-outlet-2698"/>
                         <outlet property="SignInOutView" destination="2697" id="name-outlet-2697"/>
-                        <outlet property="UserNameLabel" destination="2641" id="name-outlet-2641"/>
-                        <outlet property="UserNameView" destination="2639" id="name-outlet-2639"/>
-                        <outlet property="UserNameViewHeightConstraint" destination="2686" id="name-outlet-2686"/>
                         <outlet property="ViewHistoryView" destination="2687" id="name-outlet-2687"/>
                         <outlet property="SettingsView" destination="2726" id="name-outlet-2726"/>
                     </connections>

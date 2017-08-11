@@ -1,6 +1,6 @@
 ﻿// WARNING
 //
-// This file has been generated automatically by Xamarin Studio from the outlets and
+// This file has been generated automatically by Visual Studio from the outlets and
 // actions declared in your storyboard file.
 // Manual changes to this file will not be maintained.
 //
@@ -40,18 +40,6 @@ namespace MakeMeMove.iOS.ViewControllers
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel UserNameLabel { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        MakeMeMove.iOS.PrimaryBottomBorderView UserNameView { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.NSLayoutConstraint UserNameViewHeightConstraint { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         MakeMeMove.iOS.PrimaryBottomBorderView ViewHistoryView { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -84,21 +72,6 @@ namespace MakeMeMove.iOS.ViewControllers
             if (SignInOutView != null) {
                 SignInOutView.Dispose ();
                 SignInOutView = null;
-            }
-
-            if (UserNameLabel != null) {
-                UserNameLabel.Dispose ();
-                UserNameLabel = null;
-            }
-
-            if (UserNameView != null) {
-                UserNameView.Dispose ();
-                UserNameView = null;
-            }
-
-            if (UserNameViewHeightConstraint != null) {
-                UserNameViewHeightConstraint.Dispose ();
-                UserNameViewHeightConstraint = null;
             }
 
             if (ViewHistoryView != null) {
