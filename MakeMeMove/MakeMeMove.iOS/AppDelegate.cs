@@ -24,7 +24,6 @@ namespace MakeMeMove.iOS
         public static UIStoryboard Storyboard;
         public static UIStoryboard ExerciseHistoryStoryboard;
         public static UIStoryboard SettingsStoryboard;
-        public static UIStoryboard LoginStoryboard;
         public static UIViewController InitialViewController;
         public ITracker Tracker;
         public static readonly string TrackingId = "UA-56251913-4";
@@ -128,7 +127,6 @@ namespace MakeMeMove.iOS
             InitialViewController = Storyboard.InstantiateInitialViewController() as SWRevealViewController;
             ExerciseHistoryStoryboard = UIStoryboard.FromName("ExerciseHistory", null);
             SettingsStoryboard = UIStoryboard.FromName("Settings", null);
-            LoginStoryboard = UIStoryboard.FromName("LogIn", null);
 	    }
 
 		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
