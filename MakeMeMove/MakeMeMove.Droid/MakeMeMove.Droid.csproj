@@ -181,7 +181,6 @@
     <Compile Include="Activities\BaseActivity.cs" />
     <Compile Include="Activities\ExerciseHistoryActivity.cs" />
     <Compile Include="Activities\ExerciseTotalsActivity.cs" />
-    <Compile Include="Activities\LoginActivity.cs" />
     <Compile Include="Activities\ManageExerciseActivity.cs" />
     <Compile Include="Activities\ManageScheduleActivity.cs" />
     <Compile Include="Activities\SettingsActivity.cs" />
@@ -236,9 +235,6 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\menu\HistorySettings.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\LogIn.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\LoadingOverlay.axml">

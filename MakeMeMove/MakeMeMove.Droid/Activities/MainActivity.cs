@@ -42,9 +42,6 @@ namespace MakeMeMove.Droid.Activities
             SupportActionBar.Elevation = 2;
 
             _drawer = FindViewById<DrawerLayout>(Resource.Id.DrawerLayout);
-            _logInOutText = FindViewById<TextView>(Resource.Id.LogInOutText);
-            _userNameSection = FindViewById(Resource.Id.UserNameSection);
-            _userNameText = FindViewById<TextView>(Resource.Id.UserNameText);
             _scheduleLayout = FindViewById(Resource.Id.ScheduleLayout);
             _exerciseListLayout = FindViewById(Resource.Id.ExerciseListLayout);
             _scheduleText = FindViewById<TextView>(Resource.Id.ScheduleText);
