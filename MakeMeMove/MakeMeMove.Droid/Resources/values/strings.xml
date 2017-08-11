@@ -3,12 +3,9 @@
   <string name="app_name">Make Me Move</string>
   <string name="log_in_title">Sign In</string>
   <string name="log_in">Sign In</string>
-  <string name="log_in_with_fudist">Sign In with Fudist</string>
   <string name="username">Username</string>
   <string name="password">Password</string>
-  <string name="login_failure">Sign in failure. Please check that you have a Fudist subscription.</string>
   <string name="log_out">Log Out</string>
-  <string name="no_account_text">Don\'t have an account? Visit our website to create a Fudist account, or tap cancel to sign up with Google or Facebook.</string>
   <string name="cancel">Cancel</string>
   <string name="DrawerOpenDescription">Open navigation drawer</string>
   <string name="DrawerCloseDescription">Close navigation drawer</string>
@@ -24,13 +21,6 @@
   <string name="Yes">Yes</string>
   <string name="No">No</string>
   <string name="Ok">OK</string>
-  <string name="PremiumNeededTitle">Premium Account Needed</string>
-  <string name="PremiumNeededMessage">Your current account is not subscribed to Fudist Premium. Please double check your subscription status and try again.</string>
-  <string name="AccountNeededTitle">Account Needed</string>
-  <string name="AccountNeededMessage">You must sign in as a Fudist Premium user to access your exercise history. Would you like to sign in?</string>
-  <string name="SignOutSuccessful">Signed Out</string>
-  <string name="SignOut">Sign Out</string>
-  <string name="SignInWithFudist">Sign In With Fudist</string>
   <string name="EditExercise">Edit Exercise</string>
   <string name="AddExercise">Add Exercise</string>
   <string name="ExerciseNameValidation">"Please enter a name for your exercise.</string>
@@ -73,7 +63,7 @@
   <string name="MarketFailure">Error launching the Play Store.</string>
   <string name="Notifications">Notifications</string>
   <string name="CheckHistoryReminderSettingTitle">Check History Notification</string>
-  <string name="CheckHistoryReminderSettingSummary">Get reminded to view your exercise history every day (requires Premium account)</string>
+  <string name="CheckHistoryReminderSettingSummary">Get reminded to view your exercise history every day</string>
   <string name="CheckHistoryNotificationTitle">Check Today\'s Progress</string>
   <string name="CheckHistoryNotificationMessage">Tap to see how you did today</string>
   <string name="NotificationSoundSettingTitle">Notification Sound</string>

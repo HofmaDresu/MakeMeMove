@@ -1,11 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <string name="network_error_airplane">There was a problem contacting the Fudist server. Please turn off Airplane Mode and try again.</string>
-  <string name="network_error_connection">There was a problem contacting the Fudist server. Please check your internet connection and try again later.</string>
-  <string name="network_error_title">Network Error</string>
   <string name="settings_label">Settings</string>
-  <string name="network_settings_label">Network Settings</string>
-  <string name="fudist_unavailable">There was a problem contacting the Fudist server. Please try again later.</string>
   <string name="close_app">Close Make Me Move</string>
   <string name="rate_title">Enjoying Make Me Move?</string>
   <string name="rate_message">Would you like to let us know what you think by rating us in the Play Store?</string>

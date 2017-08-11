@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MacroEatMobile.Core;
 using MakeMeMove.Model;
 using SQLite;
 using static System.Math;
@@ -330,46 +329,6 @@ namespace MakeMeMove
             return totals.Select(t => new ExerciseTotal { ExerciseName = t.Key, QuantityCompleted = t.Value }).Where(t => t.QuantityCompleted > 0).ToList();
         }
 
-        #endregion
-
-#region FudistUser
-        public void SignUserIn(Person person, bool userIsPremium)
-        {
-            //Make sure we only have one user at a time
-            SignUserOut();
-            _db.Insert(new FudistUser
-            {
-                UserName = person.Username,
-                UserIsPremium = userIsPremium,
-                LastChecked = DateTime.Now
-            });
-        }
-
-        public void SignUserOut()
-        {
-            _db.DeleteAll<FudistUser>();
-        }
-
-        public bool UserIsSignedIn()
-        {
-            return FudistUsers.Any();
-        }
-
-        public bool UserIsPremium()
-        {
-            return FudistUsers.Any(u => u.UserIsPremium);
-        }
-
-        public bool UserPremiumStatusNeedsToBeChecked()
-        {
-            var oldestPreviousCheckTime = DateTime.Now.AddMonths(-1);
-            return FudistUsers.Any(u => !u.UserIsPremium || u.LastChecked < oldestPreviousCheckTime);
-        }
-
-        public string GetUserName()
-        {
-            return FudistUsers.FirstOrDefault()?.UserName ?? "";
-        }
         #endregion
 
 #region SystemStatus
