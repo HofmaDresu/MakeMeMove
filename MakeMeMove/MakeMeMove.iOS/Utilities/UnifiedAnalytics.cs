@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Foundation;
-using MacroEatMobile.Core;
-using MacroEatMobile.Core.UtilityInterfaces;
+﻿using Foundation;
 using Google.Analytics;
 
 namespace MakeMeMove.iOS.Utilities
 {
-    public class UnifiedAnalytics : IUnifiedAnalytics
+    public class UnifiedAnalytics
     {
 
         private UnifiedAnalytics()
         {
-            Gai.SharedInstance.GetTracker(ThirdPartyIds.AnalyticsTrackingId);
+            Gai.SharedInstance.GetTracker("UA-56251913-1");
         }
 
         private static UnifiedAnalytics _unifiedAnalytics;

@@ -45,7 +45,6 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
         public static void CreateExerciseNotification(Data data, Context context, ExerciseBlock nextExercise)
         {
             if (nextExercise == null) return;
-            var userIsPremium = data.UserIsPremium();
 
             var completedIntent = new Intent(context, typeof(CompleteExerciseBroadcastReceiver));
             completedIntent.PutExtra(Constants.ExerciseName, nextExercise.CombinedName);
@@ -57,22 +56,14 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             nextIntent.PutExtra(Constants.ExerciseQuantity, nextExercise.Quantity);
             var nextPendingIntent = PendingIntent.GetBroadcast(context, DateTime.Now.Millisecond, nextIntent, PendingIntentFlags.CancelCurrent);
 
-            PendingIntent clickPendingIntent;
-            if (userIsPremium)
-            {
-                var clickIntent = new Intent(context, typeof (ExerciseHistoryActivity));
-                clickIntent.PutExtra(Constants.ShowMarkedExercisePrompt, true);
-                clickIntent.PutExtra(Constants.ExerciseId, nextExercise.Id);
-                var stackBuilder = TaskStackBuilder.Create(context);
-                stackBuilder.AddParentStack(Java.Lang.Class.FromType(typeof (ExerciseHistoryActivity)));
-                stackBuilder.AddNextIntent(clickIntent);
-                clickPendingIntent = stackBuilder.GetPendingIntent(0, PendingIntentFlags.CancelCurrent);
-            }
-            else
-            {
-                var clickIntent = new Intent(context, typeof(MainActivity));
-                clickPendingIntent = PendingIntent.GetActivity(context, DateTime.Now.Millisecond, clickIntent, PendingIntentFlags.CancelCurrent);
-            }
+
+            var clickIntent = new Intent(context, typeof (ExerciseHistoryActivity));
+            clickIntent.PutExtra(Constants.ShowMarkedExercisePrompt, true);
+            clickIntent.PutExtra(Constants.ExerciseId, nextExercise.Id);
+            var stackBuilder = TaskStackBuilder.Create(context);
+            stackBuilder.AddParentStack(Java.Lang.Class.FromType(typeof (ExerciseHistoryActivity)));
+            stackBuilder.AddNextIntent(clickIntent);
+            var clickPendingIntent = stackBuilder.GetPendingIntent(0, PendingIntentFlags.CancelCurrent);
 
             data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
 

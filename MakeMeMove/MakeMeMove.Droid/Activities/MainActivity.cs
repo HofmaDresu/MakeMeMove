@@ -1,5 +1,4 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Graphics;
@@ -9,13 +8,10 @@ using MakeMeMove.Droid.DeviceSpecificImplementations;
 using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
-using Android.Util;
 using Android.Views;
-using MacroEatMobile.Core;
 using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Droid.Fragments;
 using MakeMeMove.Droid.Utilities;
-using AlertDialog = Android.App.AlertDialog;
 
 namespace MakeMeMove.Droid.Activities
 {
@@ -25,9 +21,6 @@ namespace MakeMeMove.Droid.Activities
         private readonly PermissionRequester _permissionRequester = new PermissionRequester();
         private DrawerLayout _drawer;
         private ActionBarDrawerToggle _toggle;
-        private TextView _logInOutText;
-        private View _userNameSection;
-        private TextView _userNameText;
         private View _scheduleLayout;
         private View _exerciseListLayout;
         private ViewPager _viewPager;
@@ -46,9 +39,6 @@ namespace MakeMeMove.Droid.Activities
             SupportActionBar.Elevation = 2;
 
             _drawer = FindViewById<DrawerLayout>(Resource.Id.DrawerLayout);
-            _logInOutText = FindViewById<TextView>(Resource.Id.LogInOutText);
-            _userNameSection = FindViewById(Resource.Id.UserNameSection);
-            _userNameText = FindViewById<TextView>(Resource.Id.UserNameText);
             _scheduleLayout = FindViewById(Resource.Id.ScheduleLayout);
             _exerciseListLayout = FindViewById(Resource.Id.ExerciseListLayout);
             _scheduleText = FindViewById<TextView>(Resource.Id.ScheduleText);
@@ -77,44 +67,7 @@ namespace MakeMeMove.Droid.Activities
             FindViewById(Resource.Id.ViewHistoryButton).Click += (sender, args) =>
             {
                 _drawer.CloseDrawer(GravityCompat.Start);
-                if (Data.UserIsPremium())
-                {
-                    StartActivity(new Intent(this, typeof(ExerciseHistoryActivity)));
-                }
-                else if(Data.UserIsSignedIn())
-                {
-                    new AlertDialog.Builder(this)
-                        .SetTitle(Resource.String.PremiumNeededTitle)
-                        .SetMessage(Resource.String.PremiumNeededMessage)
-                        .SetPositiveButton(Resource.String.Ok, (o, eventArgs) => { })
-                        .Show();
-                }
-                else
-                {
-                    new AlertDialog.Builder(this)
-                        .SetTitle(Resource.String.AccountNeededTitle)
-                        .SetMessage(Resource.String.AccountNeededMessage)
-                        .SetPositiveButton(Resource.String.Yes, (o, eventArgs) => { StartActivity(new Intent(this, typeof(LoginActivity))); })
-                        .SetNegativeButton(Resource.String.No, (o, eventArgs) => { })
-                        .Show();
-                }
-            };
-
-            var logInOutButton = FindViewById(Resource.Id.LogInOutButton);
-            logInOutButton.Click += (sender, args) =>
-            {
-                _drawer.CloseDrawer(GravityCompat.Start);
-                if (!Data.UserIsSignedIn())
-                {
-                    StartActivity(new Intent(this, typeof (LoginActivity)));
-                }
-                else
-                {
-                    AuthorizationSingleton.GetInstance().ClearPerson(this);
-                    Data.SignUserOut();
-                    ShowUserSignedOut();
-                    Toast.MakeText(this, Resource.String.SignOutSuccessful, ToastLength.Short).Show();
-                }
+                StartActivity(new Intent(this, typeof(ExerciseHistoryActivity)));
             };
 
             var openFudistButton = FindViewById(Resource.Id.OpenFudistButton);
@@ -171,65 +124,13 @@ namespace MakeMeMove.Droid.Activities
             }
         }
 
-        protected override async void OnResume()
+        protected override void OnResume()
         {
             var launchIntent = PackageManager.GetLaunchIntentForPackage("co.fudist.mobile");
             _openFudistText.SetText(launchIntent != null
                 ? Resource.String.FudistInstalledMenuText
                 : Resource.String.FudistInStoreMenuText);
             base.OnResume();
-
-            if (Data.UserIsSignedIn())
-            {
-                //HACK: MMM should work with the Android 1.2.0 version of our API
-                try
-                {
-                    await fudistConfigAdapter.Configure(/*PackageManager.GetPackageInfo(PackageName, 0).VersionName*/"1.2.0", "Android", UnifiedAnalytics.GetInstance(this));
-                }
-                catch (Exception ex)
-                {
-#if DEBUG
-                    Log.Error("exception", ex.Message);
-#endif
-                }
-            }
-
-            
-            if (Data.UserPremiumStatusNeedsToBeChecked())
-            {
-                await AuthorizationSingleton.GetInstance().GetPerson(this, true)
-                    .ContinueWith(data =>
-                    {
-                        if (data.IsCanceled || data.IsFaulted)
-                        {
-                            return;
-                        }
-                        var person = data.Result;
-
-                        if (person != null)
-                        {
-                            Data.SignUserIn(person, AuthorizationSingleton.PersonIsProOrHigherUser(person));
-                        }
-                    });
-            }
-
-
-            if (!Data.UserIsSignedIn())
-            {
-                ShowUserSignedOut();
-            }
-            else
-            {
-                _logInOutText.SetText(Resource.String.SignOut);
-                _userNameSection.Visibility = ViewStates.Visible;
-                _userNameText.Text = Data.GetUserName();
-            }
-        }
-
-        private void ShowUserSignedOut()
-        {
-            _logInOutText.SetText(Resource.String.SignInWithFudist);
-            _userNameSection.Visibility = ViewStates.Gone;
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
