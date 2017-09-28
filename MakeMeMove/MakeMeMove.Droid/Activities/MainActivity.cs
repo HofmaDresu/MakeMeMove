@@ -15,7 +15,7 @@ using MakeMeMove.Droid.Utilities;
 
 namespace MakeMeMove.Droid.Activities
 {
-    [Activity(Label = "@string/app_name", Icon = "@drawable/icon", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
+    [Activity(Label = "@string/app_name", Icon = "@drawable/icon", RoundIcon = "@drawable/Icon_round", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
     public class MainActivity : BaseActivity
     {
         private readonly PermissionRequester _permissionRequester = new PermissionRequester();
@@ -33,7 +33,9 @@ namespace MakeMeMove.Droid.Activities
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            
+
+            CreateNotificationChannels();
+
             SetContentView(Resource.Layout.Main);
 
             SupportActionBar.Elevation = 2;
@@ -146,6 +148,29 @@ namespace MakeMeMove.Droid.Activities
         {
             _toggle.SyncState();
             base.OnPostCreate(savedInstanceState);
+        }
+
+        private void CreateNotificationChannels()
+        {
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+            {
+                var notificationManager = (NotificationManager)GetSystemService(NotificationService);
+
+                var gameChannel = new NotificationChannel(Constants.ExerciseNotificationChannelId, "Time To Move Notifications", NotificationImportance.Max)
+                {
+                    Description = "These notifications make you move with an exercise from your list."
+                };
+                gameChannel.EnableVibration(true);
+
+                var generalChannel = new NotificationChannel(Constants.TodaysProgressNotificationChannelId, "Today's Progress Notifications", NotificationImportance.Low)
+                {
+                    Description = "These notifications let you know it's time to check your progress for the day."
+                };
+                generalChannel.EnableVibration(true);
+
+                notificationManager.CreateNotificationChannel(gameChannel);
+                notificationManager.CreateNotificationChannel(generalChannel);
+            }
         }
     }
 }

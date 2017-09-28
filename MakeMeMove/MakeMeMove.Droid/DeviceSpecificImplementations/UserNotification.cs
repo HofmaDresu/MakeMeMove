@@ -68,7 +68,7 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             data.MarkExerciseNotified(nextExercise.CombinedName, nextExercise.Quantity);
 
             var timeToMoveMessage = string.Format(context.Resources.GetString(Resource.String.TimeToMoveMessage), nextExercise.Quantity, nextExercise.CombinedName);
-            var builder = new NotificationCompat.Builder(context)
+            var builder = GetBuilder(context, Constants.ExerciseNotificationChannelId)
                 .SetContentTitle(context.Resources.GetString(Resource.String.TimeToMoveTitle))
                 .SetContentText(timeToMoveMessage)
                 .SetDefaults(NotificationCompat.DefaultVibrate)
@@ -126,7 +126,7 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             var clickPendingIntent = stackBuilder.GetPendingIntent(0, PendingIntentFlags.CancelCurrent);
 
 
-            var builder = new NotificationCompat.Builder(context)
+            var builder = GetBuilder(context, Constants.TodaysProgressNotificationChannelId)
                 .SetContentTitle(context.Resources.GetString(Resource.String.CheckHistoryNotificationTitle))
                 .SetContentText(context.Resources.GetString(Resource.String.CheckHistoryNotificationMessage))
                 .SetDefaults(NotificationCompat.DefaultVibrate)
@@ -154,6 +154,11 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
 
             var notificationManager = NotificationManagerCompat.From(context);
             notificationManager?.Notify(Constants.HistoryReminderNotificationId, notification);
+        }
+
+        private static NotificationCompat.Builder GetBuilder(Context context, string channelId)
+        {
+            return Build.VERSION.SdkInt >= BuildVersionCodes.O ? new NotificationCompat.Builder(context, channelId) : new NotificationCompat.Builder(context);
         }
     }
 }
