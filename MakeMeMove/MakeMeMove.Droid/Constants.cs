@@ -16,5 +16,8 @@ namespace MakeMeMove.Droid
         public static string ShowMarkedExercisePrompt = "ShowMarkeExercisePrompt";
         public static string ExerciseHistoryItem = "ExerciseHistoryItem";
         public static string CheckForIntentData = "CheckForIntentData";
+
+        public const string ExerciseNotificationChannelId = "ExerciseNotificationChannelId";
+        public const string TodaysProgressNotificationChannelId = "TodaysProgressNotificationChannelId";
     }
 }
