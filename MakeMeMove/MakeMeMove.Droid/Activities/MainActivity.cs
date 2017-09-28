@@ -15,7 +15,7 @@ using MakeMeMove.Droid.Utilities;
 
 namespace MakeMeMove.Droid.Activities
 {
-    [Activity(Label = "@string/app_name", Icon = "@drawable/icon", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
+    [Activity(Label = "@string/app_name", Icon = "@drawable/icon", RoundIcon = "@drawable/Icon_round", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
     public class MainActivity : BaseActivity
     {
         private readonly PermissionRequester _permissionRequester = new PermissionRequester();
@@ -162,7 +162,7 @@ namespace MakeMeMove.Droid.Activities
                 };
                 gameChannel.EnableVibration(true);
 
-                var generalChannel = new NotificationChannel(Constants.TodaysProgressNotificationChannelId, "Today's Progress Notifications", NotificationImportance.Min)
+                var generalChannel = new NotificationChannel(Constants.TodaysProgressNotificationChannelId, "Today's Progress Notifications", NotificationImportance.Low)
                 {
                     Description = "These notifications let you know it's time to check your progress for the day."
                 };
