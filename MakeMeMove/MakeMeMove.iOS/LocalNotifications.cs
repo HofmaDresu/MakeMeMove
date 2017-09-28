@@ -60,6 +60,9 @@ namespace MakeMeMove.iOS
 
                         var dateComponants = new NSDateComponents
                         {
+                            Year = DateTime.Now.Year,
+                            Month = DateTime.Now.Month,
+                            Day = DateTime.Now.Day,
                             Hour = notificationDate.Hour,
                             Minute = notificationDate.Minute,
                             Second = notificationDate.Second
