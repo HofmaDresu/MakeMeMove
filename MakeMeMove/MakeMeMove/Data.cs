@@ -16,7 +16,6 @@ namespace MakeMeMove
         private TableQuery<ExerciseBlock> ExerciseBlocks => _db.Table<ExerciseBlock>();
         private TableQuery<MostRecentExercise> MostRecentExercises => _db.Table<MostRecentExercise>();
         private TableQuery<ExerciseHistory> ExerciseHistories => _db.Table<ExerciseHistory>();
-        private TableQuery<FudistUser> FudistUsers => _db.Table<FudistUser>();
         private TableQuery<SystemStatus> SystemStatus => _db.Table<SystemStatus>();
 
         public int RatingCheckTimesOpened { get; private set; }
@@ -91,8 +90,7 @@ namespace MakeMeMove
             }
 #endif
 
-
-            _db.CreateTable<FudistUser>();
+            
         }
 
 #region Schedule

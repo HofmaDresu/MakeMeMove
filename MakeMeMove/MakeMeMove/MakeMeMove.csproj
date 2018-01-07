@@ -41,7 +41,6 @@
     <Compile Include="Model\ExerciseHistory.cs" />
     <Compile Include="Model\ExerciseBlock.cs" />
     <Compile Include="Model\ExerciseSchedule.cs" />
-    <Compile Include="Model\FudistUser.cs" />
     <Compile Include="Model\SystemStatus.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
