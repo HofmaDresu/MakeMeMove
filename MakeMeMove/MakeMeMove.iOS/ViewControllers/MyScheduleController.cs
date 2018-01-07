@@ -32,7 +32,7 @@ namespace MakeMeMove.iOS.ViewControllers
             MenuButton.TintColor = UIColor.White;
 
             AddButtons();
-			StatusSwitch.TintColor = FudistColors.InteractableTextColor;
+			StatusSwitch.TintColor = Colors.InteractableTextColor;
             StatusSwitch.SelectedSegment = ServiceManager.NotificationServiceIsRunning() ? 1 : 0;
         }
 

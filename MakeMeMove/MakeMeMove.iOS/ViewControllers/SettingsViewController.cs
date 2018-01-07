@@ -27,7 +27,7 @@ namespace MakeMeMove.iOS
             base.ViewWillAppear(animated);
             _defaults = NSUserDefaults.StandardUserDefaults;
             NavBar.Translucent = false;
-            NavBar.BarTintColor = FudistColors.PrimaryColor;
+            NavBar.BarTintColor = Colors.PrimaryColor;
             NavBar.TitleTextAttributes = new UIStringAttributes
             {
                 ForegroundColor = UIColor.White
@@ -35,11 +35,11 @@ namespace MakeMeMove.iOS
 
             var statusBarColor = new UIView(new CGRect(0, 0, View.Frame.Width, 20))
             {
-                BackgroundColor = FudistColors.PrimaryColor
+                BackgroundColor = Colors.PrimaryColor
             };
             View.Add(statusBarColor);
 
-            FudistColors.SetTextInteractableColor(NotificationsSectionHeader);
+            Colors.SetTextInteractableColor(NotificationsSectionHeader);
 
             BackButton.Clicked += BackButton_Clicked;
             PopulateData();

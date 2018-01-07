@@ -1,4 +1,4 @@
-﻿// WARNING
+// WARNING
 //
 // This file has been generated automatically by Visual Studio from the outlets and
 // actions declared in your storyboard file.
@@ -20,14 +20,6 @@ namespace MakeMeMove.iOS.ViewControllers
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel OpenFudistLabel { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        MakeMeMove.iOS.PrimaryBottomBorderView OpenFudistView { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         MakeMeMove.iOS.PrimaryBottomBorderView SettingsView { get; set; }
 
         [Outlet]
@@ -39,16 +31,6 @@ namespace MakeMeMove.iOS.ViewControllers
             if (MenuBackgroundView != null) {
                 MenuBackgroundView.Dispose ();
                 MenuBackgroundView = null;
-            }
-
-            if (OpenFudistLabel != null) {
-                OpenFudistLabel.Dispose ();
-                OpenFudistLabel = null;
-            }
-
-            if (OpenFudistView != null) {
-                OpenFudistView.Dispose ();
-                OpenFudistView = null;
             }
 
             if (SettingsView != null) {

@@ -21,25 +21,25 @@ namespace MakeMeMove.iOS.ViewControllers
             base.ViewDidLoad();
             _historyDate = _historyDate ?? DateTime.Now.Date;
             NavBar.Translucent = false;
-            NavBar.BarTintColor = FudistColors.PrimaryColor;
+            NavBar.BarTintColor = Colors.PrimaryColor;
             NavBar.TitleTextAttributes = new UIStringAttributes
             {
                 ForegroundColor = UIColor.White
             };
 
-            DateDisplayView.BackgroundColor = FudistColors.MainBackgroundColor;
+            DateDisplayView.BackgroundColor = Colors.MainBackgroundColor;
 
-            SelectedDateLabel.TextColor = FudistColors.PrimaryColor;
+            SelectedDateLabel.TextColor = Colors.PrimaryColor;
             BackButton.TintColor = UIColor.White;
             
 
 
-            NavigatePrevious.Image = NavigatePrevious.Image.ApplyTheme(FudistColors.InteractableTextColor);
+            NavigatePrevious.Image = NavigatePrevious.Image.ApplyTheme(Colors.InteractableTextColor);
             var backGestureRecognizer = new UITapGestureRecognizer(RegressDate);
             NavigatePrevious.UserInteractionEnabled = true;
             NavigatePrevious.AddGestureRecognizer(backGestureRecognizer);
 
-            NavigateNext.Image = NavigateNext.Image.ApplyTheme(FudistColors.InteractableTextColor);
+            NavigateNext.Image = NavigateNext.Image.ApplyTheme(Colors.InteractableTextColor);
             var nextGestureRecognizer = new UITapGestureRecognizer(AdvanceDate);
             NavigateNext.UserInteractionEnabled = true;
             NavigateNext.AddGestureRecognizer(nextGestureRecognizer);
@@ -52,13 +52,13 @@ namespace MakeMeMove.iOS.ViewControllers
 
             var statusBarColor = new UIView(new CGRect(0, 0, View.Frame.Width, 20))
             {
-                BackgroundColor = FudistColors.PrimaryColor
+                BackgroundColor = Colors.PrimaryColor
             };
             View.Add(statusBarColor);
 
             var dateViewBottomBorder = new UIView(new CGRect(0, DateDisplayView.Frame.Height -1, View.Frame.Width, 1))
             {
-                BackgroundColor = FudistColors.PrimaryColor
+                BackgroundColor = Colors.PrimaryColor
             };
             DateDisplayView.Add(dateViewBottomBorder);
 

@@ -13,7 +13,7 @@ namespace MakeMeMove.iOS.Controls
 		{
 			var pickerView = new UIPickerView { Model = model };
 
-			var toolbar = new UIToolbar { BarStyle = UIBarStyle.Default, BarTintColor = FudistColors.PrimaryColor, Translucent = true };
+			var toolbar = new UIToolbar { BarStyle = UIBarStyle.Default, BarTintColor = Colors.PrimaryColor, Translucent = true };
 			toolbar.SizeToFit();
 
 			model.PickerChanged += (sender, e) =>

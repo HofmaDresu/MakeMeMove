@@ -30,8 +30,8 @@ namespace MakeMeMove.iOS.ViewControllers
 
             MenuButton.TintColor = UIColor.White;
 
-            ExerciseList.BackgroundColor = FudistColors.MainBackgroundColor;
-			AddExerciseButton.BackgroundColor = FudistColors.PrimaryColor;
+            ExerciseList.BackgroundColor = Colors.MainBackgroundColor;
+			AddExerciseButton.BackgroundColor = Colors.PrimaryColor;
 		}
 
         private void MenuButton_Clicked(object sender, EventArgs e)

@@ -16,7 +16,7 @@ namespace MakeMeMove.iOS.ViewControllers.Base
 
 		    if (NavigationController?.NavigationBar != null)
             {
-                NavigationController.NavigationBar.BarTintColor = FudistColors.PrimaryColor;
+                NavigationController.NavigationBar.BarTintColor = Colors.PrimaryColor;
                 NavigationController.NavigationBar.Translucent = false;
                 NavigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes
                 {
@@ -27,7 +27,7 @@ namespace MakeMeMove.iOS.ViewControllers.Base
 
 		    if (TabBarController?.TabBar != null)
             {
-                TabBarController.TabBar.TintColor = FudistColors.InteractableTextColor;
+                TabBarController.TabBar.TintColor = Colors.InteractableTextColor;
             }
 		}
 	}

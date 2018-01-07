@@ -18,7 +18,7 @@ namespace MakeMeMove.iOS.ViewControllers
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            ExerciseHistoryTable.BackgroundColor = FudistColors.MainBackgroundColor;
+            ExerciseHistoryTable.BackgroundColor = Colors.MainBackgroundColor;
         }
 
         public void UpdateData(DateTime date)

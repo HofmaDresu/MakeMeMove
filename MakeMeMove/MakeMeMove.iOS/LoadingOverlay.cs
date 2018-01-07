@@ -9,7 +9,7 @@ namespace MakeMeMove.iOS
         public LoadingOverlay(CGRect frame, string loadingText = "Loading Data...") : base(frame)
         {
             // configurable bits
-            BackgroundColor = FudistColors.MainBackgroundColor;
+            BackgroundColor = Colors.MainBackgroundColor;
             //Alpha = 0.75f;
             AutoresizingMask = UIViewAutoresizing.FlexibleDimensions;
 
@@ -23,7 +23,7 @@ namespace MakeMeMove.iOS
             // create the activity spinner, center it horizontall and put it 5 points above center x
             var activitySpinner = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.WhiteLarge)
             {
-                Color = FudistColors.GrayTextColor
+                Color = Colors.GrayTextColor
             };
             activitySpinner.Frame = new CGRect(
                 centerX - activitySpinner.Frame.Width / 2,
@@ -43,7 +43,7 @@ namespace MakeMeMove.iOS
                 ))
             {
                 BackgroundColor = UIColor.Clear,
-                TextColor = FudistColors.GrayTextColor,
+                TextColor = Colors.GrayTextColor,
                 Text = loadingText,
                 TextAlignment = UITextAlignment.Center,
                 AutoresizingMask = UIViewAutoresizing.FlexibleMargins

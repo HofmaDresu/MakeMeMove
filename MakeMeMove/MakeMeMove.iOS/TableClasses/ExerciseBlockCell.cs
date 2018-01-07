@@ -17,18 +17,18 @@ namespace MakeMeMove.iOS.TableClasses
 		public void UpdateCell(ExerciseBlock block)
 		{
 			_block = block;
-			ExerciseIsEnabled.TintColor = FudistColors.InteractableTextColor;
+			ExerciseIsEnabled.TintColor = Colors.InteractableTextColor;
 			ExerciseNameLabel.Text = $"{block.Quantity} {block.CombinedName}";
-			ExerciseNameLabel.TextColor = FudistColors.PrimaryColor;
+			ExerciseNameLabel.TextColor = Colors.PrimaryColor;
 			ExerciseIsEnabled.SelectedSegment = block.Enabled ? 1 : 0;
 			ExerciseIsEnabled.ValueChanged -= ExerciseSwitch_ValueChanged;
 			ExerciseIsEnabled.ValueChanged += ExerciseSwitch_ValueChanged;
-		    BackgroundColor = block.Enabled ? FudistColors.MainBackgroundColor : FudistColors.DisabledBackgroundColor;
+		    BackgroundColor = block.Enabled ? Colors.MainBackgroundColor : Colors.DisabledBackgroundColor;
 		}
 
 		void ExerciseSwitch_ValueChanged(object sender, EventArgs e)
 		{
-            BackgroundColor = ExerciseIsEnabled.SelectedSegment == 1 ? FudistColors.MainBackgroundColor : FudistColors.DisabledBackgroundColor;
+            BackgroundColor = ExerciseIsEnabled.SelectedSegment == 1 ? Colors.MainBackgroundColor : Colors.DisabledBackgroundColor;
             SelectedEnabledSwitch?.Invoke(sender, _block);
 		}
     }

@@ -15,7 +15,7 @@ namespace MakeMeMove.iOS
 			var arrowButton = new UIButton(new CGRect(0, 0, 20, 20));
 			arrowButton.TranslatesAutoresizingMaskIntoConstraints = false;
 			arrowButton.SetTitle(foo, UIControlState.Normal);
-			arrowButton.SetTitleColor(FudistColors.InteractableTextColor, UIControlState.Normal);
+			arrowButton.SetTitleColor(Colors.InteractableTextColor, UIControlState.Normal);
 			arrowButton.UserInteractionEnabled = false;
 			AddSubview(arrowButton);
 
