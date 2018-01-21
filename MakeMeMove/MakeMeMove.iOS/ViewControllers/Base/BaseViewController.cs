@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using MakeMeMove.iOS.Helpers;
-using MakeMeMove.iOS.Utilities;
 using SQLite;
 using UIKit;
 using Foundation;
@@ -33,13 +32,6 @@ namespace MakeMeMove.iOS.ViewControllers.Base
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
-
-            if (!string.IsNullOrWhiteSpace(ScreenName))
-            {
-                UnifiedAnalytics.GetInstance().SendScreenHitOnDefaultTracker(ScreenName);
-            }
-
-
 
             if (Data.ShouldAskForRating())
             {

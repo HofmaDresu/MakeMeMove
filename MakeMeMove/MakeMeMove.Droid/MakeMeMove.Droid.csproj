@@ -26,7 +26,8 @@
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <AndroidLinkSkip></AndroidLinkSkip>
+    <AndroidLinkSkip>
+    </AndroidLinkSkip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -63,21 +64,6 @@
   <ItemGroup>
     <Reference Include="Humanizer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Humanizer.Core.2.2.0\lib\netstandard1.0\Humanizer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Mobile, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Azure.Mobile.0.15.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Mobile.Analytics, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Azure.Mobile.Analytics.0.15.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Mobile.Analytics.Android.Bindings, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Azure.Mobile.Analytics.0.15.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.Analytics.Android.Bindings.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Mobile.Android.Bindings, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Azure.Mobile.0.15.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.Android.Bindings.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Mobile.Crashes, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Azure.Mobile.Crashes.0.15.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.Crashes.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Android" />
@@ -161,39 +147,6 @@
     <Reference Include="Xamarin.Auth.Android">
       <HintPath>..\..\Components\xamarin.auth-1.2.3.1\lib\android\Xamarin.Auth.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Firebase.Analytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Firebase.Analytics.57.1104.0-beta1\lib\MonoAndroid70\Xamarin.Firebase.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Firebase.Analytics.Impl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Firebase.Analytics.Impl.57.1104.0-beta1\lib\MonoAndroid70\Xamarin.Firebase.Analytics.Impl.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Firebase.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Firebase.Common.57.1104.0-beta1\lib\MonoAndroid70\Xamarin.Firebase.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Firebase.Iid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Firebase.Iid.57.1104.0-beta1\lib\MonoAndroid70\Xamarin.Firebase.Iid.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.GooglePlayServices.Analytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.GooglePlayServices.Analytics.57.1104.0-beta1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.GooglePlayServices.Analytics.Impl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.GooglePlayServices.Analytics.Impl.57.1104.0-beta1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Analytics.Impl.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.GooglePlayServices.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.GooglePlayServices.Base.57.1104.0-beta1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.GooglePlayServices.Basement, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.GooglePlayServices.Basement.57.1104.0-beta1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Basement.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.GooglePlayServices.TagManager.V4.Impl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.GooglePlayServices.TagManager.V4.Impl.57.1104.0-beta1\lib\MonoAndroid70\Xamarin.GooglePlayServices.TagManager.V4.Impl.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.GooglePlayServices.Tasks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.GooglePlayServices.Tasks.57.1104.0-beta1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Mobile.Crashes.Android.Bindings, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Azure.Mobile.Crashes.0.15.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.Crashes.Android.Bindings.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\BaseActivity.cs" />
@@ -222,7 +175,6 @@
     <Compile Include="Fragments\SettingsFragment.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\UnifiedAnalytics.cs" />
     <Compile Include="ViewHolders\ExerciseListViewHolder.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -504,9 +456,6 @@
     <Folder Include="Assets\" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\xml\GlobalTracker.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\values\SettingsKeys.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -531,7 +480,6 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-    <Error Condition="!Exists('..\..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets'))" />
     <Error Condition="!Exists('..\..\packages\Xamarin.Android.Support.Compat.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Android.Support.Compat.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets'))" />
     <Error Condition="!Exists('..\..\packages\Xamarin.Android.Support.Core.UI.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.Core.UI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Android.Support.Core.UI.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.Core.UI.targets'))" />
     <Error Condition="!Exists('..\..\packages\Xamarin.Android.Support.Core.Utils.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.Core.Utils.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Android.Support.Core.Utils.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.Core.Utils.targets'))" />
@@ -545,18 +493,8 @@
     <Error Condition="!Exists('..\..\packages\Xamarin.Android.Support.v7.AppCompat.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.v7.AppCompat.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Android.Support.v7.AppCompat.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.v7.AppCompat.targets'))" />
     <Error Condition="!Exists('..\..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.props'))" />
     <Error Condition="!Exists('..\..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Xamarin.GooglePlayServices.Basement.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Basement.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.GooglePlayServices.Basement.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Basement.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Xamarin.GooglePlayServices.Tasks.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.GooglePlayServices.Tasks.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Xamarin.Firebase.Common.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Firebase.Common.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Common.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Xamarin.Firebase.Iid.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Iid.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Firebase.Iid.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Iid.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Xamarin.Firebase.Analytics.Impl.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Analytics.Impl.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Firebase.Analytics.Impl.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Analytics.Impl.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Xamarin.Firebase.Analytics.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Analytics.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Firebase.Analytics.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Analytics.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Xamarin.GooglePlayServices.Base.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.GooglePlayServices.Base.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Xamarin.GooglePlayServices.Analytics.Impl.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Analytics.Impl.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.GooglePlayServices.Analytics.Impl.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Analytics.Impl.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Xamarin.GooglePlayServices.TagManager.V4.Impl.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.TagManager.V4.Impl.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.GooglePlayServices.TagManager.V4.Impl.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.TagManager.V4.Impl.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Xamarin.GooglePlayServices.Analytics.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Analytics.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.GooglePlayServices.Analytics.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Analytics.targets'))" />
+    <Error Condition="!Exists('..\..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets'))" />
   </Target>
-  <Import Project="..\..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Compat.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Compat.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets')" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Core.UI.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.Core.UI.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Core.UI.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.Core.UI.targets')" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Core.Utils.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.Core.Utils.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Core.Utils.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.Core.Utils.targets')" />
@@ -569,16 +507,7 @@
   <Import Project="..\..\packages\Xamarin.Android.Support.Animated.Vector.Drawable.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.Animated.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Animated.Vector.Drawable.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.Animated.Vector.Drawable.targets')" />
   <Import Project="..\..\packages\Xamarin.Android.Support.v7.AppCompat.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.v7.AppCompat.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.v7.AppCompat.26.0.2-beta1\build\MonoAndroid70\Xamarin.Android.Support.v7.AppCompat.targets')" />
   <Import Project="..\..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.targets" Condition="Exists('..\..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.targets')" />
-  <Import Project="..\..\packages\Xamarin.GooglePlayServices.Basement.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Basement.targets" Condition="Exists('..\..\packages\Xamarin.GooglePlayServices.Basement.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Basement.targets')" />
-  <Import Project="..\..\packages\Xamarin.GooglePlayServices.Tasks.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.targets" Condition="Exists('..\..\packages\Xamarin.GooglePlayServices.Tasks.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.targets')" />
-  <Import Project="..\..\packages\Xamarin.Firebase.Common.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Common.targets" Condition="Exists('..\..\packages\Xamarin.Firebase.Common.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Common.targets')" />
-  <Import Project="..\..\packages\Xamarin.Firebase.Iid.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Iid.targets" Condition="Exists('..\..\packages\Xamarin.Firebase.Iid.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Iid.targets')" />
-  <Import Project="..\..\packages\Xamarin.Firebase.Analytics.Impl.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Analytics.Impl.targets" Condition="Exists('..\..\packages\Xamarin.Firebase.Analytics.Impl.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Analytics.Impl.targets')" />
-  <Import Project="..\..\packages\Xamarin.Firebase.Analytics.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Analytics.targets" Condition="Exists('..\..\packages\Xamarin.Firebase.Analytics.57.1104.0-beta1\build\MonoAndroid70\Xamarin.Firebase.Analytics.targets')" />
-  <Import Project="..\..\packages\Xamarin.GooglePlayServices.Base.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets" Condition="Exists('..\..\packages\Xamarin.GooglePlayServices.Base.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets')" />
-  <Import Project="..\..\packages\Xamarin.GooglePlayServices.Analytics.Impl.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Analytics.Impl.targets" Condition="Exists('..\..\packages\Xamarin.GooglePlayServices.Analytics.Impl.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Analytics.Impl.targets')" />
-  <Import Project="..\..\packages\Xamarin.GooglePlayServices.TagManager.V4.Impl.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.TagManager.V4.Impl.targets" Condition="Exists('..\..\packages\Xamarin.GooglePlayServices.TagManager.V4.Impl.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.TagManager.V4.Impl.targets')" />
-  <Import Project="..\..\packages\Xamarin.GooglePlayServices.Analytics.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Analytics.targets" Condition="Exists('..\..\packages\Xamarin.GooglePlayServices.Analytics.57.1104.0-beta1\build\MonoAndroid70\Xamarin.GooglePlayServices.Analytics.targets')" />
+  <Import Project="..\..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

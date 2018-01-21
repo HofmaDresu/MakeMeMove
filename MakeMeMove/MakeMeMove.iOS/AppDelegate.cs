@@ -1,15 +1,10 @@
 ﻿using System;
 using System.IO;
 using Foundation;
-using Google.Analytics;
-using MakeMeMove.iOS.Utilities;
 using SQLite;
 using SWRevealViewControllerBinding;
 using UIKit;
 using UserNotifications;
-using Microsoft.Azure.Mobile;
-using Microsoft.Azure.Mobile.Analytics;
-using Microsoft.Azure.Mobile.Crashes;
 using Humanizer;
 
 namespace MakeMeMove.iOS
@@ -25,8 +20,6 @@ namespace MakeMeMove.iOS
         public static UIStoryboard ExerciseHistoryStoryboard;
         public static UIStoryboard SettingsStoryboard;
         public static UIViewController InitialViewController;
-        public ITracker Tracker;
-        public static readonly string TrackingId = "UA-56251913-4";
 
         public AppDelegate()
 		{
@@ -42,7 +35,6 @@ namespace MakeMeMove.iOS
 		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
 		    InstantiateStoryboards();
-            MobileCenter.Start("49c0caaf-6e72-4762-95e2-d7e2bb6d825b", typeof(Analytics), typeof(Crashes));
             InstantiateUserDefaults();
             _data.IncrementRatingCycle();
 
@@ -101,12 +93,7 @@ namespace MakeMeMove.iOS
 
 				application.RegisterUserNotificationSettings(notificationSettings);
             }
-
-            Gai.SharedInstance.DispatchInterval = 20;
             
-            Gai.SharedInstance.TrackUncaughtExceptions = true;
-            
-            Tracker = Gai.SharedInstance.GetTracker(TrackingId);
             return true;
 		}
 
@@ -162,7 +149,6 @@ namespace MakeMeMove.iOS
 
 		void CompleteExercise(UILocalNotification localNotification)
         {
-            UnifiedAnalytics.GetInstance().CreateAndSendEventOnDefaultTracker(MakeMeMove.Constants.UserActionCategory, MakeMeMove.Constants.NotificationCompletedAction, null, null);
             var exerciseName = localNotification.UserInfo[Constants.ExerciseName].ToString();
 			var exerciseQuantity = int.Parse(localNotification.UserInfo[Constants.ExerciseQuantity].ToString());
 
@@ -173,7 +159,6 @@ namespace MakeMeMove.iOS
 
 		void ChangeExercise(UILocalNotification localNotification)
 		{
-            UnifiedAnalytics.GetInstance().CreateAndSendEventOnDefaultTracker(MakeMeMove.Constants.UserActionCategory, MakeMeMove.Constants.NotificationChangeAction, null, null);
 			var exerciseName = localNotification.UserInfo[Constants.ExerciseName].ToString();
 			var exerciseQuantity = int.Parse(localNotification.UserInfo[Constants.ExerciseQuantity].ToString());
 			_serviceManager.AddInstantExerciseNotificationAndRestartService(exerciseName, exerciseQuantity);
