@@ -12,7 +12,7 @@ namespace MakeMeMove.iOS
         {
             var bottomBorder = new UIView
             {
-                BackgroundColor = FudistColors.PrimaryColor,
+                BackgroundColor = Colors.PrimaryColor,
                 TranslatesAutoresizingMaskIntoConstraints = false
             };
 
@@ -24,10 +24,10 @@ namespace MakeMeMove.iOS
             bottomBorder.HeightAnchor.ConstraintEqualTo(1).Active = true;
 
 
-            BackgroundColor = FudistColors.MainBackgroundColor;
+            BackgroundColor = Colors.MainBackgroundColor;
 
             var labels = Subviews.OfType<UILabel>().ToArray();
-            FudistColors.SetTextPrimaryColor(labels);
+            Colors.SetTextPrimaryColor(labels);
         }
     }
 }

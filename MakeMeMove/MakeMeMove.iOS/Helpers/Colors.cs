@@ -3,7 +3,7 @@ using UIKit;
 
 namespace MakeMeMove.iOS.Helpers
 {
-	public static class FudistColors
+	public static class Colors
 	{
 		public static UIColor MainBackgroundColor = UIColor.FromRGB(239, 239, 239);
 		public static UIColor PrimaryColor = UIColor.FromRGB(215, 78, 10);

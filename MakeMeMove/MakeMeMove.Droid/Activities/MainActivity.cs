@@ -11,7 +11,6 @@ using Android.Support.V7.App;
 using Android.Views;
 using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Droid.Fragments;
-using MakeMeMove.Droid.Utilities;
 
 namespace MakeMeMove.Droid.Activities
 {
@@ -28,7 +27,6 @@ namespace MakeMeMove.Droid.Activities
         private ImageView _scheduleIcon;
         private TextView _exerciseListText;
         private ImageView _exerciseListIcon;
-        private TextView _openFudistText;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -47,7 +45,6 @@ namespace MakeMeMove.Droid.Activities
             _scheduleIcon = FindViewById<ImageView>(Resource.Id.ScheduleIcon);
             _exerciseListText = FindViewById<TextView>(Resource.Id.ExerciseListText);
             _exerciseListIcon = FindViewById<ImageView>(Resource.Id.ExerciseListIcon);
-            _openFudistText = FindViewById<TextView>(Resource.Id.OpenFudistText);
 
 
             _toggle = new ActionBarDrawerToggle(this, _drawer, Resource.String.DrawerOpenDescription, Resource.String.DrawerCloseDescription);
@@ -70,24 +67,6 @@ namespace MakeMeMove.Droid.Activities
             {
                 _drawer.CloseDrawer(GravityCompat.Start);
                 StartActivity(new Intent(this, typeof(ExerciseHistoryActivity)));
-            };
-
-            var openFudistButton = FindViewById(Resource.Id.OpenFudistButton);
-            openFudistButton.Click += (sender, args) =>
-            {
-                _drawer.CloseDrawer(GravityCompat.Start);
-                var launchIntent = PackageManager.GetLaunchIntentForPackage("co.fudist.mobile");
-
-                if (launchIntent != null)
-                {
-                    UnifiedAnalytics.GetInstance(this).CreateAndSendEventOnDefaultTracker("UserAction", "OpenFudist", "AlreadyInstalled", null);
-                    StartActivity(launchIntent);
-                }
-                else
-                {
-                    UnifiedAnalytics.GetInstance(this).CreateAndSendEventOnDefaultTracker("UserAction", "OpenFudist", "Store", null);
-                    StartActivity(new Intent(Intent.ActionView, Android.Net.Uri.Parse("market://details?id=co.fudist.mobile&utm_source=MakeMeMoveMenuLink&utm_medium=referral&utm_campaign=CrossProduct")));
-                }
             };
 
             _permissionRequester.RequestPermissions(this);
@@ -124,15 +103,6 @@ namespace MakeMeMove.Droid.Activities
                 _exerciseListText.Typeface = Typeface.Default;
                 _exerciseListLayout.SetBackgroundResource(Resource.Drawable.MainTabUnselected);
             }
-        }
-
-        protected override void OnResume()
-        {
-            var launchIntent = PackageManager.GetLaunchIntentForPackage("co.fudist.mobile");
-            _openFudistText.SetText(launchIntent != null
-                ? Resource.String.FudistInstalledMenuText
-                : Resource.String.FudistInStoreMenuText);
-            base.OnResume();
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

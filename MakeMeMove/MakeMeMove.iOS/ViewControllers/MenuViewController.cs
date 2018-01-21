@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using Foundation;
 using MakeMeMove.iOS.Helpers;
 using SQLite;
 using SWRevealViewControllerBinding;
@@ -19,20 +18,16 @@ namespace MakeMeMove.iOS.ViewControllers
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            View.BackgroundColor = FudistColors.PrimaryColor;
+            View.BackgroundColor = Colors.PrimaryColor;
 
 
-            MenuBackgroundView.BackgroundColor = FudistColors.MainBackgroundColor;
-
-
-            OpenFudistLabel.Text = "See Fudist in the App Store";
+            MenuBackgroundView.BackgroundColor = Colors.MainBackgroundColor;
         }
 
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
-            
-            OpenFudistView.TouchUpInside += OpenFudistClicked;
+
             ViewHistoryView.TouchUpInside += NavToExerciseHistory;
             SettingsView.TouchUpInside += NavToSettings;
         }
@@ -41,7 +36,6 @@ namespace MakeMeMove.iOS.ViewControllers
         {
             base.ViewWillDisappear(animated);
 
-            OpenFudistView.TouchUpInside -= OpenFudistClicked;
             ViewHistoryView.TouchUpInside -= NavToExerciseHistory;
             SettingsView.TouchUpInside -= NavToSettings;
         }
@@ -53,12 +47,6 @@ namespace MakeMeMove.iOS.ViewControllers
             this.RevealViewController().RevealToggleAnimated(true);
 
             PresentViewController(regController, true, () => { });
-        }
-
-        private void OpenFudistClicked(object sender, EventArgs e)
-        {
-            var iTunesLink = "https://itunes.apple.com/us/app/fudist/id885638462?mt8";
-            UIApplication.SharedApplication.OpenUrl(NSUrl.FromString(iTunesLink));
         }
 
         private void NavToSettings(object sender, EventArgs e)

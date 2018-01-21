@@ -10,15 +10,15 @@ namespace MakeMeMove.iOS.TableClasses
     {
         public ExerciseHistoryCell (IntPtr handle) : base (handle)
         {
-            BackgroundColor = FudistColors.MainBackgroundColor;
+            BackgroundColor = Colors.MainBackgroundColor;
         }
 
         public void UpdateCell(ExerciseHistory history)
         {
             ExerciseName.Text = history.ExerciseName + ":";
-            ExerciseName.TextColor = FudistColors.PrimaryColor;
+            ExerciseName.TextColor = Colors.PrimaryColor;
             ExerciseCountLabel.Text = $"{history.QuantityCompleted} Completed";
-            ExerciseCountLabel.TextColor = FudistColors.PrimaryColor;
+            ExerciseCountLabel.TextColor = Colors.PrimaryColor;
         }
     }
 }

@@ -58,9 +58,9 @@ namespace MakeMeMove.iOS.ViewControllers
 			AddButtons();
 
 			var pickerTextFields = View.Subviews.OfType<PickerUITextField>().ToArray();
-			FudistColors.SetTextPrimaryColor(pickerTextFields);
-			CustomExerciseName.BackgroundColor = FudistColors.MainBackgroundColor;
-			CustomExerciseName.TextColor = FudistColors.PrimaryColor;
+			Colors.SetTextPrimaryColor(pickerTextFields);
+			CustomExerciseName.BackgroundColor = Colors.MainBackgroundColor;
+			CustomExerciseName.TextColor = Colors.PrimaryColor;
 		}
 
 		private void AddButtons()

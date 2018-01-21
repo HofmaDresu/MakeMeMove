@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using MakeMeMove.iOS.Helpers;
-using MakeMeMove.iOS.Utilities;
 using SQLite;
 using UIKit;
 using Foundation;
@@ -23,23 +22,16 @@ namespace MakeMeMove.iOS.ViewControllers.Base
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			View.BackgroundColor = FudistColors.MainBackgroundColor;
+			View.BackgroundColor = Colors.MainBackgroundColor;
 
 
 			var labels = View.Subviews.OfType<UILabel>().ToArray();
-			FudistColors.SetTextPrimaryColor(labels);
+			Colors.SetTextPrimaryColor(labels);
         }
 
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
-
-            if (!string.IsNullOrWhiteSpace(ScreenName))
-            {
-                UnifiedAnalytics.GetInstance().SendScreenHitOnDefaultTracker(ScreenName);
-            }
-
-
 
             if (Data.ShouldAskForRating())
             {

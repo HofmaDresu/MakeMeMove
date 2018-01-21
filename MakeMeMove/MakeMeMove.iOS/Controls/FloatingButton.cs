@@ -25,7 +25,7 @@ namespace MakeMeMove.iOS.Controls
 			if (string.IsNullOrEmpty(subTitle))
 			{
 				SetTitle(title, UIControlState.Normal);
-				SetTitleColor(FudistColors.InteractableTextColor, UIControlState.Normal);
+				SetTitleColor(Colors.InteractableTextColor, UIControlState.Normal);
 				Frame = new CGRect(0, 0, buttonWidth, 40);
 			}
 			else
@@ -35,20 +35,20 @@ namespace MakeMeMove.iOS.Controls
 				var titleLabel = new UILabel(new CGRect(0, 13, buttonWidth, 21))
 				{
 					Text = title,
-					TextColor = FudistColors.InteractableTextColor,
+					TextColor = Colors.InteractableTextColor,
 					TextAlignment = UITextAlignment.Center
 				};
 				var subtitleLabel = new UILabel(new CGRect(0, 31, buttonWidth, 21))
 				{
 					Text = subTitle,
-					TextColor = FudistColors.GrayTextColor,
+					TextColor = Colors.GrayTextColor,
 					Font = UIFont.SystemFontOfSize(12),
 					TextAlignment = UITextAlignment.Center
 				};
 				AddSubviews(titleLabel, subtitleLabel);
 			}
 			BackgroundColor = UIColor.White;
-			Layer.BorderColor = FudistColors.PrimaryColor.CGColor;
+			Layer.BorderColor = Colors.PrimaryColor.CGColor;
 			Layer.BorderWidth = 1f;
 			Layer.CornerRadius = 6f;
 
@@ -62,7 +62,7 @@ namespace MakeMeMove.iOS.Controls
 
 		private void AddTouchBackgroundColor(object sender, EventArgs e)
 		{
-			(sender as UIButton).BackgroundColor = FudistColors.TertiaryColor;
+			(sender as UIButton).BackgroundColor = Colors.TertiaryColor;
 		}
 
 		private void RemoveTouchBackgroundColor(object sender, EventArgs e)

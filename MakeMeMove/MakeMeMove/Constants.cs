@@ -9,9 +9,6 @@ namespace MakeMeMove
     public class Constants
     {
         public const string UserActionCategory = "UserAction";
-        public const string OpenFudistAction = "OpenFudist";
-        public const string OpenFudistInstalledLabel = "AlreadyInstalled";
-        public const string OpenFudistStoreLabel = "Store";
         public const string NotificationCompletedAction = "ExerciseCompleted";
         public const string NotificationChangeAction = "ChangeExercise";
         public const char DatabaseListSeparator = '~';
