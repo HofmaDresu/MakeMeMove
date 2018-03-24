@@ -144,9 +144,6 @@
     <Reference Include="Xamarin.Android.Support.Vector.Drawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Android.Support.Vector.Drawable.26.0.2-beta1\lib\MonoAndroid70\Xamarin.Android.Support.Vector.Drawable.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Auth.Android">
-      <HintPath>..\..\Components\xamarin.auth-1.2.3.1\lib\android\Xamarin.Auth.Android.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\BaseActivity.cs" />
@@ -236,7 +233,9 @@
     <AndroidResource Include="Resources\drawable-hdpi\Mmm_white_icon.png" />
     <AndroidResource Include="Resources\drawable\Mmm_white_icon.png" />
     <AndroidResource Include="Resources\drawable\settings.png" />
-    <AndroidResource Include="Resources\values\GlobalStyles.xml" />
+    <AndroidResource Include="Resources\values\GlobalStyles.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\ExerciseListItem.axml" />
   </ItemGroup>
   <ItemGroup>
@@ -244,12 +243,6 @@
       <Name>MakeMeMove</Name>
       <Project>{5AA8D4B0-CE11-4B5C-973D-0DA253DF45B0}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="xamarin.auth">
-      <Visible>False</Visible>
-      <Version>1.2.3.1</Version>
-    </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Colors.xml" />
