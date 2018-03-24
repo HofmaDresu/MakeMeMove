@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CoreGraphics;
+using MakeMeMove.iOS.Controls;
 using MakeMeMove.iOS.Helpers;
 using MakeMeMove.iOS.ViewControllers.Base;
 using UIKit;
@@ -20,12 +21,6 @@ namespace MakeMeMove.iOS.ViewControllers
         {
             base.ViewDidLoad();
             _historyDate = _historyDate ?? DateTime.Now.Date;
-            NavBar.Translucent = false;
-            NavBar.BarTintColor = Colors.PrimaryColor;
-            NavBar.TitleTextAttributes = new UIStringAttributes
-            {
-                ForegroundColor = UIColor.White
-            };
 
             DateDisplayView.BackgroundColor = Colors.MainBackgroundColor;
 
@@ -49,12 +44,8 @@ namespace MakeMeMove.iOS.ViewControllers
         {
             base.ViewWillAppear(animated);
             UpdateData();
-
-            var statusBarColor = new UIView(new CGRect(0, 0, View.Frame.Width, 20))
-            {
-                BackgroundColor = Colors.PrimaryColor
-            };
-            View.Add(statusBarColor);
+            
+            View.Add(new StatusBarColorUIView(View.Frame.Width));
 
             var dateViewBottomBorder = new UIView(new CGRect(0, DateDisplayView.Frame.Height -1, View.Frame.Width, 1))
             {
