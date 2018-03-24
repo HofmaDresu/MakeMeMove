@@ -308,6 +308,7 @@
       <DependentUpon>PrimaryBottomBorderView.cs</DependentUpon>
     </Compile>
     <Compile Include="UserNotificationCenterDelegate.cs" />
+    <Compile Include="Controls\StatusBarColorUIView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">

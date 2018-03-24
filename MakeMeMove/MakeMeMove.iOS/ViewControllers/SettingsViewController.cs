@@ -27,11 +27,7 @@ namespace MakeMeMove.iOS
             base.ViewWillAppear(animated);
             _defaults = NSUserDefaults.StandardUserDefaults;
 
-            var statusBarColor = new UIView(new CGRect(0, 0, View.Frame.Width, 20))
-            {
-                BackgroundColor = Colors.PrimaryColor
-            };
-            View.Add(statusBarColor);
+            View.Add(new StatusBarColorUIView(View.Frame.Width));
 
             Colors.SetTextInteractableColor(NotificationsSectionHeader);
 
