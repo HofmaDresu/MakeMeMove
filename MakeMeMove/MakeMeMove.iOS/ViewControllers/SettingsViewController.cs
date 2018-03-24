@@ -26,12 +26,6 @@ namespace MakeMeMove.iOS
         {
             base.ViewWillAppear(animated);
             _defaults = NSUserDefaults.StandardUserDefaults;
-            NavBar.Translucent = false;
-            NavBar.BarTintColor = Colors.PrimaryColor;
-            NavBar.TitleTextAttributes = new UIStringAttributes
-            {
-                ForegroundColor = UIColor.White
-            };
 
             var statusBarColor = new UIView(new CGRect(0, 0, View.Frame.Width, 20))
             {

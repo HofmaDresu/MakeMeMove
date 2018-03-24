@@ -6,6 +6,7 @@ using SWRevealViewControllerBinding;
 using UIKit;
 using UserNotifications;
 using Humanizer;
+using MakeMeMove.iOS.Helpers;
 
 namespace MakeMeMove.iOS
 {
@@ -93,7 +94,14 @@ namespace MakeMeMove.iOS
 
 				application.RegisterUserNotificationSettings(notificationSettings);
             }
-            
+
+			UINavigationBar.Appearance.BarTintColor = Colors.PrimaryColor;
+			UINavigationBar.Appearance.Translucent = false;
+			UINavigationBar.Appearance.TitleTextAttributes = new UIStringAttributes
+            {
+                ForegroundColor = UIColor.White
+            };
+
             return true;
 		}
 
