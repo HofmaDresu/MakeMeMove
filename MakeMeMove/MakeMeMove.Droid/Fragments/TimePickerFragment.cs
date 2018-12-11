@@ -11,25 +11,26 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Android.App;
+using static Android.App.TimePickerDialog;
 
 namespace MakeMeMove.Droid.Fragments
 {
     public class TimePickerFragment : Android.Support.V4.App.DialogFragment
     {
-        public override Dialog OnCreateDialog(Bundle savedInstanceState)
+        private int _startHour;
+        private int _startMinute;
+
+        public TimePickerFragment() { }
+
+        public TimePickerFragment(int startHour, int startMinute)
         {
-            return new QuarterHourTimePickerDialog(Activity, null, 8, 15, true);
+            _startHour = startHour;
+            _startMinute = startMinute;
         }
 
-
-        private class QuarterHourTimePickerDialog : TimePickerDialog
+        public override Dialog OnCreateDialog(Bundle savedInstanceState)
         {
-            private const int MINUTE_INTERVAL = 15;
-
-            public QuarterHourTimePickerDialog(Context context, IOnTimeSetListener listener, int hourOfDay, int minute, bool is24HourView) 
-                : base(context, Resource.Style.Theme_AppCompat_Light_Dialog, (EventHandler<TimeSetEventArgs>)null, hourOfDay, minute/* / MINUTE_INTERVAL*/, is24HourView)
-            {
-            }
+            return new TimePickerDialog(Activity, Activity as IOnTimeSetListener, _startHour, _startMinute, true);
         }
     }
 }

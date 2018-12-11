@@ -78,12 +78,12 @@ namespace MakeMeMove.Droid.Activities
 
         private void _startTimeContainer_Click(object sender, EventArgs e)
         {
-            new TimePickerFragment().Show(SupportFragmentManager, "StartTimePicker");
+            new TimePickerFragment(_exerciseSchedule.StartTime.Hour, _exerciseSchedule.StartTime.Minute).Show(SupportFragmentManager, "StartTimePicker");
         }
 
         private void _endTimeContainer_Click(object sender, EventArgs e)
         {
-            new TimePickerFragment().Show(SupportFragmentManager, "EndTimePicker");
+            new TimePickerFragment(_exerciseSchedule.EndTime.Hour, _exerciseSchedule.EndTime.Minute).Show(SupportFragmentManager, "EndTimePicker");
         }
 
         private void SaveData()
