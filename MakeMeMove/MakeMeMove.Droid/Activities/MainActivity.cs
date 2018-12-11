@@ -48,7 +48,7 @@ namespace MakeMeMove.Droid.Activities
 
 
             _toggle = new ActionBarDrawerToggle(this, _drawer, Resource.String.DrawerOpenDescription, Resource.String.DrawerCloseDescription);
-            _drawer.SetDrawerListener(_toggle);
+            _drawer.AddDrawerListener(_toggle);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
             FindViewById(Resource.Id.SettingsButton).Click += (sender, args) =>
