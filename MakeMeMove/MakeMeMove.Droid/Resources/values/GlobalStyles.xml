@@ -7,6 +7,7 @@
     <item name="android:textColor">@color/PrimaryColor</item>
     <item name="android:windowBackground">@color/MainBackgroundColor</item>
     <item name="android:spinnerStyle">@style/CustomSpinner</item>
+    <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
   </style>
   <style name="CustomSpinner" parent="android:Widget.Holo.Light.Spinner">
   </style>

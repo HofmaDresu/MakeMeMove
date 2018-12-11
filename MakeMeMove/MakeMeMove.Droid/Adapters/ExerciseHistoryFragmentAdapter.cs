@@ -6,10 +6,8 @@ using Java.Lang;
 using MakeMeMove.Droid.Fragments;
 using MakeMeMove.Model;
 using SQLite;
+using Android.Support.V4.App;
 using Environment = System.Environment;
-using Fragment = Android.App.Fragment;
-using FragmentManager = Android.App.FragmentManager;
-using FragmentStatePagerAdapter = Android.Support.V13.App.FragmentStatePagerAdapter;
 
 namespace MakeMeMove.Droid.Adapters
 {
