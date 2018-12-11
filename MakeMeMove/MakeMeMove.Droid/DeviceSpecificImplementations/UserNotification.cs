@@ -51,7 +51,7 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                 {
                     var movementLocations = data.GetMovementLocations();
                     var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
-                    var inMovementLocation = movementLocations.Any(ml => Location.CalculateDistance(lastKnownLocation, new Location(ml.GeoCoordinate.Latitude, ml.GeoCoordinate.Longitude), DistanceUnits.Miles) < .2);
+                    var inMovementLocation = movementLocations.Any(ml => Location.CalculateDistance(lastKnownLocation, new Location(ml.Latitude, ml.Longitude), DistanceUnits.Miles) < .2);
 
                     // We shouldn't hide notifications if no locations are set
                     showExerciseNotificaiton = inMovementLocation || !movementLocations.Any();

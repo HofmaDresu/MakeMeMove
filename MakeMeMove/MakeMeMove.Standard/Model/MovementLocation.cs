@@ -9,6 +9,7 @@ namespace MakeMeMove.Standard.Model
         public int Id { get; set; }
 
         public string Name { get; set; }
-        public (double Latitude, double Longitude) GeoCoordinate { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 }
