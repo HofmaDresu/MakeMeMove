@@ -4,6 +4,7 @@ using System.Linq;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 using Humanizer;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
@@ -18,7 +19,9 @@ namespace MakeMeMove.Droid.Activities
         private Spinner _reminderPeriodSpinner;
         private Button _saveButton;
         private Button _cancelButton;
+        private View _startTimeContainer;
         private TextView _startTimeText;
+        private View _endTimeContainer;
         private TextView _endTimeText;
 
         private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
@@ -38,7 +41,9 @@ namespace MakeMeMove.Droid.Activities
             _reminderPeriodSpinner = FindViewById<Spinner>(Resource.Id.ReminderSpinner);
             _saveButton = FindViewById<Button>(Resource.Id.SaveButton);
             _cancelButton = FindViewById<Button>(Resource.Id.CancelButton);
+            _startTimeContainer = FindViewById(Resource.Id.StartTimeContainer);
             _startTimeText = FindViewById<TextView>(Resource.Id.StartTimeText);
+            _endTimeContainer = FindViewById(Resource.Id.EndTimeContainer);
             _endTimeText = FindViewById<TextView>(Resource.Id.EndTimeText);
 
 
@@ -65,6 +70,19 @@ namespace MakeMeMove.Droid.Activities
 
             _reminderPeriodSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, periodList);
             _scheduleTypeSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, scheduleTypeList);
+
+            _startTimeContainer.Click += _startTimeContainer_Click;
+            _endTimeContainer.Click += _endTimeContainer_Click;
+        }
+
+        private void _startTimeContainer_Click(object sender, EventArgs e)
+        {
+            //TODO
+        }
+
+        private void _endTimeContainer_Click(object sender, EventArgs e)
+        {
+            //TODO
         }
 
         private void SaveData()
