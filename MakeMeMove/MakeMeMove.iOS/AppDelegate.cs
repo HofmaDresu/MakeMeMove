@@ -39,61 +39,21 @@ namespace MakeMeMove.iOS
             InstantiateUserDefaults();
             _data.IncrementRatingCycle();
 
-            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
+			UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound, (approved, err) =>
 			{
-				UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound, (approved, err) =>
-				{
-					UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
-				});
+				UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
+			});
 
-				var nextAction = UNNotificationAction.FromIdentifier(Constants.NextId, "Change", UNNotificationActionOptions.None);
-				var completeAction = UNNotificationAction.FromIdentifier(Constants.CompleteId, "Complete", UNNotificationActionOptions.None);
+			var nextAction = UNNotificationAction.FromIdentifier(Constants.NextId, "Change", UNNotificationActionOptions.None);
+			var completeAction = UNNotificationAction.FromIdentifier(Constants.CompleteId, "Complete", UNNotificationActionOptions.None);
                 
-				var actions = new[] { nextAction, completeAction };
-				var intentIDs = new string[] { };
+			var actions = new[] { nextAction, completeAction };
+			var intentIDs = new string[] { };
 
-				var category = UNNotificationCategory.FromIdentifier(Constants.ExerciseNotificationCategoryId, actions, intentIDs, UNNotificationCategoryOptions.CustomDismissAction);
+			var category = UNNotificationCategory.FromIdentifier(Constants.ExerciseNotificationCategoryId, actions, intentIDs, UNNotificationCategoryOptions.CustomDismissAction);
 
-				var categories = new[] { category };
-				UNUserNotificationCenter.Current.SetNotificationCategories(new NSSet<UNNotificationCategory>(categories));
-
-			}
-			else
-			{
-				var nextAction = new UIMutableUserNotificationAction
-				{
-					Identifier = Constants.NextId,
-					Title = "Change",
-					ActivationMode = UIUserNotificationActivationMode.Background,
-					Destructive = false,
-					AuthenticationRequired = false
-				};
-
-				var completeAction = new UIMutableUserNotificationAction
-				{
-					Identifier = Constants.CompleteId,
-					Title = "Complete",
-					ActivationMode = UIUserNotificationActivationMode.Background,
-					Destructive = false,
-					AuthenticationRequired = false
-				};
-
-				var unregisteredExerciseCategory = new UIMutableUserNotificationCategory
-				{
-					Identifier = Constants.ExerciseNotificationCategoryId
-				};
-
-				var nextOnlyActionArray = new UIUserNotificationAction[] { completeAction, nextAction };
-				unregisteredExerciseCategory.SetActions(nextOnlyActionArray, UIUserNotificationActionContext.Default);
-				unregisteredExerciseCategory.SetActions(nextOnlyActionArray, UIUserNotificationActionContext.Minimal);
-
-				var notificationSettings = UIUserNotificationSettings.GetSettingsForTypes(
-					UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
-					new NSSet(unregisteredExerciseCategory)
-				);
-
-				application.RegisterUserNotificationSettings(notificationSettings);
-            }
+			var categories = new[] { category };
+			UNUserNotificationCenter.Current.SetNotificationCategories(new NSSet<UNNotificationCategory>(categories));
 
 			UINavigationBar.Appearance.BarTintColor = Colors.PrimaryColor;
 			UINavigationBar.Appearance.Translucent = false;

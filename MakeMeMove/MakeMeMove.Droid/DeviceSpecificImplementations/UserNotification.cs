@@ -79,34 +79,14 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
             var changeExerciseButtonText = context.Resources.GetString(Resource.String.ChangeExerciseButtonText);
             var completedButtonText = context.Resources.GetString(Resource.String.CompletedButtonText);
 
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
-            {
-                builder
-                    .SetPriority((int) NotificationPriority.High)
-                    .SetVisibility(NotificationCompat.VisibilityPublic)
-                    .SetCategory("reminder")
-                    .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
-                    .SetColor(Color.Rgb(215, 78, 10))
-                    .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_shuffle_black_24dp, changeExerciseButtonText, nextPendingIntent))
-                    .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_done_black_24dp, completedButtonText, completedPendingIntent));
-            }
-            else if ((int)Build.VERSION.SdkInt >= 20)
-            {
-                builder
-                    .SetSmallIcon(Resource.Drawable.icon)
-                    .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_shuffle_black_24dp, changeExerciseButtonText, nextPendingIntent))
-                    .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_done_black_24dp, completedButtonText, completedPendingIntent));
-            }
-            else
-            {
-                // Disable obsolete warning 'cause this was how you do it pre-20
-#pragma warning disable 618
-                builder
-                    .SetSmallIcon(Resource.Drawable.icon)
-                    .AddAction(Resource.Drawable.ic_shuffle_white_24dp, changeExerciseButtonText, nextPendingIntent)
-                        .AddAction(Resource.Drawable.ic_done_white_24dp, completedButtonText, completedPendingIntent);
-#pragma warning restore 618
-            }
+            builder
+                .SetPriority((int) NotificationPriority.High)
+                .SetVisibility(NotificationCompat.VisibilityPublic)
+                .SetCategory("reminder")
+                .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
+                .SetColor(Color.Rgb(215, 78, 10))
+                .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_shuffle_black_24dp, changeExerciseButtonText, nextPendingIntent))
+                .AddAction(new NotificationCompat.Action(Resource.Drawable.ic_done_black_24dp, completedButtonText, completedPendingIntent));
 
             var notification = builder.Build();
 
@@ -131,22 +111,12 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                 .SetContentText(context.Resources.GetString(Resource.String.CheckHistoryNotificationMessage))
                 .SetDefaults(NotificationCompat.DefaultVibrate)
                 .SetContentIntent(clickPendingIntent)
-                .SetSound(Android.Net.Uri.Parse(PreferenceManager.GetDefaultSharedPreferences(context).GetString(context.Resources.GetString(Resource.String.NotificationSoundKey), RingtoneManager.GetDefaultUri(RingtoneType.Notification).ToString())));
-
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
-            {
-                builder
-                    .SetPriority((int)NotificationPriority.High)
-                    .SetVisibility(NotificationCompat.VisibilityPublic)
-                    .SetCategory("reminder")
-                    .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
-                    .SetColor(Color.Rgb(215, 78, 10));
-            }
-            else
-            {
-                builder
-                    .SetSmallIcon(Resource.Drawable.icon);
-            }
+                .SetSound(Android.Net.Uri.Parse(PreferenceManager.GetDefaultSharedPreferences(context).GetString(context.Resources.GetString(Resource.String.NotificationSoundKey), RingtoneManager.GetDefaultUri(RingtoneType.Notification).ToString())))
+                .SetPriority((int)NotificationPriority.High)
+                .SetVisibility(NotificationCompat.VisibilityPublic)
+                .SetCategory("reminder")
+                .SetSmallIcon(Resource.Drawable.Mmm_white_icon)
+                .SetColor(Color.Rgb(215, 78, 10));
 
             var notification = builder.Build();
 

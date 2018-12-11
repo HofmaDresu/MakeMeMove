@@ -11,13 +11,10 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
     {
         public void RequestPermissions(Context context)
         {
-
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var filePath = Path.Combine(documentsPath, Constants.NotificationPreferences);
 
-
-
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.M && !File.Exists(filePath))
+            if (!File.Exists(filePath))
             {
                 new AlertDialog.Builder(context)
                     .SetMessage(Resource.String.PermissionRequesterMessage)
