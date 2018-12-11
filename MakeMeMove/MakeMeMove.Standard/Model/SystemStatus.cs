@@ -11,5 +11,6 @@ namespace MakeMeMove.Model
         public bool IsFirstRun { get; set; }
         public bool? AskForRating_DB_ONLY { get; set; }
         public int RatingCheckTimesOpened { get; set; }
+        public bool IsMovementLocationsEnabled { get; set; }
     }
 }

@@ -358,6 +358,12 @@ namespace MakeMeMove
             return status.IsFirstRun;
         }
 
+        public bool IsMovementLocationsEnabled()
+        {
+            var status = SystemStatus.First();
+            return status.IsMovementLocationsEnabled;
+        }
+
         public void MarkFirstRun()
         {
             var status = SystemStatus.First();
