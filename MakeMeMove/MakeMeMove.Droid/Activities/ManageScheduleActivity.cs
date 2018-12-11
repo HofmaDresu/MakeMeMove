@@ -10,11 +10,12 @@ using Humanizer;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Droid.Fragments;
 using MakeMeMove.Model;
+using static Android.App.TimePickerDialog;
 
 namespace MakeMeMove.Droid.Activities
 {
     [Activity(Label = "Manage Schedule", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
-    public class ManageScheduleActivity : BaseActivity
+    public class ManageScheduleActivity : BaseActivity, IOnTimeSetListener
     {
         private Spinner _scheduleTypeSpinner;
         private Spinner _reminderPeriodSpinner;
@@ -28,7 +29,16 @@ namespace MakeMeMove.Droid.Activities
         private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
         private readonly UserNotification _userNotification = new UserNotification();
         private ExerciseSchedule _exerciseSchedule;
-        
+
+        private enum TimePickerType
+        {
+            None, Start, End
+        }
+
+        //TODO: Save and restore
+        private TimePickerType _selectedPicker = TimePickerType.None;
+        private DateTime _selectedStartTime;
+        private DateTime _selectedEndTime;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -62,6 +72,8 @@ namespace MakeMeMove.Droid.Activities
             _scheduleTypeSpinner.SetSelection((int)_exerciseSchedule.Type);
             _startTimeText.Text = _exerciseSchedule.StartTime.ToShortTimeString();
             _endTimeText.Text = _exerciseSchedule.EndTime.ToShortTimeString();
+            _selectedStartTime = _exerciseSchedule.StartTime;
+            _selectedEndTime = _exerciseSchedule.EndTime;
         }
 
         private void InitializePickers()
@@ -78,12 +90,14 @@ namespace MakeMeMove.Droid.Activities
 
         private void _startTimeContainer_Click(object sender, EventArgs e)
         {
-            new TimePickerFragment(_exerciseSchedule.StartTime.Hour, _exerciseSchedule.StartTime.Minute).Show(SupportFragmentManager, "StartTimePicker");
+            _selectedPicker = TimePickerType.Start;
+            new TimePickerFragment(_selectedStartTime.Hour, _selectedStartTime.Minute).Show(SupportFragmentManager, "StartTimePicker");
         }
 
         private void _endTimeContainer_Click(object sender, EventArgs e)
         {
-            new TimePickerFragment(_exerciseSchedule.EndTime.Hour, _exerciseSchedule.EndTime.Minute).Show(SupportFragmentManager, "EndTimePicker");
+            _selectedPicker = TimePickerType.End;
+            new TimePickerFragment(_selectedEndTime.Hour, _selectedEndTime.Minute).Show(SupportFragmentManager, "EndTimePicker");
         }
 
         private void SaveData()
@@ -91,23 +105,46 @@ namespace MakeMeMove.Droid.Activities
             _exerciseSchedule.Period = (SchedulePeriod)_reminderPeriodSpinner.SelectedItemPosition;
             _exerciseSchedule.Type = (ScheduleType)_scheduleTypeSpinner.SelectedItemPosition;
 
-            var startTime = _exerciseSchedule.StartTime; //TODO
-            var endTime = _exerciseSchedule.EndTime; //TODO
 
-            if (startTime >= endTime)
+            if (_selectedStartTime >= _selectedEndTime)
             {
                 _userNotification.ShowValidationErrorPopUp(this, Resource.String.TimeRangeValidation);
                 return;
             }
 
-            _exerciseSchedule.StartTime = startTime;
-            _exerciseSchedule.EndTime = endTime;
+            _exerciseSchedule.StartTime = _selectedStartTime;
+            _exerciseSchedule.EndTime = _selectedEndTime;
 
             Data.SaveExerciseSchedule(_exerciseSchedule);
             _exerciseSchedule = Data.GetExerciseSchedule();
             _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
 
             Finish();
+        }
+
+        public void OnTimeSet(TimePicker view, int hourOfDay, int minute)
+        {
+            try
+            {
+                switch (_selectedPicker)
+                {
+                    case TimePickerType.Start:
+                        _selectedStartTime = new DateTime(_selectedStartTime.Year, _selectedStartTime.Month, _selectedStartTime.Day, hourOfDay, minute, 0);
+                        _startTimeText.Text = _selectedStartTime.ToShortTimeString();
+                        break;
+                    case TimePickerType.End:
+                        _selectedEndTime = new DateTime(_selectedEndTime.Year, _selectedEndTime.Month, _selectedEndTime.Day, hourOfDay, minute, 0);
+                        _endTimeText.Text = _selectedEndTime.ToShortTimeString();
+                        break;
+                    case TimePickerType.None:
+                    default:
+                        break;
+                }
+            }
+            finally
+            {
+                _selectedPicker = TimePickerType.None;
+            }
         }
     }
 }
