@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\Unit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakeMeMove.iOS", "MakeMeMove\MakeMeMove.iOS\MakeMeMove.iOS.csproj", "{5E03E56F-7369-4A62-BF3E-4664616BA84D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakeMeMove.Standard", "MakeMeMove.Standard\MakeMeMove.Standard.csproj", "{30399057-CFE7-44F6-BE7A-F4A68E8054FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakeMeMove.Standard", "MakeMeMove\MakeMeMove.Standard\MakeMeMove.Standard.csproj", "{30399057-CFE7-44F6-BE7A-F4A68E8054FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -476,7 +476,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\Icon_round.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MakeMeMove.Standard\MakeMeMove.Standard.csproj">
+    <ProjectReference Include="..\MakeMeMove.Standard\MakeMeMove.Standard.csproj">
       <Project>{30399057-cfe7-44f6-be7a-f4a68e8054fe}</Project>
       <Name>MakeMeMove.Standard</Name>
     </ProjectReference>
