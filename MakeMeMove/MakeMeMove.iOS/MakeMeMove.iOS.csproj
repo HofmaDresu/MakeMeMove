@@ -314,12 +314,6 @@
     <Compile Include="Controls\StatusBarColorUIView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MakeMeMove\MakeMeMove.csproj">
-      <Project>{5AA8D4B0-CE11-4B5C-973D-0DA253DF45B0}</Project>
-      <Name>MakeMeMove</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
@@ -337,6 +331,12 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_menu_white_3x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MakeMeMove.Standard\MakeMeMove.Standard.csproj">
+      <Project>{30399057-cfe7-44f6-be7a-f4a68e8054fe}</Project>
+      <Name>MakeMeMove.Standard</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
