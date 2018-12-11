@@ -364,6 +364,13 @@ namespace MakeMeMove
             return status.IsMovementLocationsEnabled;
         }
 
+        public void SetMovementLocationsEnabled(bool isEnabled)
+        {
+            var status = SystemStatus.First();
+            status.IsMovementLocationsEnabled = isEnabled;
+            _db.Update(status);
+        }
+
         public void MarkFirstRun()
         {
             var status = SystemStatus.First();
@@ -413,11 +420,6 @@ namespace MakeMeMove
         public void InsertMovementLocation(MovementLocation newMovementLocation)
         {
             _db.Insert(newMovementLocation);
-        }
-
-        public void UpdateMovementLocation(MovementLocation movementLocationToUpdate)
-        {
-            _db.Update(movementLocationToUpdate);
         }
         #endregion
     }
