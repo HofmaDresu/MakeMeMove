@@ -25,6 +25,7 @@ namespace MakeMeMove.Droid.Activities
         private TextView _startTimeText;
         private View _endTimeContainer;
         private TextView _endTimeText;
+        private CheckBox _movementLocationsEnabledCheckbox;
         private List<MovementLocation> _initialMovementLocations;
         private List<MovementLocation> _updatedMovementLocations;
 
@@ -57,6 +58,7 @@ namespace MakeMeMove.Droid.Activities
             _startTimeText = FindViewById<TextView>(Resource.Id.StartTimeText);
             _endTimeContainer = FindViewById(Resource.Id.EndTimeContainer);
             _endTimeText = FindViewById<TextView>(Resource.Id.EndTimeText);
+            _movementLocationsEnabledCheckbox = FindViewById<CheckBox>(Resource.Id.MovementLocationsEnabledCheckbox);
 
 
             InitializePickers();
@@ -75,6 +77,7 @@ namespace MakeMeMove.Droid.Activities
             _endTimeText.Text = _exerciseSchedule.EndTime.ToShortTimeString();
             _selectedStartTime = _exerciseSchedule.StartTime;
             _selectedEndTime = _exerciseSchedule.EndTime;
+            _movementLocationsEnabledCheckbox.Checked = Data.IsMovementLocationsEnabled();
         }
 
         private void InitializePickers()
@@ -119,6 +122,7 @@ namespace MakeMeMove.Droid.Activities
             Data.SaveExerciseSchedule(_exerciseSchedule);
             _exerciseSchedule = Data.GetExerciseSchedule();
             _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
+            Data.SetMovementLocationsEnabled(_movementLocationsEnabledCheckbox.Checked);
 
             Finish();
         }
