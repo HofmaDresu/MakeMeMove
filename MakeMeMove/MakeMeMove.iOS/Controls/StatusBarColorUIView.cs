@@ -16,7 +16,7 @@ namespace MakeMeMove.iOS.Controls
         private static nfloat GetHeight() 
 		{
 			var mainWindow = UIApplication.SharedApplication.Delegate.GetWindow();
-			if(UIDevice.CurrentDevice.CheckSystemVersion(11, 0) && mainWindow.SafeAreaInsets.Top > 0) 
+			if(mainWindow.SafeAreaInsets.Top > 0) 
 			{
 				return 50;
 			}

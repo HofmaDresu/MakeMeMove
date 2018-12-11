@@ -1,8 +1,6 @@
 ﻿using System;
 using Foundation;
 using MakeMeMove.Model;
-using UIKit;
-using MakeMeMove.iOS.ExtensionMethods;
 using UserNotifications;
 using Humanizer;
 
@@ -30,78 +28,53 @@ namespace MakeMeMove.iOS
             var soundString = defaults.StringForKey(Constants.UserDefaultsNotificationSoundsKey);
             var soundEnum = soundString.DehumanizeTo<Constants.NotificationSounds>();
 
-            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
-            {
-                UNUserNotificationCenter.Current.GetNotificationSettings(settings =>
-				{
-					var alertsAllowed = (settings.AlertSetting == UNNotificationSetting.Enabled);
-					if (!alertsAllowed) return;
-
-                    var content = new UNMutableNotificationContent
-                    {
-                        Title = "Time to Move",
-                        Body = $"It's time to do {nextExercise.Quantity} {nextExercise.CombinedName}",
-                        Badge = -1,
-                        CategoryIdentifier = Constants.ExerciseNotificationCategoryId,
-                        UserInfo = notificationDictionary,
-                        Sound = UNNotificationSound.GetSound(Constants.NotificaitonSoundsMap[soundEnum])
-                    };
-
-				    UNNotificationTrigger trigger;
-				    string requestId;
-
-				    if (isInstant)
-                    {
-                        trigger = UNTimeIntervalNotificationTrigger.CreateTrigger(3, false);
-                        requestId = "exerciseNotification_Instant";
-                    }
-				    else
-                    {
-
-                        var dateComponants = new NSDateComponents
-                        {
-                            Hour = notificationDate.Hour,
-                            Minute = notificationDate.Minute,
-                            Second = notificationDate.Second
-                        };
-                        trigger = UNCalendarNotificationTrigger.CreateTrigger(dateComponants, true);
-                        requestId = $"exerciseNotification_{dateComponants.Hour}:{dateComponants.Minute}:{dateComponants.Second}";
-                    }
-
-					var request = UNNotificationRequest.FromIdentifier(requestId, content, trigger);
-
-					UNUserNotificationCenter.Current.AddNotificationRequest(request, err =>
-					{
-						if (err != null)
-						{
-							// Do something with error...
-						}
-					});
-
-				});
-			}
-			else
+            UNUserNotificationCenter.Current.GetNotificationSettings(settings =>
 			{
-				var notification = new UILocalNotification
-				{
-					AlertAction = "Time to Move",
-					AlertBody = $"It's time to do {nextExercise.Quantity} {nextExercise.CombinedName}",
-					FireDate = notificationDate.ToNSDate(),
-					SoundName = soundEnum == Constants.NotificationSounds.SystemDefault ? UILocalNotification.DefaultSoundName : Constants.NotificaitonSoundsMap[soundEnum],
-					TimeZone = NSTimeZone.LocalTimeZone,
-					ApplicationIconBadgeNumber = -1,
-					Category = Constants.ExerciseNotificationCategoryId,
-					UserInfo = notificationDictionary,
-					AlertTitle = "Time to Move"
-				};
+				var alertsAllowed = (settings.AlertSetting == UNNotificationSetting.Enabled);
+				if (!alertsAllowed) return;
 
-				if (isRecurring)
-				{
-					notification.RepeatInterval = NSCalendarUnit.Day;
-				}
+                var content = new UNMutableNotificationContent
+                {
+                    Title = "Time to Move",
+                    Body = $"It's time to do {nextExercise.Quantity} {nextExercise.CombinedName}",
+                    Badge = -1,
+                    CategoryIdentifier = Constants.ExerciseNotificationCategoryId,
+                    UserInfo = notificationDictionary,
+                    Sound = UNNotificationSound.GetSound(Constants.NotificaitonSoundsMap[soundEnum])
+                };
 
-				UIApplication.SharedApplication.ScheduleLocalNotification(notification);
-			}
+				UNNotificationTrigger trigger;
+				string requestId;
+
+				if (isInstant)
+                {
+                    trigger = UNTimeIntervalNotificationTrigger.CreateTrigger(3, false);
+                    requestId = "exerciseNotification_Instant";
+                }
+				else
+                {
+
+                    var dateComponants = new NSDateComponents
+                    {
+                        Hour = notificationDate.Hour,
+                        Minute = notificationDate.Minute,
+                        Second = notificationDate.Second
+                    };
+                    trigger = UNCalendarNotificationTrigger.CreateTrigger(dateComponants, true);
+                    requestId = $"exerciseNotification_{dateComponants.Hour}:{dateComponants.Minute}:{dateComponants.Second}";
+                }
+
+				var request = UNNotificationRequest.FromIdentifier(requestId, content, trigger);
+
+				UNUserNotificationCenter.Current.AddNotificationRequest(request, err =>
+				{
+					if (err != null)
+					{
+						// Do something with error...
+					}
+				});
+
+			});
 		}
 	}
 }
