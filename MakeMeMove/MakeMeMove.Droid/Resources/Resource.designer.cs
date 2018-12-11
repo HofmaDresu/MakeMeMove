@@ -2188,8 +2188,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07006b
 			public const int DeleteButton = 2131165291;
 			
-			// aapt resource value: 0x7f0700a7
-			public const int DeleteHistory = 2131165351;
+			// aapt resource value: 0x7f0700a8
+			public const int DeleteHistory = 2131165352;
 			
 			// aapt resource value: 0x7f070070
 			public const int DrawerLayout = 2131165296;
@@ -2232,6 +2232,9 @@ namespace MakeMeMove.Droid
 			
 			// aapt resource value: 0x7f070083
 			public const int ManageScheduleButton = 2131165315;
+			
+			// aapt resource value: 0x7f07008d
+			public const int MovementLocationsEnabledCheckbox = 2131165325;
 			
 			// aapt resource value: 0x7f070082
 			public const int ReminderPeriodText = 2131165314;
@@ -2299,8 +2302,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070073
 			public const int ViewTotalsButton = 2131165299;
 			
-			// aapt resource value: 0x7f070090
-			public const int action0 = 2131165328;
+			// aapt resource value: 0x7f070091
+			public const int action0 = 2131165329;
 			
 			// aapt resource value: 0x7f070058
 			public const int action_bar = 2131165272;
@@ -2323,17 +2326,17 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070036
 			public const int action_bar_title = 2131165238;
 			
-			// aapt resource value: 0x7f07008d
-			public const int action_container = 2131165325;
+			// aapt resource value: 0x7f07008e
+			public const int action_container = 2131165326;
 			
 			// aapt resource value: 0x7f070059
 			public const int action_context_bar = 2131165273;
 			
-			// aapt resource value: 0x7f070094
-			public const int action_divider = 2131165332;
+			// aapt resource value: 0x7f070095
+			public const int action_divider = 2131165333;
 			
-			// aapt resource value: 0x7f07008e
-			public const int action_image = 2131165326;
+			// aapt resource value: 0x7f07008f
+			public const int action_image = 2131165327;
 			
 			// aapt resource value: 0x7f070003
 			public const int action_menu_divider = 2131165187;
@@ -2350,11 +2353,11 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070038
 			public const int action_mode_close_button = 2131165240;
 			
-			// aapt resource value: 0x7f07008f
-			public const int action_text = 2131165327;
+			// aapt resource value: 0x7f070090
+			public const int action_text = 2131165328;
 			
-			// aapt resource value: 0x7f07009d
-			public const int actions = 2131165341;
+			// aapt resource value: 0x7f07009e
+			public const int actions = 2131165342;
 			
 			// aapt resource value: 0x7f070039
 			public const int activity_chooser_view_content = 2131165241;
@@ -2383,14 +2386,14 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07003f
 			public const int buttonPanel = 2131165247;
 			
-			// aapt resource value: 0x7f070091
-			public const int cancel_action = 2131165329;
+			// aapt resource value: 0x7f070092
+			public const int cancel_action = 2131165330;
 			
 			// aapt resource value: 0x7f07004f
 			public const int checkbox = 2131165263;
 			
-			// aapt resource value: 0x7f070099
-			public const int chronometer = 2131165337;
+			// aapt resource value: 0x7f07009a
+			public const int chronometer = 2131165338;
 			
 			// aapt resource value: 0x7f07002c
 			public const int collapseActionView = 2131165228;
@@ -2422,8 +2425,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070023
 			public const int end = 2131165219;
 			
-			// aapt resource value: 0x7f07009f
-			public const int end_padder = 2131165343;
+			// aapt resource value: 0x7f0700a0
+			public const int end_padder = 2131165344;
 			
 			// aapt resource value: 0x7f07003a
 			public const int expand_activities_button = 2131165242;
@@ -2446,11 +2449,11 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07003e
 			public const int icon = 2131165246;
 			
-			// aapt resource value: 0x7f0700a0
-			public const int icon_frame = 2131165344;
+			// aapt resource value: 0x7f0700a1
+			public const int icon_frame = 2131165345;
 			
-			// aapt resource value: 0x7f07009e
-			public const int icon_group = 2131165342;
+			// aapt resource value: 0x7f07009f
+			public const int icon_group = 2131165343;
 			
 			// aapt resource value: 0x7f07002d
 			public const int ifRoom = 2131165229;
@@ -2458,8 +2461,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07003b
 			public const int image = 2131165243;
 			
-			// aapt resource value: 0x7f07009a
-			public const int info = 2131165338;
+			// aapt resource value: 0x7f07009b
+			public const int info = 2131165339;
 			
 			// aapt resource value: 0x7f070035
 			public const int italic = 2131165237;
@@ -2473,8 +2476,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07000b
 			public const int line3 = 2131165195;
 			
-			// aapt resource value: 0x7f0700a2
-			public const int list = 2131165346;
+			// aapt resource value: 0x7f0700a3
+			public const int list = 2131165347;
 			
 			// aapt resource value: 0x7f070010
 			public const int listMode = 2131165200;
@@ -2482,11 +2485,11 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07003d
 			public const int list_item = 2131165245;
 			
-			// aapt resource value: 0x7f070093
-			public const int media_actions = 2131165331;
+			// aapt resource value: 0x7f070094
+			public const int media_actions = 2131165332;
 			
-			// aapt resource value: 0x7f0700a6
-			public const int message = 2131165350;
+			// aapt resource value: 0x7f0700a7
+			public const int message = 2131165351;
 			
 			// aapt resource value: 0x7f070024
 			public const int middle = 2131165220;
@@ -2503,14 +2506,14 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070011
 			public const int normal = 2131165201;
 			
-			// aapt resource value: 0x7f07009c
-			public const int notification_background = 2131165340;
+			// aapt resource value: 0x7f07009d
+			public const int notification_background = 2131165341;
+			
+			// aapt resource value: 0x7f070097
+			public const int notification_main_column = 2131165335;
 			
 			// aapt resource value: 0x7f070096
-			public const int notification_main_column = 2131165334;
-			
-			// aapt resource value: 0x7f070095
-			public const int notification_main_column_container = 2131165333;
+			public const int notification_main_column_container = 2131165334;
 			
 			// aapt resource value: 0x7f070041
 			public const int parentPanel = 2131165249;
@@ -2524,11 +2527,11 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070051
 			public const int radio = 2131165265;
 			
-			// aapt resource value: 0x7f07009b
-			public const int right_icon = 2131165339;
+			// aapt resource value: 0x7f07009c
+			public const int right_icon = 2131165340;
 			
-			// aapt resource value: 0x7f070097
-			public const int right_side = 2131165335;
+			// aapt resource value: 0x7f070098
+			public const int right_side = 2131165336;
 			
 			// aapt resource value: 0x7f07001c
 			public const int screen = 2131165212;
@@ -2572,17 +2575,17 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070065
 			public const int search_voice_btn = 2131165285;
 			
-			// aapt resource value: 0x7f0700a3
-			public const int seekbar = 2131165347;
-			
 			// aapt resource value: 0x7f0700a4
-			public const int seekbar_value = 2131165348;
+			public const int seekbar = 2131165348;
+			
+			// aapt resource value: 0x7f0700a5
+			public const int seekbar_value = 2131165349;
 			
 			// aapt resource value: 0x7f070066
 			public const int select_dialog_listview = 2131165286;
 			
-			// aapt resource value: 0x7f0700a8
-			public const int settings_menu = 2131165352;
+			// aapt resource value: 0x7f0700a9
+			public const int settings_menu = 2131165353;
 			
 			// aapt resource value: 0x7f070050
 			public const int shortcut = 2131165264;
@@ -2599,8 +2602,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070040
 			public const int spacer = 2131165248;
 			
-			// aapt resource value: 0x7f0700a1
-			public const int spinner = 2131165345;
+			// aapt resource value: 0x7f0700a2
+			public const int spinner = 2131165346;
 			
 			// aapt resource value: 0x7f070008
 			public const int split_action_bar = 2131165192;
@@ -2614,8 +2617,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f07001f
 			public const int src_over = 2131165215;
 			
-			// aapt resource value: 0x7f070092
-			public const int status_bar_latest_event_content = 2131165330;
+			// aapt resource value: 0x7f070093
+			public const int status_bar_latest_event_content = 2131165331;
 			
 			// aapt resource value: 0x7f070052
 			public const int submenuarrow = 2131165266;
@@ -2623,8 +2626,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070063
 			public const int submit_area = 2131165283;
 			
-			// aapt resource value: 0x7f0700a5
-			public const int switchWidget = 2131165349;
+			// aapt resource value: 0x7f0700a6
+			public const int switchWidget = 2131165350;
 			
 			// aapt resource value: 0x7f070012
 			public const int tabMode = 2131165202;
@@ -2644,8 +2647,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f070045
 			public const int textSpacerNoTitle = 2131165253;
 			
-			// aapt resource value: 0x7f070098
-			public const int time = 2131165336;
+			// aapt resource value: 0x7f070099
+			public const int time = 2131165337;
 			
 			// aapt resource value: 0x7f07000f
 			public const int title = 2131165199;
@@ -3050,6 +3053,9 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f09005c
 			public const int MarketFailure = 2131296348;
 			
+			// aapt resource value: 0x7f090063
+			public const int MovementLocationsLabel = 2131296355;
+			
 			// aapt resource value: 0x7f090037
 			public const int No = 2131296311;
 			
@@ -3239,8 +3245,8 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f09002a
 			public const int cancel = 2131296298;
 			
-			// aapt resource value: 0x7f090064
-			public const int close_app = 2131296356;
+			// aapt resource value: 0x7f090065
+			public const int close_app = 2131296357;
 			
 			// aapt resource value: 0x7f090026
 			public const int log_in = 2131296294;
@@ -3251,32 +3257,32 @@ namespace MakeMeMove.Droid
 			// aapt resource value: 0x7f090029
 			public const int log_out = 2131296297;
 			
-			// aapt resource value: 0x7f090069
-			public const int never = 2131296361;
+			// aapt resource value: 0x7f09006a
+			public const int never = 2131296362;
 			
-			// aapt resource value: 0x7f090068
-			public const int not_now = 2131296360;
+			// aapt resource value: 0x7f090069
+			public const int not_now = 2131296361;
 			
 			// aapt resource value: 0x7f090028
 			public const int password = 2131296296;
 			
-			// aapt resource value: 0x7f090066
-			public const int rate_message = 2131296358;
+			// aapt resource value: 0x7f090067
+			public const int rate_message = 2131296359;
 			
-			// aapt resource value: 0x7f090065
-			public const int rate_title = 2131296357;
+			// aapt resource value: 0x7f090066
+			public const int rate_title = 2131296358;
 			
 			// aapt resource value: 0x7f090013
 			public const int search_menu_title = 2131296275;
 			
-			// aapt resource value: 0x7f090063
-			public const int settings_label = 2131296355;
+			// aapt resource value: 0x7f090064
+			public const int settings_label = 2131296356;
 			
 			// aapt resource value: 0x7f090020
 			public const int status_bar_notification_info_overflow = 2131296288;
 			
-			// aapt resource value: 0x7f090067
-			public const int sure = 2131296359;
+			// aapt resource value: 0x7f090068
+			public const int sure = 2131296360;
 			
 			// aapt resource value: 0x7f090027
 			public const int username = 2131296295;

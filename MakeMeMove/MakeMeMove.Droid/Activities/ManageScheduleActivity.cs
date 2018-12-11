@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
@@ -7,6 +8,7 @@ using Android.Widget;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Droid.Fragments;
 using MakeMeMove.Model;
+using MakeMeMove.Standard.Model;
 using static Android.App.TimePickerDialog;
 
 namespace MakeMeMove.Droid.Activities
@@ -23,6 +25,8 @@ namespace MakeMeMove.Droid.Activities
         private TextView _startTimeText;
         private View _endTimeContainer;
         private TextView _endTimeText;
+        private List<MovementLocation> _initialMovementLocations;
+        private List<MovementLocation> _updatedMovementLocations;
 
         private readonly ExerciseServiceManager _serviceManager = new ExerciseServiceManager();
         private readonly UserNotification _userNotification = new UserNotification();

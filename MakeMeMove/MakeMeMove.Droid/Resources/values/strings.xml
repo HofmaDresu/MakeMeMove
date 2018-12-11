@@ -63,4 +63,5 @@
   <string name="CheckHistoryNotificationTitle">Check Today\'s Progress</string>
   <string name="CheckHistoryNotificationMessage">Tap to see how you did today</string>
   <string name="NotificationSoundSettingTitle">Notification Sound</string>
+  <string name="MovementLocationsLabel">Movement Locations</string>
 </resources>
