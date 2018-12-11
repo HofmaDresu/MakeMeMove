@@ -8,6 +8,7 @@ using Android.Views;
 using Android.Widget;
 using Humanizer;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
+using MakeMeMove.Droid.Fragments;
 using MakeMeMove.Model;
 
 namespace MakeMeMove.Droid.Activities
@@ -77,12 +78,12 @@ namespace MakeMeMove.Droid.Activities
 
         private void _startTimeContainer_Click(object sender, EventArgs e)
         {
-            //TODO
+            new TimePickerFragment().Show(SupportFragmentManager, "StartTimePicker");
         }
 
         private void _endTimeContainer_Click(object sender, EventArgs e)
         {
-            //TODO
+            new TimePickerFragment().Show(SupportFragmentManager, "EndTimePicker");
         }
 
         private void SaveData()
