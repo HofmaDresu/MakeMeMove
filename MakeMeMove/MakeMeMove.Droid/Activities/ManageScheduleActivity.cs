@@ -1,12 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using Humanizer;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Droid.Fragments;
 using MakeMeMove.Model;
@@ -17,6 +14,7 @@ namespace MakeMeMove.Droid.Activities
     [Activity(Label = "Manage Schedule", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
     public class ManageScheduleActivity : BaseActivity, IOnTimeSetListener
     {
+        private const string SELECTED_PICKER_BUNDLE_KEY = "selected_picker";
         private Spinner _scheduleTypeSpinner;
         private Spinner _reminderPeriodSpinner;
         private Button _saveButton;
@@ -35,7 +33,6 @@ namespace MakeMeMove.Droid.Activities
             None, Start, End
         }
 
-        //TODO: Save and restore
         private TimePickerType _selectedPicker = TimePickerType.None;
         private DateTime _selectedStartTime;
         private DateTime _selectedEndTime;
@@ -84,17 +81,17 @@ namespace MakeMeMove.Droid.Activities
             _reminderPeriodSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, periodList);
             _scheduleTypeSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, scheduleTypeList);
 
-            _startTimeContainer.Click += _startTimeContainer_Click;
-            _endTimeContainer.Click += _endTimeContainer_Click;
+            _startTimeContainer.Click += StartTimeContainer_Click;
+            _endTimeContainer.Click += EndTimeContainer_Click;
         }
 
-        private void _startTimeContainer_Click(object sender, EventArgs e)
+        private void StartTimeContainer_Click(object sender, EventArgs e)
         {
             _selectedPicker = TimePickerType.Start;
             new TimePickerFragment(_selectedStartTime.Hour, _selectedStartTime.Minute).Show(SupportFragmentManager, "StartTimePicker");
         }
 
-        private void _endTimeContainer_Click(object sender, EventArgs e)
+        private void EndTimeContainer_Click(object sender, EventArgs e)
         {
             _selectedPicker = TimePickerType.End;
             new TimePickerFragment(_selectedEndTime.Hour, _selectedEndTime.Minute).Show(SupportFragmentManager, "EndTimePicker");
@@ -145,6 +142,18 @@ namespace MakeMeMove.Droid.Activities
             {
                 _selectedPicker = TimePickerType.None;
             }
+        }
+
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            base.OnSaveInstanceState(outState);
+            outState.PutInt(SELECTED_PICKER_BUNDLE_KEY, (int)_selectedPicker);
+        }
+
+        protected override void OnRestoreInstanceState(Bundle savedInstanceState)
+        {
+            base.OnRestoreInstanceState(savedInstanceState);
+            _selectedPicker = (TimePickerType)savedInstanceState.GetInt(SELECTED_PICKER_BUNDLE_KEY);
         }
     }
 }
