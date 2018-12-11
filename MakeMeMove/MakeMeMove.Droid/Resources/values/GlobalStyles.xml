@@ -10,6 +10,7 @@
     <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
   </style>
   <style name="CustomSpinner" parent="android:Widget.Holo.Light.Spinner">
+    <item name="android:padding">0dp</item>
   </style>
   <style name="TopMarginedLayoutElement">
     <item name="android:layout_width">match_parent</item>
