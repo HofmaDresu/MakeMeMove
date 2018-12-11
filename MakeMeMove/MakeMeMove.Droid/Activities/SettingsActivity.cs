@@ -22,7 +22,7 @@ namespace MakeMeMove.Droid.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            FragmentManager.BeginTransaction().Replace(Android.Resource.Id.Content, new SettingsFragment()).Commit();
+            SupportFragmentManager.BeginTransaction().Replace(Android.Resource.Id.Content, new SettingsFragment()).Commit();
 
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
         }

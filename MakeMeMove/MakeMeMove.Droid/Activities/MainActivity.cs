@@ -72,7 +72,7 @@ namespace MakeMeMove.Droid.Activities
             _permissionRequester.RequestPermissions(this);
 
             _viewPager = FindViewById<ViewPager>(Resource.Id.ViewPager);
-            _viewPager.Adapter = new MainFragmentAdapter(FragmentManager, this);
+            _viewPager.Adapter = new MainFragmentAdapter(SupportFragmentManager, this);
             _viewPager.PageSelected += ViewPager_PageSelected;
 
             _scheduleLayout.Click += (sender, args) => _viewPager.SetCurrentItem(0, true);

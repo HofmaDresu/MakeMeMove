@@ -42,7 +42,7 @@ namespace MakeMeMove.Droid.Activities
                 _notifiedExerciseId = Intent.GetIntExtra(Constants.ExerciseId, -1);
             }
 
-            var adapter = new ExerciseHistoryFragmentAdapter(FragmentManager);
+            var adapter = new ExerciseHistoryFragmentAdapter(SupportFragmentManager);
 
             _pager = FindViewById<ViewPager>(Resource.Id.historyPager);
             _pager.Adapter = adapter;
@@ -105,7 +105,7 @@ namespace MakeMeMove.Droid.Activities
         private void UpdateData()
         {
             var currentPosition = _pager.CurrentItem;
-            var adapter = new ExerciseHistoryFragmentAdapter(FragmentManager);
+            var adapter = new ExerciseHistoryFragmentAdapter(SupportFragmentManager);
             
             _pager.Adapter = adapter;
             _pager.SetCurrentItem(currentPosition, false);

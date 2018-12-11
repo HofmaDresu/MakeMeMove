@@ -19,5 +19,7 @@ namespace MakeMeMove.Droid
 
         public const string ExerciseNotificationChannelId = "ExerciseNotificationChannelId";
         public const string TodaysProgressNotificationChannelId = "TodaysProgressNotificationChannelId";
+
+        public const int NotificationSoundRequestCode = 2;
     }
 }
