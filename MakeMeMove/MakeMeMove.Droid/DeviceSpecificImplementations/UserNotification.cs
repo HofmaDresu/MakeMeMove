@@ -10,6 +10,9 @@ using MakeMeMove.Model;
 using TaskStackBuilder = Android.App.TaskStackBuilder;
 using Android.Preferences;
 using Android.Media;
+using System.Linq;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace MakeMeMove.Droid.DeviceSpecificImplementations
 {
@@ -36,10 +39,39 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                 .Show();
         }
 
-        public static void CreateExerciseNotification(Data data, Context context)
+        public static async Task CreateExerciseNotification(Data data, Context context)
         {
-            var nextExercise = data.GetNextEnabledExercise();
-            CreateExerciseNotification(data, context, nextExercise);
+            var showExerciseNotificaiton = false;
+
+            try
+            {
+                var isMovementLocationsEnabled = data.IsMovementLocationsEnabled();
+
+                if (isMovementLocationsEnabled)
+                {
+                    var movementLocations = data.GetMovementLocations();
+                    var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
+                    var inMovementLocation = movementLocations.Any(ml => Location.CalculateDistance(lastKnownLocation, new Location(ml.GeoCoordinate.Latitude, ml.GeoCoordinate.Longitude), DistanceUnits.Miles) < .2);
+
+                    // We shouldn't hide notifications if no locations are set
+                    showExerciseNotificaiton = inMovementLocation || !movementLocations.Any();
+                }
+                else
+                {
+                    showExerciseNotificaiton = true;
+                }
+            }
+            catch (Exception)
+            {
+                showExerciseNotificaiton = true;
+            }
+
+            if (showExerciseNotificaiton)
+            {
+                var nextExercise = data.GetNextEnabledExercise();
+                CreateExerciseNotification(data, context, nextExercise);
+
+            }
         }
 
         public static void CreateExerciseNotification(Data data, Context context, ExerciseBlock nextExercise)
