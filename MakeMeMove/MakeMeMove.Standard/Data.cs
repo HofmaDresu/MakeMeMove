@@ -412,14 +412,17 @@ namespace MakeMeMove
             return MovementLocations.ToList();
         }
 
-        public void DeleteMovementLocationBlock(int id)
+        public void DeleteAllMovementLocations(IEnumerable<int> ids)
         {
-            _db.Delete<MovementLocation>(id);
+            foreach (var id in ids)
+            {
+                _db.Delete<MovementLocation>(id);
+            }
         }
 
-        public void InsertMovementLocation(MovementLocation newMovementLocation)
+        public void InsertAllMovementLocations(IEnumerable<MovementLocation> newMovementLocations)
         {
-            _db.Insert(newMovementLocation);
+            _db.InsertAll(newMovementLocations);
         }
         #endregion
     }
