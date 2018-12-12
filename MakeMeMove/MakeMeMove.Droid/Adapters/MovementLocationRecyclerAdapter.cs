@@ -9,7 +9,14 @@ namespace MakeMeMove.Droid.Adapters
 {
     public class MovementLocationRecyclerAdapter : RecyclerView.Adapter
     {
+        enum ViewTypes
+        {
+            MovementLocation,
+            AddItem
+        }
+
         public EventHandler<int> DeleteMovementLocationClicked;
+        public EventHandler AddMovementLocationClicked;
         private List<MovementLocation> _movementLocationList;
 
         public MovementLocationRecyclerAdapter(List<MovementLocation> movementLocationList)
@@ -24,21 +31,39 @@ namespace MakeMeMove.Droid.Adapters
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            var viewHolder = (MovementLocationListViewHolder) holder;
-            var currentMovementLocation = _movementLocationList[position];
+            if (holder is MovementLocationListViewHolder viewHolder)
+            {
+                var currentMovementLocation = _movementLocationList[position];
 
-            viewHolder.LocationName.Text = currentMovementLocation.Name;
+                viewHolder.LocationName.Text = currentMovementLocation.Name;
+            }
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             var inflater = LayoutInflater.From(parent.Context);
-            var view = inflater.Inflate(Resource.Layout.MovementLocationListItem, parent, false);
-            var exerciseListViewHolder = new MovementLocationListViewHolder(view);
-            exerciseListViewHolder.DeleteExerciseClicked += (sender, i) => DeleteMovementLocationClicked?.Invoke(sender, _movementLocationList[i].Id);
-            return exerciseListViewHolder;
+
+            if (((ViewTypes)viewType) == ViewTypes.MovementLocation)
+            {
+                var view = inflater.Inflate(Resource.Layout.MovementLocationListItem, parent, false);
+                var movementLocationViewHolder = new MovementLocationListViewHolder(view);
+                movementLocationViewHolder.DeleteMovementLocationClicked += (sender, i) => DeleteMovementLocationClicked?.Invoke(sender, _movementLocationList[i].Id);
+                return movementLocationViewHolder;
+            }
+            else
+            {
+                var view = inflater.Inflate(Resource.Layout.AddMovementLocationListItem, parent, false);
+                var addMovementLocationViewHolder = new AddMovementLocationListViewHolder(view);
+                addMovementLocationViewHolder.AddMovementLocationClicked += (sender, args) => AddMovementLocationClicked?.Invoke(sender, args);
+                return addMovementLocationViewHolder;
+            }
         }
 
-        public override int ItemCount => _movementLocationList.Count;
+        public override int GetItemViewType(int position)
+        {
+            return (int)(position+1 < ItemCount ? ViewTypes.MovementLocation : ViewTypes.AddItem);
+        }
+
+        public override int ItemCount => _movementLocationList.Count + 1;
     }
 }

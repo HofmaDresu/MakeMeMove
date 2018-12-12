@@ -93,14 +93,6 @@
         android:id="@+id/MovementLocationsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-      <TextView
-        android:id="@+id/AddMovementLocationText"
-        android:text="@string/AddMovementLocationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="8dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/InteractibleTextColor" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"

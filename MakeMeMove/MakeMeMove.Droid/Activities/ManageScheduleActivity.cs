@@ -4,7 +4,6 @@ using System.Linq;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Android.Support.V4.App;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
@@ -33,7 +32,6 @@ namespace MakeMeMove.Droid.Activities
         private TextView _endTimeText;
         private CheckBox _movementLocationsEnabledCheckbox;
         private View _movementLocationsContainer;
-        private View _addMovementLocationText;
         private RecyclerView _movementLocationRecyclerView;
 
         private List<MovementLocation> _initialMovementLocations;
@@ -70,7 +68,6 @@ namespace MakeMeMove.Droid.Activities
             _endTimeText = FindViewById<TextView>(Resource.Id.EndTimeText);
             _movementLocationsEnabledCheckbox = FindViewById<CheckBox>(Resource.Id.MovementLocationsEnabledCheckbox);
             _movementLocationsContainer = FindViewById(Resource.Id.MovementLocationsContainer);
-            _addMovementLocationText = FindViewById(Resource.Id.AddMovementLocationText);
             _movementLocationRecyclerView = FindViewById<RecyclerView>(Resource.Id.MovementLocationsList);
 
 
@@ -82,7 +79,6 @@ namespace MakeMeMove.Droid.Activities
             _saveButton.Click += (s, e) => SaveData();
 
             _movementLocationsEnabledCheckbox.CheckedChange += MovementLocationsEnabledCheckbox_CheckedChange;
-            _addMovementLocationText.Click += AddMovementLocationText_Click;
         }
 
         private void SetData()
@@ -100,23 +96,11 @@ namespace MakeMeMove.Droid.Activities
             _updatedMovementLocations = Data.GetMovementLocations();
 
             var movementLocationAdapter = new MovementLocationRecyclerAdapter(_updatedMovementLocations);
+            movementLocationAdapter.AddMovementLocationClicked += AddMovementLocationClicked;
             movementLocationAdapter.DeleteMovementLocationClicked += DeleteMovementLocationClicked;
             _movementLocationRecyclerView.SetAdapter(movementLocationAdapter);
+            _movementLocationRecyclerView.HasFixedSize = false;
             _movementLocationRecyclerView.SetLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.Vertical, false));
-        }
-
-        private void DeleteMovementLocationClicked(object sender, int id)
-        {
-            var selectedMovementLocation = _updatedMovementLocations.FirstOrDefault(e => e.Id == id);
-            if (selectedMovementLocation != null)
-            {
-                var movementLocationIndex = _updatedMovementLocations.IndexOf(selectedMovementLocation);
-                _updatedMovementLocations.RemoveAt(movementLocationIndex);
-
-                var adapter = (MovementLocationRecyclerAdapter)_movementLocationRecyclerView.GetAdapter();
-                adapter.UpdateMovementLocationList(_updatedMovementLocations);
-                adapter.NotifyItemRemoved(movementLocationIndex);
-            }
         }
 
         private void InitializePickers()
@@ -214,7 +198,7 @@ namespace MakeMeMove.Droid.Activities
         }
 
 
-        private async void AddMovementLocationText_Click(object sender, EventArgs e)
+        private async void AddMovementLocationClicked(object sender, object args)
         {
             var location = await Geolocation.GetLastKnownLocationAsync();
 
@@ -227,6 +211,20 @@ namespace MakeMeMove.Droid.Activities
             var location = await Geolocation.GetLocationAsync(request);
             var newId = Math.Min(_updatedMovementLocations.Select(ml => ml.Id).Min() - 1, -1);
             _updatedMovementLocations.Add(new MovementLocation { Id = newId, Name = locationName, Latitude = location.Latitude, Longitude = location.Longitude });
+        }
+
+        private void DeleteMovementLocationClicked(object sender, int id)
+        {
+            var selectedMovementLocation = _updatedMovementLocations.FirstOrDefault(e => e.Id == id);
+            if (selectedMovementLocation != null)
+            {
+                var movementLocationIndex = _updatedMovementLocations.IndexOf(selectedMovementLocation);
+                _updatedMovementLocations.RemoveAt(movementLocationIndex);
+
+                var adapter = (MovementLocationRecyclerAdapter)_movementLocationRecyclerView.GetAdapter();
+                adapter.UpdateMovementLocationList(_updatedMovementLocations);
+                adapter.NotifyItemRemoved(movementLocationIndex);
+            }
         }
     }
 }

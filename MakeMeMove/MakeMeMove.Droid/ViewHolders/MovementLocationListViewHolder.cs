@@ -11,7 +11,7 @@ namespace MakeMeMove.Droid.ViewHolders
         public View MainView { get; }
         private readonly ImageView _deleteButton;
 
-        public EventHandler<int> DeleteExerciseClicked;
+        public EventHandler<int> DeleteMovementLocationClicked;
 
         public MovementLocationListViewHolder(View view) 
             : base(view)
@@ -25,7 +25,26 @@ namespace MakeMeMove.Droid.ViewHolders
 
         private void SetUpEvents()
         {
-            _deleteButton.Click += (sender, args) => DeleteExerciseClicked?.Invoke(this, AdapterPosition);
+            _deleteButton.Click += (sender, args) => DeleteMovementLocationClicked?.Invoke(this, AdapterPosition);
+        }
+    }
+
+    public class AddMovementLocationListViewHolder : RecyclerView.ViewHolder
+    {
+        public View MainView { get; }
+        public EventHandler AddMovementLocationClicked;
+
+        public AddMovementLocationListViewHolder(View view)
+            : base(view)
+        {
+            MainView = view;
+
+            SetUpEvents();
+        }
+
+        private void SetUpEvents()
+        {
+            MainView.Click += (sender, args) => AddMovementLocationClicked?.Invoke(this, null);
         }
     }
 }
