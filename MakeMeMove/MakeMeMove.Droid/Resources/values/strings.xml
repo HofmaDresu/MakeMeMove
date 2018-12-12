@@ -65,4 +65,6 @@
   <string name="NotificationSoundSettingTitle">Notification Sound</string>
   <string name="MovementLocationsLabel">Movement Locations</string>
   <string name="AddMovementLocationText">+ Add Current Location</string>
+  <string name="NewMovementLocationTitle">NEW MOVEMENT LOCATION</string>
+  <string name="NewMovementLocationHint">Movement Location Name</string>
 </resources>

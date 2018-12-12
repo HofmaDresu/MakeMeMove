@@ -26,8 +26,16 @@ namespace MakeMeMove.Droid.Dialogs
         {
             var builder = new AlertDialog.Builder(Activity);
             builder
-                .SetMessage("TEST MESSAGE")
-                .SetPositiveButton(Resource.String.Save, (s, args) => _listener.OnSaveClick("TEST"))
+                .SetView(Activity.LayoutInflater.Inflate(Resource.Layout.LocationDialog, null))
+                .SetPositiveButton(Resource.String.Save, (dialog, args) =>
+                {
+                    var newLocationNameView = (dialog as AlertDialog).FindViewById<TextView>(Resource.Id.NewLocationName);
+
+                    if (!string.IsNullOrWhiteSpace(newLocationNameView.Text))
+                    {
+                        _listener.OnSaveClick(newLocationNameView.Text);
+                    }
+                })
                 .SetNegativeButton(Resource.String.Cancel, (s, args) => { });
 
             return builder.Create();

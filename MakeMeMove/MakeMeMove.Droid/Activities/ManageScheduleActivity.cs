@@ -120,7 +120,7 @@ namespace MakeMeMove.Droid.Activities
             new TimePickerFragment(_selectedEndTime.Hour, _selectedEndTime.Minute).Show(SupportFragmentManager, "EndTimePicker");
         }
 
-        private async void MovementLocationsEnabledCheckbox_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
+        private void MovementLocationsEnabledCheckbox_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
         {
             SetMovementLocationsVisibility(e.IsChecked);
         }
