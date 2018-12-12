@@ -86,13 +86,13 @@
       android:id="@+id/MovementLocationsContainer"
       android:orientation="vertical"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="0dp"
+      android:layout_weight="1"
       android:visibility="gone">      
       <android.support.v7.widget.RecyclerView
         android:id="@+id/MovementLocationsList"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="wrap_content" />
       <TextView
         android:id="@+id/AddMovementLocationText"
         android:text="@string/AddMovementLocationText"

@@ -5,8 +5,10 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Support.V4.App;
+using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Droid.Dialogs;
 using MakeMeMove.Droid.Fragments;
@@ -32,6 +34,8 @@ namespace MakeMeMove.Droid.Activities
         private CheckBox _movementLocationsEnabledCheckbox;
         private View _movementLocationsContainer;
         private View _addMovementLocationText;
+        private RecyclerView _movementLocationRecyclerView;
+
         private List<MovementLocation> _initialMovementLocations;
         private List<MovementLocation> _updatedMovementLocations;
 
@@ -67,6 +71,7 @@ namespace MakeMeMove.Droid.Activities
             _movementLocationsEnabledCheckbox = FindViewById<CheckBox>(Resource.Id.MovementLocationsEnabledCheckbox);
             _movementLocationsContainer = FindViewById(Resource.Id.MovementLocationsContainer);
             _addMovementLocationText = FindViewById(Resource.Id.AddMovementLocationText);
+            _movementLocationRecyclerView = FindViewById<RecyclerView>(Resource.Id.MovementLocationsList);
 
 
             InitializePickers();
@@ -93,6 +98,16 @@ namespace MakeMeMove.Droid.Activities
             SetMovementLocationsVisibility(isMovementLocationsEnabled);
             _initialMovementLocations = Data.GetMovementLocations();
             _updatedMovementLocations = Data.GetMovementLocations();
+
+            var movementLocationAdapter = new MovementLocationRecyclerAdapter(_updatedMovementLocations);
+            movementLocationAdapter.DeleteMovementLocationClicked += DeleteMovementLocationClicked;
+            _movementLocationRecyclerView.SetAdapter(movementLocationAdapter);
+            _movementLocationRecyclerView.SetLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.Vertical, false));
+        }
+
+        private void DeleteMovementLocationClicked(object sender, int e)
+        {
+            int foo = 1;
         }
 
         private void InitializePickers()
@@ -102,7 +117,6 @@ namespace MakeMeMove.Droid.Activities
 
             _reminderPeriodSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, periodList);
             _scheduleTypeSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, scheduleTypeList);
-
 
             _startTimeContainer.Click += StartTimeContainer_Click;
             _endTimeContainer.Click += EndTimeContainer_Click;
