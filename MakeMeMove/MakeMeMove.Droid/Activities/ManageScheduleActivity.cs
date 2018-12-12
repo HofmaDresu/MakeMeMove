@@ -213,6 +213,12 @@ namespace MakeMeMove.Droid.Activities
             var location = await Geolocation.GetLocationAsync(request);
             var newId = !_updatedMovementLocations.Any() ? -1 : Math.Min(_updatedMovementLocations.Select(ml => ml.Id).Min() - 1, -1);
             _updatedMovementLocations.Add(new MovementLocation { Id = newId, Name = locationName, Latitude = location.Latitude, Longitude = location.Longitude });
+            RunOnUiThread(() =>
+            {
+                var adapter = (MovementLocationRecyclerAdapter)_movementLocationRecyclerView.GetAdapter();
+                adapter.UpdateMovementLocationList(_updatedMovementLocations);
+                adapter.NotifyItemInserted(_updatedMovementLocations.Count - 1);
+            });
         }
 
         private void DeleteMovementLocationClicked(object sender, int id)
