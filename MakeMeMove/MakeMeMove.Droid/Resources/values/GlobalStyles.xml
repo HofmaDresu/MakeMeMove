@@ -48,17 +48,22 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
   </style>
-  
-  <style name="TopAndSideSpacedRootElement">
-    <item name="android:paddingTop">20dp</item>
-    <item name="android:paddingLeft">20dp</item>
-    <item name="android:paddingRight">20dp</item>
-  </style>
+
   <style name="TopSpacedRootElement">
     <item name="android:paddingTop">20dp</item>
   </style>
+  <style name="TopAndSideSpacedRootElement" parent="@style/TopSpacedRootElement">
+    <item name="android:paddingLeft">20dp</item>
+    <item name="android:paddingRight">20dp</item>
+  </style>
+  <style name="TopBottomAndSideSpacedRootElement" parent="@style/TopAndSideSpacedRootElement">
+    <item name="android:paddingBottom">20dp</item>
+  </style>
   <style name="TopSpacedElement">
     <item name="android:layout_marginTop">10dp</item>
+  </style>
+  <style name="TopAndBottomSpacedElement" parent="@style/TopSpacedElement">
+    <item name="android:layout_marginBottom">10dp</item>
   </style>
 
   <style name="FreeButton">
