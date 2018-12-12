@@ -16,7 +16,7 @@ namespace MakeMeMove.Droid.ViewHolders
         public MovementLocationListViewHolder(View view) 
             : base(view)
         {
-            LocationName = view.FindViewById<TextView>(Resource.Id.ExerciseTitle);
+            LocationName = view.FindViewById<TextView>(Resource.Id.MovementLocationTitle);
             _deleteButton = view.FindViewById<ImageView>(Resource.Id.DeleteButton);
             MainView = view;
 

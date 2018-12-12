@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Android.Support.V7.Widget;
 using Android.Views;
 using MakeMeMove.Droid.ViewHolders;
-using MakeMeMove.Model;
 using MakeMeMove.Standard.Model;
 
 namespace MakeMeMove.Droid.Adapters
@@ -34,7 +33,7 @@ namespace MakeMeMove.Droid.Adapters
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             var inflater = LayoutInflater.From(parent.Context);
-            var view = inflater.Inflate(Resource.Layout.ExerciseListItem, parent, false);
+            var view = inflater.Inflate(Resource.Layout.MovementLocationListItem, parent, false);
             var exerciseListViewHolder = new MovementLocationListViewHolder(view);
             exerciseListViewHolder.DeleteExerciseClicked += (sender, i) => DeleteMovementLocationClicked?.Invoke(sender, _movementLocationList[i].Id);
             return exerciseListViewHolder;
