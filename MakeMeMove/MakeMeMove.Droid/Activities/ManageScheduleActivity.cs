@@ -129,12 +129,12 @@ namespace MakeMeMove.Droid.Activities
 
         private async void MovementLocationsEnabledCheckbox_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
         {
+            SetMovementLocationsVisibility(e.IsChecked);
+
             if (e.IsChecked)
             {
                 var location = await Geolocation.GetLastKnownLocationAsync();
             }
-
-            SetMovementLocationsVisibility(e.IsChecked);
         }
 
         private void SetMovementLocationsVisibility(bool movementLocationsEnabled) => _movementLocationsContainer.Visibility = movementLocationsEnabled ? ViewStates.Visible : ViewStates.Gone;
