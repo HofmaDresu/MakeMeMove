@@ -127,8 +127,13 @@ namespace MakeMeMove.Droid.Activities
             new TimePickerFragment(_selectedEndTime.Hour, _selectedEndTime.Minute).Show(SupportFragmentManager, "EndTimePicker");
         }
 
-        private void MovementLocationsEnabledCheckbox_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
+        private async void MovementLocationsEnabledCheckbox_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
         {
+            if (e.IsChecked)
+            {
+                var location = await Geolocation.GetLastKnownLocationAsync();
+            }
+
             SetMovementLocationsVisibility(e.IsChecked);
         }
 
@@ -197,11 +202,8 @@ namespace MakeMeMove.Droid.Activities
             _selectedPicker = (TimePickerType)savedInstanceState.GetInt(SELECTED_PICKER_BUNDLE_KEY);
         }
 
-
-        private async void AddMovementLocationClicked(object sender, object args)
+        private void AddMovementLocationClicked(object sender, object args)
         {
-            var location = await Geolocation.GetLastKnownLocationAsync();
-
             new AddLocationDialog().Show(SupportFragmentManager, "AddMovementLocation");
         }
 
@@ -209,7 +211,7 @@ namespace MakeMeMove.Droid.Activities
         {
             var request = new GeolocationRequest(GeolocationAccuracy.Best);
             var location = await Geolocation.GetLocationAsync(request);
-            var newId = Math.Min(_updatedMovementLocations.Select(ml => ml.Id).Min() - 1, -1);
+            var newId = !_updatedMovementLocations.Any() ? -1 : Math.Min(_updatedMovementLocations.Select(ml => ml.Id).Min() - 1, -1);
             _updatedMovementLocations.Add(new MovementLocation { Id = newId, Name = locationName, Latitude = location.Latitude, Longitude = location.Longitude });
         }
 
