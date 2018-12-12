@@ -122,14 +122,6 @@ namespace MakeMeMove.Droid.Activities
 
         private async void MovementLocationsEnabledCheckbox_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
         {
-            //TODO: Remove
-            if (e.IsChecked && !_initialMovementLocations.Any())
-            {
-                var request = new GeolocationRequest(GeolocationAccuracy.Best);
-                var location = await Geolocation.GetLocationAsync(request);
-                _updatedMovementLocations.Add(new MovementLocation { Name = "Test", Latitude = location.Latitude, Longitude = location.Longitude });
-            }
-
             SetMovementLocationsVisibility(e.IsChecked);
         }
 
@@ -198,17 +190,19 @@ namespace MakeMeMove.Droid.Activities
             _selectedPicker = (TimePickerType)savedInstanceState.GetInt(SELECTED_PICKER_BUNDLE_KEY);
         }
 
+
         private async void AddMovementLocationText_Click(object sender, EventArgs e)
         {
-            var request = new GeolocationRequest(GeolocationAccuracy.Best);
-            var location = await Geolocation.GetLocationAsync(request);
+            var location = await Geolocation.GetLastKnownLocationAsync();
 
             new AddLocationDialog().Show(SupportFragmentManager, "AddMovementLocation");
         }
 
-        public void OnSaveClick(string locationName)
+        public async void OnSaveClick(string locationName)
         {
-            int foo = 1;
+            var request = new GeolocationRequest(GeolocationAccuracy.Best);
+            var location = await Geolocation.GetLocationAsync(request);
+            _updatedMovementLocations.Add(new MovementLocation { Name = locationName, Latitude = location.Latitude, Longitude = location.Longitude });
         }
     }
 }
