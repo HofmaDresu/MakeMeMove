@@ -33,6 +33,7 @@ namespace MakeMeMove.Droid.Activities
         private CheckBox _movementLocationsEnabledCheckbox;
         private View _movementLocationsContainer;
         private RecyclerView _movementLocationRecyclerView;
+        private View _loadingIndicator;
 
         private List<MovementLocation> _initialMovementLocations;
         private List<MovementLocation> _updatedMovementLocations;
@@ -69,6 +70,7 @@ namespace MakeMeMove.Droid.Activities
             _movementLocationsEnabledCheckbox = FindViewById<CheckBox>(Resource.Id.MovementLocationsEnabledCheckbox);
             _movementLocationsContainer = FindViewById(Resource.Id.MovementLocationsContainer);
             _movementLocationRecyclerView = FindViewById<RecyclerView>(Resource.Id.MovementLocationsList);
+            _loadingIndicator = FindViewById(Resource.Id.LoadingIndicator);
 
 
             InitializePickers();
@@ -209,16 +211,24 @@ namespace MakeMeMove.Droid.Activities
 
         public async void OnSaveClick(string locationName)
         {
-            var request = new GeolocationRequest(GeolocationAccuracy.Best);
-            var location = await Geolocation.GetLocationAsync(request);
-            var newId = !_updatedMovementLocations.Any() ? -1 : Math.Min(_updatedMovementLocations.Select(ml => ml.Id).Min() - 1, -1);
-            _updatedMovementLocations.Add(new MovementLocation { Id = newId, Name = locationName, Latitude = location.Latitude, Longitude = location.Longitude });
-            RunOnUiThread(() =>
+            try
             {
-                var adapter = (MovementLocationRecyclerAdapter)_movementLocationRecyclerView.GetAdapter();
-                adapter.UpdateMovementLocationList(_updatedMovementLocations);
-                adapter.NotifyItemInserted(_updatedMovementLocations.Count - 1);
-            });
+                _loadingIndicator.Visibility = ViewStates.Visible;
+                var request = new GeolocationRequest(GeolocationAccuracy.Best);
+                var location = await Geolocation.GetLocationAsync(request);
+                var newId = !_updatedMovementLocations.Any() ? -1 : Math.Min(_updatedMovementLocations.Select(ml => ml.Id).Min() - 1, -1);
+                _updatedMovementLocations.Add(new MovementLocation { Id = newId, Name = locationName, Latitude = location.Latitude, Longitude = location.Longitude });
+                RunOnUiThread(() =>
+                {
+                    var adapter = (MovementLocationRecyclerAdapter)_movementLocationRecyclerView.GetAdapter();
+                    adapter.UpdateMovementLocationList(_updatedMovementLocations);
+                    adapter.NotifyItemInserted(_updatedMovementLocations.Count - 1);
+                });
+            }
+            finally
+            {
+                _loadingIndicator.Visibility = ViewStates.Gone;
+            }
         }
 
         private void DeleteMovementLocationClicked(object sender, int id)

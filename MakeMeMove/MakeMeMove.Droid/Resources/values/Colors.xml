@@ -15,6 +15,7 @@
   <color name="Black">#000000</color>
   <color name="HighlightBackgroundColor">#efe4e0</color>
   <color name="MainBackgroundColor">#efefef</color>
+  <color name="LoadingBackgroundColor">#AAefefef</color>
   <color name="WarningColor">#FF4B0A</color>
   <color name="GrayFont">#757575</color>
   <color name="GrayDivider">#bababa</color>

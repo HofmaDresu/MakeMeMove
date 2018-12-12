@@ -1,116 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    style="@style/TopBottomAndSideSpacedRootElement">
-    <TextView
-        android:text="@string/ScheduleTypeLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ScheduleTypeSpinner" />
-    <TextView
-        android:text="@string/ReminderPeriodLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        style="@style/TopSpacedElement" />
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ReminderSpinner" />
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/TopSpacedElement">
-      <LinearLayout
-        android:id="@+id/StartTimeContainer"
-        android:orientation="vertical"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content">
-        <TextView
-          android:text="@string/StartTimeLabel"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textAppearance="?android:attr/textAppearanceMedium" />
-        <TextView
-          android:id="@+id/StartTimeText"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:paddingLeft="8dp"
-          android:textAppearance="?android:attr/textAppearanceSmall"
-          android:textColor="@color/InteractibleTextColor" />      
-      </LinearLayout>
-      <LinearLayout
-        android:id="@+id/EndTimeContainer"
-        android:orientation="vertical"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content">
-        <TextView
-          android:text="@string/EndTimeLabel"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textAppearance="?android:attr/textAppearanceMedium" />
-        <TextView
-          android:id="@+id/EndTimeText"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:paddingLeft="8dp"
-          android:textAppearance="?android:attr/textAppearanceSmall"
-          android:textColor="@color/InteractibleTextColor" />      
-      </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/TopSpacedElement">
-        <TextView
-          android:text="@string/MovementLocationsLabel"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textAppearance="?android:attr/textAppearanceMedium" />
-        <CheckBox android:id="@+id/MovementLocationsEnabledCheckbox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textAppearance="?android:attr/textAppearanceMedium"/>
-    </LinearLayout>
-    <LinearLayout
-      android:id="@+id/MovementLocationsContainer"
+    android:layout_height="match_parent">
+  <LinearLayout
       android:orientation="vertical"
       android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:layout_weight="1"
-      android:visibility="gone">
-      <android.support.v7.widget.RecyclerView
-        android:id="@+id/MovementLocationsList"
+      android:layout_height="match_parent"
+      style="@style/TopBottomAndSideSpacedRootElement">
+      <TextView
+          android:text="@string/ScheduleTypeLabel"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textAppearance="?android:attr/textAppearanceMedium" />
+      <Spinner
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/ScheduleTypeSpinner" />
+      <TextView
+          android:text="@string/ReminderPeriodLabel"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textAppearance="?android:attr/textAppearanceMedium"
+          style="@style/TopSpacedElement" />
+      <Spinner
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/ReminderSpinner" />
+      <LinearLayout
+          android:orientation="horizontal"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          style="@style/TopSpacedElement">
+        <LinearLayout
+          android:id="@+id/StartTimeContainer"
+          android:orientation="vertical"
+          android:layout_width="0dp"
+          android:layout_weight="1"
+          android:layout_height="wrap_content">
+          <TextView
+            android:text="@string/StartTimeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+          <TextView
+            android:id="@+id/StartTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/InteractibleTextColor" />      
+        </LinearLayout>
+        <LinearLayout
+          android:id="@+id/EndTimeContainer"
+          android:orientation="vertical"
+          android:layout_width="0dp"
+          android:layout_weight="1"
+          android:layout_height="wrap_content">
+          <TextView
+            android:text="@string/EndTimeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+          <TextView
+            android:id="@+id/EndTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/InteractibleTextColor" />      
+        </LinearLayout>
+      </LinearLayout>
+      <LinearLayout
+          android:orientation="horizontal"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          style="@style/TopSpacedElement">
+          <TextView
+            android:text="@string/MovementLocationsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+          <CheckBox android:id="@+id/MovementLocationsEnabledCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+      </LinearLayout>
+      <LinearLayout
+        android:id="@+id/MovementLocationsContainer"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+        <android.support.v7.widget.RecyclerView
+          android:id="@+id/MovementLocationsList"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+      </LinearLayout>
+      <LinearLayout
+          android:orientation="horizontal"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          style="@style/TopSpacedElement">
+          <Button
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/SaveButton"
+              android:text="@string/Save"
+              style="@style/FreeButton" />
+          <Button
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="8dp"
+              android:id="@+id/CancelButton"
+              android:text="@string/Cancel"
+              style="@style/FreeButton" />
+      </LinearLayout>
+  </LinearLayout>
+  <RelativeLayout
+    android:id="@+id/LoadingIndicator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    android:clickable="true"
+    android:background="@color/LoadingBackgroundColor">
+    <ProgressBar
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TopSpacedElement">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/SaveButton"
-            android:text="@string/Save"
-            style="@style/FreeButton" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:id="@+id/CancelButton"
-            android:text="@string/Cancel"
-            style="@style/FreeButton" />
-    </LinearLayout>
-</LinearLayout>
+        android:layout_centerInParent="true"
+      />
+  </RelativeLayout>
+</FrameLayout>
