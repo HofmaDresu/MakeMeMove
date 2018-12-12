@@ -189,6 +189,7 @@
     <Compile Include="BroadcastReceivers\ExerciseTickBroadcastReceiver.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="DeviceSpecificImplementations\PermissionRequester.cs" />
+    <Compile Include="Dialogs\AddLocationDialog.cs" />
     <Compile Include="Fragments\BaseMainFragment.cs" />
     <Compile Include="Fragments\ExerciseHistoryDayFragment.cs" />
     <Compile Include="Fragments\ExerciseListFragment.cs" />

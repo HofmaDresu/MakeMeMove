@@ -4,9 +4,11 @@ using System.Linq;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
+using MakeMeMove.Droid.Dialogs;
 using MakeMeMove.Droid.Fragments;
 using MakeMeMove.Model;
 using MakeMeMove.Standard.Model;
@@ -16,7 +18,7 @@ using static Android.App.TimePickerDialog;
 namespace MakeMeMove.Droid.Activities
 {
     [Activity(Label = "Manage Schedule", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize)]
-    public class ManageScheduleActivity : BaseActivity, IOnTimeSetListener
+    public class ManageScheduleActivity : BaseActivity, IOnTimeSetListener, IAddLocationDialogListener
     {
         private const string SELECTED_PICKER_BUNDLE_KEY = "selected_picker";
         private Spinner _scheduleTypeSpinner;
@@ -118,13 +120,6 @@ namespace MakeMeMove.Droid.Activities
             new TimePickerFragment(_selectedEndTime.Hour, _selectedEndTime.Minute).Show(SupportFragmentManager, "EndTimePicker");
         }
 
-        private async void AddMovementLocationText_Click(object sender, EventArgs e)
-        {
-            var request = new GeolocationRequest(GeolocationAccuracy.Best);
-            var location = await Geolocation.GetLocationAsync(request);
-
-        }
-
         private async void MovementLocationsEnabledCheckbox_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
         {
             //TODO: Remove
@@ -201,6 +196,19 @@ namespace MakeMeMove.Droid.Activities
         {
             base.OnRestoreInstanceState(savedInstanceState);
             _selectedPicker = (TimePickerType)savedInstanceState.GetInt(SELECTED_PICKER_BUNDLE_KEY);
+        }
+
+        private async void AddMovementLocationText_Click(object sender, EventArgs e)
+        {
+            var request = new GeolocationRequest(GeolocationAccuracy.Best);
+            var location = await Geolocation.GetLocationAsync(request);
+
+            new AddLocationDialog().Show(SupportFragmentManager, "AddMovementLocation");
+        }
+
+        public void OnSaveClick(string locationName)
+        {
+            int foo = 1;
         }
     }
 }
