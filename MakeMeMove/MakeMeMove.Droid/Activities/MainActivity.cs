@@ -11,6 +11,7 @@ using Android.Support.V7.App;
 using Android.Views;
 using MakeMeMove.Droid.Adapters;
 using MakeMeMove.Droid.Fragments;
+using Android.Runtime;
 
 namespace MakeMeMove.Droid.Activities
 {
@@ -31,6 +32,7 @@ namespace MakeMeMove.Droid.Activities
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
             CreateNotificationChannels();
 
@@ -141,6 +143,13 @@ namespace MakeMeMove.Droid.Activities
                 notificationManager.CreateNotificationChannel(gameChannel);
                 notificationManager.CreateNotificationChannel(generalChannel);
             }
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        {
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

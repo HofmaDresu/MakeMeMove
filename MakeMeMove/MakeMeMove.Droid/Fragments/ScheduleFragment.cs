@@ -57,8 +57,8 @@ namespace MakeMeMove.Droid.Fragments
 
 
             _exerciseSchedule = _data.GetExerciseSchedule();
-            _startTimeText.Text = _exerciseSchedule.StartTime.ToLongTimeString();
-            _endTimeText.Text = _exerciseSchedule.EndTime.ToLongTimeString();
+            _startTimeText.Text = _exerciseSchedule.StartTime.ToShortTimeString();
+            _endTimeText.Text = _exerciseSchedule.EndTime.ToShortTimeString();
             _scheduleTypeText.Text = _exerciseSchedule.TypeDisplayString;
             _reminderPeriodText.Text = _exerciseSchedule.PeriodDisplayString;
 
@@ -94,7 +94,6 @@ namespace MakeMeMove.Droid.Fragments
             else
             {
                 _serviceManager.StartNotificationService(Activity, _exerciseSchedule);
-
             }
 
             EnableDisableServiceButtons();

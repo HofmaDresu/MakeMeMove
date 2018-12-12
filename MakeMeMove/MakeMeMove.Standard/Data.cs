@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MakeMeMove.Model;
+using MakeMeMove.Standard.Model;
 using SQLite;
 using static System.Math;
 
@@ -17,6 +18,7 @@ namespace MakeMeMove
         private TableQuery<MostRecentExercise> MostRecentExercises => _db.Table<MostRecentExercise>();
         private TableQuery<ExerciseHistory> ExerciseHistories => _db.Table<ExerciseHistory>();
         private TableQuery<SystemStatus> SystemStatus => _db.Table<SystemStatus>();
+        private TableQuery<MovementLocation> MovementLocations => _db.Table<MovementLocation>();
 
         public int RatingCheckTimesOpened { get; private set; }
 
@@ -59,6 +61,8 @@ namespace MakeMeMove
 
             _db.CreateTable<ExerciseHistory>();
 
+            _db.CreateTable<MovementLocation>();
+
 #if DEBUG
             var now = DateTime.Now.Date;
             if (!ExerciseHistories.Any(eh => eh.RecordedDate < now))
@@ -93,7 +97,7 @@ namespace MakeMeMove
             
         }
 
-#region Schedule
+        #region Schedule
         public ExerciseSchedule GetExerciseSchedule()
         {
             var schedule = ExerciseSchedules.First();
@@ -141,8 +145,7 @@ namespace MakeMeMove
 
         private DayOfWeek? GetDayOfWeekFromString(string d)
         {
-            int day;
-            if (int.TryParse(d, out day))
+            if (int.TryParse(d, out int day))
             {
                 try
                 {
@@ -225,10 +228,9 @@ namespace MakeMeMove
 
             return differentEnabledExercises[Min(index, differentEnabledExercises.Count - 1)];
         }
-#endregion
+        #endregion
 
-#region ExerciseHistory
-
+        #region ExerciseHistory
         public List<ExerciseHistory> GetExerciseHistoryForDay(DateTime date)
         {
             return ExerciseHistories.Where(eh => eh.RecordedDate == date && eh.QuantityNotified > 0).OrderBy(eh => eh.ExerciseName).ToList();
@@ -326,10 +328,9 @@ namespace MakeMeMove
 
             return totals.Select(t => new ExerciseTotal { ExerciseName = t.Key, QuantityCompleted = t.Value }).Where(t => t.QuantityCompleted > 0).ToList();
         }
-
         #endregion
 
-#region SystemStatus
+        #region SystemStatus
         /// <summary>
         /// Is the service running on iOS. Should not be used on Android
         /// </summary>
@@ -355,6 +356,19 @@ namespace MakeMeMove
         {
             var status = SystemStatus.First();
             return status.IsFirstRun;
+        }
+
+        public bool IsMovementLocationsEnabled()
+        {
+            var status = SystemStatus.First();
+            return status.IsMovementLocationsEnabled;
+        }
+
+        public void SetMovementLocationsEnabled(bool isEnabled)
+        {
+            var status = SystemStatus.First();
+            status.IsMovementLocationsEnabled = isEnabled;
+            _db.Update(status);
         }
 
         public void MarkFirstRun()
@@ -390,7 +404,26 @@ namespace MakeMeMove
             status.AskForRating_DB_ONLY = false;
             _db.Update(status);
         }
+        #endregion
 
+        #region MovementLocations
+        public List<MovementLocation> GetMovementLocations()
+        {
+            return MovementLocations.ToList();
+        }
+
+        public void DeleteAllMovementLocations(IEnumerable<int> ids)
+        {
+            foreach (var id in ids)
+            {
+                _db.Delete<MovementLocation>(id);
+            }
+        }
+
+        public void InsertAllMovementLocations(IEnumerable<MovementLocation> newMovementLocations)
+        {
+            _db.InsertAll(newMovementLocations);
+        }
         #endregion
     }
 }

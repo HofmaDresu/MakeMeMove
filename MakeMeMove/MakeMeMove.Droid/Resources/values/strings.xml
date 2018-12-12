@@ -26,8 +26,6 @@
   <string name="ExerciseNameValidation">"Please enter a name for your exercise.</string>
   <string name="RepetitionsMissingValidation">Please enter how many repetitions you want.</string>
   <string name="RepetitionWholeNumberValidation">Please enter a whole number of repetitions.</string>
-  <string name="AM">AM</string>
-  <string name="PM">PM</string>
   <string name="TimeRangeValidation">Please make sure your start time is before your end time.</string>
   <string name="SwitchOn">ON</string>
   <string name="SwitchOff">OFF</string>
@@ -65,4 +63,8 @@
   <string name="CheckHistoryNotificationTitle">Check Today\'s Progress</string>
   <string name="CheckHistoryNotificationMessage">Tap to see how you did today</string>
   <string name="NotificationSoundSettingTitle">Notification Sound</string>
+  <string name="MovementLocationsLabel">Movement Locations</string>
+  <string name="AddMovementLocationText">+ Add Current Location</string>
+  <string name="NewMovementLocationTitle">NEW MOVEMENT LOCATION</string>
+  <string name="NewMovementLocationHint">Movement Location Name</string>
 </resources>

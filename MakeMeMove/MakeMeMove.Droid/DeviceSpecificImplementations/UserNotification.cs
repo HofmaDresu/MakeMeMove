@@ -10,6 +10,9 @@ using MakeMeMove.Model;
 using TaskStackBuilder = Android.App.TaskStackBuilder;
 using Android.Preferences;
 using Android.Media;
+using System.Linq;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace MakeMeMove.Droid.DeviceSpecificImplementations
 {
@@ -36,10 +39,38 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
                 .Show();
         }
 
-        public static void CreateExerciseNotification(Data data, Context context)
+        public static async Task CreateExerciseNotification(Data data, Context context)
         {
-            var nextExercise = data.GetNextEnabledExercise();
-            CreateExerciseNotification(data, context, nextExercise);
+            var showExerciseNotificaiton = false;
+
+            try
+            {
+                var isMovementLocationsEnabled = data.IsMovementLocationsEnabled();
+                var movementLocations = data.GetMovementLocations();
+
+                if (isMovementLocationsEnabled && movementLocations.Any())
+                {
+                    var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
+                    var inMovementLocation = movementLocations.Any(ml => Location.CalculateDistance(lastKnownLocation, new Location(ml.Latitude, ml.Longitude), DistanceUnits.Miles) < .2);
+
+                    showExerciseNotificaiton = inMovementLocation;
+                }
+                else
+                {
+                    showExerciseNotificaiton = true;
+                }
+            }
+            catch (Exception)
+            {
+                showExerciseNotificaiton = true;
+            }
+
+            if (showExerciseNotificaiton)
+            {
+                var nextExercise = data.GetNextEnabledExercise();
+                CreateExerciseNotification(data, context, nextExercise);
+
+            }
         }
 
         public static void CreateExerciseNotification(Data data, Context context, ExerciseBlock nextExercise)
