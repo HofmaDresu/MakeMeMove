@@ -83,6 +83,26 @@
           android:textAppearance="?android:attr/textAppearanceMedium"/>
     </LinearLayout>
     <LinearLayout
+      android:id="@+id/MovementLocationsContainer"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:visibility="gone">      
+      <android.support.v7.widget.RecyclerView
+        android:id="@+id/MovementLocationsList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+      <TextView
+        android:id="@+id/AddMovementLocationText"
+        android:text="@string/AddMovementLocationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/InteractibleTextColor" />
+    </LinearLayout>
+    <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

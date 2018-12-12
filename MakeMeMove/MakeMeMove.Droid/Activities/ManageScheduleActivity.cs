@@ -28,6 +28,7 @@ namespace MakeMeMove.Droid.Activities
         private View _endTimeContainer;
         private TextView _endTimeText;
         private CheckBox _movementLocationsEnabledCheckbox;
+        private View _movementLocationsContainer;
         private List<MovementLocation> _initialMovementLocations;
         private List<MovementLocation> _updatedMovementLocations;
 
@@ -61,6 +62,7 @@ namespace MakeMeMove.Droid.Activities
             _endTimeContainer = FindViewById(Resource.Id.EndTimeContainer);
             _endTimeText = FindViewById<TextView>(Resource.Id.EndTimeText);
             _movementLocationsEnabledCheckbox = FindViewById<CheckBox>(Resource.Id.MovementLocationsEnabledCheckbox);
+            _movementLocationsContainer = FindViewById(Resource.Id.MovementLocationsContainer);
 
 
             InitializePickers();
@@ -83,13 +85,18 @@ namespace MakeMeMove.Droid.Activities
                 _updatedMovementLocations.Add(new MovementLocation { Name = "Test", Latitude = location.Latitude, Longitude = location.Longitude });
             }
 
-            if (e.IsChecked)
+            SetMovementLocationsVisibility(e.IsChecked);
+        }
+
+        private void SetMovementLocationsVisibility(bool movementLocationsEnabled)
+        {
+            if (movementLocationsEnabled)
             {
-                //TODO: Show list
+                _movementLocationsContainer.Visibility = ViewStates.Visible;
             }
             else
             {
-                //TODO: hide list
+                _movementLocationsContainer.Visibility = ViewStates.Gone;
             }
         }
 
@@ -101,7 +108,9 @@ namespace MakeMeMove.Droid.Activities
             _endTimeText.Text = _exerciseSchedule.EndTime.ToShortTimeString();
             _selectedStartTime = _exerciseSchedule.StartTime;
             _selectedEndTime = _exerciseSchedule.EndTime;
-            _movementLocationsEnabledCheckbox.Checked = Data.IsMovementLocationsEnabled();
+            var isMovementLocationsEnabled = Data.IsMovementLocationsEnabled();
+            _movementLocationsEnabledCheckbox.Checked = isMovementLocationsEnabled; 
+            SetMovementLocationsVisibility(isMovementLocationsEnabled);
             _initialMovementLocations = Data.GetMovementLocations();
             _updatedMovementLocations = Data.GetMovementLocations();
         }
@@ -113,6 +122,7 @@ namespace MakeMeMove.Droid.Activities
 
             _reminderPeriodSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, periodList);
             _scheduleTypeSpinner.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, scheduleTypeList);
+
 
             _startTimeContainer.Click += StartTimeContainer_Click;
             _endTimeContainer.Click += EndTimeContainer_Click;
