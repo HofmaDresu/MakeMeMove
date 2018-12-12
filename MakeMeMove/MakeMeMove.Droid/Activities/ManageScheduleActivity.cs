@@ -105,9 +105,18 @@ namespace MakeMeMove.Droid.Activities
             _movementLocationRecyclerView.SetLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.Vertical, false));
         }
 
-        private void DeleteMovementLocationClicked(object sender, int e)
+        private void DeleteMovementLocationClicked(object sender, int id)
         {
-            int foo = 1;
+            var selectedMovementLocation = _updatedMovementLocations.FirstOrDefault(e => e.Id == id);
+            if (selectedMovementLocation != null)
+            {
+                var movementLocationIndex = _updatedMovementLocations.IndexOf(selectedMovementLocation);
+                _updatedMovementLocations.RemoveAt(movementLocationIndex);
+
+                var adapter = (MovementLocationRecyclerAdapter)_movementLocationRecyclerView.GetAdapter();
+                adapter.UpdateMovementLocationList(_updatedMovementLocations);
+                adapter.NotifyItemRemoved(movementLocationIndex);
+            }
         }
 
         private void InitializePickers()

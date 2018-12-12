@@ -18,7 +18,7 @@ namespace MakeMeMove.Droid.Adapters
             _movementLocationList = movementLocationList;
         }
 
-        public void UpdateExerciseList(List<MovementLocation> exerciseList)
+        public void UpdateMovementLocationList(List<MovementLocation> exerciseList)
         {
             _movementLocationList = exerciseList;
         }
