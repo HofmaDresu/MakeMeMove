@@ -216,7 +216,8 @@ namespace MakeMeMove.Droid.Activities
         {
             var request = new GeolocationRequest(GeolocationAccuracy.Best);
             var location = await Geolocation.GetLocationAsync(request);
-            _updatedMovementLocations.Add(new MovementLocation { Name = locationName, Latitude = location.Latitude, Longitude = location.Longitude });
+            var newId = Math.Min(_updatedMovementLocations.Select(ml => ml.Id).Min() - 1, -1);
+            _updatedMovementLocations.Add(new MovementLocation { Id = newId, Name = locationName, Latitude = location.Latitude, Longitude = location.Longitude });
         }
     }
 }
