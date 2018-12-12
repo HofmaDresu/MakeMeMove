@@ -29,6 +29,7 @@ namespace MakeMeMove.Droid.Activities
         private TextView _endTimeText;
         private CheckBox _movementLocationsEnabledCheckbox;
         private View _movementLocationsContainer;
+        private View _addMovementLocationText;
         private List<MovementLocation> _initialMovementLocations;
         private List<MovementLocation> _updatedMovementLocations;
 
@@ -63,6 +64,7 @@ namespace MakeMeMove.Droid.Activities
             _endTimeText = FindViewById<TextView>(Resource.Id.EndTimeText);
             _movementLocationsEnabledCheckbox = FindViewById<CheckBox>(Resource.Id.MovementLocationsEnabledCheckbox);
             _movementLocationsContainer = FindViewById(Resource.Id.MovementLocationsContainer);
+            _addMovementLocationText = FindViewById(Resource.Id.AddMovementLocationText);
 
 
             InitializePickers();
@@ -73,31 +75,7 @@ namespace MakeMeMove.Droid.Activities
             _saveButton.Click += (s, e) => SaveData();
 
             _movementLocationsEnabledCheckbox.CheckedChange += MovementLocationsEnabledCheckbox_CheckedChange;
-        }
-
-        private async void MovementLocationsEnabledCheckbox_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
-        {
-            //TODO: Remove
-            if (e.IsChecked && !_initialMovementLocations.Any())
-            {
-                var request = new GeolocationRequest(GeolocationAccuracy.Best);
-                var location = await Geolocation.GetLocationAsync(request);
-                _updatedMovementLocations.Add(new MovementLocation { Name = "Test", Latitude = location.Latitude, Longitude = location.Longitude });
-            }
-
-            SetMovementLocationsVisibility(e.IsChecked);
-        }
-
-        private void SetMovementLocationsVisibility(bool movementLocationsEnabled)
-        {
-            if (movementLocationsEnabled)
-            {
-                _movementLocationsContainer.Visibility = ViewStates.Visible;
-            }
-            else
-            {
-                _movementLocationsContainer.Visibility = ViewStates.Gone;
-            }
+            _addMovementLocationText.Click += AddMovementLocationText_Click;
         }
 
         private void SetData()
@@ -139,6 +117,28 @@ namespace MakeMeMove.Droid.Activities
             _selectedPicker = TimePickerType.End;
             new TimePickerFragment(_selectedEndTime.Hour, _selectedEndTime.Minute).Show(SupportFragmentManager, "EndTimePicker");
         }
+
+        private async void AddMovementLocationText_Click(object sender, EventArgs e)
+        {
+            var request = new GeolocationRequest(GeolocationAccuracy.Best);
+            var location = await Geolocation.GetLocationAsync(request);
+
+        }
+
+        private async void MovementLocationsEnabledCheckbox_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
+        {
+            //TODO: Remove
+            if (e.IsChecked && !_initialMovementLocations.Any())
+            {
+                var request = new GeolocationRequest(GeolocationAccuracy.Best);
+                var location = await Geolocation.GetLocationAsync(request);
+                _updatedMovementLocations.Add(new MovementLocation { Name = "Test", Latitude = location.Latitude, Longitude = location.Longitude });
+            }
+
+            SetMovementLocationsVisibility(e.IsChecked);
+        }
+
+        private void SetMovementLocationsVisibility(bool movementLocationsEnabled) => _movementLocationsContainer.Visibility = movementLocationsEnabled ? ViewStates.Visible : ViewStates.Gone;
 
         private void SaveData()
         {
