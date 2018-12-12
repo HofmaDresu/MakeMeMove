@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
@@ -9,6 +10,7 @@ using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Droid.Fragments;
 using MakeMeMove.Model;
 using MakeMeMove.Standard.Model;
+using Xamarin.Essentials;
 using static Android.App.TimePickerDialog;
 
 namespace MakeMeMove.Droid.Activities
@@ -67,6 +69,28 @@ namespace MakeMeMove.Droid.Activities
 
             _cancelButton.Click += (s, e) => Finish();
             _saveButton.Click += (s, e) => SaveData();
+
+            _movementLocationsEnabledCheckbox.CheckedChange += MovementLocationsEnabledCheckbox_CheckedChange;
+        }
+
+        private async void MovementLocationsEnabledCheckbox_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
+        {
+            //TODO: Remove
+            if (e.IsChecked && !_initialMovementLocations.Any())
+            {
+                var request = new GeolocationRequest(GeolocationAccuracy.Best);
+                var location = await Geolocation.GetLocationAsync(request);
+                _updatedMovementLocations.Add(new MovementLocation { Name = "Test", Latitude = location.Latitude, Longitude = location.Longitude });
+            }
+
+            if (e.IsChecked)
+            {
+                //TODO: Show list
+            }
+            else
+            {
+                //TODO: hide list
+            }
         }
 
         private void SetData()
@@ -78,6 +102,8 @@ namespace MakeMeMove.Droid.Activities
             _selectedStartTime = _exerciseSchedule.StartTime;
             _selectedEndTime = _exerciseSchedule.EndTime;
             _movementLocationsEnabledCheckbox.Checked = Data.IsMovementLocationsEnabled();
+            _initialMovementLocations = Data.GetMovementLocations();
+            _updatedMovementLocations = Data.GetMovementLocations();
         }
 
         private void InitializePickers()
@@ -123,6 +149,9 @@ namespace MakeMeMove.Droid.Activities
             _exerciseSchedule = Data.GetExerciseSchedule();
             _serviceManager.RestartNotificationServiceIfNeeded(this, _exerciseSchedule);
             Data.SetMovementLocationsEnabled(_movementLocationsEnabledCheckbox.Checked);
+
+            Data.InsertAllMovementLocations(_updatedMovementLocations.Except(_initialMovementLocations));
+            Data.DeleteAllMovementLocations(_initialMovementLocations.Except(_updatedMovementLocations).Select(ml => ml.Id));
 
             Finish();
         }
