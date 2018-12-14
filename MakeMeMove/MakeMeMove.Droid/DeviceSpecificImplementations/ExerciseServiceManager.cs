@@ -69,20 +69,30 @@ namespace MakeMeMove.Droid.DeviceSpecificImplementations
 
             var dtBasis = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                 
-            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            var filePath = Path.Combine(documentsPath, Constants.NotificationPreferences);
-            var allowWakeFromIdle = JsonConvert.DeserializeObject<bool>(File.ReadAllText(filePath));
-
-            if (allowWakeFromIdle)
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
             {
-                alarms.SetExactAndAllowWhileIdle(AlarmType.RtcWakeup,
-                    (long)nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds,
-                    recurringReminders);
+
+                var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                var filePath = Path.Combine(documentsPath, Constants.NotificationPreferences);
+                var allowWakeFromIdle = JsonConvert.DeserializeObject<bool>(File.ReadAllText(filePath));
+
+                if (allowWakeFromIdle)
+                {
+                    alarms.SetExactAndAllowWhileIdle(AlarmType.RtcWakeup,
+                        (long)nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds,
+                        recurringReminders);
+                }
+                else
+                {
+                    alarms.SetExact(AlarmType.RtcWakeup,
+                        (long)nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds,
+                        recurringReminders);
+                }
             }
             else
             {
                 alarms.SetExact(AlarmType.RtcWakeup,
-                    (long)nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds,
+                    (long) nextRunTime.ToUniversalTime().Subtract(dtBasis).TotalMilliseconds,
                     recurringReminders);
             }
 
