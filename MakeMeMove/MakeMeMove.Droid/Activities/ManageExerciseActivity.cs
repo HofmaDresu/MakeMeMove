@@ -7,7 +7,6 @@ using Android.OS;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
-using Humanizer;
 using MakeMeMove.Droid.DeviceSpecificImplementations;
 using MakeMeMove.Model;
 
@@ -106,8 +105,7 @@ namespace MakeMeMove.Droid.Activities
                 _userNotification.ShowValidationErrorPopUp(this, Resource.String.RepetitionsMissingValidation);
                 return;
             }
-            int repetitions;
-            if (!int.TryParse(_repetitionText.Text, out repetitions))
+            if (!int.TryParse(_repetitionText.Text, out int repetitions))
             {
                 _userNotification.ShowValidationErrorPopUp(this, Resource.String.RepetitionWholeNumberValidation);
                 return;
